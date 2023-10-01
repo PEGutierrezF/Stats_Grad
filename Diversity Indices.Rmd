@@ -1,0 +1,25 @@
+---
+title: "Diversity Indices"
+author: "Pablo E. Gutiérrez-Fonseca"
+date: "2023-10-01"
+output: pdf_document
+---
+
+
+## **Load libraries**
+```{r}
+library(vegan)
+```
+
+
+```{r}
+data(BCI, BCI.env)
+```
+
+## **Species richness**<br/>
+Species richness is a measure of the number of species (or other taxonomic level) present at a site.<br/>
+Sites with more taxa are considered **richer**.
+
+## **Diversity indices**
+
+### **Shannon–Weaver**
