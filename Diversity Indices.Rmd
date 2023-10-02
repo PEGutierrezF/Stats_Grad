@@ -18,7 +18,7 @@ library(readxl)
 ## **Aquatic Macronvertebrates in two land uses (Agriculture and Urban streams)**
 
 ```{r}
-data <- read_excel('data.xlsx')
+data <- read_excel('data.xlsx', sheet = 'Sheet3')
 head(data,20)
 ```
 <br/>
@@ -28,14 +28,13 @@ head(data,20)
 Species richness is a measure of the number of species (or other taxonomic level) present at a site.<br/>
 Sites with more taxa are considered **richer**.
 ```{r}
-# Calculate species richness per site for species with abundance > 0
-species_richness <- data %>%
-  filter(abundance > 0) %>%
+# Calculate total species richness per site
+total_species_richness <- data %>%
   group_by(site) %>%
-  summarize(species_count = n_distinct(taxa))
+  summarise(total_species = n_distinct(taxa))
 
-# Display the result
-print(species_richness)
+# Display the results
+print(total_species_richness)
 ```
 
 ## **Abundance**
@@ -71,12 +70,15 @@ This formula is commonly used to measure the diversity or uncertainty in a syste
 
 ## Example
 ```{r}
-# Calculate Shannon entropy per site
-shannon_per_site <- data %>%
+# Calculate Shannon diversity index
+shannon_results <- data %>%
   group_by(site) %>%
-  summarize(shannon_entropy = diversity(abundance, index = "shannon"))
+  summarise(shannon_index = diversity(c(abundance), index = "shannon"))
 
-# Display the result
-print(shannon_per_site)
+# Display the results
+print(shannon_results)
 ```
+
+
+
 

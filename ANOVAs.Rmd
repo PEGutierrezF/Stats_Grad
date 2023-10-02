@@ -1,0 +1,59 @@
+---
+title: "ANOVAs"
+author: "Pablo E. Gutiérrez-Fonseca"
+date: "2023-10-02"
+output: pdf_document
+---
+
+## **Load libraries**
+```{r}
+library(vegan)
+library(dplyr)
+library(readxl)
+# install.packages("ggplot2")
+library(ggplot2)
+```
+<br/>
+<br/>
+
+## **Aquatic Macronvertebrates in two land uses (Agriculture and Urban streams)**
+
+```{r}
+data <- read_excel('data.xlsx', sheet = 'Sheet3')
+head(data,20)
+```
+<br/>
+<br/>
+
+```{r}
+# Assuming your data is stored in a data frame named 'data'
+# Replace 'data' with your actual data frame name
+
+# Perform ANOVA
+anova_result <- aov(abundance ~ site + Error(sample), data = data)
+
+# Display the ANOVA summary
+summary(anova_result)
+```
+
+
+```{r}
+# Calculate total abundance and SD per site
+abundance_summary <- data %>%
+  group_by(site) %>%
+  summarize(mean_abundance = mean(abundance),
+            sd_abundance = sd(abundance))
+
+# Create a bar plot with error bars
+ggplot(abundance_summary, aes(x = site, y = mean_abundance, fill = site)) +
+  geom_bar(stat = "identity") +
+  geom_errorbar(aes(ymin = mean_abundance - sd_abundance, ymax = mean_abundance + sd_abundance),
+                width = 0.2, position = position_dodge(0.9)) +
+  labs(title = "Total Abundance per Site with SD",
+       x = "Site",
+       y = "Total Abundance") +
+  theme_minimal()
+
+```
+
+
