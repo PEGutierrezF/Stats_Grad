@@ -84,28 +84,18 @@ print(anova_result)
 
 
 ```{r}
-# Calculate species richness per site and sample
-species_richness <- data %>%
-  group_by(site, sample) %>%
-  summarise(species_count = n_distinct(taxa))
-
-# Calculate average and SD per sample
-summary_data <- species_richness %>%
+# Calculate total species richness per sample
+total_species_richness <- data %>%
   group_by(site) %>%
-  summarise(mean_species_richness = mean(species_count),
-            sd_species_richness = sd(species_count))
+  summarise(total_species = n_distinct(taxa))
 
 # Plot species richness by site
-ggplot(species_richness, aes(x = site, y = species_count, fill = site)) +
+ggplot(total_species_richness, aes(x = site, y = total_species, fill = site)) +
   geom_bar(stat = "identity", position = "dodge") +
-  labs(title = "Species Richness by Site",
+  labs(title = "Total Species Richness by Site",
        x = "Site",
-       y = "Species Richness") +
+       y = "Total Species Richness") +
   theme_minimal() +
-  theme(legend.position = "none") +  # To hide the legend for site
-
-# Add average and SD per sample
-geom_errorbar(data = summary_data, aes(x = site, y = mean_species_richness, ymin = mean_species_richness - sd_species_richness, ymax = mean_species_richness + sd_species_richness), position = position_dodge(0.9), width = 0.25, col = "red") +
-  geom_point(data = summary_data, aes(x = site, y = mean_species_richness), position = position_dodge(0.9), col = "red", size = 3)
+  theme(legend.position = "none")  # To hide the legend for site
 ```
 
