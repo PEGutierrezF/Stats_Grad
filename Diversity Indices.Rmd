@@ -22,4 +22,21 @@ Sites with more taxa are considered **richer**.
 
 ## **Diversity indices**
 
-### **Shannon–Weaver**
+### **Shannon_Weaver (or H)**
+
+The Shannon entropy (\(H\)) is calculated using the formula:  
+
+\[ H = -\sum_{i=1}^{S} p_i * \ln(p_i) \]  
+
+where:  
+- \(\sum\): A Greek symbol that means "sum",  
+- \(\ln\): Natural logarithm,  
+- \( p_i \): The proportion of the entire community made up of species \(i\).  
+
+This formula quantifies the uncertainty or information content in a system with multiple species, 
+where each \( p_i \) represents the relative abundance of a specific species.
+- The higher the value of H, the higher the diversity of species in a particular community.  
+- The lower the value of H, the lower the diversity.  
+- A value of H = 0 indicates a community that only has one species.
+
+
