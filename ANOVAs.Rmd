@@ -25,13 +25,14 @@ head(data,20)
 <br/>
 <br/>
 
+
+
 ```{r}
 # Assuming your data is stored in a data frame named 'data'
 # Replace 'data' with your actual data frame name
 
 # Perform ANOVA
 anova_result <- aov(abundance ~ site + Error(sample), data = data)
-
 # Display the ANOVA summary
 summary(anova_result)
 ```
@@ -56,4 +57,55 @@ ggplot(abundance_summary, aes(x = site, y = mean_abundance, fill = site)) +
 
 ```
 
+
+
+
+
+
+
+```{r}
+library(dplyr)
+library(broom)
+
+# Convert 'sample' column to a factor
+data$sample <- as.factor(data$sample)
+
+# Perform ANOVA
+anova_result <- data %>%
+  group_by(site, sample) %>%
+  summarise(num_taxa = n_distinct(taxa)) %>%
+  aov(num_taxa ~ site, data = .) %>%
+  tidy()
+
+# Print ANOVA results
+print(anova_result)
+```
+
+
+
+```{r}
+# Calculate species richness per site and sample
+species_richness <- data %>%
+  group_by(site, sample) %>%
+  summarise(species_count = n_distinct(taxa))
+
+# Calculate average and SD per sample
+summary_data <- species_richness %>%
+  group_by(site) %>%
+  summarise(mean_species_richness = mean(species_count),
+            sd_species_richness = sd(species_count))
+
+# Plot species richness by site
+ggplot(species_richness, aes(x = site, y = species_count, fill = site)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Species Richness by Site",
+       x = "Site",
+       y = "Species Richness") +
+  theme_minimal() +
+  theme(legend.position = "none") +  # To hide the legend for site
+
+# Add average and SD per sample
+geom_errorbar(data = summary_data, aes(x = site, y = mean_species_richness, ymin = mean_species_richness - sd_species_richness, ymax = mean_species_richness + sd_species_richness), position = position_dodge(0.9), width = 0.25, col = "red") +
+  geom_point(data = summary_data, aes(x = site, y = mean_species_richness), position = position_dodge(0.9), col = "red", size = 3)
+```
 
