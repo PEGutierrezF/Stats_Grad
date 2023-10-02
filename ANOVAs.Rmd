@@ -19,8 +19,8 @@ library(ggplot2)
 ## **Aquatic Macronvertebrates in two land uses (Agriculture and Urban streams)**
 
 ```{r}
-data <- read_excel('data.xlsx', sheet = 'Sheet3')
-head(data,20)
+anovas <- read_excel('data.xlsx', sheet = 'anovas')
+head(anovas,20)
 ```
 <br/>
 <br/>
@@ -30,6 +30,12 @@ head(data,20)
 ```{r}
 # Assuming your data is stored in a data frame named 'data'
 # Replace 'data' with your actual data frame name
+
+# Perform ANOVA
+anova_result <- aov(abundance ~ site + Error(sample), data = anovas)
+summary(anova_result)
+
+
 
 # Perform ANOVA
 anova_result <- aov(abundance ~ site + Error(sample), data = data)
