@@ -9,34 +9,74 @@ output: pdf_document
 ## **Load libraries**
 ```{r}
 library(vegan)
+library(dplyr)
+library(readxl)
 ```
+<br/>
+<br/>
 
+## **Aquatic Macronvertebrates in two land uses (Agriculture and Urban streams)**
 
 ```{r}
-data(BCI, BCI.env)
+data <- read_excel('data.xlsx')
+head(data,20)
 ```
+<br/>
+<br/>
 
 ## **Species richness**<br/>
 Species richness is a measure of the number of species (or other taxonomic level) present at a site.<br/>
 Sites with more taxa are considered **richer**.
+```{r}
+# Calculate species richness per site for species with abundance > 0
+species_richness <- data %>%
+  filter(abundance > 0) %>%
+  group_by(site) %>%
+  summarize(species_count = n_distinct(taxa))
+
+# Display the result
+print(species_richness)
+```
+
+## **Abundance**
+```{r}
+# Calculate mean abundance per taxa across all sites
+mean_abundance <- data %>%
+  group_by(site) %>%
+  summarize(mean_abundance = sum(abundance, na.rm = TRUE))
+
+# Display the result
+print(mean_abundance)
+```
 
 ## **Diversity indices**
 
 ### **Shannon_Weaver (or H)**
 
-The Shannon entropy (\(H\)) is calculated using the formula:  
+The Shannon entropy (\(H\)) is calculated using the formula:
 
-\[ H = -\sum_{i=1}^{S} p_i * \ln(p_i) \]  
+\[ H = -\sum_{i=1}^{S} p_i * \log_b(p_i) \]
 
 where:  
-- \(\sum\): A Greek symbol that means "sum",  
-- \(\ln\): Natural logarithm,  
-- \( p_i \): The proportion of the entire community made up of species \(i\).  
+- \( p_i \) is the proportion of species \(i\),  
+- \( S \) is the total number of species,  
+- \( \sum_{i=1}^{S} p_i = 1 \) (the sum of all proportions is equal to 1),  
+- \( b \) is the base of the logarithm.
 
-This formula quantifies the uncertainty or information content in a system with multiple species, 
-where each \( p_i \) represents the relative abundance of a specific species.
+This formula is commonly used to measure the diversity or uncertainty in a system with multiple species, where \( p_i \) represents the relative abundance of each species.  
 - The higher the value of H, the higher the diversity of species in a particular community.  
 - The lower the value of H, the lower the diversity.  
 - A value of H = 0 indicates a community that only has one species.
 
+
+## Example
+```{r}
+# Calculate Shannon entropy per site
+shannon_per_site <- data %>%
+  group_by(site) %>%
+  summarize(shannon_entropy = diversity(abundance, index = "shannon"))
+
+# Display the result
+print(shannon_per_site)
+```
 
