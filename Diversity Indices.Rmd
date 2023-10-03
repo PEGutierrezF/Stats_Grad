@@ -83,7 +83,7 @@ print(shannon_results)
 
 ## By hand 
 ```{r}
-# Calcular Shannon Diversity
+# Calculate Shannon Diversity for an Agriculture Stream
 data_agriculture <- data %>% 
           filter(site == 'Agriculture')
 
@@ -98,7 +98,7 @@ print(paste("Shannon Diversity for Agriculture:", shannon_agriculture))
 
 
 
-# Calcular Shannon Diversity
+# Calculate Shannon Diversity for a Urban stream
 data_urban <- data %>% 
           filter(site == 'urban')
 
