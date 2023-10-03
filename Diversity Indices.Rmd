@@ -18,7 +18,7 @@ library(readxl)
 
 ## **Aquatic Macronvertebrates in two land uses (Agriculture and Urban streams)**
 ```{r}
-data <- read_excel('data.xlsx', sheet = 'Sheet3')
+data <- read_excel('data.xlsx', sheet = 'diversity')
 head(data,20)
 ```
 <br/>
@@ -80,5 +80,37 @@ print(shannon_results)
 ```
 
 
+
+## By hand 
+```{r}
+# Calcular Shannon Diversity
+data_agriculture <- data %>% 
+          filter(site == 'Agriculture')
+
+total_abundance <- sum(data_agriculture$abundance)
+
+proportions_agriculture <- data_agriculture %>% 
+  mutate(proportion = abundance / total_abundance)
+
+# Calculate Shannon Diversity
+shannon_agriculture <- -sum(proportions_agriculture$proportion * log(proportions_agriculture$proportion))
+print(paste("Shannon Diversity for Agriculture:", shannon_agriculture))
+
+
+
+# Calcular Shannon Diversity
+data_urban <- data %>% 
+          filter(site == 'urban')
+
+total_abundance <- sum(data_urban$abundance)
+
+proportions_urban <- data_urban %>% 
+  mutate(proportion = abundance / total_abundance)
+
+# Calculate Shannon Diversity
+shannon_urban <- -sum(proportions_urban$proportion * log(proportions_urban$proportion))
+print(paste("Shannon Diversity for Urban:", shannon_urban))
+
+```
 
 
