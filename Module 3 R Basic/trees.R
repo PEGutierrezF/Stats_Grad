@@ -22,3 +22,4 @@ summary(trees)
 
 ggplot(trees, aes(x=Girth,y=Volume)) +
   geom_point()
+
