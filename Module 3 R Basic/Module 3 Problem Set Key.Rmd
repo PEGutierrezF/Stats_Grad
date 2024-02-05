@@ -9,8 +9,11 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-### Loading libraries 
-```{r}
+### Loading libraries
+library(tidyverse)  
+library(palmerpenguins)  
+library(ggthemes)  
+```{r, include=FALSE}
 library(tidyverse)
 library(palmerpenguins)
 library(ggthemes)
@@ -29,11 +32,35 @@ head(trees)
 head(penguins)
 ```
 
-1. Using the **_nrow()_** command, how many rows does the data.frame have?
 
-2. Using the **_ncol()_** command, how many columns are there in the trees dataset?
+## Questions
+1. Using the **_nrow()_** command, how many rows does the data.frame **_tress_** have?
+```{r}
+nrow(trees)
+```
 
-3. What information does the **_str(trees)_** command provide about the structure of the trees data frame in R?
+
+2. Using the **_ncol()_** command, how many columns are there in the **trees** dataset?
+```{r}
+ncol(trees)
+```
+
+
+3. What information does the **_length(trees)_** command provide about the structure of the trees data frame in R?
+```{r}
+length(trees)
+```
+
+
+4. Create a vector with elements **_1 2 3 4 5 6 7 8 9_** and call it x.
+create another vector with elements **_10 20 30 40 50_** and call it y.
+What happens if you try to add **_x_** and **_y_** together? why?
+```{r}
+x <- c(1, 2, 3, 4, 5, 6, 7, 8, 9)
+y <- c(10, 20, 30, 40, 50, 60, 70, 80)
+x+y
+```
+
 
 5. Data Visualization **_[link to section here](https://r4ds.hadley.nz/data-visualize)_**.
 Go through section 1.2.  
