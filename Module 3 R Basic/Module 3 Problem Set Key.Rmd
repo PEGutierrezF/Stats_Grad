@@ -23,7 +23,7 @@ library(ggthemes)
 ### Loading
 ```{r}
 data(trees)
-data(palmerpenguins)
+data(penguins)
 ```
 
 ### Print the first 6 rows
@@ -75,3 +75,11 @@ Your submission for this question should be the graph of the penguin data.
 a. Which of our ﬁsh species seems to have a higher length for a given weight compared to
 the other ﬁsh? How do you know? Do a google image search for the species to see if your
 answer makes sense!
+```{r}
+ggplot(
+  data = penguins,
+  mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species)
+) +
+  geom_point()
+```
+
