@@ -1,9 +1,8 @@
 ---
-title: "Problem-set_ Descriptive Statistics"
+title: "M4 Descriptive Statistics: Problem set"
 author: "Pablo E. Gutiérrez-Fonseca"
-date: "2024-02-08"
-output:
-  pdf_document: default
+date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
+output: pdf_document
 ---
 
 
@@ -24,4 +23,3 @@ To receive full credit for this question, include a screenshot of your procedure
 
 5. Now, for the **Density** column, calculate the **skewness, standard error of skewness (SES), kurtosis, standard error of kurtosis (SEK)**, and perform the **normality test with Shapiro-Wilk test**.  Based on all of these parameters, **determine if the  Density is normally distributed**. Pay special attention to the shape (distribution) of the data (plotted on a histogram).
 
-6. Bonus  Upload a photo (screenshot) showing the distribution of Density in a histogram.

@@ -1,7 +1,7 @@
 ---
-title: "PS_ Descriptive Statistics for TAs"
+title: "M4 Descriptive Statistics: Problem set"
 author: "Pablo E. Gutiérrez-Fonseca"
-date: "2024-02-08"
+date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
 output: pdf_document
 ---
 
@@ -85,14 +85,13 @@ print(num_outliers)
 ```
 \vspace{1em}
 
-5. Now, for the **Density** column, calculate the **skewness, standard error of skewness (SES), kurtosis, standard error of kurtosis (SEK)**, and perform the **normality test with Shapiro-Wilk test**. Based on all of these parameters, determine if the Density is normally distributed.   
+5. Now, for the **Density** column, calculate the **skewness, standard error of skewness (SES), kurtosis, standard error of kurtosis (SEK)**, and perform the **normality test with Shapiro-Wilk test**. Based on all of these parameters, determine if the Density is normally distributed. 
+
 ```{r}
-# Calculate Pearson's skew
-skew <- skew(df_strenth$Density)
-# Print the skew rounded to 2 decimal places
-print(round(skew, 2))
+#pivot gives us more summary statistics. 
+pivot(df_strenth, c(IQR, skew, kurtosis, mean, sd, var), Density)
 ```
-\vspace{1em}
+
 
 5.1. Calculate the **standard error of skew (ses)** for this data so we can determine the
 significance of our skew. 
@@ -107,18 +106,7 @@ ses
 **No**
 \vspace{1em}
 
-5.3. Now determine the **kurtosis for the Yearly Mean Snow Depth data**. 
-```{r}
-kurtosis <- round(kurtosis(df_strenth$Density, type = 1) - 3, 2)
-kurtosis
-
-# pivot(df_strenth, c(IQR, skew, kurtosis, mean, sd, var), Density)
-
-
-```
-\vspace{1em}
-
-5.4. Calculate the **standard error of kurtosis (sek)** for this data so we can determine the significance of our skew. 
+5.3. Calculate the **standard error of kurtosis (sek)** for this data so we can determine the significance of our skew. 
 ```{r}
 # Calculate standard error of kurtosis (SES)
 ses_kurt <- round(sqrt(24/length(df_strenth$Density)),2)
@@ -126,15 +114,15 @@ ses_kurt
 ```
 \vspace{1em}
 
-5.6. Based on the sek technique, is this **kurtosis significant**? 
+5.4. Based on the sek technique, is this **kurtosis significant**? 
 **No**
 \vspace{1em}
 
-5.7. Based on all of these parameters, determine if the Yearly Mean Snow Depth is normally distributed. Pay special attention to the shape (distribution) of the data (plotted on a histogram).
+5.5. Based on all of these parameters, determine if the Yearly Mean Snow Depth is normally distributed. Pay special attention to the shape (distribution) of the data (plotted on a histogram).
 **No**
 \vspace{1em}
 
-5.8. Is your data normally distributed? How can you tell? Be sure to report your certainty of this conclusion.
+5.6. Is your data normally distributed? How can you tell? Be sure to report your certainty of this conclusion.
 ```{r}
 shapiro.test(df_strenth$Density)
 ```
