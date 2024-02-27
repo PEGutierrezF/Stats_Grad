@@ -1,0 +1,59 @@
+---
+title: "M2 Problem Set"
+output: pdf_document
+author: "Pablo E. Gutierrez-Fonseca"
+date: "2024-02-05"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+### Loading libraries
+library(tidyverse)  
+library(palmerpenguins)  
+library(ggthemes)  
+```{r, include=FALSE}
+library(tidyverse)
+library(palmerpenguins)
+library(ggthemes)
+```
+
+
+### Loading
+```{r}
+data(trees)
+data(penguins)
+```
+
+### Print the first 6 rows
+```{r}
+head(trees)
+head(penguins)
+```
+
+
+## Questions
+1. Using the **_nrow()_** command, how many rows does the data.frame **_tress_** have? (10pts)
+
+
+2. Using the **_ncol()_** command, how many columns are there in the **trees** dataset? (10pts)
+
+3. What information does the **_length(trees)_** command provide about the structure of the trees data frame in R? (10pts)
+
+
+4. Create a vector with elements **_1 2 3 4 5 6 7 8 9_** and call it x.
+create another vector with elements **_10 20 30 40 50_** and call it y.
+What happens if you try to add **_x_** and **_y_** together? 
+Why? (20pts)
+
+
+
+5. Data Visualization **_[link to section here](https://r4ds.hadley.nz/data-visualize)_**.
+Navigate through section 1.2. 
+This section guides you through constructing a ggplot from scratch, utilizing a dataset already integrated into R. Numerous datasets are bundled with R, accessible through the datasets library. (To view the list, execute **library(help = "datasets")** in R). Ensure to proceed through this section meticulously to avoid potential errors, which are expected and serve as prompts for comprehension.  
+
+Your submission for this question should consist of the graph displaying the penguin data.
+
+a. Among our fish species, which appears to possess a greater length relative to weight compared to the other fish? How did you ascertain this? Conduct a Google image search for the species to validate if your conclusion aligns with reality. (50pts)

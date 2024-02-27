@@ -1,0 +1,27 @@
+---
+title: "Problem-set_ Descriptive Statistics"
+author: "Pablo E. Gutiérrez-Fonseca"
+date: "2024-02-08"
+output:
+  pdf_document: default
+---
+
+
+Using the dataset **Boardstrength.csv** downloadable from the Brightspace folder, please answer the following questions. 
+Make sure to round and report all answers to two decimal places. Avoid entering text in the Blackboard submission for numerical questions, and remember to include the sign for negative values. Good luck!
+
+You can also view the prompts in this PDF document.
+
+1. For the column Strength in the **Boardstrength** dataset, calculate the mean and median using the respective commands in R.
+
+2. For the column Strength, calculate the **standard deviation** and **variance**
+
+3. What is the **inter-quartile range** for Strength column?  
+
+4.  Using the Interquartile range technique, how many **OUTLIER** years are there in your
+**Strenght** column?    
+To receive full credit for this question, include a screenshot of your procedure in RStudio.
+
+5. Now, for the **Density** column, calculate the **skewness, standard error of skewness (SES), kurtosis, standard error of kurtosis (SEK)**, and perform the **normality test with Shapiro-Wilk test**.  Based on all of these parameters, **determine if the  Density is normally distributed**. Pay special attention to the shape (distribution) of the data (plotted on a histogram).
+
+6. Bonus  Upload a photo (screenshot) showing the distribution of Density in a histogram.
