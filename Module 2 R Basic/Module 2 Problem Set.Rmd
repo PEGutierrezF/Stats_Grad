@@ -56,4 +56,4 @@ This section guides you through constructing a ggplot from scratch, utilizing a 
 
 Your submission for this question should consist of the graph displaying the penguin data.
 
-a. Among our fish species, which appears to possess a greater length relative to weight compared to the other fish? How did you ascertain this? Conduct a Google image search for the species to validate if your conclusion aligns with reality. (50pts)
+a. Among our penguin species, which appears to possess a greater length relative to weight compared to the other fish? How did you ascertain this? Conduct a Google image search for the species to validate if your conclusion aligns with reality. (50pts)

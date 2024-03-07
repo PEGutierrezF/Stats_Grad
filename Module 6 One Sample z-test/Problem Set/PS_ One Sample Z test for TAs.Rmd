@@ -1,0 +1,57 @@
+---
+title: "M6: Problem Set One Sample Z-test for TAs"
+author: "Pablo E. Gutiérrez-Fonseca"
+date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
+output: pdf_document
+---
+
+**R practice.<br />**
+<br />  
+<br /> 
+
+```{r}
+library(BSDA)
+```
+
+
+Remember:  We can also calculate the p-value using 2 * pnorm(abs(z), lower.tail=FALSE) for
+a two-sided test and pnorm(z) or pnorm(z, lower.tail=FALSE) for a one-sided test
+where z is the z-statistic.
+```{r}
+# Given data
+population_mean <- 85
+population_sd <- 11.6
+sample_mean <- 80.94
+n <- 25
+
+# Perform one-sample z-test
+# Calculate the Z-test statistic
+z <- (sample_mean - population_mean) / (population_sd / sqrt(n))
+z
+# Two-tailed test, so multiply p-value by 2
+p_value <- pnorm(z, lower.tail = T)
+p_value
+```
+
+
+
+
+
+**Load the water pollution data into R.<br />** 
+```{r, echo=FALSE}
+df_water <- read.csv('water pollution.csv')
+head(df_water,10)
+```
+<br />
+<br />
+<br />
+
+```{r}
+z.test(x= df_water$value,
+alternative = "greater", 
+mu = 1644,
+sigma.x = 497)
+```
+
+
+
