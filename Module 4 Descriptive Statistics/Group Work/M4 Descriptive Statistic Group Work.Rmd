@@ -1,0 +1,56 @@
+---
+title: 'M4 Descriptive Statistic: Group Work'
+author: "Pablo E. Gutiérrez-Fonseca"
+date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
+output: pdf_document
+---
+
+In this assignment you will download the &nbsp;Mount Mansfield Snow Depth.xls data and describe the data set based on the instructions below.&nbsp;
+
+#loading in the libraries we will use
+```{r message=FALSE}
+library(tidyverse)
+library(lessR)
+library(readxl)
+```
+
+#importing our data
+```{r}
+snowdata <- read_excel("MM Snow Depth.xlsx")
+```
+
+
+#this pivot function is from lessR
+```{r}
+pivot(snowdata, c(mean, min,max,var,sd,skew,kurtosis), Mean_Dec_May_snow_depth)
+```
+
+
+#these ggplot functions are from the tidyverse
+```{r}
+ggplot(snowdata, aes(x=Year , y=Mean_Dec_May_snow_depth)) + geom_point()
+```
+
+```{r}
+ggplot(snowdata, aes(x=Mean_Dec_May_snow_depth)) + geom_histogram() 
+```
+
+
+
+
+
+You will be graded on your ability to clearly, and succinctly describe the data including the following descriptive metrics and figures:
+
+A table that includes key descriptive statistics for the snow depth response variable aggregated across all plots and species
+A histogram of the distribution of basal area values across all observations, and
+A figure that summarizes the trend in snow depth over time (plot years as X and depth as Y).
+
+Create and upload a summary pdf document with:
+
+the names of the group members who contributed directly to this assignment
+The descriptive statistics table described above in 1.
+The histogram described above in 2.
+The figure described above in 3.
+A brief summary of your conclusions about the normality of the data and any transformations that may be necessary before conducting inferential statistical analyses.
+
+Good luck!
