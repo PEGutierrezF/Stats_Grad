@@ -36,10 +36,12 @@ ggplot(snowdata, aes(x=Mean_Dec_May_snow_depth)) + geom_histogram()
 ```
 
 
-
-
-
 You will be graded on your ability to clearly, and succinctly describe the data including the following descriptive metrics and figures:
+
+This dataset consisted of 61 samples with a range of 13.839 to 92.603, a mean of 50.796, standard deviation of 14.508, skew of -0.033, and kurt of 0.471 as shown in Table 1. Normally distributed data is unimodal, symmetrical, bell shaped, and asymptotic. Comparing this data’s statistics with those needed characteristics for normality, we can see that this dataset is not normal because there is skew and a bit of positive kurtosis. However, both the skew and the positive kurtosis is minimal.  
+Now that we know that the data is not normal, we could look into potential outliers, transform the data, or do non-parametric analyses. If there are no true outliers to remove, then looking into transforming (sqrt, log, inverse, reflecting, or rank) the data would be the next step. I think a couple of these transformations (ex: sqrt or log) could be used to potentially transform the data before needing to do non-parametric analyses.
+
+
 
 A table that includes key descriptive statistics for the snow depth response variable aggregated across all plots and species
 A histogram of the distribution of basal area values across all observations, and
