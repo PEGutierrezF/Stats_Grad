@@ -1,5 +1,5 @@
 ---
-title: "M7 Quiz Independent t-test"
+title: "M7 Problem Set: Independent and Dependent t-test"
 author: "Pablo E. GutiÃ©rrez-Fonseca"
 date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
 output: pdf_document
@@ -22,11 +22,11 @@ Use an alpha level of 0.05
 4. Report the appropriate p-value for this test.  
 5. Is there a significant difference between the pesticide treated and control group wing length?  
 6. Is this difference meaningful? How do you know?  
-7. Summarize:  Write a concise one paragraph summary of this analysis.  Remember that any summary should include the following:
-Statement of the research hypothesis or study objectives
-Brief summary of methods (one sentence or less)
-Statement of the statistical results (including type of test and shorthand:  t(df)= obtained value, p = 0.xxx)
-Description of any differences, if meaningful, along with an interpretation of why these results make sense (or don’t make sense).
+7. Summarize:  Write a concise one paragraph summary of this analysis. Remember that any summary should include the following:  
+a. Statement of the research hypothesis or study objectives.  
+b. Brief summary of methods (one sentence or less).  
+c. Statement of the statistical results (including type of test and shorthand: t(df)= obtained value, p = 0.xxx).  
+d. Description of any differences, if meaningful, along with an interpretation of why these results make sense (or don’t make sense).
 
 #1. Import libraries and load packages
 ```{r message=FALSE}
@@ -41,3 +41,4 @@ library(BSDA)
 ```{r}
 insect_data <- read_excel("butterflies_pesticides.xlsx")
 ```
+
