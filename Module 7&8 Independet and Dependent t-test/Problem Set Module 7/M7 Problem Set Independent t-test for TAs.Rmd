@@ -1,6 +1,6 @@
 ---
-title: "M7 Problem Set: Independent and Dependent t-test"
-author: "Pablo E. GutiÃ©rrez-Fonseca"
+title: "M7 Problem Set: Independent t-test for TAs"
+author: "Pablo E. Gutiérrez-Fonseca"
 date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
 output: pdf_document
 ---
