@@ -1,0 +1,49 @@
+---
+title: "M7 Quiz Independent t-test"
+author: "Pablo E. Gutiérrez-Fonseca"
+date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
+output: pdf_document
+---
+
+Download **insect_data.xls** data and load it into R for analysis.  
+
+Note that this data contains mean insect density for two different pest species (Group A and B), before and after application of a fertilizer mix. Be sure to view the data frame before conducting any analysis to be sure you understand the data structure.  
+
+You've seen this data in the previous quiz. Now repeat your analyses with this same data to see if there is a significant difference between species A and B in the AFTER data column.  
+
+Summarize the results of this test in one very concise paragraph.
+
+#1. Import libraries and load packages
+```{r message=FALSE}
+library(tidyverse)
+library(lessR)
+library(readxl)
+library(BSDA)
+```
+
+
+#2. importing our data
+```{r}
+insect_data <- read_excel("insect_data.xlsx", sheet='indep')
+```
+
+
+```{r}
+t.test(After ~ Group, data=data,
+       alternative = c("two.sided"),
+       mu = 0, 
+       paired = FALSE, 
+       var.equal = TRUE,
+       conf.level = 0.95)
+```
+
+```{r}
+mean_A <- mean(insect_data$After[insect_data$Group == "A"])
+mean_B <- mean(insect_data$After[insect_data$Group == "B"])
+
+sd_after <- sd(insect_data$After)
+
+# Calculate Cohen's d
+abs(mean_A - mean_B)/sd_after
+```
+
