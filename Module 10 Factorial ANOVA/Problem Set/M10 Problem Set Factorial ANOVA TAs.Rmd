@@ -1,6 +1,6 @@
 ---
 title: "M9 Problem Set: One Way ANOVA for TAs"
-author: "Pablo E. GutiÃ©rrez-Fonseca"
+author: "Pablo E. Gutiérrez-Fonseca"
 date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
 output: pdf_document
 ---
@@ -13,6 +13,21 @@ To address this, they conducted an experiment where species richness was assesse
 1. Whether there are differences in richness among the three levels of copper enrichment.  
 2.  Whether there are differences in richness among the two levels of substrate orientation.  
 3. Whether there is an interaction effect between copper enrichment and substrate orientation, indicating whether the effect of copper on richness depends on the orientation of the substrate.  
+
+Summarize:  Write a concise one paragraph summary of this analysis. Remember that any summary should include the following:  
+1. Statement of the research hypothesis or study objectives.  
+2. Brief summary of methods (one sentence or less).  
+3. Statement of the statistical results (including type of test and shorthand: F(df)= obtained value, p = 0.xxx). Include results of the possible interaction between copper enrichment and substrate orientation.  
+4. Description of any differences, if meaningful, along with an interpretation of why these results make sense (or don't make sense).
+
+#1. Import libraries and load packages
+```{r message=FALSE}
+library(tidyverse)
+library(lessR)
+library(readxl)
+library(dplyr)
+```
+
 
 ```{r}
 Sessile <- read.csv(file = "Sessile.csv", header = TRUE)

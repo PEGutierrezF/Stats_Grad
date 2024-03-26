@@ -18,7 +18,7 @@ Assume that your data are normally distributed.
 4. Summarize:  Write a concise one paragraph summary of this analysis. Remember that any summary should include the following:  
 a. Statement of the research hypothesis or study objectives.  
 b. Brief summary of methods (one sentence or less).  
-c. Statement of the statistical results (including type of test and shorthand: t(df)= obtained value, p = 0.xxx).  
+c. Statement of the statistical results (including type of test and shorthand: F(df)= obtained value, p = 0.xxx).  
 d. Description of any differences, if meaningful, along with an interpretation of why these results make sense (or don't make sense).
 
 
