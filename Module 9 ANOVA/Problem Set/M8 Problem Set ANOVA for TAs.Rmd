@@ -1,5 +1,5 @@
 ---
-title: 'M8 Problem Set: ANOVA for TAs'
+title: 'M9 Problem Set: ANOVA for TAs'
 author: "Pablo E. Gutiérrez-Fonseca"
 date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
 output: pdf_document
@@ -32,9 +32,8 @@ Our explanatory variable is Temperature, with 3 levels: 13°C, 18°C and 25°C.
 #1. Import libraries and load packages
 ```{r message=FALSE}
 library(tidyverse)
-library(lessR)
+library(dplyr)
 library(readxl)
-library(xlsx)
 ```
 
 
@@ -53,7 +52,7 @@ frogs_tidy_data <- gather(frogs_messy_data, Temperature, Hatching_time, c(2:4)) 
                    # Keeping only the columns we need for the analysis
                    na.omit()                                                           
                    # To get rid of missing values (NAs)
-write.xlsx(frogs_tidy_data, file = "frogs_tidy_data.xlsx")
+# write.xlsx(frogs_tidy_data, file = "frogs_tidy_data.xlsx")
 ```
 
 

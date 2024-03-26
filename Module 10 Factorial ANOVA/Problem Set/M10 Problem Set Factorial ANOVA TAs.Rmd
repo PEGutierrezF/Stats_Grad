@@ -1,0 +1,34 @@
+---
+title: "M9 Problem Set: One Way ANOVA for TAs"
+author: "Pablo E. GutiÃ©rrez-Fonseca"
+date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
+output: pdf_document
+---
+
+Consider an example in which a researcher is investigating the **impact of metal contamination on the diversity of species found in sessile marine invertebrates such as sponges, bryozoans, and sea squirts**. The researcher aims to determine whether **copper reduces species richness**, while **also considering the potential influence of substrate orientation, whether vertical or horizontal**, on invertebrate richness.  
+
+To address this, they conducted an experiment where species richness was assessed in replicate samples under each of the six combinations of copper enrichment levels (**"None," "Low," "High"**) and substrate orientations (**"Vertical," "Horizontal"**). This experimental design is referred to as factorial, as it encompasses all levels of one treatment within all levels of the other treatment, also known as orthogonal.  
+
+**The factorial ANOVA will test the following hypotheses:**  
+1. Whether there are differences in richness among the three levels of copper enrichment.  
+2.  Whether there are differences in richness among the two levels of substrate orientation.  
+3. Whether there is an interaction effect between copper enrichment and substrate orientation, indicating whether the effect of copper on richness depends on the orientation of the substrate.  
+
+```{r}
+Sessile <- read.csv(file = "Sessile.csv", header = TRUE)
+```
+
+
+```{r}
+Sessile.aov <- aov(Richness ~ Copper + Orientation + Copper:Orientation, data = Sessile)
+summary(Sessile.aov)
+```
+
+
+```{r}
+interaction.plot(Sessile$Copper, Sessile$Orientation, Sessile$Richness)
+```
+
+
+References:
+https://environmentalcomputing.net/statistics/linear-models/anova/anova-factorial/
