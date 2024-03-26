@@ -11,7 +11,9 @@ Write a concise one paragraph summary of this analysis. Remember that any summar
 1. Statement of the research hypothesis or study objectives.  
 2. Brief summary of methods (one sentence or less).  
 3. Statement of the statistical results (including type of test and shorthand: r= obtained value, p = 0.xxx). 
-4. Description of any differences, if meaningful, along with an interpretation of why these results make sense (or don't make sense).
+4. Description of any differences, if meaningful, along with an interpretation of why these results make sense (or don't make sense).  
+
+
 
 #1. Import libraries and load packages
 ```{r message=FALSE}
@@ -52,3 +54,4 @@ https://whitlockschluter3e.zoology.ubc.ca/RLabs/index.html
 
 Exam:
 https://aniruhil.org/courses/pbio/knits/chapter_16
+https://whitlockschluter.zoology.ubc.ca/data/chapter16
