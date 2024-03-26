@@ -1,0 +1,54 @@
+---
+title: 'M11 Problem Set: Correlations for TAs'
+author: "Pablo E. Gutiérrez-Fonseca"
+date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
+output: pdf_document
+---
+
+We investigated the correlation between father guppy ornamentation (fatherOrnamentation) and the perceived attractiveness of their sons to female mates (sonAttractiveness). Guppies were sourced from Southeast Asian streams, and breeding pairs were selected based on genetic diversity and visual characteristics. After assessing father ornamentation, we conducted female choice trials to measure son attractiveness. By controlling for environmental factors, we aimed to reveal any correlation between father ornamentation and son attractiveness
+
+Write a concise one paragraph summary of this analysis. Remember that any summary should include the following:  
+1. Statement of the research hypothesis or study objectives.  
+2. Brief summary of methods (one sentence or less).  
+3. Statement of the statistical results (including type of test and shorthand: r= obtained value, p = 0.xxx). 
+4. Description of any differences, if meaningful, along with an interpretation of why these results make sense (or don't make sense).
+
+#1. Import libraries and load packages
+```{r message=FALSE}
+library(tidyverse)
+library(dplyr)
+library(readxl)
+```
+
+
+#2. importing our data
+```{r}
+fish <- read.csv("fish_guppies.csv")
+```
+
+```{r}
+shapiro.test(fish$fatherOrnamentation)
+shapiro.test(fish$sonAttractiveness)
+```
+
+```{r}
+cor.test(fish$fatherOrnamentation, fish$sonAttractiveness,
+         method='pearson')
+```
+
+
+```{r}
+plot(fish$fatherOrnamentation, fish$sonAttractiveness)
+# Fit linear regression model
+fit <- lm(sonAttractiveness ~ fatherOrnamentation, data = fish)
+
+# Add trend line
+abline(fit, col = "blue")
+```
+
+
+References:
+https://whitlockschluter3e.zoology.ubc.ca/RLabs/index.html
+
+Exam:
+https://aniruhil.org/courses/pbio/knits/chapter_16
