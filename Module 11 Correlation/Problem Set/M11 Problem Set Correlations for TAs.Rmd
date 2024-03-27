@@ -5,15 +5,21 @@ date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
 output: pdf_document
 ---
 
-We investigated the correlation between father guppy ornamentation (fatherOrnamentation) and the perceived attractiveness of their sons to female mates (sonAttractiveness). Guppies were sourced from Southeast Asian streams, and breeding pairs were selected based on genetic diversity and visual characteristics. After assessing father ornamentation, we conducted female choice trials to measure son attractiveness. By controlling for environmental factors, we aimed to reveal any correlation between father ornamentation and son attractiveness
+We investigated the correlation between father guppy ornamentation (fatherOrnamentation) and the perceived attractiveness of their sons to female mates (sonAttractiveness). Guppies were sourced from Southeast Asian streams, and breeding pairs were selected based on genetic diversity and visual characteristics. After assessing father ornamentation, we conducted female choice trials to measure son attractiveness. By controlling for environmental factors, **we aimed to reveal any correlation between father ornamentation and son attractiveness.**
 
-Write a concise one paragraph summary of this analysis. Remember that any summary should include the following:  
+Write a concise one paragraph summary of this analysis.  
+Remember that any summary should include the following:  
 1. Statement of the research hypothesis or study objectives.  
 2. Brief summary of methods (one sentence or less).  
 3. Statement of the statistical results (including type of test and shorthand: r= obtained value, p = 0.xxx). 
-4. Description of any differences, if meaningful, along with an interpretation of why these results make sense (or don't make sense).  
+3.A. Remember to include whether this is a Pearson or Spearman correlation.  
+3.B. Remember to include the nature of the correlation: direct = positive  or indirect = negative.  
+3.C. Remember to include the strength of the correlation: weak, moderate, strong.  
+4. Description of any differences, if meaningful (weak, moderate, strong correlation), along with an interpretation of why these results make sense (or don't make sense).  
 
 
+(20pts) Include a screenshot of the code for the correlation.
+(20pts) Include a graph of the correlation between Father Ornamentation and Son Attractiveness.
 
 #1. Import libraries and load packages
 ```{r message=FALSE}
