@@ -43,3 +43,6 @@ model <- lm(loght ~ temp + rain, data = Plant_height)
 summary(model)
 ```
 
+
+Reference:
+https://environmentalcomputing.net/statistics/linear-models/linear-regression/
