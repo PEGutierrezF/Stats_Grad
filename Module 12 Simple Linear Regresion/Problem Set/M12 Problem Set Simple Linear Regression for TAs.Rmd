@@ -1,0 +1,41 @@
+---
+title: 'M12 Problem Set: Simple Linear Regression for TAs'
+author: "Pablo E. Gutiérrez-Fonseca"
+date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
+output: pdf_document
+---
+
+We conducted an experiment to investigate the potential relationship between temperature variations and plant growth. We measured the height of specific plant species across a range of temperatures.  
+
+Perform a simple linear regression to explore this relationship. Use the variables: **loght and temp**.  
+1. What is the response variable?  
+2. What is the explanatory variable?  
+3. Since regressions can help model scenarios, determine the regression equation for the (log) plant height as a function of temperature.  
+4. Summarize:  Write a concise one paragraph summary of this analysis. Remember that any summary should include the following:   
+a. Statement of the research hypothesis or study objectives.  
+b. Brief summary of methods (one sentence or less).  
+c. Statement of the statistical results (including type of test and shorthand: R-squared= obtained value, p = 0.xxx).  
+d. Description of any differences, if meaningful, along with an interpretation of why these results make sense (or don't make sense).  
+
+
+#1. Import libraries and load packages
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(dplyr)
+library(readxl)
+```
+
+
+#2. importing our data
+```{r}
+Plant_height <- read.csv(file = "Plant_height.csv", header = TRUE)
+head(Plant_height)
+```
+
+
+#3. Run a Simple Linear Regresion
+```{r}
+model <- lm(loght ~ temp, data = Plant_height)
+summary(model)
+```
+

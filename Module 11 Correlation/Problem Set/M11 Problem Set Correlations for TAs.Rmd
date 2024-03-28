@@ -22,7 +22,7 @@ Remember that any summary should include the following:
 (20pts) Include a graph of the correlation between Father Ornamentation and Son Attractiveness.
 
 #1. Import libraries and load packages
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(dplyr)
 library(readxl)
