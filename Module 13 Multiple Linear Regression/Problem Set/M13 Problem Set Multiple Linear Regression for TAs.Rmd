@@ -1,11 +1,26 @@
 ---
 title: 'M13 Problem Set: Multiple Linear Regression for TAs'
-author: "Pablo E. GutiÃ©rrez-Fonseca"
+author: "Pablo E. Gutiérrez-Fonseca"
 date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
 output: pdf_document
 ---
 
+In this problem set, we'll utilize the same dataset from Module 12 (simple linear regression). Here, our focus is on exploring the potential relationship between plant growth and two key variables: temperature and rainfall.  
+With two factors influencing plant growth across various locations, your task is to conduct a multiple linear regression analysis to unveil this relationship.  
 
+Assume that the data is normal (normally distributed).  
+1. Based on the multiple linear regression analysis, write the regression equation that models the relationship between log-transformed plant height, temperature, and rainfall.  
+2. Summarize:  Write a concise one paragraph summary of this analysis. Remember that any summary should include the following:  
+a. Statement of the research hypothesis or study objectives.  
+b. Brief summary of methods (one sentence or less).  
+c. Statement of the statistical results (including type of test and shorthand: R-squared= obtained value, p = 0.xxx).  
+d. Description of any differences, if meaningful, along with an interpretation of why these results make sense (or don't make sense).  
+
+
+1. Based on the multiple linear regression analysis, write the regression equation that models the relationship between log-transformed plant height, temperature, and rainfall.
+```{r}
+# log(Plant_Height)= -0.3295 + (0.02832*Temperature) + (0.0002463*Rainfall)
+```
 
 
 #1. Import libraries and load packages
@@ -19,7 +34,6 @@ library(readxl)
 #2. importing our data
 ```{r}
 Plant_height <- read.csv(file = "Plant_height.csv", header = TRUE)
-head(Plant_height)
 ```
 
 
