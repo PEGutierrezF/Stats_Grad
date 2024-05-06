@@ -28,6 +28,7 @@ d. Description of any differences, if meaningful, along with an interpretation o
 library(tidyverse)
 library(dplyr)
 library(readxl)
+#tinytex::install_tinytex()
 ```
 
 

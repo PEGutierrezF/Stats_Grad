@@ -1,6 +1,6 @@
 ---
 title: "M9 Problem Set: One Way ANOVA for TAs"
-author: "Pablo E. Gutiérrez-Fonseca"
+author: "Pablo E. Gutierrez-Fonseca"
 date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
 output: pdf_document
 ---
@@ -35,7 +35,7 @@ Sessile <- read.csv(file = "Sessile.csv", header = TRUE)
 
 
 ```{r}
-Sessile.aov <- aov(Richness ~ Copper + Orientation + Copper:Orientation, data = Sessile)
+Sessile.aov <- aov(Richness ~ Copper * Orientation, data = Sessile)
 summary(Sessile.aov)
 ```
 

@@ -1,16 +1,16 @@
 ---
 title: "M7 Problem Set: Independent t-test for TAs"
-author: "Pablo E. Gutiérrez-Fonseca"
+author: "Pablo E. Gutierrez Fonseca"
 date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
 output: pdf_document
 ---
 
-We have a data set from a former student’s biology thesis (I LOVE it when students share their data!).
+We have a data set from a former student's biology thesis (I LOVE it when students share their data!).
 
 **butterflies_pesticides.xlsx** reports the mean wing length for 80 butterflies (40 of which were treated with pesticides during the larval stage (labeled Group 2) and 40 that were not (control group labeled 1))
 
 Our task will be to examine how pesticides impact butterfly development.
-Let’s start with the Butterfly Pesticides Data.
+Let's start with the Butterfly Pesticides Data.
 
 Assume that we want to test to see if there is a difference between butterfly wing length for those treated with pesticides (group 2) and those not treated with pesticides (group 1).
 
@@ -26,10 +26,10 @@ Use an alpha level of 0.05
 a. Statement of the research hypothesis or study objectives.  
 b. Brief summary of methods (one sentence or less).  
 c. Statement of the statistical results (including type of test and shorthand: t(df)= obtained value, p = 0.xxx).  
-d. Description of any differences, if meaningful, along with an interpretation of why these results make sense (or don’t make sense).
+d. Description of any differences, if meaningful, along with an interpretation of why these results make sense (or don't make sense).
 
 #1. Import libraries and load packages
-```{r message=FALSE}
+```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(lessR)
 library(readxl)
@@ -54,11 +54,19 @@ Yes
 4. Report the appropriate p-value for this test.  
 5. Is there a significant difference between the pesticide treated and control group wing length?
 ```{r}
+# 6. Test for equal variance
+var.test(`Wing Length` ~ Group, data=butterflies)
+
+# we would conclude that the variances are not equal between the groups of butterflies.
+```
+
+
+```{r}
 t.test(`Wing Length` ~ Group, data=butterflies,
        alternative = c("two.sided"),
        mu = 0, 
        paired = FALSE, 
-       var.equal = TRUE,
+       var.equal = FALSE,
        conf.level = 0.95)
 ```
 
