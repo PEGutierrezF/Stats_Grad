@@ -1,0 +1,49 @@
+---
+title: 'Fatorial ANOVA'
+author: "Pablo E. Gutiérrez-Fonseca"
+date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
+output: pdf_document
+---
+
+In our experiment, we sought to explore the impact of both different fertilizers (Nitrogen, Phosphorus, and Potassium) and planting densities (low and high) on crop yield. Within a controlled environment, we divided the designated cultivation area into six plots, each receiving one of the three fertilizer treatments and either low or high planting density.
+
+Our primary objective was to assess how planting density influences the plants' capacity to absorb fertilizer. Specifically, we aimed to investigate any potential interactions between fertilizer type and planting densities.
+Summarize your results in a concise paragraph.  
+
+
+# Answer
+The analysis revealed significant main effects for both fertilizer type (F(2, 90) = 9.001, p < 0.001) and planting density (F(1, 90) = 15.195, p < 0.001). However, the interaction between fertilizer type and planting density was found to be non-significant (F(2, 90) = 0.635, p = 0.5325).
+
+The significant main effects indicate that both the type of fertilizer used and the planting density independently influence crop yield. However, the lack of significance in the interaction suggests that there is no substantial interaction effect between fertilizer type and planting density on crop yield in this study.
+
+
+#1. Import libraries and load packages
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(dplyr)
+library(readxl)
+```
+
+
+#2. Importing our data
+```{r}
+crop.data <- read.csv(file = "crop.data.csv", header = TRUE)
+```
+
+
+#3. Factorial ANOVA with Interaction
+```{r}
+interaction <- aov(yield ~ fertilizer*density, data = crop.data)
+summary(interaction)
+```
+
+
+#4. Perform a Tukey's Honestly Significant Difference (Tukey's HSD) post-hoc test for pairwise comparisons
+```{r}
+tukey.two.way<-TukeyHSD(interaction)
+tukey.two.way
+```
+
+
+Reference
+https://www.scribbr.com/statistics/anova-in-r/
