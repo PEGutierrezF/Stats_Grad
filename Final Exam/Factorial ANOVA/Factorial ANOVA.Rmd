@@ -9,7 +9,7 @@ In our experiment, we sought to explore the impact of both different fertilizers
 
 Our primary objective was to assess how planting density influences the plants' capacity to absorb fertilizer. Specifically, we aimed to investigate any potential interactions between fertilizer type and planting densities.
 Summarize your results in a concise paragraph.  
-
+Don't forget to mention: (F(df,df), p=) for all components and Tukey's HSD post-hoc test for pairwise comparisons.
 
 # Answer
 The analysis revealed significant main effects for both fertilizer type (F(2, 90) = 9.001, p < 0.001) and planting density (F(1, 90) = 15.195, p < 0.001). However, the interaction between fertilizer type and planting density was found to be non-significant (F(2, 90) = 0.635, p = 0.5325).
