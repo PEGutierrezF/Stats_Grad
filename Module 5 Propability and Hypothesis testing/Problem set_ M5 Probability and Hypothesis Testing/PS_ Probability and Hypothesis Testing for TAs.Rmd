@@ -1,0 +1,330 @@
+---
+title: "PS_ Probability and Hypothesis Testing for TAs"
+author: "Pablo E. Gutiérrez-Fonseca"
+date: "2023-08-12"
+output: pdf_document
+---
+
+# **R practice.<br />**
+\vspace{1em}
+
+**Install packages.<br />**  
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+\vspace{1em}
+
+**Load the water pollution data into R.<br />** 
+```{r, echo=FALSE}
+df_mammals <- read.csv('C:/Users/Guti/OneDrive - University of Vermont/Curriculum/07_ Cursos/NR-2400/Problem set_ M5 Probability and Hypothesis Testing/Sleeping Mammals.csv')
+summary(df_mammals)
+```
+\newpage
+
+1. Based on the summary results in JMP, mammals spend most of their time in which type of
+sleep phase (dreaming or non-dreaming)?  
+```{r}
+mean(df_mammals$NonDreaming, na.rm = TRUE)
+mean(df_mammals$Dreaming, na.rm = TRUE)
+```
+\vspace{1em}
+
+2. Which type of sleep phase has the highest variability across the species included here
+(dreaming or non-dreaming)?  
+Non-dreaming  
+```{r}
+sd(df_mammals$NonDreaming, na.rm = TRUE)
+sd(df_mammals$Dreaming, na.rm = TRUE)
+```
+\vspace{1em}
+
+
+3. Enter the p-value for the goodness of fit test for the **Dreaming variable** (NOTE….just enter the number (no letters, symbols, equal signs etc)…also be careful of decimal places.
+```{r}
+shapiro.test(df_mammals$Dreaming)
+```
+\vspace{1em}
+
+4. Based on this goodness of fit test, is the **dreaming variable** normally distributed?
+**No**
+\vspace{1em}
+
+5. Enter the new p-value for the goodness of fit test for the **Dreaming variable** when the outliers are excluded (NOTE….just enter the number (no letters, symbols, equal signs
+etc)…also be careful of decimal places.
+```{r}
+quartiles <- quantile(na.omit(df_mammals$Dreaming), probs = c(0.25, 0.75))
+IQR <- IQR(na.omit(df_mammals$Dreaming))
+Lower <- quartiles[1] - 1.5*IQR
+Upper <- quartiles[2] + 1.5*IQR 
+
+new_Dreaming <- subset(df_mammals$Dreaming, df_mammals$Dreaming > Lower & df_mammals$Dreaming < Upper)
+
+shapiro.test(new_Dreaming)
+```
+\vspace{1em}
+
+6. Based on this goodness of fit test, is the dreaming variable normally distributed once
+outliers are removed?
+**Yes.**  
+\vspace{1em}
+
+7. Enter the new p-values for the goodness of fit test for the **log transformed Dreaming variable**.
+```{r}
+log_Dreaming <- log(df_mammals$Dreaming[df_mammals$Dreaming > 0])
+shapiro.test(log_Dreaming)
+```
+\vspace{1em}
+
+8. Is this **log transformed Dreaming variable** normally distributed?  
+**Yes**  
+\vspace{1em}
+
+9. Based on these results, would you transform (outlier transform, log transform or no
+transform) your **dreaming variable**? Assume that outliers removed are incorrect data
+values and that all values fit the range necessary for a log transform) 
+**Outlier transform**
+\vspace{1em}
+
+10. Now go back and repeat these procedures for the **Non-dreaming variable**. However,
+instead of entering answers for every one of these steps, just summarize what you would do
+with this variable: Based on these results, would you transform (outlier transform, log
+transform or no transform) your non-dreaming variable? Assume that outliers removed
+are incorrect data values)
+```{r}
+shapiro.test(df_mammals$NonDreaming)
+```
+**no transform**
+\vspace{1em}
+
+11. Is the distribution of the Non dreaming variable normally distributed for the small mammalian size group?
+**Yes**
+\vspace{1em}
+
+**From the df_mammals make two groups (large and small mammals)**
+```{r}
+df_mammals_large <- df_mammals %>% 
+  filter(Mammalian.Size.group == 'large')
+
+mean_NonDreaming_large <- mean(df_mammals_large$NonDreaming, na.rm = TRUE)
+sd_NonDreaming_large <- sd(df_mammals_large$NonDreaming, na.rm = TRUE)
+```
+\vspace{1em}
+
+```{r}
+df_mammals_small <- df_mammals %>% 
+  filter(Mammalian.Size.group == 'small')
+
+# Calculate mean and standard deviation of the NonDreaming column
+mean_NonDreaming_small <- mean(df_mammals_small$NonDreaming, na.rm = TRUE)
+sd_NonDreaming_small <- sd(df_mammals_small$NonDreaming, na.rm = TRUE)
+```
+\vspace{1em}
+
+12. Is the distribution of the Non dreaming variable normally distributed for the large mammalian size group?
+Normality test Large Mammals
+```{r}
+shapiro.test(df_mammals_large$NonDreaming)
+```
+\vspace{1em}
+
+13. Calculate the z score for the **Baboon** based on its non dreaming measured value for the small class (i.e. use the mean and std from the small class to calculate this z score)
+```{r}
+mean_NonDreaming_Baboon <- df_mammals$NonDreaming[df_mammals$Species == "Baboon"]
+
+# Calculate Z-scores for the NonDreaming column
+z_scores <- (mean_NonDreaming_Baboon - mean_NonDreaming_small) / sd_NonDreaming_small
+
+# Print the Z-scores
+print(z_scores)
+```
+\vspace{1em}
+
+14. Calculate the z score for the **Patas monkey** based on its non dreaming measured value for the small class (i.e. use the mean and std from the small class to calculate this z score)   
+```{r}
+mean_NonDreaming_Patas_monkey <- df_mammals$NonDreaming[df_mammals$Species == "Patas monkey"]
+
+# Calculate Z-scores for the NonDreaming column
+z_scores <- (mean_NonDreaming_Patas_monkey - mean_NonDreaming_small) / sd_NonDreaming_small
+
+# Print the Z-scores
+print(z_scores)
+```
+\vspace{1em}
+
+15. Calculate the z score for the **Rhesus monkey** based on its non dreaming measured value for the small class (i.e. use the mean and std from the small class to calculate this z score) 
+```{r}
+mean_NonDreaming_Rhesus_monkey <- df_mammals$NonDreaming[df_mammals$Species == "Rhesus monkey"]
+
+# Calculate Z-scores for the NonDreaming column
+z_scores <- (mean_NonDreaming_Rhesus_monkey - mean_NonDreaming_small) / sd_NonDreaming_small
+
+# Print the Z-scores
+print(z_scores)
+```
+\vspace{1em}
+
+16. Calculate the z score for the **Roe deer** based on its non dreaming measured value for the small class (i.e. use the mean and std from the small class to calculate this z score) 
+```{r}
+mean_NonDreaming_Roe_deer <- df_mammals$NonDreaming[df_mammals$Species == "Roe deer"]
+
+# Calculate Z-scores for the NonDreaming column
+z_scores <- (mean_NonDreaming_Roe_deer - mean_NonDreaming_small) / sd_NonDreaming_small
+
+# Print the Z-scores
+print(z_scores)
+```
+\vspace{1em}
+
+17. Based on your knowledge that higher (absolute value) z-scores are more unusual for a given group’s distribution, which class would you assign **Baboon** to (small or large)? (hint compare **Baboon's z scores** for the small and large group……which group does the species z score fit “best” with…..i.e. for which group is that species z score less extreme?
+```{r}
+# Calculate Z-scores for the NonDreaming column
+z_scores <- (mean_NonDreaming_Baboon - mean_NonDreaming_small) / sd_NonDreaming_small
+# Print the Z-scores
+print(z_scores)
+
+# Calculate Z-scores for the NonDreaming column
+z_scores <- (mean_NonDreaming_Baboon - mean_NonDreaming_large) / sd_NonDreaming_large
+# Print the Z-scores
+print(z_scores)
+```
+**small**
+\vspace{1em}
+
+
+18. Based on your knowledge that higher (absolute value) z-scores are more unusual for a given group’s distribution, which class would you assign **Pata monkey** to (small or large)? (hint compare **Pata monkey's z scores** for the small and large group……which group does the species z score fit “best” with…..i.e. for which group is that species z score less extreme?
+```{r}
+# Calculate Z-scores for the NonDreaming column
+z_scores <- (mean_NonDreaming_Patas_monkey - mean_NonDreaming_small) / sd_NonDreaming_small
+# Print the Z-scores
+print(z_scores)
+
+z_scores <- (mean_NonDreaming_Patas_monkey - mean_NonDreaming_large) / sd_NonDreaming_large
+# Print the Z-scores
+print(z_scores)
+```
+**small**
+\vspace{1em}
+
+19. Based on your knowledge that higher (absolute value) z-scores are more unusual for a given group’s distribution, which class would you assign **Rhesus monkey** to (small or large)? (hint compare **Rhesus monkey's z scores** for the small and large group……which group does the species z score fit “best” with…..i.e. for which group is that species z score less extreme?
+```{r}
+# Calculate Z-scores for the NonDreaming column
+z_scores <- (mean_NonDreaming_Rhesus_monkey - mean_NonDreaming_small) / sd_NonDreaming_small
+# Print the Z-scores
+print(z_scores)
+
+z_scores <- (mean_NonDreaming_Rhesus_monkey - mean_NonDreaming_large) / sd_NonDreaming_large
+# Print the Z-scores
+print(z_scores)
+```
+**small**
+\vspace{1em}
+
+20. Based on your knowledge that higher (absolute value) z-scores are more unusual for a given group’s distribution, which class would you assign **Roe deer** to (small or large)? (hint compare **Roe deer's z scores** for the small and large group……which group does the species z score fit “best” with…..i.e. for which group is that species z score less extreme?
+```{r}
+# Calculate Z-scores for the NonDreaming column
+z_scores <- (mean_NonDreaming_Roe_deer - mean_NonDreaming_small) / sd_NonDreaming_small
+# Print the Z-scores
+print(z_scores)
+
+z_scores <- (mean_NonDreaming_Roe_deer - mean_NonDreaming_large) / sd_NonDreaming_large
+# Print the Z-scores
+print(z_scores)
+```
+**large**
+\vspace{1em}
+
+19. How many observations in your data set would be labeled outliers by this IQR definition?
+```{r}
+quartiles <- quantile(na.omit(df_mammals$NonDreaming), probs = c(0.25, 0.75))
+IQR <- IQR(na.omit(df_mammals$NonDreaming ))
+Lower <- quartiles[1] - 1.5*IQR
+Upper <- quartiles[2] + 1.5*IQR 
+
+new_NonDreaming <- subset(df_mammals$NonDreaming , df_mammals$NonDreaming  > Lower & df_mammals$NonDreaming  < Upper)
+
+# Calculate the number of outliers removed
+num_outliers_removed <- length(na.omit(df_mammals$NonDreaming)) - length(new_NonDreaming)
+
+# Print the number of outliers removed
+cat("Number of outliers removed:", num_outliers_removed, "\n")
+```
+\vspace{1em}
+
+20. Armed with your knowledge of what a z score is and how to calculate actual values from given z scores, enter the **upper non-dreaming** value beyond which I may have outliers (values greater than 2 standard deviations from the mean in the positive direction). It may help if you sketch this out so that you can visualize what you are calculating. 
+```{r}
+# Calculate mean and standard deviation of NonDreaming column
+mean_NonDreaming <- mean(df_mammals$NonDreaming, na.rm = TRUE)
+sd_NonDreaming <- sd(df_mammals$NonDreaming, na.rm = TRUE)
+
+# Calculate upper bound using z-score (z = 2)
+z_score_threshold <- 2
+upper_bound <- mean_NonDreaming + (z_score_threshold * sd_NonDreaming)
+
+# Print the upper bound
+cat("Upper bound for potential outliers:", upper_bound, "\n")
+```
+\vspace{1em}
+
+21. Do the same for the **lower non-dreaming value** below which I might consider observations to be outliers based on the fact that they are more than 2 standard deviations under the mean.  
+```{r}
+# Calculate lower bound using z-score (z = 2)
+lower_bound <- mean_NonDreaming - (z_score_threshold * sd_NonDreaming)
+
+# Print the lower bound
+cat("Lower bound for potential outliers:", lower_bound, "\n")
+```
+\vspace{1em}
+
+22. Using this 2-standard deviation threshold, how many potential outliers might be in this **non dreaming** data set?
+```{r}
+# Calculate the number of potential outliers above the upper bound
+num_upper_outliers <- sum(df_mammals$NonDreaming > upper_bound, na.rm = TRUE)
+
+# Calculate the number of potential outliers below the lower bound
+num_lower_outliers <- sum(df_mammals$NonDreaming < lower_bound, na.rm = TRUE)
+
+# Calculate the total number of potential outliers
+total_num_outliers <- num_upper_outliers + num_lower_outliers
+
+# Print the results
+cat("Number of potential outliers above upper bound:", num_upper_outliers, "\n")
+cat("Number of potential outliers below lower bound:", num_lower_outliers, "\n")
+cat("Total number of potential outliers:", total_num_outliers, "\n")
+```
+\vspace{1em}
+
+23 and 24. Identify the **upper and lower z-scores** that cumulatively represent < 2% TOTAL chance of occurring. This doesn’t require any calculations, just the determination of two z-scores (upper and lower) from the normal probability table (or excel function).
+```{r}
+# Find the z-score for the upper 1% cumulative probability (upper bound)
+upper_bound_prob <- 0.99
+upper_z_score <- qnorm(upper_bound_prob)
+
+# Find the z-score for the lower 1% cumulative probability (lower bound)
+lower_bound_prob <- 0.01
+lower_z_score <- qnorm(lower_bound_prob)
+
+# Print the results
+cat("Upper z-score for < 2% cumulative probability:", upper_z_score, "\n")
+cat("Lower z-score for < 2% cumulative probability:", lower_z_score, "\n")
+```
+\vspace{1em}
+
+25. What is the actual **non-dreaming** value associated with the upper z score identified in the question above.  
+```{r}
+# Calculate the actual non-dreaming value associated with the upper z-score
+actual_upper_value <- mean_NonDreaming + (upper_z_score * sd_NonDreaming)
+
+# Print the result
+cat("Actual non-dreaming value associated with the upper z-score:", actual_upper_value, "\n")
+```
+
+26. How many **non-dreaming** observations in your data set would be labeled as outliers by this zscore definition? 
+```{r}
+# Calculate the number of non-dreaming observations labeled as outliers
+num_outliers_zscore <- sum(df_mammals$NonDreaming > upper_bound | df_mammals$NonDreaming < lower_bound, na.rm = TRUE)
+
+# Print the result
+cat("Number of non-dreaming observations labeled as outliers (z-score definition):", num_outliers_zscore, "\n")
+```
+
