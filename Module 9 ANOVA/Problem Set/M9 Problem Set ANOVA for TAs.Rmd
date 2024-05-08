@@ -9,7 +9,7 @@ We collected freshly laid frogspawn from a pond nestled in the Italian Alps and 
 
 1. What is the response variable?
 2. What is the explanatory variable?
-3. Perform a one-way ANOVA to assess your research question. It's important to note that Temperature should be recoded from a numerical variable to a factor (categorical variable) with three levels: "13", "18", and "25". These numbers represent the distinct categories of our explanatory variable, rather than actual count data. Therefore, we need to transform Temperature from numerical to a factor variable.
+3. Perform a one-way ANOVA to assess your research question. It's important to note that Temperature should be recorded from a numerical variable to a factor (categorical variable) with three levels: "13", "18", and "25". These numbers represent the distinct categories of our explanatory variable, rather than actual count data. Therefore, we need to transform Temperature from numerical to a factor variable.
 Assume that your data are normally distributed.
 3.1 Report the F value for this test. 
 3.2 Report the p-value for this test. 
