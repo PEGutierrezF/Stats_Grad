@@ -26,6 +26,7 @@ library(tidyverse)
 library(lessR)
 library(readxl)
 library(dplyr)
+# tinytex::install_tinytex()
 ```
 
 
@@ -43,6 +44,14 @@ summary(Sessile.aov)
 ```{r}
 interaction.plot(Sessile$Copper, Sessile$Orientation, Sessile$Richness)
 ```
+
+# Rank
+```{r}
+Sessile$rank <- rank(Sessile$Richness)
+mod2 <- aov(rank ~ Copper * Orientation, data = Sessile)
+summary(mod2)
+```
+
 
 
 References:
