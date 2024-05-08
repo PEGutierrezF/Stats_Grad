@@ -1,5 +1,5 @@
 ---
-title: "M9 Problem Set: One Way ANOVA for TAs"
+title: "M10 Problem Set: Factorial ANOVA for TAs"
 author: "Pablo E. Gutierrez-Fonseca"
 date: "`r format(Sys.time(), '%Y-%m-%d %H:%M:%S')`"
 output: pdf_document

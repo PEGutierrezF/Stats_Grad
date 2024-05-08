@@ -2,25 +2,25 @@
 
 rm(list = ls())
 
-frog <- read.csv("twowayanova.csv")
-attach(frog)
+frog <- read.csv("UV_deformities.csv")
+summary(frog)
 head(frog)
 
-shapiro.test(response)
-hist(response)
+shapiro.test(deformities)
+hist(deformities)
 
-frog.new <- na.omit(frog)
+frog <- na.omit(frog)
 
-# Apply the rank transformation to the response variable
-frog.new$rank <- rank(frog.new$response)
-shapiro.test(frog.new$rank)
+# Transform deformities into ranks
+frog$ranked_deformities <- rank(frog$deformities)
+
+# Run an ANOVA with site, treatment, species, and interaction between treatment and species
+model <- aov(ranked_deformities ~ site + treatment * species, data = frog)
+summary(model)
 
 
-mod1 <- aov(rank~(treatment*species)+site, data=frog.new)
-summary(mod1)
-
-
-TukeyHSD(mod1, which = 'treatment:species')
+# Post hoc test using Tukey's HSD
+TukeyHSD(model)
 
 # Create the interaction plot
 interaction.plot(x.factor = frog.new$treatment, 
