@@ -12,7 +12,7 @@ library(readxl)
 library(stats)
 library(BSDA)
 
-nests <- read.csv("Laloë_et_al._2020_Ecol_Evol_dataset.csv")
+nests <- read.csv("Laloe??_et_al._2020_Ecol_Evol_dataset.csv")
 
 pivot(nests, c(mean, sd), nestTemperature)
 
