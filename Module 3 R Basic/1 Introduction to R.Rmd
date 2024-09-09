@@ -1,0 +1,289 @@
+---
+title: "Introduction to R"
+author: 
+- "Pablo E. Gutiérrez-Fonseca"
+- "`r format(Sys.time(), '%d %B, %Y')`"
+layout: default
+permalink: /pages/Lectures/Introduction to R/
+output: html_document
+---
+<br/>
+<br/>
+
+#### What is R?
+Is a computer language that allows the user to program algorithms and use tools 
+that have been programmed by others. 
+R is based on the computer language S, which was developed by John
+Chambers and others at Bell Laboratories in 1976. In the early 1990s, Ross
+Ihaka and Robert Gentleman (University of Auckland, in Auckland, New
+Zealand) experimented with the language and called their product R. Note
+that both their first names begin with the letter R. Also when modifying a
+language called S, it is tempting to call it T or R.
+
+R comes with a series of default packages. A package is a collection of previously programmed functions, often including functions for specific tasks. It is
+tempting to call this a library, but the R community refers to it as a package.
+
+<br/>
+
+#### Change appearance
+Tools -> Global options... -> Appearance 
+
+<br/>
+
+#### >
+Significa "What now?"
+<br/>The screen prompt ">" is an invitation to put R to work.
+<br/>Each line can have at most 128 characters.
+<br/>When continuation is expected, the prompt changes from > to +
+<br/>Note that the + continuation prompt does not carry out arithmetic plus.
+
+<br/>
+
+#### How cite R?
+```{r}
+citation()
+```
+
+<br/>
+
+#### Cite specific packages?
+```{r}
+citation('vegan')
+citation('ggplot2')
+citation('randomForest')
+```
+
+<br/>
+
+#### Help
+```{r, eval=FALSE}
+?lm
+```
+
+<br/>
+
+#### Simbols (P: 22)
+```{r, eval=FALSE}
++ - * / ^ arithmetic
+> >= < <= == != relational
+! & logical
+~ model formulae
+<- -> assignment
+$ list indexing (the ‘element name’ operator)
+: create a sequence
+```
+
+<br/>
+
+#### Equality
+```{r}
+TRUE==TRUE
+'HELLO'=='GOOBYE'
+'HELLO'=='HELLO'
+3==2
+3==3
+```
+
+<br/>
+
+#### Inequality
+```{r}
+TRUE!=TRUE
+'HELLO'!='GOOBYE'
+```
+
+<br/>
+
+#### Change directory
+```{r, eval=FALSE}
+setwd ("C:/users/Pablo Guti/desktop/")
+```
+
+<br/>
+
+#### If you want to find out the name of the current working directory, use:
+```{r}
+getwd()
+```
+
+<br/>
+
+#### Instals packages
+```{r, eval=FALSE}
+install.packages()
+install.packages()
+install.packages()
+```
+
+<br/>
+
+#### Instals libraries
+```{r, eval=FALSE}
+library( )
+library( )
+library( )
+```
+
+<br/>
+
+#### Exercises 
+```{r}
+5+6+3+6+4+2+4+8+3+2+7
+2+3; 5*7; 3-7
+```
+
+
+```{r}
+pi
+sin(pi/2)
+cos(pi/2)
+```
+
+<br/>
+
+### Exponentes
+```{r}
+1.2e3
+1e4
+3e4
+```
+
+<br/>
+
+#### Redondear 
+```{r}
+floor(5.7)
+ceiling(5.7)
+```
+
+<br/>
+
+####  c()function, where c stands for concatenate
+```{r}
+Wingcrd <- c(59, 55, 53.5, 55, 52.5, 57.5, 53, 55)
+Wingcrd
+Wingcrd [3]
+Wingcrd [1 : 5]
+Wingcrd [-2]
+
+sum(Wingcrd)
+s.win <- sum(Wingcrd)
+s.win
+```
+
+<br/>
+
+```{r}
+Tarsus <- c(22.3, 19.7, 20.8, 20.3, 20.8, 21.5, 20.6,21.5)
+Head <- c(31.2, 30.4, 30.6, 30.3, 30.3, 30.8, 32.5,NA)
+Wt <- c(9.5, 13.8, 14.8, 15.2, 15.5, 15.6, 15.6,15.7)
+
+Bird<-c(Tarsus,Head,Wt)
+Bird
+```
+
+<br/>
+
+#### cbind()function, combines the variables in such a way that the output
+#### contains the original variables in columns. 
+```{r}
+Bird1 <- cbind(Tarsus, Head, Wt)
+Bird1
+```
+
+<br/>
+
+###  similar to the cbind function to arrange the variables in columns, 
+###  the rbind function combines the data in rows. 
+```{r}
+Bird2 <- rbind(Tarsus, Head, Wt)
+Bird2
+```
+
+<br/>
+
+#### Remover NA
+```{r}
+x<-c(1:8,NA)
+mean(x)
+x
+```
+
+<br/>
+
+```{r}
+Head <-c(31.2,30.4,30.6,30.3,30.8,NA,32.5,NA)
+Head
+sum(Head)
+sum(Head, na.rm=TRUE)
+```
+
+<br/>
+
+####   na.rm=TRUE 
+```{r}
+mean(x,na.rm=T)
+```
+
+<br/>
+
+####   Convertir NA en Ceros
+```{r}
+vmv<-c(1:6,NA,NA,9:12)
+vmv
+
+which(is.na(vmv))
+
+vmv[is.na(vmv)]<- 0
+vmv
+```
+
+<br/>
+
+#### Asigna un determinado elemento
+```{r}
+A<-1:10
+A
+
+B<-c(2,4,8)
+B
+
+mean(A)
+mean(B)
+max(B)
+min(A)
+sum(A)
+```
+
+<br/>
+
+#### If you want to begin a new analysis on a different dataset, it may be useful to
+#### remove all variables. One option is to quit R and restart it. Alternatively,
+```{r}
+rm(list = ls(all = TRUE))
+```
+
+<br/>
+
+#### Import data (.csv, .txt, direct import)
+```{r, eval=FALSE}
+xxx.frm=read.table("xxx.txt",header=T)
+attach(xxx.frm)
+xxx.frm
+
+xxx.frm=read.csv("xxx.csv")
+attach(xxx.frm)
+xxx.frm
+
+data<-read.table(file.choose(),header=T)
+```
+
+<br/>
+
+#### References:
+
+Crawley, M. J. (2012). The R book. John Wiley & Sons.
+
+<br/>
+<br/>
+<br/>
