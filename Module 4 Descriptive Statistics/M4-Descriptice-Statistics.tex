@@ -128,14 +128,29 @@
 \begin{itemize}
 \tightlist
 \item
-  Determine if our sample reflects the population of interest.\\
+  Determine if our sample reflects the population of interest.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
-  Identify outliers.\\
+  Identify outliers.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
-  Obtain metrics necessary for inferential tests.\\
+  Obtain metrics necessary for inferential tests.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
-  Understand the distribution of our data values -- test for
-  normality.\\
+  Understand the distribution of our data values -- test for normality.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
   Identify the type of statistical test to run.
 \end{itemize}
@@ -354,12 +369,16 @@
 \begin{itemize}
 \tightlist
 \item
-  Variance measures the average of the squared differences from the
-  mean, indicating how spread out the data points are.
+  \textbf{Variance} measures the average of the squared differences from
+  the mean, indicating how spread out the data points are.
 \end{itemize}
 
-The variance \(\sigma^2\) is calculated as:
-\[s^2 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n - 1}\]
+\begin{itemize}
+\tightlist
+\item
+  The variance \(\sigma^2\) is calculated as:
+  \[s^2 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n - 1}\]
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Variability: Range}
@@ -367,8 +386,9 @@ The variance \(\sigma^2\) is calculated as:
 \begin{itemize}
 \tightlist
 \item
-  Range is the difference between the largest and smallest values in a
-  dataset, providing a measure of the spread or dispersion of the data.
+  \textbf{Range} is the difference between the largest and smallest
+  values in a dataset, providing a measure of the spread or dispersion
+  of the data.
 \end{itemize}
 
 \begin{itemize}
@@ -421,19 +441,28 @@ The variance \(\sigma^2\) is calculated as:
 \begin{frame}{Identifying outliers}
 \phantomsection\label{identifying-outliers-1}
 \begin{itemize}
+\tightlist
 \item
   The first and third quantiles (Q1 and Q3) are often calculated to
   identify outliers.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
   One method for systematically identifying outliers uses:
 
   \begin{itemize}
   \tightlist
   \item
-    Q1- (1.5 X the inter-quartile range)
+    Q1 - (1.5 * the inter-quartile range)
   \item
-    Q3 + (1.5 X the inter-quartile range)
+    Q3 + (1.5 * the inter-quartile range)
   \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
   Others identify outliers as any values below the 0.5th or above the
   99.5th percentile.
@@ -455,8 +484,12 @@ The variance \(\sigma^2\) is calculated as:
   \item
     The larger the SD, the more highly variable your data.
   \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
-  Use range (R) when describing predictive models.
+  Use \textbf{range (R)} when describing predictive models.
 
   \begin{itemize}
   \tightlist
@@ -467,8 +500,13 @@ The variance \(\sigma^2\) is calculated as:
     algorithms are valid only over the range of values used to calibrate
     your predictive model
   \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
-  Use the IQR to identify and test potential outliers in your data.
+  Use the \textbf{IQR} to identify and test potential outliers in your
+  data.
 \end{itemize}
 \end{frame}
 

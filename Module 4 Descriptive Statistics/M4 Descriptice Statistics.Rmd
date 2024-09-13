@@ -15,10 +15,22 @@ header-includes:
 ---
 
 ## Why describe data?
-- Determine if our sample reflects the population of interest.   
+- Determine if our sample reflects the population of interest.  
+
+<br>
+
 - Identify outliers.  
+
+<br>
+
 - Obtain metrics necessary for inferential tests.  
+
+<br>
+
 - Understand the distribution of our data values – test for normality.  
+
+<br>
+
 - Identify the type of statistical test to run.  
 
 
@@ -150,18 +162,18 @@ cat("$$s = \\sqrt{\\frac{\\sum_{i=1}^{n} (x_i - \\bar{x})^2}{n - 1}}$$")
 
 
 ## Variability
-- Variance measures the average of the squared differences from the mean, indicating how spread out the data points are.
+- **Variance** measures the average of the squared differences from the mean, indicating how spread out the data points are.
 
 <br>
 
-The variance \( \sigma^2 \) is calculated as:
+- The variance \( \sigma^2 \) is calculated as:
 ```{r echo=FALSE, results='asis'}
 cat("$$s^2 = \\frac{\\sum_{i=1}^{n} (x_i - \\bar{x})^2}{n - 1}$$")
 ```
 
 
 ## Variability: Range
-- Range is the difference between the largest and smallest values in a dataset, providing a measure of the spread or dispersion of the data.
+- **Range** is the difference between the largest and smallest values in a dataset, providing a measure of the spread or dispersion of the data.
 
 <br>
 
@@ -189,9 +201,13 @@ cat("$$\\text{Range} = \\text{max}(x) - \\text{min}(x)$$")
 ## Identifying outliers
 - The first and third quantiles (Q1 and Q3) are often calculated to identify outliers. 
 
+<br>
+
 - One method for systematically identifying outliers uses:
-  - Q1- (1.5 X the inter-quartile range)
-  - Q3 + (1.5 X the inter-quartile range)
+  - Q1 - (1.5 * the inter-quartile range)
+  - Q3 + (1.5 * the inter-quartile range)
+
+<br>
 
 - Others identify outliers as any values below the 0.5th or above the 99.5th percentile. 
 
@@ -200,11 +216,15 @@ cat("$$\\text{Range} = \\text{max}(x) - \\text{min}(x)$$")
   - SD quantifies how far, on average, each observation is from the mean. 
   - The larger the SD, the more highly variable your data.
 
-- Use range (R) when describing predictive models. 
+<br>
+
+- Use **range (R)** when describing predictive models. 
   - R is simply the maximum minus the minimum value in your data set
   - R is important when modeling or making predictions, since your algorithms are valid only over the range of values used to calibrate your predictive model
 
-- Use the IQR to identify and test potential outliers in your data.
+<br>
+
+- Use the **IQR** to identify and test potential outliers in your data.
 
 ## Skewness
 - Skewness: This metric quantifies how balanced (symmetrical) your 
