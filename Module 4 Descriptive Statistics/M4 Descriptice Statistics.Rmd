@@ -88,6 +88,14 @@ knitr::include_graphics("fig/box.jpg")
   - Variability (standard deviation, variance, quantiles)
   - Skew
   - Kurtosis (Peakedness)
+  
+## Metrics to Describe data distribution.
+- Data and their associated distributions can be described in four primary way:
+
+  - **Central Tendency (mean, median, mode)**
+  - Variability (standard deviation, variance, quantiles)
+  - Skew
+  - Kurtosis (Peakedness)
 
 ## Central tendency
 - Mean (Sum of scores/N)
@@ -111,9 +119,12 @@ knitr::include_graphics("fig/box.jpg")
 - Mean is **very** sensitive to extreme scores that can “skew” or distort findings.
 
 
-## Central tendency: Meadian
+## Central tendency: Median
 - Percentiles are used to define the percent of cases equal to and below a certain point on a distribution.
   - The median **is the 50th percentile ** half of all observations fall at or below this value.
+  
+<br>
+
 - But lots of other percentiles are also important.
 
 ## A little about Percentiles
@@ -145,8 +156,16 @@ knitr::include_graphics("fig/CnetralTendency.jpg")
 ```
 
 
+## Metrics to Describe data distribution.
+- Data and their associated distributions can be described in four primary way:
+
+  - Central Tendency (mean, median, mode)
+  - **Variability (standard deviation, variance, quantiles)**
+  - Skew
+  - Kurtosis (Peakedness)
+  
 ## Variability
-```{r, echo=FALSE, fig.cap="", out.width = '25%'}
+```{r, echo=FALSE, fig.cap="", out.width = '80%'}
 knitr::include_graphics("fig/variability.png")
 ```
 
@@ -186,6 +205,11 @@ cat("$$\\text{Range} = \\text{max}(x) - \\text{min}(x)$$")
 - You can use percentiles to get a feel for how spread out the data is and where most of your observations are contained:
 
   - Inter-quartile range (IQR) = Q3 – Q1  
+  
+```{r, echo=FALSE, fig.cap="", out.width = '60%'}
+knitr::include_graphics("fig/iqr.png")
+```
+
 
 ## Identifying outliers
 - An outlier is an observation that lies outside the overall pattern of a distribution (Moore and McCabe 1999). 
@@ -226,9 +250,370 @@ cat("$$\\text{Range} = \\text{max}(x) - \\text{min}(x)$$")
 
 - Use the **IQR** to identify and test potential outliers in your data.
 
+
+## Metrics to Describe data distribution.
+- Data and their associated distributions can be described in four primary way:
+
+  - Central Tendency (mean, median, mode)
+  - Variability (standard deviation, variance, quantiles)
+  - **Skew**
+  - Kurtosis (Peakedness)
+
 ## Skewness
 - Skewness: This metric quantifies how balanced (symmetrical) your 
 distribution curve is.
+  
+```{r, echo=FALSE, fig.cap="", out.width = '80%'}
+knitr::include_graphics("fig/skewness.png")
+```
+
+  
+## Skewness
+- A normal distribution will have its mean and median values located somewhere near the center of its range.
+  
+```{r, echo=FALSE, fig.cap="", out.width = '80%'}
+knitr::include_graphics("fig/skewness.png")
+```
 
 
+
+## Skewness
+- Skew of this peak away from center is common when extreme values pull the median away from the mean.
+```{r, echo=FALSE, fig.cap="", out.width = '80%'}
+
+library(png)
+library(ggplot2)
+library(grid)
+# Load the image
+img <- png::readPNG("fig/skewness.png")
+grid::grid.raster(img)
+
+# Add an arrow annotation (customize x and y coordinates as needed)
+grid::grid.lines(x = c(0.5, 0.75), y = c(0.1, 0.25),  gp = gpar(col = "red"),
+                 arrow = arrow(angle = 15, length = unit(0.3, "inches"), type = "closed"))
+
+# Add an arrow annotation (customize x and y coordinates as needed)
+grid::grid.lines(x = c(0.5, 0.25), y = c(0.1, 0.25), gp = gpar(col = "red"),
+                 arrow = arrow(angle = 15, length = unit(0.3, "inches"), type = "closed"))
+```
+
+
+## Skewness
+- **Positive Skew**: the “slide” takes you in a positive direction.  
+  - The mean is bigger than the median (which is why the slide is being pulled to higher values).  
+
+<br>
+
+- **Negative Skew**: the “slide” takes you in a negative direction.  
+  - The mean is smaller than the median (which is why the slide is being pulled to lower values).
+  
+```{r, echo=FALSE, fig.cap="", out.width = '80%'}
+knitr::include_graphics("fig/skewness.png")
+```
+
+## Calculating Skew
+- Negative value = Negative Skew.
+
+<br>
+
+- Positive value = Positive Skew
+
+<br>
+
+- Positive value = Normal distribution
+
+<br>
+
+```{r echo=FALSE, results='asis'}
+cat("$$\\text{Skewness} = \\frac{3(\\bar{x} - \\text{Median})}{\\text{SD}}$$")
+```
+
+
+## Skewness – Significant?
+- To determine if this deviation from zero in the skew statistic is likely a significant departure from normality, compare it to the **standard error of skew (ses)**.
+
+- If the skew you have calculated is more than **2 times the ses**, then you likely have significant skew, which means you have **non normal data** and should consider a nonparametric test for your statistical analyses
+
+```{r echo=FALSE, results='asis'}
+cat("
+$$
+\\begin{array}{cc}
+ses = \\sqrt{\\frac{6}{n}} & \\hspace{1cm} \\text{Skewness} = \\frac{3(\\bar{x} - \\text{Median})}{\\text{SD}}
+\\end{array}
+$$
+")
+```
+
+
+## Metrics to Describe data distribution.
+- Data and their associated distributions can be described in four primary way:
+
+  - Central Tendency (mean, median, mode)
+  - Variability (standard deviation, variance, quantiles)
+  - Skew
+  - **Kurtosis (Peakedness)**
+  
+## Kurtosis
+- **Kurtosis** is simply a measure of how pointy or flat the peak of your distribution curve is.
+
+<br>
+
+- Any deviation from a bell shape, with the peak either too flat (platykurtic) or too peaked (leptokurtic), suggests that your data are not normally distributed.
+  
+```{r, echo=FALSE, fig.cap="", out.width = '60%'}
+knitr::include_graphics("fig/kurtosis.png")
+```
+
+
+## Kurtosis
+- Positive values = Leptokurtic.
+
+<br>
+
+- Zero  = Mesokurtic – normal (bell-shaped). 
+
+<br>
+
+- Negative values = Platykurtic.
+```{r echo=FALSE, results='asis'}
+cat("
+$$
+\\text{Kurtosis} = \\frac{\\sum(\\left( \\frac{x_i - \\bar{x}}{\\text{SD}} \\right)^4 - 3)}{n}
+$$
+")
+```
+
+
+
+## Kurtosis – Significant?
+- To determine if this deviation from zero in the kurtosis statistic is likely a significant departure from normality, compare it to the **standard error of kurtosis (sek)**.
+
+- If the kurtosis you have calculated is more than **twice the sek**, you likely have **non normal data** and should consider a nonparametric test for your statistical analyses.
+
+```{r echo=FALSE, results='asis'}
+cat("
+$$
+\\begin{array}{cc}
+sek = \\sqrt{\\frac{24}{n}} & \\hspace{2cm} \\text{Kurtosis} = \\frac{\\sum \\left( \\frac{x_i - \\bar{x}}{\\text{SD}} \\right)^4 - 3}{n}
+\\end{array}
+$$
+")
+```
+
+## Some Visual Examples
+- How can climate change?
+
+- Change in **central tendency**.
+
+<br>
+
+```{r, echo=FALSE, fig.cap="", out.width = '60%'}
+knitr::include_graphics("fig/climate1.png")
+```
+
+## Some Visual Examples
+- How can climate change?
+
+<br>
+
+- Change in **spread and shape**.
+
+<br>
+
+```{r, echo=FALSE, fig.cap="", out.width = '60%'}
+knitr::include_graphics("fig/climate2.png")
+```
+
+
+## Some Visual Examples
+- How can climate change?
+
+<br>
+
+- Change in **both**.
+
+<br>
+
+```{r, echo=FALSE, fig.cap="", out.width = '60%'}
+knitr::include_graphics("fig/climate3.png")
+```
+
+## Data Distributions
+
+## Data Distributions
+- There are various types of data distributions, each with its own unique properties and implications. 
+
+- In nature, most data are normally distributed.
+
+- The central limit theorem (CLT) states that the distribution of sample means approximates a normal distribution as the sample size gets larger, regardless of the population's distribution.
+```{r echo=FALSE, results='asis'}
+cat("
+$$
+\\bar{X}_n \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right)
+$$
+")
+```
+    - \( \bar{X}_n \): The sample mean of size \( n \).  
+    - \( N(\mu, \frac{\sigma^2}{n}) \): The normal distribution with mean \( \mu \) (the population mean) and variance \( \frac{\sigma^2}{n} \), where \( \sigma^2 \) is the population variance and \( n \) is the sample size.
+
+
+## Why do we care if our data is normal?
+- The math ‘under the hood’ of many analyses **expects that data is normally distributed** - if it isn’t, you’ll still get an answer, but it won’t actually be saying what you think it is saying. 
+
+## Why do we care about	**skew** and **kurtosis**?
+- Because many statistical analyses assume a normal distribution of the data, testing for normality must always be a precursor to any analysis. 
+
+<br>
+
+- Normally Distributed Data is: 
+  - Unimodal (one mode)
+  - Symmetrical (no SKEW)
+  - Bell Shaped (no KURTOSIS)
+  - Mean, Mode and Median are all centered
+  - Asymptotic (tails never reach 0)
+  
+
+## Why do we care about	**skew** and **kurtosis**?  
+- We can examine all of these different descriptors individually, but the easiest and most complete way to test for normality is to test the **goodness of fit** for a normal distribution.  
+```{r}
+# Generate random data from a normal distribution
+set.seed(123)
+data <- rnorm(100, mean = 0, sd = 1)
+
+# Shapiro-Wilk normality test
+shapiro.test(data)
+```
+
+
+## What to do about non-normal data?
+
+- Once you discover that your data is non-normal you have several options:
+
+  - Analyze and potentially remove outliers
+  - Transform the data mathematically
+  - Conduct non-parametric analyses
+
+
+## Outliers?
+- How to find outliers:
+	- Outlier box plots (visual) use the IQR * 1.5 threshold.
+	- percentiles (often < 2.5th or above 97.5th percentile).
+
+- These can help identify potential outliers but **do not justify their removal**.
+
+
+
+
+
+
+
+- Sometimes outliers are **real, correct  (although extreme) observations** that we are truly interested in.
+
+- We can only remove outliers if we know the data is **incorrect**
+
+
+## Working with non-normal Data.
+- Transformations:
+  - To transform your data, apply a mathematical function to each observation, then use these numbers in your statistical test.
+  - There are an infinite number of transformations you could use, but it is better to use one common to our field.
+
+
+## Working with non-normal Data.
+- Non-normal data happens. Especially with counts, percents, rare events.
+
+- Common transformations in our field:
+  - square-root
+  - log 
+  - Inverse 
+  - Rank 
+
+```{r, echo=FALSE, fig.cap="", out.width = '60%',fig.align='right'}
+knitr::include_graphics("fig/climate3.png")
+```
+
+## Square root Transformation
+- **Square-root transformation**: This consists of taking the square root of each observation. 
+
+- In R use: **sqrt(X)**
+```{r}
+data <- c(1, 4, 9, 16, 25, 36, 49, 64, 81, 100)
+# Apply square-root transformation
+sqrt_data <- sqrt(data)
+# Goodness of fit test
+shapiro.test(sqrt_data)
+```
+
+## Square root Transformation
+- If you apply a square root to a continuous variable that contains values negative values, decimals and values above 1, you are treating some numbers differently than others..
+  - So a constant must be added to move the minimum value of the distribution to 1. 
+
+## Log Transformation
+- Many variables in biology have log-normal distributions.
+
+- In R use: **log(X)**
+```{r}
+# Sample data (e.g., positive values)
+data <- c(1, 10, 100, 1000, 10000, 100000)
+# Apply log transformation (log base 10)
+log_data <- log10(data)
+# Goodness of fit test
+shapiro.test(log_data)
+```
+
+## Log Transformation
+- The logarithm of any negative number is undefined and log functions treat decimals differently than numbers >1.
+  - SO a constant must be added to move the minimum value of the distribution to 1.
+
+## Inverse transformation
+- **Inverse transformation**: This consists of taking the inverse (X-1) of a number. 
+- In R use: 1/X  or (X)^-1
+```{r}
+# Sample data (e.g., positive values)
+data <- c(1, 2, 4, 8, 16, 32, 64)
+# Apply inverse transformation (reciprocal)
+inverse_data <- 1 / data
+```
+
+- Tends to make big numbers small and small numbers big a constant must be added to move the minimum value of the distribution to 1
+
+## Reflecting Transformations
+- Each of these transformations can be adjusted for negative skew by taking the reflection
+- To reflect a value, multiply  data by -1, and then add a constant to bring the minimum value back above 1.0     
+- For example:
+  - Square root sqrt (X) becomes                                                           
+    - sqrt ( [(X*-1)+c])
+
+  - Log ln (X) becomes                                                                          - ln ([X*-1] +c)
+
+## Rank Transform
+
+## Transformation Rules to Live By
+- Transformations work by altering the relative distances between data points. 
+- If done correctly, all data points remain in the same relative order as prior to transformation. 
+- However, this might be undesirable if the original variables were meant to be substantively interpretable.
+
+- Therefore... 
+
+## Transformation Rules to Live By
+- Don’t mess with your data unless you have to.
+
+<br>
+
+- Are there true outliers? Remove and retest.
+
+<br>
+
+- If you have to mess with it, make sure you know what you are doing. Try different transformations to see which is best.
+
+<br>
+
+- Include these details in your methods.
+
+<br>
+
+- Back transform to original units for reports of central tendency and variability.
+
+<br>
+
+- Sometimes transformations don’t work, don’t panic, you will just get to run **nonparametric tests**.
 
