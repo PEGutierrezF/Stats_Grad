@@ -27,7 +27,7 @@ header-includes:
 
 <br>
 
-- Understand the distribution of our data values – test for normality.  
+- Understand the distribution of our data values (i.e., test for normality).  
 
 <br>
 
@@ -116,7 +116,7 @@ knitr::include_graphics("fig/box.jpg")
 
 - Sample mean is the measure of central tendency that best represents the population mean.
 
-- Mean is **very** sensitive to extreme scores that can “skew” or distort findings.
+- Mean is **very** sensitive to extreme scores that can "skew" or distort findings.
 
 
 ## Central tendency: Median
@@ -204,7 +204,7 @@ cat("$$\\text{Range} = \\text{max}(x) - \\text{min}(x)$$")
 ## Percentiles are useful for spread too
 - You can use percentiles to get a feel for how spread out the data is and where most of your observations are contained:
 
-  - Inter-quartile range (IQR) = Q3 – Q1  
+  - Inter-quartile range (IQR) = Q3 - Q1  
   
 ```{r, echo=FALSE, fig.cap="", out.width = '60%'}
 knitr::include_graphics("fig/iqr.png")
@@ -299,12 +299,12 @@ grid::grid.lines(x = c(0.5, 0.25), y = c(0.1, 0.25), gp = gpar(col = "red"),
 
 
 ## Skewness
-- **Positive Skew**: the “slide” takes you in a positive direction.  
+- **Positive Skew**: the "slide" takes you in a positive direction.  
   - The mean is bigger than the median (which is why the slide is being pulled to higher values).  
 
 <br>
 
-- **Negative Skew**: the “slide” takes you in a negative direction.  
+- **Negative Skew**: the "slide" takes you in a negative direction.  
   - The mean is smaller than the median (which is why the slide is being pulled to lower values).
   
 ```{r, echo=FALSE, fig.cap="", out.width = '80%'}
@@ -329,7 +329,7 @@ cat("$$\\text{Skewness} = \\frac{3(\\bar{x} - \\text{Median})}{\\text{SD}}$$")
 ```
 
 
-## Skewness – Significant?
+## Skewness: Significant?
 - To determine if this deviation from zero in the skew statistic is likely a significant departure from normality, compare it to the **standard error of skew (ses)**.
 
 - If the skew you have calculated is more than **2 times the ses**, then you likely have significant skew, which means you have **non normal data** and should consider a nonparametric test for your statistical analyses
@@ -370,7 +370,7 @@ knitr::include_graphics("fig/kurtosis.png")
 
 <br>
 
-- Zero  = Mesokurtic – normal (bell-shaped). 
+- Zero  = Mesokurtic = normal (bell-shaped). 
 
 <br>
 
@@ -385,7 +385,7 @@ $$
 
 
 
-## Kurtosis – Significant?
+## Kurtosis: Significant?
 - To determine if this deviation from zero in the kurtosis statistic is likely a significant departure from normality, compare it to the **standard error of kurtosis (sek)**.
 
 - If the kurtosis you have calculated is more than **twice the sek**, you likely have **non normal data** and should consider a nonparametric test for your statistical analyses.
@@ -458,7 +458,7 @@ $$
 
 
 ## Why do we care if our data is normal?
-- The math ‘under the hood’ of many analyses **expects that data is normally distributed** - if it isn’t, you’ll still get an answer, but it won’t actually be saying what you think it is saying. 
+- The math "under the hood" of many analyses **expects that data is normally distributed** - if it isn't, you'll still get an answer, but it won't actually be saying what you think it is saying. 
 
 ## Why do we care about	**skew** and **kurtosis**?
 - Because many statistical analyses assume a normal distribution of the data, testing for normality must always be a precursor to any analysis. 
@@ -595,7 +595,7 @@ inverse_data <- 1 / data
 - Therefore... 
 
 ## Transformation Rules to Live By
-- Don’t mess with your data unless you have to.
+- Don't mess with your data unless you have to.
 
 <br>
 
@@ -615,5 +615,5 @@ inverse_data <- 1 / data
 
 <br>
 
-- Sometimes transformations don’t work, don’t panic, you will just get to run **nonparametric tests**.
+- Sometimes transformations don't work, don't panic, you will just get to run **nonparametric tests**.
 
