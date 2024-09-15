@@ -350,9 +350,27 @@
 \begin{frame}{Central tendency: Mean}
 \phantomsection\label{central-tendency-mean}
 \begin{itemize}
+\tightlist
+\item
+  \(\left( \bar{X} = \frac{\sum X}{n} \right)\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    where \(X\) represents individual data points and \(n\) is the
+    number of observations.
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
   Sample mean is the measure of central tendency that best represents
   the population mean.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
   Mean is \textbf{very} sensitive to extreme scores that can ``skew'' or
   distort findings.
@@ -676,8 +694,8 @@
 \begin{itemize}
 \tightlist
 \item
-  A normal distribution will have its mean and median values located
-  somewhere near the center of its range.
+  A \textbf{normal distribution} will have its mean and median values
+  located somewhere near the center of its range.
 \end{itemize}
 
 \begin{figure}
@@ -748,10 +766,29 @@
 \begin{itemize}
 \tightlist
 \item
-  Positive value = Normal distribution
+  Zero = Normal distribution
 \end{itemize}
 
 \[\text{Skewness} = \frac{3(\bar{x} - \text{Median})}{\text{SD}}\]
+
+\begin{itemize}
+\tightlist
+\item
+  where:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(\bar{x}\) is the \textbf{sample mean}, representing the average of
+    all data points.
+  \item
+    \textbf{Median} is the middle value in a dataset when sorted in
+    ascending or descending order.
+  \item
+    \textbf{SD} (Standard Deviation) measures the spread of the data
+    points around the mean.
+  \end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Skewness: Significant?}
@@ -840,6 +877,29 @@ ses = \sqrt{\frac{6}{n}} & \hspace{1cm} \text{Skewness} = \frac{3(\bar{x} - \tex
 \[
 \text{Kurtosis} = \frac{\sum(\left( \frac{x_i - \bar{x}}{\text{SD}} \right)^4 - 3)}{n}
 \]
+
+\begin{itemize}
+\tightlist
+\item
+  where:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(x_i\) represents each individual data point.
+  \item
+    \(\bar{x}\) is the \textbf{sample mean}, the average of all data
+    points.
+  \item
+    \textbf{SD} (Standard Deviation) is the measure of how spread out
+    the data points are from the mean.
+  \item
+    \(n\) is the number of data points in the sample.
+  \item
+    The subtraction of 3 is to adjust for the kurtosis of a normal
+    distribution, which has a kurtosis of 3.
+  \end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Kurtosis: Significant?}
@@ -930,11 +990,21 @@ sek = \sqrt{\frac{24}{n}} & \hspace{2cm} \text{Kurtosis} = \frac{\sum \left( \fr
 \end{itemize}
 
 \[
-\bar{X}_n \sim N\left(\mu, \frac{\sigma^2}{n}\right)
-\] - \(\bar{X}_n\): The sample mean of size \(n\).\\
-- \(N(\mu, \frac{\sigma^2}{n})\): The normal distribution with mean
-\(\mu\) (the population mean) and variance \(\frac{\sigma^2}{n}\), where
-\(\sigma^2\) is the population variance and \(n\) is the sample size.
+\bar{X}_n \sim N\left(\mu, \frac{\sigma}{\sqrt{n}}\right)
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  where:\\
+\item
+  \(\bar{X}_n\): The sample mean of size \(n\).
+\item
+  \(\bar{X}_n \sim N\left(\mu, \frac{\sigma}{\sqrt{n}}\right)\): The
+  sample mean follows a normal distribution with mean \(\mu\) (the
+  population mean) and population SD \(\sigma\) and \(n\) is the sample
+  size.
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Why do we care if our data is normal?}

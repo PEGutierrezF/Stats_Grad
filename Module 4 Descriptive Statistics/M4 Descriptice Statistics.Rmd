@@ -124,8 +124,14 @@ knitr::include_graphics("fig/box.jpg")
 
 
 ## Central tendency: Mean
+- \( \left( \bar{X} = \frac{\sum X}{n} \right) \) <br>
+  - where \( X \) represents individual data points and \( n \) is the number of observations.
+  
+<br>
 
 - Sample mean is the measure of central tendency that best represents the population mean.
+
+<br>
 
 - Mean is **very** sensitive to extreme scores that can "skew" or distort findings.
 
@@ -280,7 +286,7 @@ knitr::include_graphics("fig/skewness.png")
 
   
 ## Skewness
-- A normal distribution will have its mean and median values located somewhere near the center of its range.
+- A **normal distribution** will have its mean and median values located somewhere near the center of its range.
   
 ```{r, echo=FALSE, fig.cap="", out.width = '80%'}
 knitr::include_graphics("fig/skewness.png")
@@ -331,7 +337,7 @@ knitr::include_graphics("fig/skewness.png")
 
 <br>
 
-- Positive value = Normal distribution
+- Zero = Normal distribution
 
 <br>
 
@@ -339,7 +345,12 @@ knitr::include_graphics("fig/skewness.png")
 cat("$$\\text{Skewness} = \\frac{3(\\bar{x} - \\text{Median})}{\\text{SD}}$$")
 ```
 
-
+- where:
+  - \( \bar{x} \) is the **sample mean**, representing the average of all data points.
+  - **Median** is the middle value in a dataset when sorted in ascending or descending order.
+  - **SD** (Standard Deviation) measures the spread of the data points around the mean.
+  
+  
 ## Skewness: Significant?
 - To determine if this deviation from zero in the skew statistic is likely a significant departure from normality, compare it to the **standard error of skew (ses)**.
 
@@ -394,6 +405,12 @@ $$
 ")
 ```
 
+- where:
+  - \( x_i \) represents each individual data point.
+  - \( \bar{x} \) is the **sample mean**, the average of all data points.
+  - **SD** (Standard Deviation) is the measure of how spread out the data points are from the mean.
+  - \( n \) is the number of data points in the sample.
+  - The subtraction of 3 is to adjust for the kurtosis of a normal distribution, which has a kurtosis of 3.
 
 
 ## Kurtosis: Significant?
@@ -460,13 +477,14 @@ knitr::include_graphics("fig/climate3.png")
 ```{r echo=FALSE, results='asis'}
 cat("
 $$
-\\bar{X}_n \\sim N\\left(\\mu, \\frac{\\sigma^2}{n}\\right)
+\\bar{X}_n \\sim N\\left(\\mu, \\frac{\\sigma}{\\sqrt{n}}\\right)
 $$
 ")
 ```
-    - \( \bar{X}_n \): The sample mean of size \( n \).  
-    - \( N(\mu, \frac{\sigma^2}{n}) \): The normal distribution with mean \( \mu \) (the population mean) and variance \( \frac{\sigma^2}{n} \), where \( \sigma^2 \) is the population variance and \( n \) is the sample size.
 
+- where:     
+- \( \bar{X}_n \): The sample mean of size \( n \).
+- \( \bar{X}_n \sim N\left(\mu, \frac{\sigma}{\sqrt{n}}\right) \): The sample mean follows a normal distribution with mean \( \mu \) (the population mean) and population SD \( \sigma \) and \( n \) is the sample size.
 
 ## Why do we care if our data is normal?
 - The math "under the hood" of many analyses **expects that data is normally distributed** - if it isn't, you'll still get an answer, but it won't actually be saying what you think it is saying. 
