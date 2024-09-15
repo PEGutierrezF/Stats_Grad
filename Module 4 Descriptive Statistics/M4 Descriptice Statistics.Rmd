@@ -482,9 +482,8 @@ $$
 ")
 ```
 
-- where:     
-- \( \bar{X}_n \): The sample mean of size \( n \).
-- \( \bar{X}_n \sim N\left(\mu, \frac{\sigma}{\sqrt{n}}\right) \): The sample mean follows a normal distribution with mean \( \mu \) (the population mean) and population SD \( \sigma \) and \( n \) is the sample size.
+This means that \( \bar{X}_n \) (the average of your sample) will approximately follow a normal distribution with a mean of \( \mu \) and a standard deviation of \( \frac{\sigma}{\sqrt{n}} \), especially if your sample size \( n \) is large.
+
 
 ## Why do we care if our data is normal?
 - The math "under the hood" of many analyses **expects that data is normally distributed** - if it isn't, you'll still get an answer, but it won't actually be saying what you think it is saying. 
