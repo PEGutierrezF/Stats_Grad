@@ -220,13 +220,42 @@
 \end{itemize}
 
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{fig/Histogram} \end{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{fig/Histogram} 
+
+}
+
+\end{figure}
 \end{frame}
 
 \begin{frame}{Box and Whisker Basics}
 \phantomsection\label{box-and-whisker-basics}
+\begin{itemize}
+\tightlist
+\item
+  Box plots are used to visualize the distribution of continuous data,
+  showing the \textbf{median}, \textbf{interquartile range (IQR)}, and
+  \textbf{potential outliers}.
+\item
+  The \textbf{box} represents the middle 50\% of the data (from the
+  first quartile \(Q1\) to the third quartile \(Q3\)).
+\item
+  The \textbf{line inside the box} shows the median (50th percentile).
+\item
+  \textbf{Whiskers} extend from the box to the smallest and largest
+  values within 1.5 times the IQR from \(Q1\) and \(Q3\).
+\item
+  \textbf{Data points outside the whiskers} are considered potential
+  outliers.
+\end{itemize}
+
 \begin{figure}
-\includegraphics[width=0.8\linewidth]{fig/box} \end{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{fig/box} 
+
+}
+
+\end{figure}
 \end{frame}
 
 \begin{frame}{Metrics to Describe data distribution.}
@@ -276,7 +305,7 @@
 \begin{itemize}
 \tightlist
 \item
-  Mean (Sum of scores/N)
+  \textbf{Mean \(\left( \frac{\sum X}{n} \right)\)}:
 
   \begin{itemize}
   \tightlist
@@ -285,8 +314,12 @@
   \item
     Works well with normal and relatively normal curves.
   \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
-  Median (50th Percentile)
+  \textbf{Median (50th Percentile)}:
 
   \begin{itemize}
   \tightlist
@@ -297,8 +330,12 @@
   \item
     Works best with highly skewed populations.
   \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
-  Mode (Most Frequent Score)
+  \textbf{Mode (Most Frequent Score)}:
 
   \begin{itemize}
   \tightlist

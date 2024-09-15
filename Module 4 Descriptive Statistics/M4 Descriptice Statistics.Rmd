@@ -71,13 +71,20 @@ ggplot(data, aes(x = x)) +
 
 <br>
 
-```{r, echo=FALSE, fig.cap="", out.width = '80%'}
+```{r, echo=FALSE, fig.cap="", out.width = '80%', fig.align='center'}
 knitr::include_graphics("fig/Histogram.jpg")
 ```
 
 ## Box and Whisker Basics
+- Box plots are used to visualize the distribution of continuous data, showing the **median**, **interquartile range (IQR)**, and **potential outliers**.
+- The **box** represents the middle 50% of the data (from the first quartile \( Q1 \) to the third quartile \( Q3 \)).
+- The **line inside the box** shows the median (50th percentile).
+- **Whiskers** extend from the box to the smallest and largest values within 1.5 times the IQR from \( Q1 \) and \( Q3 \).
+- **Data points outside the whiskers** are considered potential outliers.
+  
 <br>
-```{r, echo=FALSE, fig.cap="", out.width = '80%'}
+
+```{r, echo=FALSE, fig.cap="", out.width = '60%', fig.align='center'}
 knitr::include_graphics("fig/box.jpg")
 ```
 
@@ -98,16 +105,20 @@ knitr::include_graphics("fig/box.jpg")
   - Kurtosis (Peakedness)
 
 ## Central tendency
-- Mean (Sum of scores/N)
+- **Mean \( \left( \frac{\sum X}{n} \right) \)**:
   - Most often used measure of central tendency.
   - Works well with normal and relatively normal curves.
 
-- Median (50th Percentile)
+<br>
+
+- **Median (50th Percentile)**:
   - No formula.  Rank order observations then find the middle.
   - The second most used measure of central tendency.
   - Works best with highly skewed populations.
   
-- Mode (Most Frequent Score)
+<br>
+  
+- **Mode (Most Frequent Score)**:
   - Least used measure of central tendency.
   - Works best for highly irregular and multimodal distributions. 
 
