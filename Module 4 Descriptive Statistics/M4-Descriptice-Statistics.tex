@@ -396,8 +396,8 @@
   \begin{itemize}
   \tightlist
   \item
-    The median \textbf{is the 50th percentile }, \emph{half of all
-    observations fall at or below this value}.
+    The median \textbf{is the 50th percentile}, meaning \emph{half of
+    all observations fall at or below this value}.
   \end{itemize}
 \end{itemize}
 
@@ -413,8 +413,8 @@
 \begin{itemize}
 \tightlist
 \item
-  Quartiles are a common percentile used to represent the value below
-  which.
+  Quartiles (i.e., divide data into four equal parts: 25\%, 50\%, 75\%)
+  are a common percentile used to represent the value below which.
 
   \begin{itemize}
   \tightlist
@@ -502,15 +502,26 @@
 \begin{itemize}
 \tightlist
 \item
-  Standard Deviation measures how spread out the numbers in a dataset
-  are around the mean.
+  \textbf{Standard Deviation} measures how spread out the numbers in a
+  dataset are around the mean.
 \end{itemize}
 
 \begin{itemize}
-\tightlist
 \item
   The sample standard deviation \(s\) is calculated as:
-  \[s = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n - 1}}\]
+  \[s = \sqrt{\frac{\sum (x_i - \bar{x})^2}{n - 1}}\]
+\item
+  \(s\): The \textbf{sample standard deviation}, which measures the
+  spread or variability of the data points around the sample mean
+  \(\bar{x}\).
+\item
+  \(n\): The \textbf{sample size}, or the number of observations in the
+  dataset.
+\item
+  \(x_i\): Each individual data point in the sample.
+\item
+  \(\bar{x}\): The \textbf{sample mean}, or the average of the sample
+  data.
 \end{itemize}
 \end{frame}
 
@@ -527,7 +538,15 @@
 \tightlist
 \item
   The variance \(\sigma^2\) is calculated as:
-  \[s^2 = \frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n - 1}\]
+  \[s^2 = \frac{\sum (x_i - \bar{x})^2}{n - 1}\]
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Variance is always larger than the Standard Deviation (SD)}
+  because variance is the square of SD. For example, if the SD is 3, the
+  variance will be \(3^2 = 9\).
 \end{itemize}
 \end{frame}
 
@@ -689,8 +708,8 @@
 \begin{itemize}
 \tightlist
 \item
-  Skewness: This metric quantifies how balanced (symmetrical) your
-  distribution curve is.
+  \textbf{Skewness}: This metric quantifies how balanced (symmetrical)
+  your distribution curve is.
 \end{itemize}
 
 \begin{figure}
@@ -710,21 +729,17 @@
 \includegraphics[width=0.8\linewidth]{fig/skewness} \end{figure}
 \end{frame}
 
-\begin{frame}[fragile]{Skewness}
+\begin{frame}{Skewness}
 \phantomsection\label{skewness-2}
 \begin{itemize}
 \tightlist
 \item
   Skew of this peak away from center is common when extreme values pull
   the median away from the mean.
+
+  \begin{figure}
+  \includegraphics[width=0.8\linewidth]{M4-Descriptice-Statistics_files/figure-beamer/unnamed-chunk-13-1} \end{figure}
 \end{itemize}
-
-\begin{verbatim}
-## Warning: package 'png' was built under R version 4.3.1
-\end{verbatim}
-
-\begin{figure}
-\includegraphics[width=0.8\linewidth]{M4-Descriptice-Statistics_files/figure-beamer/unnamed-chunk-13-1} \end{figure}
 \end{frame}
 
 \begin{frame}{Skewness}
@@ -994,7 +1009,7 @@ sek = \sqrt{\frac{24}{n}} & \hspace{2cm} \text{Kurtosis} = \frac{\sum \left( \fr
   There are various types of data distributions, each with its own
   unique properties and implications.
 \item
-  In nature, most data are normally distributed.
+  \textbf{In nature, most data are normally distributed}.
 \item
   The central limit theorem (CLT) states that the distribution of sample
   means approximates a normal distribution as the sample size gets
@@ -1051,6 +1066,8 @@ sample size \(n\) is large.
     Asymptotic (tails never reach 0)
   \end{itemize}
 \end{itemize}
+
+\includegraphics{M4-Descriptice-Statistics_files/figure-beamer/unnamed-chunk-24-1.pdf}
 \end{frame}
 
 \begin{frame}[fragile]{Why do we care about \textbf{skew} and
@@ -1069,7 +1086,6 @@ sample size \(n\) is large.
 \CommentTok{\# Generate random data from a normal distribution}
 \FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
 \NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{, }\AttributeTok{mean =} \DecValTok{0}\NormalTok{, }\AttributeTok{sd =} \DecValTok{1}\NormalTok{)}
-
 \CommentTok{\# Shapiro{-}Wilk normality test}
 \FunctionTok{shapiro.test}\NormalTok{(data)}
 \end{Highlighting}
@@ -1106,6 +1122,7 @@ sample size \(n\) is large.
 \begin{frame}{Outliers?}
 \phantomsection\label{outliers}
 \begin{itemize}
+\tightlist
 \item
   How to find outliers:
 
@@ -1114,14 +1131,30 @@ sample size \(n\) is large.
   \item
     Outlier box plots (visual) use the IQR * 1.5 threshold.
   \item
-    percentiles (often \textless{} 2.5th or above 97.5th percentile).
+    \textbf{IQR}: \(Q_3 - Q_1\)
+  \item
+    \textbf{Lower Threshold}: \(Q_1 - (1.5 * \text{IQR})\)
+  \item
+    \textbf{Upper Threshold}: \(Q_3 + (1.5 * \text{IQR})\)
   \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
   These can help identify potential outliers but \textbf{do not justify
   their removal}.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
   Sometimes outliers are \textbf{real, correct (although extreme)
   observations} that we are truly interested in.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
   We can only remove outliers if we know the data is \textbf{incorrect}
 \end{itemize}
@@ -1135,7 +1168,6 @@ sample size \(n\) is large.
   Transformations:
 
   \begin{itemize}
-  \tightlist
   \item
     To transform your data, apply a mathematical function to each
     observation, then use these numbers in your statistical test.
@@ -1158,11 +1190,29 @@ sample size \(n\) is large.
   \begin{itemize}
   \tightlist
   \item
-    square-root
+    square-root:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      for moderate skew.
+    \end{itemize}
   \item
-    log
+    log:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      for positively skewed data.
+    \end{itemize}
   \item
-    Inverse
+    Inverse:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      for severe skew.
+    \end{itemize}
   \item
     Rank
   \end{itemize}
@@ -1170,7 +1220,7 @@ sample size \(n\) is large.
 
 \begin{figure}
 
-\hfill{}\includegraphics[width=0.6\linewidth]{fig/climate3} 
+\hfill{}\includegraphics[width=0.3\linewidth]{fig/transformation} 
 
 \end{figure}
 \end{frame}

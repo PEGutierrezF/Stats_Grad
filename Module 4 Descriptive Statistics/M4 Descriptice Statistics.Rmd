@@ -190,15 +190,19 @@ knitr::include_graphics("fig/variability.png")
 ```
 
 ## Variability: Standard Deviation
-- Standard Deviation measures how spread out the numbers in a dataset are around the mean.
+- **Standard Deviation** measures how spread out the numbers in a dataset are around the mean.
 
 <br>
 
 - The sample standard deviation \( s \) is calculated as:
 ```{r echo=FALSE, results='asis'}
-cat("$$s = \\sqrt{\\frac{\\sum_{i=1}^{n} (x_i - \\bar{x})^2}{n - 1}}$$")
+cat("$$s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}}$$")
 ``` 
 
+- \( s \): The **sample standard deviation**, which measures the spread or variability of the data points around the sample mean \( \bar{x} \).
+- \( n \): The **sample size**, or the number of observations in the dataset.
+- \( x_i \): Each individual data point in the sample.
+- \( \bar{x} \): The **sample mean**, or the average of the sample data.
 
 ## Variability
 - **Variance** measures the average of the squared differences from the mean, indicating how spread out the data points are.
@@ -207,8 +211,12 @@ cat("$$s = \\sqrt{\\frac{\\sum_{i=1}^{n} (x_i - \\bar{x})^2}{n - 1}}$$")
 
 - The variance \( \sigma^2 \) is calculated as:
 ```{r echo=FALSE, results='asis'}
-cat("$$s^2 = \\frac{\\sum_{i=1}^{n} (x_i - \\bar{x})^2}{n - 1}$$")
+cat("$$s^2 = \\frac{\\sum (x_i - \\bar{x})^2}{n - 1}$$")
 ```
+
+<br>
+
+  - **Variance is always larger than the Standard Deviation (SD)** because variance is the square of SD. For example, if the SD is 3, the variance will be \( 3^2 = 9 \).
 
 
 ## Variability: Range
@@ -280,7 +288,7 @@ knitr::include_graphics("fig/iqr.png")
   - Kurtosis (Peakedness)
 
 ## Skewness
-- Skewness: This metric quantifies how balanced (symmetrical) your 
+- **Skewness**: This metric quantifies how balanced (symmetrical) your 
 distribution curve is.
   
 ```{r, echo=FALSE, fig.cap="", out.width = '80%'}
@@ -299,7 +307,7 @@ knitr::include_graphics("fig/skewness.png")
 
 ## Skewness
 - Skew of this peak away from center is common when extreme values pull the median away from the mean.
-```{r, echo=FALSE, fig.cap="", out.width = '80%'}
+```{r, echo=FALSE, fig.cap="",  warning = FALSE , out.width = '80%'}
 
 library(png)
 library(ggplot2)
@@ -474,7 +482,7 @@ knitr::include_graphics("fig/climate3.png")
 ## Data Distributions
 - There are various types of data distributions, each with its own unique properties and implications. 
 
-- In nature, most data are normally distributed.
+- **In nature, most data are normally distributed**.
 
 - The central limit theorem (CLT) states that the distribution of sample means approximates a normal distribution as the sample size gets larger, regardless of the population's distribution.
 ```{r echo=FALSE, results='asis'}
@@ -502,7 +510,34 @@ This means that \( \bar{X}_n \) (the average of your sample) will approximately 
   - Bell Shaped (no KURTOSIS)
   - Mean, Mode and Median are all centered
   - Asymptotic (tails never reach 0)
-  
+
+<br> 
+
+```{r echo=FALSE,warning=FALSE, fig.width=3.2, fig.height=2.0}
+mean <- 0
+sd <- 1
+n <- 1000
+
+# Generate data
+data <- data.frame(x = rnorm(n, mean, sd))
+
+# Calculate median and mode
+median_value <- median(data$x)
+mode_value <- mean  # For a normal distribution, the mode is the same as the mean
+
+# Create the plot
+ggplot(data, aes(x = x)) +
+  geom_density(fill = "lightblue", alpha = 0.5) +
+  stat_function(fun = dnorm, args = list(mean = mean, sd = sd),
+    color = "red", size = 1 ) +
+  geom_vline(aes(xintercept = mean), color = "blue", linetype = "dashed", size = 1, label = "Mean") +
+  geom_vline(aes(xintercept = median_value), color = "green", linetype = "dashed", size = 1, label = "Median") +
+  geom_vline(aes(xintercept = mode_value), color = "purple", linetype = "dashed", size = 1, label = "Mode") +
+  xlab("Value") + ylab("") +
+  theme_minimal() 
+```
+
+
 
 ## Why do we care about	**skew** and **kurtosis**?  
 - We can examine all of these different descriptors individually, but the easiest and most complete way to test for normality is to test the **goodness of fit** for a normal distribution.  
@@ -510,7 +545,6 @@ This means that \( \bar{X}_n \) (the average of your sample) will approximately 
 # Generate random data from a normal distribution
 set.seed(123)
 data <- rnorm(100, mean = 0, sd = 1)
-
 # Shapiro-Wilk normality test
 shapiro.test(data)
 ```
@@ -528,17 +562,19 @@ shapiro.test(data)
 ## Outliers?
 - How to find outliers:
 	- Outlier box plots (visual) use the IQR * 1.5 threshold.
-	- percentiles (often < 2.5th or above 97.5th percentile).
+    - **IQR**: \( Q_3 - Q_1 \)
+    - **Lower Threshold**: \( Q_1 - (1.5 * \text{IQR}) \)
+    - **Upper Threshold**: \( Q_3 + (1.5 * \text{IQR}) \)
+
+<br>
 
 - These can help identify potential outliers but **do not justify their removal**.
 
-
-
-
-
-
+<br>
 
 - Sometimes outliers are **real, correct  (although extreme) observations** that we are truly interested in.
+
+<br>
 
 - We can only remove outliers if we know the data is **incorrect**
 
@@ -546,6 +582,7 @@ shapiro.test(data)
 ## Working with non-normal Data.
 - Transformations:
   - To transform your data, apply a mathematical function to each observation, then use these numbers in your statistical test.
+  
   - There are an infinite number of transformations you could use, but it is better to use one common to our field.
 
 
@@ -553,13 +590,16 @@ shapiro.test(data)
 - Non-normal data happens. Especially with counts, percents, rare events.
 
 - Common transformations in our field:
-  - square-root
-  - log 
-  - Inverse 
+  - square-root:
+    - for moderate skew.
+  - log:
+    - for positively skewed data.
+  - Inverse:
+    - for severe skew.
   - Rank 
 
-```{r, echo=FALSE, fig.cap="", out.width = '60%',fig.align='right'}
-knitr::include_graphics("fig/climate3.png")
+```{r, echo=FALSE, fig.cap="", out.width = '30%',fig.align='right'}
+knitr::include_graphics("fig/transformation.png")
 ```
 
 ## Square root Transformation
