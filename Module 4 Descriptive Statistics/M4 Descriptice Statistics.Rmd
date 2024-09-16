@@ -513,7 +513,7 @@ This means that \( \bar{X}_n \) (the average of your sample) will approximately 
 ::::
 
 :::: column
-```{r echo=FALSE,warning=FALSE, fig.width=3.2, fig.height=2.0}
+```{r echo=FALSE,warning=FALSE, fig.width=3.0, fig.height=2.2}
 mean <- 0
 sd <- 1
 n <- 1000
