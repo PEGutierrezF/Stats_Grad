@@ -502,17 +502,17 @@ This means that \( \bar{X}_n \) (the average of your sample) will approximately 
 ## Why do we care about	**skew** and **kurtosis**?
 - Because many statistical analyses assume a normal distribution of the data, testing for normality must always be a precursor to any analysis. 
 
-<br>
+::: columns
+:::: column
+- Normally Distributed Data is:  
+  - Unimodal (one mode)  
+  - Symmetrical (no SKEW)  
+  - Bell Shaped (no KURTOSIS)  
+  - Mean, Mode and Median are all centered  
+  - Asymptotic (tails never reach 0)  
+::::
 
-- Normally Distributed Data is: 
-  - Unimodal (one mode)
-  - Symmetrical (no SKEW)
-  - Bell Shaped (no KURTOSIS)
-  - Mean, Mode and Median are all centered
-  - Asymptotic (tails never reach 0)
-
-<br> 
-
+:::: column
 ```{r echo=FALSE,warning=FALSE, fig.width=3.2, fig.height=2.0}
 mean <- 0
 sd <- 1
@@ -536,7 +536,8 @@ ggplot(data, aes(x = x)) +
   xlab("Value") + ylab("") +
   theme_minimal() 
 ```
-
+::::
+:::
 
 
 ## Why do we care about	**skew** and **kurtosis**?  
@@ -589,18 +590,24 @@ shapiro.test(data)
 ## Working with non-normal Data.
 - Non-normal data happens. Especially with counts, percents, rare events.
 
-- Common transformations in our field:
-  - square-root:
-    - for moderate skew.
-  - log:
-    - for positively skewed data.
-  - Inverse:
-    - for severe skew.
-  - Rank 
+::: columns
+:::: column
+- Common transformations in our field:  
+  - square-root:  
+    - for moderate skew.  
+  - log:  
+    - for positively skewed data.  
+  - Inverse:  
+    - for severe skew.  
+  - Rank  
+::::
 
-```{r, echo=FALSE, fig.cap="", out.width = '30%',fig.align='right'}
+:::: column
+```{r, echo=FALSE, fig.cap="", out.width = '80%',fig.align='center'}
 knitr::include_graphics("fig/transformation.png")
 ```
+::::
+:::
 
 ## Square root Transformation
 - **Square-root transformation**: This consists of taking the square root of each observation. 
@@ -615,8 +622,11 @@ shapiro.test(sqrt_data)
 ```
 
 ## Square root Transformation
-- If you apply a square root to a continuous variable that contains values negative values, decimals and values above 1, you are treating some numbers differently than others..
-  - So a constant must be added to move the minimum value of the distribution to 1. 
+- If you apply a square root to a continuous variable that contains **values negative values, decimals and values above 1**, you are treating some numbers differently than others.
+
+<br>
+
+- So a constant must be added to move the minimum value of the distribution to 1. 
 
 ## Log Transformation
 - Many variables in biology have log-normal distributions.
@@ -632,12 +642,16 @@ shapiro.test(log_data)
 ```
 
 ## Log Transformation
-- The logarithm of any negative number is undefined and log functions treat decimals differently than numbers >1.
-  - SO a constant must be added to move the minimum value of the distribution to 1.
+- The logarithm of any **negative number is undefined and log functions treat decimals differently than numbers >1**.
+
+<br>
+
+- So a constant must be added to move the minimum value of the distribution to 1.
+
 
 ## Inverse transformation
-- **Inverse transformation**: This consists of taking the inverse (X-1) of a number. 
-- In R use: 1/X  or (X)^-1
+- **Inverse transformation**: This consists of taking the inverse \( X^{-1} \) of a number.
+- In R use: `1/X` or `X^-1`
 ```{r}
 # Sample data (e.g., positive values)
 data <- c(1, 2, 4, 8, 16, 32, 64)
@@ -647,16 +661,31 @@ inverse_data <- 1 / data
 
 - Tends to make big numbers small and small numbers big a constant must be added to move the minimum value of the distribution to 1
 
-## Reflecting Transformations
-- Each of these transformations can be adjusted for negative skew by taking the reflection
-- To reflect a value, multiply  data by -1, and then add a constant to bring the minimum value back above 1.0     
-- For example:
-  - Square root sqrt (X) becomes                                                           
-    - sqrt ( [(X*-1)+c])
 
-  - Log ln (X) becomes                                                                          - ln ([X*-1] +c)
+## Reflecting Transformations
+- Each of these transformations can be adjusted for negative skew by taking the reflection.
+
+<br>
+
+- To reflect a value, multiply  data by -1, and then add a constant to bring the minimum value back above 1.0.
+
+<br>
+
+- For example:
+  - sqrt(x) for positively skewed data,
+  - sqrt((x*-1) + c) for negatively skewed data
+
+  - log10(x) for positively skewed data,
+  - log10(x*-1 + c) for negatively skewed data
 
 ## Rank Transform
+- Rank transformation requires sorting your data and then creating a new column where each observation is assigned a rank.
+
+<br>
+
+  - For tied values, assign the average rank.
+  - Perform all subsequent analyses on the ranked data instead of the original values.
+
 
 ## Transformation Rules to Live By
 - Transformations work by altering the relative distances between data points. 

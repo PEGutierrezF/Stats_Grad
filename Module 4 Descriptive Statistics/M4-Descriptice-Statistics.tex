@@ -1047,6 +1047,8 @@ sample size \(n\) is large.
   analysis.
 \end{itemize}
 
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
 \begin{itemize}
 \tightlist
 \item
@@ -1055,19 +1057,23 @@ sample size \(n\) is large.
   \begin{itemize}
   \tightlist
   \item
-    Unimodal (one mode)
+    Unimodal (one mode)\\
   \item
-    Symmetrical (no SKEW)
+    Symmetrical (no SKEW)\\
   \item
-    Bell Shaped (no KURTOSIS)
+    Bell Shaped (no KURTOSIS)\\
   \item
-    Mean, Mode and Median are all centered
+    Mean, Mode and Median are all centered\\
   \item
-    Asymptotic (tails never reach 0)
+    Asymptotic (tails never reach 0)\\
   \end{itemize}
 \end{itemize}
+\end{column}
 
+\begin{column}{0.48\textwidth}
 \includegraphics{M4-Descriptice-Statistics_files/figure-beamer/unnamed-chunk-24-1.pdf}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]{Why do we care about \textbf{skew} and
@@ -1181,9 +1187,16 @@ sample size \(n\) is large.
 \begin{frame}{Working with non-normal Data.}
 \phantomsection\label{working-with-non-normal-data.-1}
 \begin{itemize}
+\tightlist
 \item
   Non-normal data happens. Especially with counts, percents, rare
   events.
+\end{itemize}
+
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{itemize}
+\tightlist
 \item
   Common transformations in our field:
 
@@ -1195,7 +1208,7 @@ sample size \(n\) is large.
     \begin{itemize}
     \tightlist
     \item
-      for moderate skew.
+      for moderate skew.\\
     \end{itemize}
   \item
     log:
@@ -1203,7 +1216,7 @@ sample size \(n\) is large.
     \begin{itemize}
     \tightlist
     \item
-      for positively skewed data.
+      for positively skewed data.\\
     \end{itemize}
   \item
     Inverse:
@@ -1211,18 +1224,24 @@ sample size \(n\) is large.
     \begin{itemize}
     \tightlist
     \item
-      for severe skew.
+      for severe skew.\\
     \end{itemize}
   \item
-    Rank
+    Rank\\
   \end{itemize}
 \end{itemize}
+\end{column}
 
+\begin{column}{0.48\textwidth}
 \begin{figure}
 
-\hfill{}\includegraphics[width=0.3\linewidth]{fig/transformation} 
+{\centering \includegraphics[width=0.8\linewidth]{fig/transformation} 
+
+}
 
 \end{figure}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]{Square root Transformation}
@@ -1260,15 +1279,15 @@ sample size \(n\) is large.
 \tightlist
 \item
   If you apply a square root to a continuous variable that contains
-  values negative values, decimals and values above 1, you are treating
-  some numbers differently than others..
+  \textbf{values negative values, decimals and values above 1}, you are
+  treating some numbers differently than others.
+\end{itemize}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    So a constant must be added to move the minimum value of the
-    distribution to 1.
-  \end{itemize}
+\begin{itemize}
+\tightlist
+\item
+  So a constant must be added to move the minimum value of the
+  distribution to 1.
 \end{itemize}
 \end{frame}
 
@@ -1306,15 +1325,15 @@ sample size \(n\) is large.
 \begin{itemize}
 \tightlist
 \item
-  The logarithm of any negative number is undefined and log functions
-  treat decimals differently than numbers \textgreater1.
+  The logarithm of any \textbf{negative number is undefined and log
+  functions treat decimals differently than numbers \textgreater1}.
+\end{itemize}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    SO a constant must be added to move the minimum value of the
-    distribution to 1.
-  \end{itemize}
+\begin{itemize}
+\tightlist
+\item
+  So a constant must be added to move the minimum value of the
+  distribution to 1.
 \end{itemize}
 \end{frame}
 
@@ -1324,9 +1343,9 @@ sample size \(n\) is large.
 \tightlist
 \item
   \textbf{Inverse transformation}: This consists of taking the inverse
-  (X-1) of a number.
+  \(X^{-1}\) of a number.
 \item
-  In R use: 1/X or (X)\^{}-1
+  In R use: \texttt{1/X} or \texttt{X\^{}-1}
 \end{itemize}
 
 \begin{Shaded}
@@ -1352,31 +1371,51 @@ sample size \(n\) is large.
 \tightlist
 \item
   Each of these transformations can be adjusted for negative skew by
-  taking the reflection
+  taking the reflection.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
   To reflect a value, multiply data by -1, and then add a constant to
-  bring the minimum value back above 1.0\\
+  bring the minimum value back above 1.0.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
   For example:
 
   \begin{itemize}
-  \tightlist
   \item
-    Square root sqrt (X) becomes
-
-    \begin{itemize}
-    \tightlist
-    \item
-      sqrt ( {[}(X*-1)+c{]})
-    \end{itemize}
+    sqrt(x) for positively skewed data,
   \item
-    Log ln (X) becomes - ln ({[}X*-1{]} +c)
+    sqrt((x*-1) + c) for negatively skewed data
+  \item
+    log10(x) for positively skewed data,
+  \item
+    log10(x*-1 + c) for negatively skewed data
   \end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Rank Transform}
 \phantomsection\label{rank-transform}
+\begin{itemize}
+\tightlist
+\item
+  Rank transformation requires sorting your data and then creating a new
+  column where each observation is assigned a rank.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  For tied values, assign the average rank.
+\item
+  Perform all subsequent analyses on the ranked data instead of the
+  original values.
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Transformation Rules to Live By}
