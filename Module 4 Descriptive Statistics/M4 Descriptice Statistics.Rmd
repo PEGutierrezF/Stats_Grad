@@ -71,6 +71,9 @@ ggplot(data, aes(x = x)) +
 
 <br>
 
+- Histograms display the distribution of data by grouping values into intervals or bins, allowing for an understanding of the frequency and spread of the data.
+<br>
+
 ```{r, echo=FALSE, fig.cap="", out.width = '80%', fig.align='center'}
 knitr::include_graphics("fig/Histogram.jpg")
 ```
@@ -138,14 +141,14 @@ knitr::include_graphics("fig/box.jpg")
 
 ## Central tendency: Median
 - Percentiles are used to define the percent of cases equal to and below a certain point on a distribution.
-  - The median **is the 50th percentile ** half of all observations fall at or below this value.
+  - The median **is the 50th percentile**, meaning *half of all observations fall at or below this value*.
   
 <br>
 
 - But lots of other percentiles are also important.
 
 ## A little about Percentiles
-- Quartiles are a common percentile used to represent the value below  which. 
+- Quartiles (i.e., divide data into four equal parts: 25%, 50%, 75%) are a common percentile used to represent the value below  which. 
   - 25% (Q1 or first quartile)  
   - 75% (Q3 or third quartile)  
 
