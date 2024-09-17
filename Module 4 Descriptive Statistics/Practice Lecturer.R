@@ -28,6 +28,8 @@ quantiles <- quantile(fish$Length, probs = c(0.25, 0.75))
 # Display the results
 quantiles
 
+quantile(fish$Length,prob=(0.25))
+quantile(fish$Length,prob=(0.75))
 
 # Plots -------------------------------------------------------------------
 #density plot - does it look normal?
