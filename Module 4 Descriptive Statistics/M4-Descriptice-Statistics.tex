@@ -1087,11 +1087,14 @@ sample size \(n\) is large.
   \textbf{goodness of fit} for a normal distribution.
 \end{itemize}
 
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Generate random data from a normal distribution}
+\CommentTok{\# Generate data from }
+\CommentTok{\# a normal distribution}
 \FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
-\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{, }\AttributeTok{mean =} \DecValTok{0}\NormalTok{, }\AttributeTok{sd =} \DecValTok{1}\NormalTok{)}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\AttributeTok{mean=}\DecValTok{0}\NormalTok{,}\AttributeTok{sd=}\DecValTok{1}\NormalTok{)}
 \CommentTok{\# Shapiro{-}Wilk normality test}
 \FunctionTok{shapiro.test}\NormalTok{(data)}
 \end{Highlighting}
@@ -1104,6 +1107,60 @@ sample size \(n\) is large.
 ## data:  data
 ## W = 0.99388, p-value = 0.9349
 \end{verbatim}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Why do we care about \textbf{skew} and
+\textbf{kurtosis}?}
+\phantomsection\label{why-do-we-care-about-skew-and-kurtosis-2}
+\begin{itemize}
+\tightlist
+\item
+  We can examine all of these different descriptors individually, but
+  the easiest and most complete way to test for normality is to test the
+  \textbf{goodness of fit} for a normal distribution.
+\end{itemize}
+
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Generate data from }
+\CommentTok{\# a normal distribution}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\AttributeTok{mean=}\DecValTok{0}\NormalTok{,}\AttributeTok{sd=}\DecValTok{1}\NormalTok{)}
+\CommentTok{\# Shapiro{-}Wilk normality test}
+\FunctionTok{shapiro.test}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  data
+## W = 0.99388, p-value = 0.9349
+\end{verbatim}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  Interpretate shapiro.tets:
+\end{itemize}
+
+\textbf{Larger p-value (p \textgreater{} 0.05)}: Fail to reject the null
+hypothesis; the data is likely normally distributed.
+
+\textbf{Smaller p-value (p \textless{} 0.05)}: Reject the null
+hypothesis; the data is not normally distributed.
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{What to do about non-normal data?}

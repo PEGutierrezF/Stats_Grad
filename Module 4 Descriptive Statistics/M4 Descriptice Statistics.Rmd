@@ -542,13 +542,55 @@ ggplot(data, aes(x = x)) +
 
 ## Why do we care about	**skew** and **kurtosis**?  
 - We can examine all of these different descriptors individually, but the easiest and most complete way to test for normality is to test the **goodness of fit** for a normal distribution.  
+
+::: columns
+:::: column
 ```{r}
-# Generate random data from a normal distribution
+# Generate data from 
+# a normal distribution
 set.seed(123)
-data <- rnorm(100, mean = 0, sd = 1)
+data <- rnorm(100,mean=0,sd=1)
 # Shapiro-Wilk normality test
 shapiro.test(data)
 ```
+::::
+
+:::: column
+
+::::
+:::
+
+
+## Why do we care about	**skew** and **kurtosis**?  
+- We can examine all of these different descriptors individually, but the easiest and most complete way to test for normality is to test the **goodness of fit** for a normal distribution.  
+
+::: columns
+:::: column
+```{r}
+# Generate data from 
+# a normal distribution
+set.seed(123)
+data <- rnorm(100,mean=0,sd=1)
+# Shapiro-Wilk normality test
+shapiro.test(data)
+```
+::::
+
+
+:::: column
+
+- Interpretate shapiro.tets:
+
+<br>
+
+**Larger p-value (p > 0.05)**: Fail to reject the null hypothesis; the data is likely normally distributed.  
+
+<br>
+
+**Smaller p-value (p < 0.05)**: Reject the null hypothesis; the data is not normally distributed.  
+
+::::
+:::
 
 
 ## What to do about non-normal data?
