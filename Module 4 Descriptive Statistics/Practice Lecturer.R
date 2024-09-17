@@ -20,7 +20,7 @@ View(fish)
 #pivot gives us more summary statistics. 
 pivot(fish, c(IQR, skew, kurtosis, mean, sd, var), Length)
 
-
+?pivot
 ?c
 
 # Fish is our data frame and Length is the column
@@ -28,9 +28,10 @@ quantiles <- quantile(fish$Length, probs = c(0.25, 0.75))
 # Display the results
 quantiles
 
-quantile(fish$Length,prob=(0.25))
-quantile(fish$Length,prob=(0.75))
+q25 <- quantile(fish$Length,prob=(0.25))
+q75 <- quantile(fish$Length,prob=(0.75))
 
+iqr <- q75 - q25
 # Plots -------------------------------------------------------------------
 #density plot - does it look normal?
 ggplot(data = fish, mapping = aes(x = Length)) + geom_density()
