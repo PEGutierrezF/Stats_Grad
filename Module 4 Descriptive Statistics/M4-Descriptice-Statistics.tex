@@ -238,6 +238,8 @@
 
 \begin{frame}{Box and Whisker Basics}
 \phantomsection\label{box-and-whisker-basics}
+\small
+
 \begin{itemize}
 \tightlist
 \item
@@ -254,12 +256,12 @@
   values within 1.5 times the IQR from \(Q1\) and \(Q3\).
 \item
   \textbf{Data points outside the whiskers} are considered potential
-  outliers.
+  outliers. ~
 \end{itemize}
 
 \begin{figure}
 
-{\centering \includegraphics[width=0.6\linewidth]{fig/box} 
+{\centering \includegraphics[width=0.5\linewidth]{fig/box} 
 
 }
 
@@ -431,6 +433,8 @@
 
 \begin{frame}{When to use What}
 \phantomsection\label{when-to-use-what}
+\small
+
 \begin{itemize}
 \tightlist
 \item
@@ -463,7 +467,7 @@
 \begin{itemize}
 \tightlist
 \item
-  Use the \textbf{Mean} the rest of the time.
+  Use the \textbf{Mean} the rest of the time.\\
 \end{itemize}
 
 \begin{figure}
@@ -1127,6 +1131,8 @@ sample size \(n\) is large.
 
 \begin{columns}[T]
 \begin{column}{0.48\textwidth}
+\tiny
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Generate data from }
@@ -1145,20 +1151,92 @@ sample size \(n\) is large.
 ## data:  data
 ## W = 0.99388, p-value = 0.9349
 \end{verbatim}
+
+\normalsize
 \end{column}
 
 \begin{column}{0.48\textwidth}
+\small
+
+\begin{itemize}
+\item
+  Interpretate shapiro.tets:
+
+  \begin{itemize}
+  \item
+    Null hypothesis (H\textsubscript{0}): The data is normally
+    distributed
+  \item
+    Alternative hypothesis (H\textsubscript{1}): The data is not
+    normally distributed.
+  \end{itemize}
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Why do we care about \textbf{skew} and
+\textbf{kurtosis}?}
+\phantomsection\label{why-do-we-care-about-skew-and-kurtosis-3}
 \begin{itemize}
 \tightlist
 \item
-  Interpretate shapiro.tets:
+  We can examine all of these different descriptors individually, but
+  the easiest and most complete way to test for normality is to test the
+  \textbf{goodness of fit} for a normal distribution.
 \end{itemize}
 
-\textbf{Larger p-value (p \textgreater{} 0.05)}: Fail to reject the null
-hypothesis; the data is likely normally distributed.
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\tiny
 
-\textbf{Smaller p-value (p \textless{} 0.05)}: Reject the null
-hypothesis; the data is not normally distributed.
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Generate data from }
+\CommentTok{\# a normal distribution}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{100}\NormalTok{,}\AttributeTok{mean=}\DecValTok{0}\NormalTok{,}\AttributeTok{sd=}\DecValTok{1}\NormalTok{)}
+\CommentTok{\# Shapiro{-}Wilk normality test}
+\FunctionTok{shapiro.test}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  data
+## W = 0.99388, p-value = 0.9349
+\end{verbatim}
+
+\normalsize
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\small
+
+\begin{itemize}
+\item
+  Interpretate shapiro.tets:
+
+  \begin{itemize}
+  \item
+    Null hypothesis (H\textsubscript{0}): The data is normally
+    distributed
+  \item
+    Alternative hypothesis (H\textsubscript{1}): The data is not
+    normally distributed.
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\item
+  \textbf{Larger p-value (p \textgreater{} 0.05)}: Fail to reject the
+  null hypothesis; the data is likely normally distributed.
+\item
+  \textbf{Smaller p-value (p \textless{} 0.05)}: Reject the null
+  hypothesis; the data is not normally distributed. \normalsize
+\end{itemize}
 \end{column}
 \end{columns}
 \end{frame}

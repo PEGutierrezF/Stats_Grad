@@ -79,15 +79,16 @@ knitr::include_graphics("fig/Histogram.jpg")
 ```
 
 ## Box and Whisker Basics
+\small
 - Box plots are used to visualize the distribution of continuous data, showing the **median**, **interquartile range (IQR)**, and **potential outliers**.
 - The **box** represents the middle 50% of the data (from the first quartile \( Q1 \) to the third quartile \( Q3 \)).
 - The **line inside the box** shows the median (50th percentile).
 - **Whiskers** extend from the box to the smallest and largest values within 1.5 times the IQR from \( Q1 \) and \( Q3 \).
 - **Data points outside the whiskers** are considered potential outliers.
-  
+\ 
 <br>
 
-```{r, echo=FALSE, fig.cap="", out.width = '60%', fig.align='center'}
+```{r, echo=FALSE, fig.cap="", out.width = '50%', fig.align='center'}
 knitr::include_graphics("fig/box.jpg")
 ```
 
@@ -157,6 +158,7 @@ knitr::include_graphics("fig/quartiles.jpg")
 ```
                      
 ## When to use What
+\small
 - Use the **Mode** when the data are categorical:  
   - **Mode**: is the value that occurs most frequently in your data.  
   - This is because having the same value occur for measurements with many significant digits is highly unlikely.
@@ -169,7 +171,7 @@ knitr::include_graphics("fig/quartiles.jpg")
 <br>
 
 - Use the **Mean** the rest of the time. 
-
+\
   
 ```{r, echo=FALSE, fig.cap="", out.width = '25%'}
 knitr::include_graphics("fig/CnetralTendency.jpg")
@@ -566,6 +568,7 @@ shapiro.test(data)
 
 ::: columns
 :::: column
+\tiny
 ```{r}
 # Generate data from 
 # a normal distribution
@@ -574,20 +577,54 @@ data <- rnorm(100,mean=0,sd=1)
 # Shapiro-Wilk normality test
 shapiro.test(data)
 ```
+\normalsize
 ::::
 
 
 :::: column
-
+\small
 - Interpretate shapiro.tets:
 
+  - Null hypothesis (H~0~): The data is normally distributed  
+
+  - Alternative hypothesis (H~1~): The data is not normally distributed.  
+
+<br>
+::::
+:::
+
+
+## Why do we care about	**skew** and **kurtosis**?  
+- We can examine all of these different descriptors individually, but the easiest and most complete way to test for normality is to test the **goodness of fit** for a normal distribution.  
+
+::: columns
+:::: column
+\tiny
+```{r}
+# Generate data from 
+# a normal distribution
+set.seed(123)
+data <- rnorm(100,mean=0,sd=1)
+# Shapiro-Wilk normality test
+shapiro.test(data)
+```
+\normalsize
+::::
+
+
+:::: column
+\small
+- Interpretate shapiro.tets:
+
+  - Null hypothesis (H~0~): The data is normally distributed  
+
+  - Alternative hypothesis (H~1~): The data is not normally distributed.  
+
 <br>
 
-**Larger p-value (p > 0.05)**: Fail to reject the null hypothesis; the data is likely normally distributed.  
+- **Larger p-value (p > 0.05)**: Fail to reject the null hypothesis; the data is likely normally distributed.  
 
-<br>
-
-**Smaller p-value (p < 0.05)**: Reject the null hypothesis; the data is not normally distributed.  
+- **Smaller p-value (p < 0.05)**: Reject the null hypothesis; the data is not normally distributed. \normalsize
 
 ::::
 :::
