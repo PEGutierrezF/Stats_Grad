@@ -1,6 +1,6 @@
 ### Descriptive Stats Wednesday Demonstration ###
-### NR 2990 
-### Fall 2023
+### NR 5990B 
+### Fall 2024
 
 #installing lessR
 install.packages("lessR")
@@ -13,6 +13,8 @@ library(lessR)
 #open up our data
 fish <- read_csv('~/Desktop/NR2990/fish_data.csv')
 
+fish <- read.csv('fish_data.csv')
+
 View(fish)
 
 #pivot gives us more summary statistics. 
@@ -21,6 +23,13 @@ pivot(fish, c(IQR, skew, kurtosis, mean, sd, var), Length)
 
 ?c
 
+# Fish is our data frame and Length is the column
+quantiles <- quantile(fish$Length, probs = c(0.25, 0.75))
+# Display the results
+quantiles
+
+
+# Plots -------------------------------------------------------------------
 #density plot - does it look normal?
 ggplot(data = fish, mapping = aes(x = Length)) + geom_density()
 
