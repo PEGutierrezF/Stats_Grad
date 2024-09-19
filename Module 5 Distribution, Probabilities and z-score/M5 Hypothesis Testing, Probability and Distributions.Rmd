@@ -12,6 +12,7 @@ header-includes:
   - \usepackage{graphicx}
   - \logo{\ifnum\thepage>1\hfill\includegraphics[width=1cm]{logo}\fi}
   - \titlegraphic{\includegraphics[width=3cm]{logo}}
+  - \newcommand{\theHtable}{\thetable}
 ---
 
 ## Normality, Probability and Significance
@@ -158,7 +159,6 @@ knitr::include_graphics("figs/fisher.png")
 ::::
 
 :::: column
-
 ```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=3, fig.height=4.5}
 library(ggplot2)
 library(dplyr)
@@ -203,6 +203,140 @@ grid.arrange(p1, p2, p3, ncol = 1)
 
 :::
 
+
+## Example
+
+
+## Example: Probability of a Cat Living to a Certain Age
+- The lifespan of domestic cats is normally distributed with a mean of 15.7 years and a standard deviation of 1.6 years. 
+
+::: columns
+
+:::: column
+\vspace{1cm}
+- **Question**: What is the probability that a cat will live to be as old as Allison’s 18-year-old cat?
+
+<br>
+
+- We're looking for the probability P(X > 18), which represents the probability that a cat will live longer than 18 years.
+
+::::
+
+:::: column
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.cap="", fig.width=3, fig.height=3.5}
+# Load necessary libraries
+library(ggplot2)
+
+# Given values
+mean_lifespan <- 15.7
+sd_lifespan <- 1.6
+age_allison_cat <- 18
+
+# Define the Z-score
+z_score <- (age_allison_cat - mean_lifespan) / sd_lifespan
+
+# Generate a sequence of x-values (ages) covering the normal distribution
+x_values <- seq(mean_lifespan - 4 * sd_lifespan, mean_lifespan + 4 * sd_lifespan, length = 1000)
+
+# Calculate the density for each x-value
+density <- dnorm(x_values, mean = mean_lifespan, sd = sd_lifespan)
+
+# Create a data frame for ggplot
+df <- data.frame(x = x_values, density = density)
+
+# Define the critical Z-score for shading
+shade_df <- df[df$x >= age_allison_cat, ]
+
+# Plot the normal distribution with the shaded area for P(X > 18)
+ggplot(df, aes(x = x, y = density)) +
+  geom_line(color = "blue", size = 1) +  # Plot the normal distribution
+  geom_area(data = shade_df, aes(x = x, y = density), fill = "red", alpha = 0.4) +  # Shade the area P(X > 18)
+  geom_vline(xintercept = age_allison_cat, linetype = "dashed", color = "black") +  # Add a dashed line at Allison's cat's age
+  labs(title = "Probability of a Cat Living to be as Old as Allison's Cat",
+       subtitle = paste0("Mean = 15.7, SD = 1.6, Age = ", age_allison_cat),
+       x = "Cat's Age",
+       y = "Density") +
+  theme_minimal()
+```
+
+::::
+
+:::
+
+
+## **Steps 1**:
+-  **Calculate the Z-score**:
+
+::: columns
+:::: column
+
+   \[
+   Z = \frac{X - \mu}{\sigma}
+   \]
+
+- where:
+   - \( X \) is the value (18 years),
+   - \( \mu \) is the mean (15.7 years),
+   - \( \sigma \) is the standard deviation (1.6 years).
+
+::::
+
+:::: column
+
+\vspace{1cm}
+
+   \[
+   Z = \frac{18 - 15.7}{1.6} = \frac{2.3}{1.6} \approx 1.4375
+   \]
+
+::::
+
+:::
+
+
+
+## Step 2. 
+- Find the Probability:
+
+```{r}
+# Given values
+mean_lifespan <- 15.7
+sd_lifespan <- 1.6
+age_allison_cat <- 18
+# Calculate Z-score
+z_score <- (age_allison_cat - mean_lifespan) / sd_lifespan
+# Find the probability that a cat lives longer than 18 years
+probability <- 1 - pnorm(z_score)
+probability
+```
+
+- Thus, the probability that a cat will live to be as old as or older than 18 years is approximately **0.0749** or **7.49%**.
+
+
+
+## Step 2. 
+- Find the Probability:
+
+```{r}
+# Given values
+mean_lifespan <- 15.7
+sd_lifespan <- 1.6
+age_allison_cat <- 18
+# Calculate Z-score
+z_score <- (age_allison_cat - mean_lifespan) / sd_lifespan
+# Find the probability that a cat lives longer than 18 years
+probability <- 1 - pnorm(z_score)
+probability
+```
+
+- This example walks you through calculating the probability in R using `pnorm()`, which calculates the cumulative probability under the normal distribution.
+
+
+
+
+
+
+
 ## What is a P-Value?
 - **Definition**: The p-value is the probability of obtaining a result at least as extreme as the one observed, assuming the null hypothesis is true.
 
@@ -224,13 +358,36 @@ grid.arrange(p1, p2, p3, ncol = 1)
 
 ## Hypothesis Testing Summary
 
-| Scenario | Null Hypothesis is True | Null Hypothesis is False |
-|----------|--------------------------|---------------------------|
-| **Reject Null Hypothesis** | **Type I Error**: Incorrectly rejecting the null hypothesis when it is true. | **Correct Decision**: Correctly rejecting the null hypothesis when it is false. |
-| **Fail to Reject Null Hypothesis** | **Correct Decision**: Correctly not rejecting the null hypothesis when it is true. | **Type II Error**: Incorrectly failing to reject the null hypothesis when it is false. |
+| Scenario                      | Null Hypothesis is True                                         | Null Hypothesis is False                                          |
+|-------------------------------|-----------------------------------------------------------------|--------------------------------------------------------------------|
+| **Reject Null Hypothesis**    | **Type I Error**: Incorrectly rejecting the null hypothesis.    | **Correct Decision**: Correctly rejecting the null hypothesis.    |
+| **Fail to Reject Null Hypothesis** | **Correct Decision**: Correctly not rejecting the null hypothesis. | **Type II Error**: Incorrectly failing to reject the null hypothesis. |
 
-**Explanation**:
-- **Type I Error**: False positive. We conclude there is an effect or difference when there is none.
-- **Type II Error**: False negative. We fail to detect an effect or difference when one exists.
-- **Correct Decisions**: Accurately concluding the presence or absence of an effect or difference based on the truth of the null hypothesis.
 
+## Hypothesis Testing Summary
+
+| Scenario                      | Null Hypothesis is True                                         | Null Hypothesis is False                                          |
+|-------------------------------|-----------------------------------------------------------------|--------------------------------------------------------------------|
+| **Reject Null Hypothesis**    | **Type I Error**: Incorrectly rejecting the null hypothesis.    | **Correct Decision**: Correctly rejecting the null hypothesis.    |
+| **Fail to Reject Null Hypothesis** | **Correct Decision**: Correctly not rejecting the null hypothesis. | **Type II Error**: Incorrectly failing to reject the null hypothesis. |
+
+<br> 
+\small
+- Failing to reject the null hypothesis means our data didn’t show a significant effect. It doesn’t prove the null hypothesis is true; it just means we didn’t find strong evidence against it.
+\
+
+## 
+- **Explanation**:  
+
+  - **Type I Error**: False positive. We conclude there is an effect or difference when there is none.  
+
+<br>
+
+  - **Type II Error**: False negative. We fail to detect an effect or difference when one exists.
+
+<br>
+
+  - **Correct Decisions**: Accurately concluding the presence or absence of an effect or difference based on the truth of the null hypothesis.
+
+
+##  
