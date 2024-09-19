@@ -220,4 +220,17 @@ grid.arrange(p1, p2, p3, ncol = 1)
 
   - A large p-value suggests that the observed result is consistent with the null hypothesis.
   
-  
+##
+
+## Hypothesis Testing Summary
+
+| Scenario | Null Hypothesis is True | Null Hypothesis is False |
+|----------|--------------------------|---------------------------|
+| **Reject Null Hypothesis** | **Type I Error**: Incorrectly rejecting the null hypothesis when it is true. | **Correct Decision**: Correctly rejecting the null hypothesis when it is false. |
+| **Fail to Reject Null Hypothesis** | **Correct Decision**: Correctly not rejecting the null hypothesis when it is true. | **Type II Error**: Incorrectly failing to reject the null hypothesis when it is false. |
+
+**Explanation**:
+- **Type I Error**: False positive. We conclude there is an effect or difference when there is none.
+- **Type II Error**: False negative. We fail to detect an effect or difference when one exists.
+- **Correct Decisions**: Accurately concluding the presence or absence of an effect or difference based on the truth of the null hypothesis.
+

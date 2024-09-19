@@ -457,4 +457,42 @@ which chance causes have introduced into their experimental results.''
 \end{itemize}
 \end{frame}
 
+\begin{frame}{}
+\phantomsection\label{section}
+\end{frame}
+
+\begin{frame}{Hypothesis Testing Summary}
+\phantomsection\label{hypothesis-testing-summary}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1587}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4127}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4286}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Scenario
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Null Hypothesis is True
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Null Hypothesis is False
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\textbf{Reject Null Hypothesis} & \textbf{Type I Error}: Incorrectly
+rejecting the null hypothesis when it is true. & \textbf{Correct
+Decision}: Correctly rejecting the null hypothesis when it is false. \\
+\textbf{Fail to Reject Null Hypothesis} & \textbf{Correct Decision}:
+Correctly not rejecting the null hypothesis when it is true. &
+\textbf{Type II Error}: Incorrectly failing to reject the null
+hypothesis when it is false. \\
+\bottomrule\noalign{}
+\end{longtable}
+
+\textbf{Explanation}: - \textbf{Type I Error}: False positive. We
+conclude there is an effect or difference when there is none. -
+\textbf{Type II Error}: False negative. We fail to detect an effect or
+difference when one exists. - \textbf{Correct Decisions}: Accurately
+concluding the presence or absence of an effect or difference based on
+the truth of the null hypothesis.
+\end{frame}
+
 \end{document}
