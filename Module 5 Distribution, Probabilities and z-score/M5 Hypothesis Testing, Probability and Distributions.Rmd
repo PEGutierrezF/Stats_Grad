@@ -138,17 +138,20 @@ knitr::include_graphics("figs/fisher.png")
 
 
 ## Finding Probabilities for Z-Scores
-
+ 
 ::: columns
 
+
 :::: column
+\vspace{1cm}
+
 - **P(X < z)**: Denotes the probability of a value falling **less than** a given Z-score (\( z \)).
 
-<br>
+\vspace{1cm}
 
 - **P(X > z)**: Denotes the probability of a value falling **above** a given Z-score (\( z \)).
 
-<br>
+\vspace{1cm}
 
 - **P(z1 < X < z2)**: Denotes the probability of a value falling **between** two different Z-scores (\( z1 \) and \( z2 \)).
 
@@ -156,7 +159,7 @@ knitr::include_graphics("figs/fisher.png")
 
 :::: column
 
-```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=3, fig.height=5}
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=3, fig.height=4.5}
 library(ggplot2)
 library(dplyr)
 
@@ -212,6 +215,9 @@ grid.arrange(p1, p2, p3, ncol = 1)
 - Interpretation:
 
   - A small p-value indicates that the observed result is unlikely under the null hypothesis, suggesting evidence against it.  
+  
+<br>
+
   - A large p-value suggests that the observed result is consistent with the null hypothesis.
   
   
