@@ -31,6 +31,9 @@ header-includes:
 ## Hypothesis Testing 
 - All inferential tests use a formula that calculates a **test statistic**, quantifying the relationship or difference you are testing.
 
+# Independent t-test
+
+\ t = \frac{\bar{X_1} - \bar{X_2}}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} \
 
 ## Hypothesis Testing 
 - We use the **normal distribution curve** to find the **probability** of obtaining a **test statistic** as extreme as the one observed, assuming the **Null Hypothesis is true**.

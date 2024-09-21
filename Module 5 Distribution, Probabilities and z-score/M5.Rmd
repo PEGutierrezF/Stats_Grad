@@ -1,0 +1,40 @@
+---
+title: "Hypothesis Testing, Probability and Distributions"
+author: "Pablo E. GutiÃ©rrez-Fonseca"
+date: 'Fall 2024'
+tables: true
+graphics: yes
+output:   
+  beamer_presentation:
+    theme: "Boadilla"
+    keep_tex: true
+header-includes: 
+  - \usepackage{graphicx}
+  - \logo{\ifnum\thepage>1\hfill\includegraphics[width=1cm]{logo}\fi}
+  - \titlegraphic{\includegraphics[width=3cm]{logo}}
+  - \newcommand{\theHtable}{\thetable}
+---
+
+
+
+## Normality, Probability and Significance
+- Why did we focus on normality?
+  - The **normal distribution** is a key tool for determining the probability of a given value occurring in a population that follows this distribution.
+
+<br>
+
+- It allows us to make inferences about a population by calculating how likely it is for data to fall within certain ranges.
+
+<br>
+
+- Many statistical tests assume data follows a **normal distribution**, which helps in determining **significance** and making reliable conclusions.
+
+
+## Hypothesis Testing 
+- All inferential tests use a formula that calculates a **test statistic**, quantifying the relationship or difference you are testing.
+- The variance \( \sigma^2 \) is calculated as:
+```{r echo=FALSE, results='asis'}
+cat("$$t = \\frac{\\bar{X_1} - \\bar{X_2}}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$$")
+
+```
+
