@@ -32,9 +32,38 @@ header-includes:
 
 ## Hypothesis Testing 
 - All inferential tests use a formula that calculates a **test statistic**, quantifying the relationship or difference you are testing.
-- The variance \( \sigma^2 \) is calculated as:
+
+::: columns
+:::: column
+\vspace{1cm}
+- Independent t-test:
 ```{r echo=FALSE, results='asis'}
 cat("$$t = \\frac{\\bar{X_1} - \\bar{X_2}}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$$")
 
 ```
 
+  - Dependent t-test
+```{r echo=FALSE, results='asis'}
+cat("$$t = \\frac{\\bar{D}}{\\frac{s_D}{\\sqrt{n}}}$$")
+```
+
+  - One sample z-test
+```{r echo=FALSE, results='asis'}
+cat("$$z = \\frac{\\bar{X} - \\mu}{\\frac{\\sigma}{\\sqrt{n}}}$$")
+```
+  
+::::
+
+:::: column
+\vspace{1cm}
+- F-test (ANOVA)
+```{r echo=FALSE, results='asis'} 
+cat("$$F = \\frac{MST}{MSE}$$")
+```
+
+- Pearson correlation
+```{r echo=FALSE, results='asis'} 
+cat("$$r = \\frac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum (x_i - \\bar{x})^2 \\sum (y_i - \\bar{y})^2}}$$")
+```
+::::
+:::

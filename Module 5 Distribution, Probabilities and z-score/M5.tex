@@ -164,10 +164,39 @@
   All inferential tests use a formula that calculates a \textbf{test
   statistic}, quantifying the relationship or difference you are
   testing.
-\item
-  The variance \(\sigma^2\) is calculated as:
-  \[t = \frac{\bar{X_1} - \bar{X_2}}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\]
 \end{itemize}
+
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\vspace{1cm}
+
+\begin{itemize}
+\item
+  Independent t-test:
+  \[t = \frac{\bar{X_1} - \bar{X_2}}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\]
+
+  \begin{itemize}
+  \item
+    Dependent t-test \[t = \frac{\bar{D}}{\frac{s_D}{\sqrt{n}}}\]
+  \item
+    One sample z-test
+    \[z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}\]
+  \end{itemize}
+\end{itemize}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\vspace{1cm}
+
+\begin{itemize}
+\item
+  F-test (ANOVA) \[F = \frac{MST}{MSE}\]
+\item
+  Pearson correlation
+  \[r = \frac{\sum (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum (x_i - \bar{x})^2 \sum (y_i - \bar{y})^2}}\]
+\end{itemize}
+\end{column}
+\end{columns}
 \end{frame}
 
 \end{document}
