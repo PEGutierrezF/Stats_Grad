@@ -29,14 +29,17 @@ header-includes:
 
 - Many statistical tests assume data follows a **normal distribution**, which helps in determining **significance** and making reliable conclusions.
 
+
 ## Normal distribution
 - The normal distribution has two parameters (two numerical descriptive measures), the mean () and the standard deviation ().
 
 <br>
 
 - If X is a quantity to be measured that has a normal distribution with mean () and standard deviation (), we designate this by writing
-X  N(,)
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2.5, fig.height=2.5}
+
+::: columns
+:::: column
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2, fig.height=2}
 library(ggplot2)
 mean <- 100
 sd <- 15
@@ -44,8 +47,16 @@ x <- seq(mean - 4*sd, mean + 4*sd, by = 0.1)
 y <- dnorm(x, mean = mean, sd = sd)
 ggplot(data.frame(x, y), aes(x = x, y = y)) +
   geom_line(color = "blue", size = 1.2) +
-  labs(title = "", x = "Values", y = "Density")
+  geom_vline(xintercept = mean, color = "red", linetype = "dashed") + geom_vline(xintercept = mean + sd, color = "green", linetype = "dotted") +  geom_vline(xintercept = mean - sd, color = "green", linetype = "dotted") +  labs(title = "", x = "Values", y = "Density")
 ```
+::::
+
+:::: column
+X  N(,)
+::::
+
+:::
+
 
 ## Hypothesis Testing 
 - All inferential tests use a formula that calculates a **test statistic**, quantifying the relationship or difference you are testing.
