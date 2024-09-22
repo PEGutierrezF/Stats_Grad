@@ -1,6 +1,6 @@
 ---
 title: "Hypothesis Testing, Probability and Distributions"
-author: "Pablo E. Gutiérrez-Fonseca"
+author: "Pablo E. GutiÃ©rrez-Fonseca"
 date: 'Fall 2024'
 tables: true
 graphics: yes
@@ -15,6 +15,8 @@ header-includes:
   - \newcommand{\theHtable}{\thetable}
 ---
 
+
+
 ## Normality, Probability and Significance
 - Why did we focus on normality?
   - The **normal distribution** is a key tool for determining the probability of a given value occurring in a population that follows this distribution.
@@ -27,13 +29,63 @@ header-includes:
 
 - Many statistical tests assume data follows a **normal distribution**, which helps in determining **significance** and making reliable conclusions.
 
+## Normal distribution
+- The normal distribution has two parameters (two numerical descriptive measures), the mean () and the standard deviation ().
+
+<br>
+
+- If X is a quantity to be measured that has a normal distribution with mean () and standard deviation (), we designate this by writing
+X  N(,)
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2.5, fig.height=2.5}
+library(ggplot2)
+mean <- 100
+sd <- 15
+x <- seq(mean - 4*sd, mean + 4*sd, by = 0.1)
+y <- dnorm(x, mean = mean, sd = sd)
+ggplot(data.frame(x, y), aes(x = x, y = y)) +
+  geom_line(color = "blue", size = 1.2) +
+  labs(title = "", x = "Values", y = "Density")
+```
 
 ## Hypothesis Testing 
 - All inferential tests use a formula that calculates a **test statistic**, quantifying the relationship or difference you are testing.
 
-# Independent t-test
+::: columns
+:::: column
+\small
+- Independent t-test:
+```{r echo=FALSE, results='asis'}
+cat("$$t = \\frac{\\bar{X_1} - \\bar{X_2}}{\\sqrt{\\frac{s_1^2}{n_1} + \\frac{s_2^2}{n_2}}}$$")
 
-\ t = \frac{\bar{X_1} - \bar{X_2}}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} \
+```
+
+  - Dependent t-test
+```{r echo=FALSE, results='asis'}
+cat("$$t = \\frac{\\bar{D}}{\\frac{s_D}{\\sqrt{n}}}$$")
+```
+
+  - One sample z-test
+```{r echo=FALSE, results='asis'}
+cat("$$z = \\frac{\\bar{X} - \\mu}{\\frac{\\sigma}{\\sqrt{n}}}$$")
+```
+\small  
+::::
+
+:::: column
+\small
+- F-test (ANOVA)
+```{r echo=FALSE, results='asis'} 
+cat("$$F = \\frac{MST}{MSE}$$")
+```
+
+- Pearson correlation
+```{r echo=FALSE, results='asis'} 
+cat("$$r = \\frac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum (x_i - \\bar{x})^2 \\sum (y_i - \\bar{y})^2}}$$")
+```
+\
+::::
+:::
+
 
 ## Hypothesis Testing 
 - We use the **normal distribution curve** to find the **probability** of obtaining a **test statistic** as extreme as the one observed, assuming the **Null Hypothesis is true**.
@@ -41,6 +93,8 @@ header-includes:
 
 ## Hypothesis Testing 
 - If the **probability** (*_the area under the curve_*) of obtaining a test statistic that extreme is less than our chosen significance threshold (*_usually 0.05_*), we conclude that the result is **statistically significant**.
+
+
 
 
 ## Hypothesis Testing 
@@ -376,7 +430,7 @@ probability
 
 <br> 
 \small
-- Failing to reject the null hypothesis means our data didn’t show a significant effect. It doesn’t prove the null hypothesis is true; it just means we didn’t find strong evidence against it.
+- Failing to reject the null hypothesis means our data didn't show a significant effect. It doesn't prove the null hypothesis is true; it just means we didn't find strong evidence against it.
 \
 
 ## 
