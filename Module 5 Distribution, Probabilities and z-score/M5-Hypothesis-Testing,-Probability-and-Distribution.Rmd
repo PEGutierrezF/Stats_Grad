@@ -40,6 +40,7 @@ header-includes:
 :::: column
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2, fig.height=2}
 library(ggplot2)
+library(dplyr)
 mean <- 100
 sd <- 15
 x <- seq(mean - 4*sd, mean + 4*sd, by = 0.1)
@@ -198,11 +199,10 @@ ggplot(data, aes(x = x, y = y)) +
   geom_vline(xintercept = test_stat, color = "red", linetype = "dashed", size = 1.2) +  # Mark the observed test statistic
   geom_ribbon(data = subset(data, x >= test_stat), aes(ymin = 0, ymax = y), fill = "lightblue", alpha = 0.5) +  # Shade area beyond the test statistic
   labs(title = "", x = "Test Statistic", y = "Density") +
-  annotate("text", x = test_stat + 0.3, y = 0.05, label = "Observed Test Statistic", color = "red", angle = 90, vjust = 3.5, size=4) +
+  annotate("text", x = test_stat + 0.3, y = 0.05, label = "Observed Test Statistic", color = "red", angle = 90, vjust = 3.5, size=3) +
   theme_minimal() +
-  theme(
-    axis.title.x = element_text(size = 14),
-    axis.title.y = element_text(size = 14),
+  theme(axis.title.x = element_text(size = 8),
+    axis.title.y = element_text(size = 8),
     plot.title = element_text(hjust = 0.5)
   )
 
@@ -245,8 +245,8 @@ ggplot(data, aes(x = x, y = y)) +
   annotate("text", x = test_stat + 1.2, y = 0.01, label = "p-value < 0.05", color = "black", size = 3) +
   theme_minimal() +
   theme(
-    axis.title.x = element_text(size = 14),
-    axis.title.y = element_text(size = 14),
+    axis.title.x = element_text(size = 6),
+    axis.title.y = element_text(size = 6),
     plot.title = element_text(hjust = 0.5)
   )
 
@@ -304,19 +304,38 @@ knitr::include_graphics("figs/fisher.png")
 -----------------------------------------------------------------------------------------------------------------
 
 ## What is Significance?
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
 - A statistical result is **significant** if it is **unlikely to have occurred by chance**.
 
+<br>
 
-
-- Even though there is natural variability in the population, the probability of observing a value this extreme due to random variability is **low** (though not impossible).
+- Despite natural variability in the population, the probability of observing a value this extreme due to random variability is **low** (though not impossible).
 
 <br>
 
 - We use probabilities (**p-values**) and an **alpha threshold (commonly 0.05)** to determine whether a result is significant.
 
+:::
+::: {.column width="50%"}
+
+\vspace{1.5cm}
+```{r, echo=FALSE, fig.cap="", out.width = '100%', fig.align='center'}
+knitr::include_graphics("figs/plot2.png")
+```
+
+:::
+::::::::::::::
+
 -----------------------------------------------------------------------------------------------------------------
 
 ## What is Significance?
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
 - Significance refers to the risk of rejecting the null hypothesis when it is actually true.
 
 <br>
@@ -330,6 +349,18 @@ knitr::include_graphics("figs/fisher.png")
 <br>
 
 - A p-value of 0.01 (1%) means there's a 1% chance the result happened by chance.
+
+:::
+::: {.column width="50%"}
+
+\vspace{1.5cm}
+```{r, echo=FALSE, fig.cap="", out.width = '70%', fig.align='center'}
+knitr::include_graphics("figs/significance.png")
+```
+
+
+:::
+::::::::::::::
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -396,9 +427,6 @@ knitr::include_graphics("figs/fisher.png")
 
 :::: column
 ```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=3, fig.height=4.5}
-library(ggplot2)
-library(dplyr)
-
 # Create a data frame for the standard normal distribution
 df <- data.frame(x = seq(-4, 4, length.out = 1000))
 df$y <- dnorm(df$x)
@@ -439,10 +467,221 @@ grid.arrange(p1, p2, p3, ncol = 1)
 
 :::
 
+-----------------------------------------------------------------------------------------------------------------
 
 ## Example
 
+-----------------------------------------------------------------------------------------------------------------
 
+## Example
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+\vspace{1.5cm}
+- What percent of the area under the curve falls below a z-score of 0.76? 
+
+<br>
+
+- P (z<0.76)
+
+:::
+::: {.column width="50%"}
+\vspace{1cm}
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=3, fig.height=3.5}
+# Create data for the normal distribution
+z_values <- seq(-3, 3, length.out = 100)
+y_values <- dnorm(z_values)
+
+# Create a data frame
+data <- data.frame(z = z_values, density = y_values)
+
+# Plot the normal distribution and shade the area below z = 0.76
+ggplot(data, aes(x = z, y = density)) +
+  geom_line() +
+  geom_area(data = filter(data, z <= 0.76), fill = "blue", alpha = 0.5) +
+  geom_vline(xintercept = 0.76, linetype = "dashed", color = "red") +
+  annotate("text", x = 2, y = 0.05, label = "P(z < 0.76)", color = "blue", size = 5) +
+  labs(title = "Standard Normal Distribution",
+       x = "Z-score",
+       y = "Density") +
+  theme_minimal()
+
+```
+
+:::
+::::::::::::::
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+## Example
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+\vspace{1.5cm}
+- What percent of the area under the curve falls below a z-score of 0.76? 
+
+<br>
+
+- P (z<0.76)
+
+```{r}
+# Calculate the cumulative 
+# probability for z = 0.76
+z_score <- 0.76
+p_value <- pnorm(z_score)
+# Convert to percentage
+percent_area <- p_value * 100
+# Print the result
+percent_area
+```
+
+:::
+::: {.column width="50%"}
+\vspace{1cm}
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=3, fig.height=3.5}
+# Create data for the normal distribution
+z_values <- seq(-3, 3, length.out = 100)
+y_values <- dnorm(z_values)
+
+# Create a data frame
+data <- data.frame(z = z_values, density = y_values)
+
+# Plot the normal distribution and shade the area below z = 0.76
+ggplot(data, aes(x = z, y = density)) +
+  geom_line() +
+  geom_area(data = filter(data, z <= 0.76), fill = "blue", alpha = 0.5) +
+  geom_vline(xintercept = 0.76, linetype = "dashed", color = "red") +
+  annotate("text", x = 2, y = 0.05, label = "P(z < 0.76)", color = "blue", size = 5) +
+  labs(title = "Standard Normal Distribution",
+       x = "Z-score",
+       y = "Density") +
+  theme_minimal()
+
+```
+
+:::
+::::::::::::::
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+## Example
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+\vspace{1.5cm}
+- What is the z-score beyond which only 5% of all possible outcomes are higher? 
+
+<br>
+
+- (P>z) = 0.05
+
+:::
+::: {.column width="50%"}
+\vspace{1cm}
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=3, fig.height=3.5}
+# Calculate the z-score for the upper 5%
+p_value <- 0.95
+z_score <- qnorm(p_value)
+
+# Create data for the normal distribution
+z_values <- seq(-3, 3, length.out = 100)
+y_values <- dnorm(z_values)
+
+# Create a data frame
+data <- data.frame(z = z_values, density = y_values)
+
+# Plot the normal distribution and shade the area above the z-score
+ggplot(data, aes(x = z, y = density)) +
+  geom_line() +
+  geom_area(data = filter(data, z >= z_score), fill = "blue", alpha = 0.5) +
+  geom_vline(xintercept = z_score, linetype = "dashed", color = "red") +
+  annotate("text", x = z_score + 0, y = 0.05, label = "z where:\n P>z = 0.05", color = "red", size = 5) +
+  labs(title = "", x = "Z-score", y = "Density") + theme_minimal()
+
+```
+
+:::
+::::::::::::::
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+
+## Example
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+\vspace{1.5cm}
+- What is the z-score beyond which only 5% of all possible outcomes are higher? 
+
+<br>
+
+- (P>z) = 0.05
+```{r}
+# Calculate the z-score for 
+# the upper 5% (0.95 cumulative 
+# probability)
+p_value <- 0.95
+z_score <- qnorm(p_value)
+# Print the result
+z_score
+```
+
+
+:::
+::: {.column width="50%"}
+\vspace{1cm}
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=3, fig.height=3.5}
+# Calculate the z-score for the upper 5%
+p_value <- 0.95
+z_score <- qnorm(p_value)
+
+# Create data for the normal distribution
+z_values <- seq(-3, 3, length.out = 100)
+y_values <- dnorm(z_values)
+
+# Create a data frame
+data <- data.frame(z = z_values, density = y_values)
+
+# Plot the normal distribution and shade the area above the z-score
+ggplot(data, aes(x = z, y = density)) +
+  geom_line() +
+  geom_area(data = filter(data, z >= z_score), fill = "blue", alpha = 0.5) +
+  geom_vline(xintercept = z_score, linetype = "dashed", color = "red") +
+  annotate("text", x = z_score + 0, y = 0.05, label = "z where:\n P>z = 0.05", color = "red", size = 5) +
+  labs(title = "", x = "Z-score", y = "Density") + theme_minimal()
+
+```
+
+:::
+::::::::::::::
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+## Example
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+## Example: Probability of a Cat Living to a Certain Age
+- The lifespan of domestic cats is normally distributed with a mean of 15.7 years and a standard deviation of 1.6 years. 
+
+::: columns
+
+:::: column
+\vspace{1cm}
+- **Question**: What is the probability that a cat will live to be as old as Allison’s 18-year-old cat?
+
+::::
+
+:::: column
+
+::::
+
+:::
+
+-----------------------------------------------------------------------------------------------------------------
 ## Example: Probability of a Cat Living to a Certain Age
 - The lifespan of domestic cats is normally distributed with a mean of 15.7 years and a standard deviation of 1.6 years. 
 
