@@ -28,26 +28,57 @@ header-includes:
 
 - Many statistical tests assume data follows a **normal distribution**, which helps in determining **significance** and making reliable conclusions.
 
+-----------------------------------------------------------------------------------------------------------------
+
+## Hypothesis Testing, Probability and Distributions
+- Hypothesis Testing
+
+<br>
+
+- \textcolor{gray}{Probability and Distributions}
+
+<br>
+
+- \textcolor{gray}{z-score}
+
+-----------------------------------------------------------------------------------------------------------------
 
 ## Normal distribution
 - The normal distribution has two parameters: the mean (\(\mu\)) and the standard deviation (\(\sigma\)).
 
 <br>
 
-- If _*x*_ is a quantity to be measured that has a normal distribution with mean (\(\mu\)) and standard deviation (\(\sigma\)), we designate this by writing
+- If a **variable x** follows a normal distribution with a specific mean (\(\mu\)) and standard deviation (\(\sigma\)), we write this as:
 
 ::: columns
 :::: column
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2, fig.height=2}
+# Load the necessary library
 library(ggplot2)
 library(dplyr)
-mean <- 100
-sd <- 15
-x <- seq(mean - 4*sd, mean + 4*sd, by = 0.1)
-y <- dnorm(x, mean = mean, sd = sd)
-ggplot(data.frame(x, y), aes(x = x, y = y)) +
-  geom_line(color = "blue", size = 1.2) +
-  geom_vline(xintercept = mean, color = "red", linetype = "dashed") + geom_vline(xintercept = mean + sd, color = "green", linetype = "dotted") +  geom_vline(xintercept = mean - sd, color = "green", linetype = "dotted") +  labs(title = "", x = "Values", y = "Density")
+# Parameters for the normal distribution
+mean <- 0  # Mean 
+sd <- 1    # Standard deviation 
+
+# Generate a sequence of x values
+x <- seq(-4, 4, length = 100)
+
+# Calculate the density of the normal distribution for each x value
+y <- dnorm(x, mean, sd)
+
+# Create a data frame for ggplot
+data <- data.frame(x = x, y = y)
+
+# Plot the normal distribution
+ggplot(data, aes(x = x, y = y)) +
+  geom_line(color = "blue", size = 1) +
+  geom_vline(xintercept = mean, linetype = "dashed", color = "red", size = 1) +
+  labs(title = "", subtitle = expression(paste("")),x = "", y = "") +
+  theme(axis.text.y = element_blank(), # Remove y-axis numbers
+      #  axis.ticks.y = element_blank(), # Remove y-axis ticks
+        axis.title.y = element_blank()) +# Remove y-axis title
+  theme_minimal()
+
 ```
 ::::
 
@@ -64,15 +95,15 @@ x \sim N(\mu, \sigma)
 
 ## Converting to Standard Normal Distribution
 
-- To simplify the comparison of data from different normal distributions, we often convert values to the **standard normal distribution**.
+- To simplify comparisons between different normal distributions, we often convert values to the **standard normal distribution**.
 
 <br>
 
-- The standard normal distribution has a mean of \(0\) and a standard deviation of \(1\).
+- The standard normal distribution has a \(\mu\) = \(0\) and a \(\sigma\) = \(1\).
 
 <br>
 
-- Any normal distribution can be converted into the standard normal distribution by using the **z-score** formula:
+- Any normal distribution can be converted into the standard normal distribution by using the **z-score** formula: \( z = \frac{x - \mu}{\sigma} \)
 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4, fig.height=2}
@@ -101,9 +132,7 @@ plot1 <- ggplot(data1, aes(x = x, y = y)) +
   labs(x = "", y = "") +
   scale_x_continuous(breaks = c(mu, mu + sd), labels = c(expression(mu), "x")) + # Label x-axis with mu and x at mu + 1 SD
   theme_minimal() +
-  theme(
-    axis.title.x = element_text(size = 14),
-    axis.title.y = element_text(size = 14)
+  theme(axis.title.x = element_text(size = 14),axis.title.y = element_text(size = 14)
   )
 
 # Second plot: Normal distribution with mean 0
@@ -113,13 +142,11 @@ plot2 <- ggplot(data2, aes(x = x, y = y)) +
   labs(x = "", y = "") +
   scale_x_continuous(breaks = c(0, 0 + sd), labels = c("0", "z")) + # Label x-axis with 0 and z at 1 SD
   theme_minimal() +
-  theme(
-    axis.title.x = element_text(size = 14),
-    axis.title.y = element_text(size = 14)
+  theme(axis.title.x = element_text(size = 14), axis.title.y = element_text(size = 14)
   )
 
 # Combine the two plots side by side
-combined_plot <- plot_grid(plot1, plot2, labels = c("A", "B"), label_size = 12)
+combined_plot <- plot_grid(plot1, plot2, labels = c("A", "B"), label_size = 8)
 
 # Display the combined plot
 print(combined_plot)
@@ -279,6 +306,21 @@ knitr::include_graphics("figs/plot1.png")
 
 -----------------------------------------------------------------------------------------------------------------
 
+
+## Hypothesis Testing, Probability and Distributions
+- \textcolor{gray}{Hypothesis Testing}
+
+<br>
+
+- Probability and Distributions
+
+<br>
+
+- \textcolor{gray}{z-score}
+
+
+-----------------------------------------------------------------------------------------------------------------
+
 ## Why p-value of less than **0.05**?
 
 ::: columns
@@ -308,15 +350,15 @@ knitr::include_graphics("figs/fisher.png")
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
 
-- A statistical result is **significant** if it is **unlikely to have occurred by chance**.
+- A statistical result is **significant** if it is **unlikely to have occurred by chance**.  
 
 <br>
 
-- Despite natural variability in the population, the probability of observing a value this extreme due to random variability is **low** (though not impossible).
+- Despite natural variability in the population, the probability of observing a value this extreme due to random variability is **low** (though not impossible).  
 
 <br>
 
-- We use probabilities (**p-values**) and an **alpha threshold (commonly 0.05)** to determine whether a result is significant.
+- We use probabilities (**p-values**) and an **alpha threshold (commonly 0.05)** to determine whether a result is significant.  
 
 :::
 ::: {.column width="50%"}
@@ -349,6 +391,7 @@ knitr::include_graphics("figs/plot2.png")
 <br>
 
 - A p-value of 0.01 (1%) means there's a 1% chance the result happened by chance.
+  - A p-value of 0.01 indicates a low chance (1%) of the result occurring by chance, reflecting a more rigorous threshold for significance.
 
 :::
 ::: {.column width="50%"}
@@ -373,6 +416,21 @@ knitr::include_graphics("figs/significance.png")
     - This standardized value is then used to determine the probability of obtaining such a result in a standard normal population.
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+## Hypothesis Testing, Probability and Distributions
+- \textcolor{gray}{Hypothesis Testing}
+
+<br>
+
+- \textcolor{gray}{Probability and Distributions}
+
+<br>
+
+- z-score
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 ## Z-score
 
