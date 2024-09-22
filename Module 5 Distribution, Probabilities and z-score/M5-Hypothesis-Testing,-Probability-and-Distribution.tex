@@ -201,15 +201,16 @@
 \begin{itemize}
 \tightlist
 \item
-  The normal distribution has two parameters (two numerical descriptive
-  measures), the mean () and the standard deviation ().
+  The normal distribution has two parameters: the mean (\(\mu\)) and the
+  standard deviation (\(\sigma\)).
 \end{itemize}
 
 \begin{itemize}
 \tightlist
 \item
-  If X is a quantity to be measured that has a normal distribution with
-  mean () and standard deviation (), we designate this by writing
+  If \emph{\emph{x}} is a quantity to be measured that has a normal
+  distribution with mean (\(\mu\)) and standard deviation (\(\sigma\)),
+  we designate this by writing
 \end{itemize}
 
 \begin{columns}[T]
@@ -220,13 +221,37 @@
 \begin{column}{0.48\textwidth}
 \vspace{2cm}
 
-X N(,)
+\[
+x \sim N(\mu, \sigma)
+\]
 \end{column}
 \end{columns}
 \end{frame}
 
 \begin{frame}{Converting to Standard Normal Distribution}
 \phantomsection\label{converting-to-standard-normal-distribution}
+\begin{itemize}
+\tightlist
+\item
+  To simplify the comparison of data from different normal
+  distributions, we often convert values to the \textbf{standard normal
+  distribution}.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  The standard normal distribution has a mean of \(0\) and a standard
+  deviation of \(1\).
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  Any normal distribution can be converted into the standard normal
+  distribution by using the \textbf{z-score} formula:
+\end{itemize}
+
 \includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-2-1.pdf}
 \end{frame}
 
@@ -278,9 +303,38 @@ X N(,)
 \begin{itemize}
 \tightlist
 \item
-  We use the \textbf{normal distribution curve} to find the
-  \textbf{probability} of obtaining a \textbf{test statistic} as extreme
-  as the one observed, assuming the \textbf{Null Hypothesis is true}.
+  The \textbf{normal distribution curve} allows us to calculate the
+  \textbf{probability} of obtaining a test statistic as extreme as the
+  one observed, assuming the \textbf{Null Hypothesis is true}.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  This probability is represented by the area under the curve beyond the
+  observed test statistic.
+\end{itemize}
+
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-8-1.pdf}
+\end{frame}
+
+\begin{frame}{Statistical Significance}
+\phantomsection\label{statistical-significance}
+\begin{itemize}
+\tightlist
+\item
+  If the \textbf{probability} (i.e., \emph{the area under the curve}) of
+  obtaining such an extreme test statistic is less than our chosen
+  significance level (\emph{usually 0.05}), we consider the result to be
+  \textbf{statistically significant}.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  In such cases, we may \textbf{reject the Null Hypothesis}, suggesting
+  there is evidence for a difference or effect.
+  \includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-9-1.pdf}
 \end{itemize}
 \end{frame}
 
@@ -289,38 +343,39 @@ X N(,)
 \begin{itemize}
 \tightlist
 \item
-  If the \textbf{probability} (\emph{\emph{the area under the curve}})
-  of obtaining a test statistic that extreme is less than our chosen
-  significance threshold (\emph{\emph{usually 0.05}}), we conclude that
-  the result is \textbf{statistically significant}.
+  Another way to think about this:
 \end{itemize}
-\end{frame}
 
-\begin{frame}{Hypothesis Testing}
-\phantomsection\label{hypothesis-testing-3}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\small
+
 \begin{itemize}
 \tightlist
 \item
-  Another way to think about this:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    If the probability that our data \textbf{fits the null distribution
-    (i.e., the null hypothesis is true) is less than 5\%}, then we
-    conclude that the data \textbf{does not fit the null}.
-
-    \begin{itemize}
-    \tightlist
-    \item
-      \textbf{Significant} deviation from what is expected by chance.
-    \item
-      \textbf{Reject} the null hypothesis.
-    \item
-      We have a \textbf{significant result}.
-    \end{itemize}
-  \end{itemize}
+  If the \textbf{probability that our data fits the null distribution
+  (i.e., the null hypothesis is true) is less than 5\%}, we conclude
+  that the data \textbf{does not fit the null}.
+\item
+  This indicates a significant deviation from what we would expect by
+  chance.
+\item
+  We then \textbf{reject the null hypothesis}.
+\item
+  The result is considered \textbf{statistically significant}.\\
 \end{itemize}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{figs/plot1} 
+
+}
+
+\end{figure}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{Why p-value of less than \textbf{0.05}?}
@@ -487,7 +542,7 @@ which chance causes have introduced into their experimental results.''
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Finding Probabilities for Z-Scores}
+\begin{frame}{Finding Probabilities for Z-Scores}
 \phantomsection\label{finding-probabilities-for-z-scores}
 \begin{columns}[T]
 \begin{column}{0.48\textwidth}
@@ -521,15 +576,7 @@ which chance causes have introduced into their experimental results.''
 \end{column}
 
 \begin{column}{0.48\textwidth}
-\begin{verbatim}
-## Warning: package 'dplyr' was built under R version 4.3.2
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: package 'gridExtra' was built under R version 4.3.1
-\end{verbatim}
-
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-9-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-12-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -567,7 +614,7 @@ which chance causes have introduced into their experimental results.''
 \end{column}
 
 \begin{column}{0.48\textwidth}
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-10-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-13-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}

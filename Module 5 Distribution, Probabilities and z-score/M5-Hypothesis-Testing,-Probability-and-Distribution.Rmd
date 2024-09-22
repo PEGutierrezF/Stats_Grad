@@ -16,7 +16,6 @@ header-includes:
 ---
 
 
-
 ## Normality, Probability and Significance
 - Why did we focus on normality?
   - The **normal distribution** is a key tool for determining the probability of a given value occurring in a population that follows this distribution.
@@ -31,11 +30,11 @@ header-includes:
 
 
 ## Normal distribution
-- The normal distribution has two parameters (two numerical descriptive measures), the mean () and the standard deviation ().
+- The normal distribution has two parameters: the mean (\(\mu\)) and the standard deviation (\(\sigma\)).
 
 <br>
 
-- If X is a quantity to be measured that has a normal distribution with mean () and standard deviation (), we designate this by writing
+- If _*x*_ is a quantity to be measured that has a normal distribution with mean (\(\mu\)) and standard deviation (\(\sigma\)), we designate this by writing
 
 ::: columns
 :::: column
@@ -53,12 +52,28 @@ ggplot(data.frame(x, y), aes(x = x, y = y)) +
 
 :::: column
 \vspace{2cm}
-X  N(,)
+\[
+x \sim N(\mu, \sigma)
+\]
 ::::
 
 :::
 
+-----------------------------------------------------------------------------------------------------------------
+
 ## Converting to Standard Normal Distribution
+
+- To simplify the comparison of data from different normal distributions, we often convert values to the **standard normal distribution**.
+
+<br>
+
+- The standard normal distribution has a mean of \(0\) and a standard deviation of \(1\).
+
+<br>
+
+- Any normal distribution can be converted into the standard normal distribution by using the **z-score** formula:
+
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4, fig.height=2}
 # Load necessary libraries
 library(ggplot2)
@@ -111,6 +126,8 @@ print(combined_plot)
 ```
 
 
+-----------------------------------------------------------------------------------------------------------------
+
 ## Hypothesis Testing 
 - All inferential tests use a formula that calculates a **test statistic**, quantifying the relationship or difference you are testing.
 
@@ -150,23 +167,117 @@ cat("$$r = \\frac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum (x_i - \\
 ::::
 :::
 
+-----------------------------------------------------------------------------------------------------------------
 
 ## Hypothesis Testing 
-- We use the **normal distribution curve** to find the **probability** of obtaining a **test statistic** as extreme as the one observed, assuming the **Null Hypothesis is true**.
+- The **normal distribution curve** allows us to calculate the **probability** of obtaining a test statistic as extreme as the one observed, assuming the **Null Hypothesis is true**.
+
+<br>
+
+- This probability is represented by the area under the curve beyond the observed test statistic.
+
+<br>
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4, fig.height=2}
+# Define mean, standard deviation, and observed test statistic
+mean <- 0  # Assume mean is 0 under the null hypothesis
+sd <- 1    # Standard deviation for the standard normal distribution
+test_stat <- 1.5  # Example of an observed test statistic
+
+# Create a sequence of x values for the plot
+x_vals <- seq(mean - 4 * sd, mean + 4 * sd, length.out = 1000)
+
+# Calculate the density (y-values) for the normal distribution
+y_vals <- dnorm(x_vals, mean = mean, sd = sd)
+
+# Create a data frame for plotting
+data <- data.frame(x = x_vals, y = y_vals)
+
+# Plot the normal distribution
+ggplot(data, aes(x = x, y = y)) +
+  geom_line(color = "blue", size = 1) +  # Plot the normal distribution curve
+  geom_vline(xintercept = test_stat, color = "red", linetype = "dashed", size = 1.2) +  # Mark the observed test statistic
+  geom_ribbon(data = subset(data, x >= test_stat), aes(ymin = 0, ymax = y), fill = "lightblue", alpha = 0.5) +  # Shade area beyond the test statistic
+  labs(title = "", x = "Test Statistic", y = "Density") +
+  annotate("text", x = test_stat + 0.3, y = 0.05, label = "Observed Test Statistic", color = "red", angle = 90, vjust = 3.5, size=4) +
+  theme_minimal() +
+  theme(
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    plot.title = element_text(hjust = 0.5)
+  )
+
+```
 
 
-## Hypothesis Testing 
-- If the **probability** (*_the area under the curve_*) of obtaining a test statistic that extreme is less than our chosen significance threshold (*_usually 0.05_*), we conclude that the result is **statistically significant**.
+-----------------------------------------------------------------------------------------------------------------
 
+## Statistical Significance
+- If the **probability** (i.e., *the area under the curve*) of obtaining such an extreme test statistic is less than our chosen significance level (*usually 0.05*), we consider the result to be **statistically significant**.
 
+<br>
 
+- In such cases, we may **reject the Null Hypothesis**, suggesting there is evidence for a difference or effect.
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=3, fig.height=2}
+# Load necessary libraries
+library(ggplot2)
+
+# Define mean, standard deviation, and observed test statistic
+mean <- 0  # Mean of the standard normal distribution (under null hypothesis)
+sd <- 1    # Standard deviation of the standard normal distribution
+test_stat <- 1.96  # Example test statistic for a 95% confidence level (for significance level of 0.05)
+
+# Create a sequence of x values for the plot
+x_vals <- seq(mean - 4 * sd, mean + 4 * sd, length.out = 1000)
+
+# Calculate the density (y-values) for the normal distribution
+y_vals <- dnorm(x_vals, mean = mean, sd = sd)
+
+# Create a data frame for plotting
+data <- data.frame(x = x_vals, y = y_vals)
+
+# Plot the normal distribution
+ggplot(data, aes(x = x, y = y)) +
+  geom_line(color = "blue", size = 1) +  # Plot the normal distribution curve
+  geom_vline(xintercept = test_stat, color = "red", linetype = "dashed", size = 1) +  # Mark the test statistic (1.96)
+  geom_ribbon(data = subset(data, x >= test_stat), aes(ymin = 0, ymax = y), fill = "lightblue", alpha = 0.5) +  # Shade area beyond test statistic (p-value)
+  labs(title = "", x = "Test Statistic (z)", y = "Density") +
+  annotate("text", x = test_stat + 0.2, y = 0.05, label = "Test Statistic (z = 1.96)", color = "red", angle = 90, vjust = 3.5, size=2) +
+  annotate("text", x = test_stat + 1.2, y = 0.01, label = "p-value < 0.05", color = "black", size = 3) +
+  theme_minimal() +
+  theme(
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    plot.title = element_text(hjust = 0.5)
+  )
+
+```
+
+-----------------------------------------------------------------------------------------------------------------
 
 ## Hypothesis Testing 
 - Another way to think about this:
-  - If the probability that our data **fits the null distribution (i.e., the null hypothesis is true) is less than 5%**, then we conclude that the data **does not fit the null**.
-      - **Significant** deviation from what is expected by chance.
-      - **Reject** the null hypothesis.
-      - We have a **significant result**. 
+
+::: columns
+
+:::: column
+\small
+- If the **probability that our data fits the null distribution (i.e., the null hypothesis is true) is less than 5%**, we conclude that the data **does not fit the null**.
+- This indicates a significant deviation from what we would expect by chance.
+- We then **reject the null hypothesis**.
+- The result is considered **statistically significant**.
+\
+::::
+
+:::: column
+
+```{r, echo=FALSE, fig.cap="", out.width = '80%', fig.align='center'}
+knitr::include_graphics("figs/plot1.png")
+```
+::::
+
+:::
+
+-----------------------------------------------------------------------------------------------------------------
 
 ## Why p-value of less than **0.05**?
 
@@ -174,7 +285,7 @@ cat("$$r = \\frac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum (x_i - \\
 
 :::: column
 
-“It is usual and convenient for experimenters to take 5% as a standard level of significance, in the sense that they are prepared to ignore all results which fail to reach this standard, and, by this means, to eliminate from further discussion the greater part of the fluctuations which chance causes have introduced into their experimental results.”
+"It is usual and convenient for experimenters to take 5% as a standard level of significance, in the sense that they are prepared to ignore all results which fail to reach this standard, and, by this means, to eliminate from further discussion the greater part of the fluctuations which chance causes have introduced into their experimental results."
 
 ::::
 
@@ -190,6 +301,7 @@ knitr::include_graphics("figs/fisher.png")
 
 :::
 
+-----------------------------------------------------------------------------------------------------------------
 
 ## What is Significance?
 - A statistical result is **significant** if it is **unlikely to have occurred by chance**.
@@ -201,6 +313,8 @@ knitr::include_graphics("figs/fisher.png")
 <br>
 
 - We use probabilities (**p-values**) and an **alpha threshold (commonly 0.05)** to determine whether a result is significant.
+
+-----------------------------------------------------------------------------------------------------------------
 
 ## What is Significance?
 - Significance refers to the risk of rejecting the null hypothesis when it is actually true.
@@ -217,6 +331,7 @@ knitr::include_graphics("figs/fisher.png")
 
 - A p-value of 0.01 (1%) means there's a 1% chance the result happened by chance.
 
+-----------------------------------------------------------------------------------------------------------------
 
 
 ## Calculating Significance
