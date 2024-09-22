@@ -1007,7 +1007,7 @@ probability
 
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
-- **Problem Statement**: If the EPA sets the maximum allowable lead concentration in drinking water at 1ppm, and the lead concentrations in public buildings are normally distributed with a mean of 0.6 ppm and a standard deviation of 0.2ppm, **what proportion of public buildings will exceed this threshold and require lead remediation?**
+- **Problem**: If the EPA sets the maximum allowable lead concentration in drinking water at 1ppm, and the lead concentrations in public buildings are normally distributed with a mean of 0.6 ppm and a standard deviation of 0.2ppm, **what proportion of public buildings will exceed this threshold and require lead remediation?**
 
 - Analysis Required:
   - Calculate the z-score for the threshold of 1 ppm.
@@ -1027,9 +1027,9 @@ threshold <- 1
 # Calculate the z-score for the threshold
 z_score<-(threshold-mean)/sd
 # Calculate the proportion of 
-# buildings above the threshold
-prop_above_threshold<-1-pnorm(z_score)
-prop_above_threshold
+#buildings above the threshold
+threshold<-1-pnorm(z_score)
+threshold
 ```
 
 :::

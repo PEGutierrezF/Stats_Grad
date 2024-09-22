@@ -1068,7 +1068,7 @@ which chance causes have introduced into their experimental results.''
 \begin{column}{0.5\textwidth}
 \begin{itemize}
 \item
-  \textbf{Problem Statement}: If the EPA sets the maximum allowable lead
+  \textbf{Problem}: If the EPA sets the maximum allowable lead
   concentration in drinking water at 1ppm, and the lead concentrations
   in public buildings are normally distributed with a mean of 0.6 ppm
   and a standard deviation of 0.2ppm, \textbf{what proportion of public
@@ -1100,9 +1100,9 @@ which chance causes have introduced into their experimental results.''
 \CommentTok{\# Calculate the z{-}score for the threshold}
 \NormalTok{z\_score}\OtherTok{\textless{}{-}}\NormalTok{(threshold}\SpecialCharTok{{-}}\NormalTok{mean)}\SpecialCharTok{/}\NormalTok{sd}
 \CommentTok{\# Calculate the proportion of }
-\CommentTok{\# buildings above the threshold}
-\NormalTok{prop\_above\_threshold}\OtherTok{\textless{}{-}}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pnorm}\NormalTok{(z\_score)}
-\NormalTok{prop\_above\_threshold}
+\CommentTok{\#buildings above the threshold}
+\NormalTok{threshold}\OtherTok{\textless{}{-}}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pnorm}\NormalTok{(z\_score)}
+\NormalTok{threshold}
 \end{Highlighting}
 \end{Shaded}
 
