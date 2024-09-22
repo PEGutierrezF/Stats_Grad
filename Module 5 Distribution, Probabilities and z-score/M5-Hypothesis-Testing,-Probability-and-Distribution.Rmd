@@ -500,10 +500,7 @@ ggplot(data, aes(x = z, y = density)) +
   geom_area(data = filter(data, z <= 0.76), fill = "blue", alpha = 0.5) +
   geom_vline(xintercept = 0.76, linetype = "dashed", color = "red") +
   annotate("text", x = 2, y = 0.05, label = "P(z < 0.76)", color = "blue", size = 5) +
-  labs(title = "Standard Normal Distribution",
-       x = "Z-score",
-       y = "Density") +
-  theme_minimal()
+  labs(title = "", x = "Z-score", y = "Density") + theme_minimal()
 
 ```
 
@@ -551,7 +548,7 @@ ggplot(data, aes(x = z, y = density)) +
   geom_area(data = filter(data, z <= 0.76), fill = "blue", alpha = 0.5) +
   geom_vline(xintercept = 0.76, linetype = "dashed", color = "red") +
   annotate("text", x = 2, y = 0.05, label = "P(z < 0.76)", color = "blue", size = 5) +
-  labs(title = "Standard Normal Distribution",
+  labs(title = "",
        x = "Z-score",
        y = "Density") +
   theme_minimal()
@@ -563,7 +560,6 @@ ggplot(data, aes(x = z, y = density)) +
 
 
 -----------------------------------------------------------------------------------------------------------------
-
 
 ## Example
 :::::::::::::: {.columns}
@@ -605,8 +601,6 @@ ggplot(data, aes(x = z, y = density)) +
 
 
 -----------------------------------------------------------------------------------------------------------------
-
-
 
 ## Example
 :::::::::::::: {.columns}
@@ -661,6 +655,203 @@ ggplot(data, aes(x = z, y = density)) +
 
 ## Example
 
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+- In a distribution with a mean of 100 and a standard deviation of 15, what is the probability that a score will fall between 100 and 115 ? 
+
+\[ Z = \frac{(x - \mu)}{\sigma} \]
+
+\vspace{1cm}
+- Before you can find any probabilities you have to find z-scores
+  - Z = (100 - 100) /  15  =  0
+  - Z = (115 - 100) /  15  =  1
+
+
+:::
+::: {.column width="50%"}
+
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=3, fig.height=3.5}
+# Parameters for the normal distribution
+mean <- 100
+sd <- 15
+
+# Values to find the probability between
+low_value <- 100
+high_value <- 115
+
+# Calculate the z-scores
+z_low <- (low_value - mean) / sd
+z_high <- (high_value - mean) / sd
+
+# Calculate the probabilities using pnorm
+p_low <- pnorm(z_low)
+p_high <- pnorm(z_high)
+
+# Probability of falling between 100 and 115
+probability <- p_high - p_low
+
+# Print the probability
+print(paste("Probability of falling between 100 and 115:", round(probability, 4)))
+
+# Create data for the normal distribution
+x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 100)
+y_values <- dnorm(x_values, mean, sd)
+
+# Create a data frame
+data <- data.frame(x = x_values, density = y_values)
+
+# Plot the normal distribution and shade the area between 100 and 115
+ggplot(data, aes(x = x, y = density)) +
+  geom_line() +
+  geom_area(data = filter(data, x >= low_value & x <= high_value), fill = "blue", alpha = 0.5) +
+  geom_vline(xintercept = low_value, linetype = "dashed", color = "red") +
+  geom_vline(xintercept = high_value, linetype = "dashed", color = "red") +
+  labs(title = "", x = "Score", y = "Density") + theme_minimal()
+```
+
+:::
+::::::::::::::
+
+-----------------------------------------------------------------------------------------------------------------
+
+## Example
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+- In a distribution with a mean of 100 and a standard deviation of 15, what is the probability that a score will fall between 100 and 115 ? 
+
+```{r}
+# Parameters
+mean <- 100
+sd <- 15
+# Values
+low_value <- 100
+high_value <- 115
+
+# Calculate the z-scores
+z_low <- (low_value-mean)/sd
+z_high <- (high_value-mean)/sd
+```
+
+
+:::
+::: {.column width="50%"}
+
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=3, fig.height=3.5}
+# Parameters for the normal distribution
+mean <- 100
+sd <- 15
+
+# Values to find the probability between
+low_value <- 100
+high_value <- 115
+
+# Calculate the z-scores
+z_low <- (low_value - mean) / sd
+z_high <- (high_value - mean) / sd
+
+# Calculate the probabilities using pnorm
+p_low <- pnorm(z_low)
+p_high <- pnorm(z_high)
+
+# Probability of falling between 100 and 115
+probability <- p_high - p_low
+
+# Print the probability
+print(paste("Probability of falling between 100 and 115:", round(probability, 4)))
+
+# Create data for the normal distribution
+x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 100)
+y_values <- dnorm(x_values, mean, sd)
+
+# Create a data frame
+data <- data.frame(x = x_values, density = y_values)
+
+# Plot the normal distribution and shade the area between 100 and 115
+ggplot(data, aes(x = x, y = density)) +
+  geom_line() +
+  geom_area(data = filter(data, x >= low_value & x <= high_value), fill = "blue", alpha = 0.5) +
+  geom_vline(xintercept = low_value, linetype = "dashed", color = "red") +
+  geom_vline(xintercept = high_value, linetype = "dashed", color = "red") +
+  labs(title = "", x = "Score", y = "Density") + theme_minimal()
+```
+
+:::
+::::::::::::::
+
+-----------------------------------------------------------------------------------------------------------------
+
+## Example
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+- In a distribution with a mean of 100 and a standard deviation of 15, what is the probability that a score will fall between 100 and 115 ? 
+
+```{r}
+# Find the probabilities
+p_low <- pnorm(z_low)
+p_high <- pnorm(z_high)
+
+# Probability of falling 
+# between 100 and 115
+probability <- p_high - p_low
+probability
+```
+
+
+:::
+::: {.column width="50%"}
+
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=3, fig.height=3.5}
+# Parameters for the normal distribution
+mean <- 100
+sd <- 15
+
+# Values to find the probability between
+low_value <- 100
+high_value <- 115
+
+# Calculate the z-scores
+z_low <- (low_value - mean) / sd
+z_high <- (high_value - mean) / sd
+
+# Calculate the probabilities using pnorm
+p_low <- pnorm(z_low)
+p_high <- pnorm(z_high)
+
+# Probability of falling between 100 and 115
+probability <- p_high - p_low
+
+# Print the probability
+print(paste("Probability of falling between 100 and 115:", round(probability, 4)))
+
+# Create data for the normal distribution
+x_values <- seq(mean - 4*sd, mean + 4*sd, length.out = 100)
+y_values <- dnorm(x_values, mean, sd)
+
+# Create a data frame
+data <- data.frame(x = x_values, density = y_values)
+
+# Plot the normal distribution and shade the area between 100 and 115
+ggplot(data, aes(x = x, y = density)) +
+  geom_line() +
+  geom_area(data = filter(data, x >= low_value & x <= high_value), fill = "blue", alpha = 0.5) +
+  geom_vline(xintercept = low_value, linetype = "dashed", color = "red") +
+  geom_vline(xintercept = high_value, linetype = "dashed", color = "red") +
+  labs(title = "", x = "Score", y = "Density") + theme_minimal()
+```
+
+:::
+::::::::::::::
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+## Example
+
 -----------------------------------------------------------------------------------------------------------------
 
 
@@ -671,7 +862,7 @@ ggplot(data, aes(x = z, y = density)) +
 
 :::: column
 \vspace{1cm}
-- **Question**: What is the probability that a cat will live to be as old as Allison’s 18-year-old cat?
+- **Question**: What is the probability that a cat will live to be as old as Allison's 18-year-old cat?
 
 ::::
 
@@ -682,6 +873,7 @@ ggplot(data, aes(x = z, y = density)) +
 :::
 
 -----------------------------------------------------------------------------------------------------------------
+
 ## Example: Probability of a Cat Living to a Certain Age
 - The lifespan of domestic cats is normally distributed with a mean of 15.7 years and a standard deviation of 1.6 years. 
 
@@ -807,9 +999,47 @@ probability
 - This example walks you through calculating the probability in R using `pnorm()`, which calculates the cumulative probability under the normal distribution.
 
 
+-----------------------------------------------------------------------------------------------------------------
 
+## Another real life problems
 
+- **Context**: The EPA is assessing drinking water standards to protect public health.
 
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+- **Problem Statement**: If the EPA sets the maximum allowable lead concentration in drinking water at 1ppm, and the lead concentrations in public buildings are normally distributed with a mean of 0.6 ppm and a standard deviation of 0.2ppm, **what proportion of public buildings will exceed this threshold and require lead remediation?**
+
+- Analysis Required:
+  - Calculate the z-score for the threshold of 1 ppm.
+  - Determine the proportion of buildings exceeding this lead level using the normal distribution.
+\vspace{1cm}
+
+:::
+::: {.column width="50%"}
+\vspace{1cm}
+
+```{r}
+# Parameters
+mean <- 0.6
+sd <- 0.2
+# Threshold 4 lead remediation
+threshold <- 1
+# Calculate the z-score for the threshold
+z_score<-(threshold-mean)/sd
+# Calculate the proportion of 
+# buildings above the threshold
+prop_above_threshold<-1-pnorm(z_score)
+prop_above_threshold
+```
+
+:::
+::::::::::::::
+
+-----------------------------------------------------------------------------------------------------------------
+
+## What is a P-Value?
+
+-----------------------------------------------------------------------------------------------------------------
 
 
 ## What is a P-Value?
@@ -828,9 +1058,13 @@ probability
 <br>
 
   - A large p-value suggests that the observed result is consistent with the null hypothesis.
-  
-##
 
+
+-----------------------------------------------------------------------------------------------------------------  
+
+## Hypothesis Testing Summary
+
+-----------------------------------------------------------------------------------------------------------------
 ## Hypothesis Testing Summary
 
 | Scenario                      | Null Hypothesis is True                                         | Null Hypothesis is False                                          |

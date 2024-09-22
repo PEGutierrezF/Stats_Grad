@@ -765,8 +765,124 @@ which chance causes have introduced into their experimental results.''
 \end{columns}
 \end{frame}
 
-\begin{frame}{Example}
+\begin{frame}[fragile]{Example}
 \phantomsection\label{example-5}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  In a distribution with a mean of 100 and a standard deviation of 15,
+  what is the probability that a score will fall between 100 and 115 ?
+\end{itemize}
+
+\[ Z = \frac{(x - \mu)}{\sigma} \]
+
+\vspace{1cm}
+
+\begin{itemize}
+\tightlist
+\item
+  Before you can find any probabilities you have to find z-scores
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Z = (100 - 100) / 15 = 0
+  \item
+    Z = (115 - 100) / 15 = 1
+  \end{itemize}
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{verbatim}
+## [1] "Probability of falling between 100 and 115: 0.3413"
+\end{verbatim}
+
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-21-1.pdf}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\phantomsection\label{example-6}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  In a distribution with a mean of 100 and a standard deviation of 15,
+  what is the probability that a score will fall between 100 and 115 ?
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Parameters}
+\NormalTok{mean }\OtherTok{\textless{}{-}} \DecValTok{100}
+\NormalTok{sd }\OtherTok{\textless{}{-}} \DecValTok{15}
+\CommentTok{\# Values}
+\NormalTok{low\_value }\OtherTok{\textless{}{-}} \DecValTok{100}
+\NormalTok{high\_value }\OtherTok{\textless{}{-}} \DecValTok{115}
+
+\CommentTok{\# Calculate the z{-}scores}
+\NormalTok{z\_low }\OtherTok{\textless{}{-}}\NormalTok{ (low\_value}\SpecialCharTok{{-}}\NormalTok{mean)}\SpecialCharTok{/}\NormalTok{sd}
+\NormalTok{z\_high }\OtherTok{\textless{}{-}}\NormalTok{ (high\_value}\SpecialCharTok{{-}}\NormalTok{mean)}\SpecialCharTok{/}\NormalTok{sd}
+\end{Highlighting}
+\end{Shaded}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{verbatim}
+## [1] "Probability of falling between 100 and 115: 0.3413"
+\end{verbatim}
+
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-23-1.pdf}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\phantomsection\label{example-7}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  In a distribution with a mean of 100 and a standard deviation of 15,
+  what is the probability that a score will fall between 100 and 115 ?
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Find the probabilities}
+\NormalTok{p\_low }\OtherTok{\textless{}{-}} \FunctionTok{pnorm}\NormalTok{(z\_low)}
+\NormalTok{p\_high }\OtherTok{\textless{}{-}} \FunctionTok{pnorm}\NormalTok{(z\_high)}
+
+\CommentTok{\# Probability of falling }
+\CommentTok{\# between 100 and 115}
+\NormalTok{probability }\OtherTok{\textless{}{-}}\NormalTok{ p\_high }\SpecialCharTok{{-}}\NormalTok{ p\_low}
+\NormalTok{probability}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3413447
+\end{verbatim}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{verbatim}
+## [1] "Probability of falling between 100 and 115: 0.3413"
+\end{verbatim}
+
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-25-1.pdf}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Example}
+\phantomsection\label{example-8}
 \end{frame}
 
 \begin{frame}{Example: Probability of a Cat Living to a Certain Age}
@@ -824,7 +940,7 @@ which chance causes have introduced into their experimental results.''
 \end{column}
 
 \begin{column}{0.48\textwidth}
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-21-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-26-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -939,8 +1055,70 @@ which chance causes have introduced into their experimental results.''
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{Another real life problems}
+\phantomsection\label{another-real-life-problems}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Context}: The EPA is assessing drinking water standards to
+  protect public health.
+\end{itemize}
+
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item
+  \textbf{Problem Statement}: If the EPA sets the maximum allowable lead
+  concentration in drinking water at 1ppm, and the lead concentrations
+  in public buildings are normally distributed with a mean of 0.6 ppm
+  and a standard deviation of 0.2ppm, \textbf{what proportion of public
+  buildings will exceed this threshold and require lead remediation?}
+\item
+  Analysis Required:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Calculate the z-score for the threshold of 1 ppm.
+  \item
+    Determine the proportion of buildings exceeding this lead level
+    using the normal distribution. \vspace{1cm}
+  \end{itemize}
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\vspace{1cm}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Parameters}
+\NormalTok{mean }\OtherTok{\textless{}{-}} \FloatTok{0.6}
+\NormalTok{sd }\OtherTok{\textless{}{-}} \FloatTok{0.2}
+\CommentTok{\# Threshold 4 lead remediation}
+\NormalTok{threshold }\OtherTok{\textless{}{-}} \DecValTok{1}
+\CommentTok{\# Calculate the z{-}score for the threshold}
+\NormalTok{z\_score}\OtherTok{\textless{}{-}}\NormalTok{(threshold}\SpecialCharTok{{-}}\NormalTok{mean)}\SpecialCharTok{/}\NormalTok{sd}
+\CommentTok{\# Calculate the proportion of }
+\CommentTok{\# buildings above the threshold}
+\NormalTok{prop\_above\_threshold}\OtherTok{\textless{}{-}}\DecValTok{1}\SpecialCharTok{{-}}\FunctionTok{pnorm}\NormalTok{(z\_score)}
+\NormalTok{prop\_above\_threshold}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.02275013
+\end{verbatim}
+\end{column}
+\end{columns}
+\end{frame}
+
 \begin{frame}{What is a P-Value?}
 \phantomsection\label{what-is-a-p-value}
+\end{frame}
+
+\begin{frame}{What is a P-Value?}
+\phantomsection\label{what-is-a-p-value-1}
 \begin{itemize}
 \tightlist
 \item
@@ -977,12 +1155,12 @@ which chance causes have introduced into their experimental results.''
 \end{itemize}
 \end{frame}
 
-\begin{frame}{}
-\phantomsection\label{section}
+\begin{frame}{Hypothesis Testing Summary}
+\phantomsection\label{hypothesis-testing-summary}
 \end{frame}
 
 \begin{frame}{Hypothesis Testing Summary}
-\phantomsection\label{hypothesis-testing-summary}
+\phantomsection\label{hypothesis-testing-summary-1}
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1890}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3963}}
@@ -1008,7 +1186,7 @@ Incorrectly failing to reject the null hypothesis. \\
 \end{frame}
 
 \begin{frame}{Hypothesis Testing Summary}
-\phantomsection\label{hypothesis-testing-summary-1}
+\phantomsection\label{hypothesis-testing-summary-2}
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1890}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3963}}
@@ -1038,7 +1216,7 @@ it just means we didn't find strong evidence against it.\\
 \end{frame}
 
 \begin{frame}{}
-\phantomsection\label{section-1}
+\phantomsection\label{section}
 \begin{itemize}
 \item
   \textbf{Explanation}:
@@ -1068,7 +1246,7 @@ it just means we didn't find strong evidence against it.\\
 \end{frame}
 
 \begin{frame}{}
-\phantomsection\label{section-2}
+\phantomsection\label{section-1}
 \end{frame}
 
 \end{document}
