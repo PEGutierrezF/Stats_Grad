@@ -59,28 +59,31 @@ X  N(,)
 :::
 
 ## Converting to Standard Normal Distribution
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2, fig.height=1.5}
-
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4, fig.height=2}
 # Load necessary libraries
 library(ggplot2)
 library(cowplot)
 
-# Create a data frame for the first plot (normal distribution centered at mu)
+# Define standard deviation and mean
 mu <- 2
-x_vals <- seq(-5, 5, length.out = 100)
-dist1 <- dnorm(x_vals, mean = mu, sd = 1)
+sd <- 1
+
+# Create a data frame for the first plot (normal distribution centered at mu)
+x_vals <- seq(mu - 4 * sd, mu + 4 * sd, length.out = 100)
+dist1 <- dnorm(x_vals, mean = mu, sd = sd)
 data1 <- data.frame(x = x_vals, y = dist1)
 
 # Create a data frame for the second plot (normal distribution centered at 0)
-dist2 <- dnorm(x_vals, mean = 0, sd = 1)
-data2 <- data.frame(x = x_vals, y = dist2)
+x_vals2 <- seq(-4 * sd, 4 * sd, length.out = 100)
+dist2 <- dnorm(x_vals2, mean = 0, sd = sd)
+data2 <- data.frame(x = x_vals2, y = dist2)
 
 # First plot: Normal distribution with mean mu
 plot1 <- ggplot(data1, aes(x = x, y = y)) +
   geom_line(color = "blue", size = 1) +             # Plot the line
-  geom_ribbon(data = subset(data1, x > 0), aes(ymin = 0, ymax = y), fill = "lightblue", alpha = 0.3) + # Fill light blue where x > 0
-  labs(x = "Random Variable", y = "Density") +
-  scale_x_continuous(breaks = c(mu), labels = c(expression(mu))) + # Label x-axis with mu
+  geom_ribbon(data = subset(data1, x >= mu & x <= mu + sd), aes(ymin = 0, ymax = y), fill = "lightblue", alpha = 0.3) + # Fill light blue from mu to 1 SD
+  labs(x = "", y = "") +
+  scale_x_continuous(breaks = c(mu, mu + sd), labels = c(expression(mu), "x")) + # Label x-axis with mu and x at mu + 1 SD
   theme_minimal() +
   theme(
     axis.title.x = element_text(size = 14),
@@ -90,9 +93,9 @@ plot1 <- ggplot(data1, aes(x = x, y = y)) +
 # Second plot: Normal distribution with mean 0
 plot2 <- ggplot(data2, aes(x = x, y = y)) +
   geom_line(color = "red", size = 1) +              # Plot the line
-  geom_ribbon(data = subset(data2, x > 0), aes(ymin = 0, ymax = y), fill = "lightblue", alpha = 0.3) + # Fill light blue where x > 0
-  labs(x = "Random Variable", y = "Density") +
-  scale_x_continuous(breaks = c(0), labels = c("0")) + # Label x-axis with 0
+  geom_ribbon(data = subset(data2, x >= 0 & x <= 0 + sd), aes(ymin = 0, ymax = y), fill = "lightblue", alpha = 0.3) + # Fill light blue from 0 to 1 SD
+  labs(x = "", y = "") +
+  scale_x_continuous(breaks = c(0, 0 + sd), labels = c("0", "z")) + # Label x-axis with 0 and z at 1 SD
   theme_minimal() +
   theme(
     axis.title.x = element_text(size = 14),
