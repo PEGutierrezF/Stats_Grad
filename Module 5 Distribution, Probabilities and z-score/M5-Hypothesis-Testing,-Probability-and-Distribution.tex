@@ -298,25 +298,33 @@ x \sim N(\mu, \sigma)
   \end{itemize}
 \end{itemize}
 
-\(H_0\): \(\mu = \mu_0\)
+\centering
+
+\(H_0\): \(\mu = \mu_0\)\\
+
+\vspace{1cm}
 
 \begin{itemize}
 \item
   An \textbf{alternative hypothesis} (denoted by \(H_1\)) is one in
   which \textbf{some difference or effect is expected}.
 \item
-  One sided alternative hypothesis
+  One sided alternative hypothesis:
 \end{itemize}
 
-\(H_1\): \(\mu < \mu_0\) or \(H_1\): \(\mu > \mu_0\)
+\centering
+
+\(H_1\): \(\mu < \mu_0\) or \(H_1\): \(\mu > \mu_0\)\\
 
 \begin{itemize}
 \tightlist
 \item
-  Two sided alternative hypothesis
+  Two sided alternative hypothesis:
 \end{itemize}
 
-\(H_1\): \(\mu \neq \mu_0\)
+\centering
+
+\(H_1\): \(\mu \neq \mu_0\)\\
 \end{frame}
 
 \begin{frame}{Hypothesis Testing: Test statistic}
@@ -375,8 +383,9 @@ x \sim N(\mu, \sigma)
 \begin{itemize}
 \tightlist
 \item
-  This probability is represented by the area under the curve beyond the
-  observed test statistic.
+  The \textbf{test statistic} is a value used in making a decision about
+  the null hypothesis, and is found by converting the sample statistic
+  to a score with the assumption that the null hypothesis is true
 \end{itemize}
 
 \includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-8-1.pdf}
@@ -496,17 +505,10 @@ which chance causes have introduced into their experimental results.''
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Definition}: The p-value is the probability of obtaining a
-  result at least as extreme as the one observed, assuming the null
-  hypothesis is true.
-\end{itemize}
-
-\begin{itemize}
-\tightlist
-\item
-  In Simple Terms, it tells us how likely it is to see the data we have
-  (or something more extreme) if there were actually no effect or
-  difference.
+  The \textbf{p-value} (or p-value or probability value) is the
+  probability of getting a value of the \textbf{test statistic} that is
+  \textbf{at least as extreme} as the one representing the sample data,
+  assuming that the null hypothesis is true
 \end{itemize}
 
 \begin{itemize}
@@ -522,6 +524,31 @@ which chance causes have introduced into their experimental results.''
     A large p-value suggests that the observed result is consistent with
     the null hypothesis.
   \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Critical Region}
+\phantomsection\label{critical-region}
+\begin{itemize}
+\tightlist
+\item
+  The critical region (or rejection region) is the set of all values of
+  the test statistic that cause us to reject the null hypothesis.
+\end{itemize}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.4\linewidth]{figs/criticalregion} 
+
+}
+
+\end{figure}
+
+\begin{itemize}
+\tightlist
+\item
+  Acceptance and rejection regions in case of a two-tailed test with 5\%
+  significance level.
 \end{itemize}
 \end{frame}
 
@@ -859,7 +886,7 @@ it just means we didn't find strong evidence against it.\\
 \end{column}
 
 \begin{column}{0.48\textwidth}
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-14-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-15-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -891,7 +918,7 @@ it just means we didn't find strong evidence against it.\\
 \begin{column}{0.5\textwidth}
 \vspace{1cm}
 
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-15-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-16-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -935,7 +962,7 @@ it just means we didn't find strong evidence against it.\\
 \begin{column}{0.5\textwidth}
 \vspace{1cm}
 
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-17-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-18-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -963,7 +990,7 @@ it just means we didn't find strong evidence against it.\\
 \begin{column}{0.5\textwidth}
 \vspace{1cm}
 
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-18-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-19-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -1007,7 +1034,7 @@ it just means we didn't find strong evidence against it.\\
 \begin{column}{0.5\textwidth}
 \vspace{1cm}
 
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-20-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-21-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -1047,7 +1074,7 @@ it just means we didn't find strong evidence against it.\\
 ## [1] "Probability of falling between 100 and 115: 0.3413"
 \end{verbatim}
 
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-21-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-22-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -1084,7 +1111,7 @@ it just means we didn't find strong evidence against it.\\
 ## [1] "Probability of falling between 100 and 115: 0.3413"
 \end{verbatim}
 
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-23-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-24-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -1123,7 +1150,7 @@ it just means we didn't find strong evidence against it.\\
 ## [1] "Probability of falling between 100 and 115: 0.3413"
 \end{verbatim}
 
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-25-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-26-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -1187,7 +1214,7 @@ it just means we didn't find strong evidence against it.\\
 \end{column}
 
 \begin{column}{0.48\textwidth}
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-26-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-27-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}

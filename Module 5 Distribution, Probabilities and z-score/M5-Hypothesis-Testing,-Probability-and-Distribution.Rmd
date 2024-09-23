@@ -166,21 +166,25 @@ print(combined_plot)
 - A **null hypothesis** (denoted by \(H_0\)) is a statement of the status quo, one of **no difference or no effect**.   
   - If the null hypothesis is not rejected, no changes will be made.  
 
-<div align="center">
+\centering
 \(H_0\): \( \mu = \mu_0 \)
-</div>
+\
 
-<br>
+\vspace{1cm}
 
 - An **alternative hypothesis** (denoted by \(H_1\)) is one in which **some difference or effect is expected**. 
 
-- One sided alternative hypothesis
+- One sided alternative hypothesis:  
 
+\centering
 \(H_1\): \( \mu < \mu_0 \)  or  \(H_1\): \( \mu > \mu_0 \)
+\
 
-- Two sided alternative hypothesis
+- Two sided alternative hypothesis:  
 
+\centering
 \(H_1\): \( \mu \neq \mu_0 \)
+\
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -230,7 +234,7 @@ cat("$$r = \\frac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum (x_i - \\
 
 <br>
 
-- This probability is represented by the area under the curve beyond the observed test statistic.
+- The **test statistic** is a value used in making a decision about the null hypothesis, and is found by converting the sample statistic to a score with the assumption that the null hypothesis is true
 
 <br>
 
@@ -389,11 +393,7 @@ knitr::include_graphics("figs/fisher.png")
 -----------------------------------------------------------------------------------------------------------------
 
 ## What is a P-Value?
-- **Definition**: The p-value is the probability of obtaining a result at least as extreme as the one observed, assuming the null hypothesis is true.
-
-<br>
-
-- In Simple Terms, it tells us how likely it is to see the data we have (or something more extreme) if there were actually no effect or difference.
+- The **p-value** (or p-value or probability value) is the probability of getting a value of the **test statistic** that is **at least as extreme** as the one representing the sample data, assuming that the null hypothesis is true
 
 <br>
 
@@ -404,6 +404,20 @@ knitr::include_graphics("figs/fisher.png")
 
 
 -----------------------------------------------------------------------------------------------------------------  
+
+## Critical Region
+
+- The critical region (or rejection region) is the set of all values of the test statistic that cause us to reject the null hypothesis.  
+
+```{r, echo=FALSE, fig.cap="", out.width = '40%', fig.align='center'}
+knitr::include_graphics("figs/criticalregion.png")
+```
+
+- Acceptance and rejection regions in case of a two-tailed test with 5% significance level.
+
+
+
+----------------------------------------------------------------------------------------------------------------- 
 
 ## What is Significance?
 
