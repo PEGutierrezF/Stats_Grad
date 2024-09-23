@@ -153,31 +153,31 @@
 \urlstyle{same}
 \hypersetup{
   pdftitle={Hypothesis Testing, Probability and Distributions},
-  pdfauthor={Pablo E. GutiÃ©rrez-Fonseca},
+  pdfauthor={Pablo E. Gutierrez-Fonseca},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
 \title{Hypothesis Testing, Probability and Distributions}
-\author{Pablo E. GutiÃ©rrez-Fonseca}
+\author{Pablo E. Gutierrez-Fonseca}
 \date{Fall 2024}
 
 \begin{document}
 \frame{\titlepage}
 
-\begin{frame}{Normality, Probability and Significance}
-\phantomsection\label{normality-probability-and-significance}
+\begin{frame}{Normal distribution: Introduction}
+\phantomsection\label{normal-distribution-introduction}
 \begin{itemize}
 \tightlist
 \item
   Why did we focus on normality?
+\end{itemize}
 
-  \begin{itemize}
-  \tightlist
-  \item
-    The \textbf{normal distribution} is a key tool for determining the
-    probability of a given value occurring in a population that follows
-    this distribution.
-  \end{itemize}
+\begin{itemize}
+\tightlist
+\item
+  The \textbf{normal distribution} is a key tool for determining the
+  probability of a given value occurring in a population that follows
+  this distribution.
 \end{itemize}
 
 \begin{itemize}
@@ -196,29 +196,8 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Hypothesis Testing, Probability and Distributions}
-\phantomsection\label{hypothesis-testing-probability-and-distributions}
-\begin{itemize}
-\tightlist
-\item
-  Hypothesis Testing
-\end{itemize}
-
-\begin{itemize}
-\tightlist
-\item
-  \textcolor{gray}{Probability and Distributions}
-\end{itemize}
-
-\begin{itemize}
-\tightlist
-\item
-  \textcolor{gray}{z-score}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Normal distribution}
-\phantomsection\label{normal-distribution}
+\begin{frame}{Normal distribution: Introduction}
+\phantomsection\label{normal-distribution-introduction-1}
 \begin{itemize}
 \tightlist
 \item
@@ -275,8 +254,73 @@ x \sim N(\mu, \sigma)
 \includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-2-1.pdf}
 \end{frame}
 
-\begin{frame}{Hypothesis Testing}
-\phantomsection\label{hypothesis-testing}
+\begin{frame}{Hypothesis Testing, Probability and Distributions}
+\phantomsection\label{hypothesis-testing-probability-and-distributions}
+\begin{itemize}
+\tightlist
+\item
+  Hypothesis Testing
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Null and alternative hypothesis
+  \item
+    Test statistic
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  \textcolor{gray}{Probability and Distributions}
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  \textcolor{gray}{z-score}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hypothesis Testing: Null and alternative hypothesis}
+\phantomsection\label{hypothesis-testing-null-and-alternative-hypothesis}
+\begin{itemize}
+\tightlist
+\item
+  A \textbf{null hypothesis} (denoted by \(H_0\)) is a statement of the
+  status quo, one of \textbf{no difference or no effect}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If the null hypothesis is not rejected, no changes will be made.
+  \end{itemize}
+\end{itemize}
+
+\(H_0\): \(\mu = \mu_0\)
+
+\begin{itemize}
+\item
+  An \textbf{alternative hypothesis} (denoted by \(H_1\)) is one in
+  which \textbf{some difference or effect is expected}.
+\item
+  One sided alternative hypothesis
+\end{itemize}
+
+\(H_1\): \(\mu < \mu_0\) or \(H_1\): \(\mu > \mu_0\)
+
+\begin{itemize}
+\tightlist
+\item
+  Two sided alternative hypothesis
+\end{itemize}
+
+\(H_1\): \(\mu \neq \mu_0\)
+\end{frame}
+
+\begin{frame}{Hypothesis Testing: Test statistic}
+\phantomsection\label{hypothesis-testing-test-statistic}
 \begin{itemize}
 \tightlist
 \item
@@ -318,14 +362,14 @@ x \sim N(\mu, \sigma)
 \end{columns}
 \end{frame}
 
-\begin{frame}{Hypothesis Testing}
-\phantomsection\label{hypothesis-testing-1}
+\begin{frame}{Hypothesis Testing: Test statistic}
+\phantomsection\label{hypothesis-testing-test-statistic-1}
 \begin{itemize}
 \tightlist
 \item
   The \textbf{normal distribution curve} allows us to calculate the
-  \textbf{probability} of obtaining a test statistic as extreme as the
-  one observed, assuming the \textbf{Null Hypothesis is true}.
+  \textbf{probability} of obtaining a \textbf{test statistic} as extreme
+  as the one observed, assuming the \textbf{Null Hypothesis is true}.
 \end{itemize}
 
 \begin{itemize}
@@ -338,8 +382,8 @@ x \sim N(\mu, \sigma)
 \includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-8-1.pdf}
 \end{frame}
 
-\begin{frame}{Statistical Significance}
-\phantomsection\label{statistical-significance}
+\begin{frame}{Hypothesis Testing: Test statistic}
+\phantomsection\label{hypothesis-testing-test-statistic-2}
 \begin{itemize}
 \tightlist
 \item
@@ -358,8 +402,8 @@ x \sim N(\mu, \sigma)
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Hypothesis Testing}
-\phantomsection\label{hypothesis-testing-2}
+\begin{frame}{Hypothesis Testing: Test statistic}
+\phantomsection\label{hypothesis-testing-test-statistic-3}
 \begin{itemize}
 \tightlist
 \item
@@ -419,6 +463,10 @@ x \sim N(\mu, \sigma)
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Before: p-value, significance and alfa level}
+\phantomsection\label{before-p-value-significance-and-alfa-level}
+\end{frame}
+
 \begin{frame}{Why p-value of less than \textbf{0.05}?}
 \phantomsection\label{why-p-value-of-less-than-0.05}
 \begin{columns}[T]
@@ -441,6 +489,40 @@ which chance causes have introduced into their experimental results.''
 \includegraphics[width=0.8\linewidth]{figs/fisher} \end{figure}
 \end{column}
 \end{columns}
+\end{frame}
+
+\begin{frame}{What is a P-Value?}
+\phantomsection\label{what-is-a-p-value}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Definition}: The p-value is the probability of obtaining a
+  result at least as extreme as the one observed, assuming the null
+  hypothesis is true.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  In Simple Terms, it tells us how likely it is to see the data we have
+  (or something more extreme) if there were actually no effect or
+  difference.
+\end{itemize}
+
+\begin{itemize}
+\item
+  Interpretation:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A small p-value indicates that the observed result is unlikely under
+    the null hypothesis, suggesting evidence against it.\\
+  \item
+    A large p-value suggests that the observed result is consistent with
+    the null hypothesis.
+  \end{itemize}
+\end{itemize}
 \end{frame}
 
 \begin{frame}{What is Significance?}
@@ -512,14 +594,14 @@ which chance causes have introduced into their experimental results.''
 \tightlist
 \item
   A p-value of 0.01 (1\%) means there's a 1\% chance the result happened
-  by chance.
+  by chance. \tiny
 
   \begin{itemize}
   \tightlist
   \item
     A p-value of 0.01 indicates a low chance (1\%) of the result
     occurring by chance, reflecting a more rigorous threshold for
-    significance.
+    significance.\\
   \end{itemize}
 \end{itemize}
 \end{column}
@@ -537,12 +619,99 @@ which chance causes have introduced into their experimental results.''
 \end{columns}
 \end{frame}
 
+\begin{frame}{Focus - Types of Error}
+\phantomsection\label{focus---types-of-error}
+\end{frame}
+
+\begin{frame}{Focus - Types of Error}
+\phantomsection\label{focus---types-of-error-1}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1890}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3963}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4146}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Scenario
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Null Hypothesis is True
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Null Hypothesis is False
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\textbf{Reject Null Hypothesis} & \textbf{Type I Error}: Incorrectly
+rejecting the null hypothesis. & \textbf{Correct Decision}: Correctly
+rejecting the null hypothesis. \\
+\textbf{Fail to Reject Null Hypothesis} & \textbf{Correct Decision}:
+Correctly not rejecting the null hypothesis. & \textbf{Type II Error}:
+Incorrectly failing to reject the null hypothesis. \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Focus - Types of Error}
+\phantomsection\label{focus---types-of-error-2}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1890}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3963}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4146}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Scenario
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Null Hypothesis is True
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Null Hypothesis is False
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\textbf{Reject Null Hypothesis} & \textbf{Type I Error}: Incorrectly
+rejecting the null hypothesis. & \textbf{Correct Decision}: Correctly
+rejecting the null hypothesis. \\
+\textbf{Fail to Reject Null Hypothesis} & \textbf{Correct Decision}:
+Correctly not rejecting the null hypothesis. & \textbf{Type II Error}:
+Incorrectly failing to reject the null hypothesis. \\
+\bottomrule\noalign{}
+\end{longtable}
+
+\small - Failing to reject the null hypothesis means our data didn't
+show a significant effect. It doesn't prove the null hypothesis is true;
+it just means we didn't find strong evidence against it.\\
+\end{frame}
+
+\begin{frame}{}
+\phantomsection\label{section}
+\begin{itemize}
+\item
+  \textbf{Explanation}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Type I Error}: False positive. We conclude there is an
+    effect or difference when there is none.\\
+  \item
+    \textbf{Type II Error}: False negative. We fail to detect an effect
+    or difference when one exists.\\
+  \item
+    \textbf{Correct Decisions}: Accurately concluding the presence or
+    absence of an effect or difference based on the truth of the null
+    hypothesis.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Calculating Significance}
 \phantomsection\label{calculating-significance}
 \begin{itemize}
+\tightlist
 \item
   To quantify a probability, you first need to calculate a \textbf{test
   statistic} and locate it on the normal probability curve.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
   The normal curve acts as a statistical translator.
 
@@ -578,30 +747,35 @@ which chance causes have introduced into their experimental results.''
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Z-score}
+\begin{frame}{z-score}
 \phantomsection\label{z-score}
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Z-scores} link measured or hypothesized values to
+  \textbf{z-scores} link measured or hypothesized values to
   probabilities.
 \end{itemize}
 
 \begin{itemize}
 \tightlist
 \item
-  A Z-score (or standard score) indicates how many standard deviations a
+  A z-score (or standard score) indicates how many standard deviations a
   value \emph{\emph{x}} is above or below the mean on the normal curve.
 \end{itemize}
 
 \begin{itemize}
+\tightlist
 \item
   It helps standardize values and connect them to probabilities.
-\item
-  The Z-score is calculated using the formula:
 \end{itemize}
 
-\[ Z = \frac{(x - \mu)}{\sigma} \]
+\begin{itemize}
+\tightlist
+\item
+  The z-score is calculated using the formula:
+\end{itemize}
+
+\[ z = \frac{(x - \mu)}{\sigma} \]
 
 \begin{itemize}
 \tightlist
@@ -620,19 +794,23 @@ which chance causes have introduced into their experimental results.''
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Z-Scores: Linking Observations to Probabilities}
+\begin{frame}{z-scores: Linking observations to probabilities}
 \phantomsection\label{z-scores-linking-observations-to-probabilities}
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Z-scores} link observations to probabilities.
+  \textbf{z-scores} link observations to probabilities.
+\end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
-  Using a Z-score for probability:
+  Using a z-score for probability:
 
   \begin{itemize}
   \tightlist
   \item
-    Z-scores are essentially the \textbf{x-axis} of the standard normal
+    z-scores are essentially the \textbf{x-axis} of the standard normal
     distribution.
   \item
     They normalize any data set so that the mean is 0 and the standard
@@ -647,7 +825,7 @@ which chance causes have introduced into their experimental results.''
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Finding Probabilities for Z-Scores}
+\begin{frame}{Finding probabilities for z-scores}
 \phantomsection\label{finding-probabilities-for-z-scores}
 \begin{columns}[T]
 \begin{column}{0.48\textwidth}
@@ -694,13 +872,13 @@ which chance causes have introduced into their experimental results.''
 \phantomsection\label{example-1}
 \begin{columns}[T]
 \begin{column}{0.5\textwidth}
-\vspace{1.5cm}
+\vspace{1cm}
 
 \begin{itemize}
 \tightlist
 \item
-  What percent of the area under the curve falls below a z-score of
-  0.76?
+  What percent of the area under the curve \textbf{falls below} a
+  z-score of 0.76?
 \end{itemize}
 
 \begin{itemize}
@@ -722,7 +900,7 @@ which chance causes have introduced into their experimental results.''
 \phantomsection\label{example-2}
 \begin{columns}[T]
 \begin{column}{0.5\textwidth}
-\vspace{1.5cm}
+\vspace{1cm}
 
 \begin{itemize}
 \tightlist
@@ -745,7 +923,6 @@ which chance causes have introduced into their experimental results.''
 \NormalTok{p\_value }\OtherTok{\textless{}{-}} \FunctionTok{pnorm}\NormalTok{(z\_score)}
 \CommentTok{\# Convert to percentage}
 \NormalTok{percent\_area }\OtherTok{\textless{}{-}}\NormalTok{ p\_value }\SpecialCharTok{*} \DecValTok{100}
-\CommentTok{\# Print the result}
 \NormalTok{percent\_area}
 \end{Highlighting}
 \end{Shaded}
@@ -767,7 +944,7 @@ which chance causes have introduced into their experimental results.''
 \phantomsection\label{example-3}
 \begin{columns}[T]
 \begin{column}{0.5\textwidth}
-\vspace{1.5cm}
+\vspace{1cm}
 
 \begin{itemize}
 \tightlist
@@ -795,7 +972,7 @@ which chance causes have introduced into their experimental results.''
 \phantomsection\label{example-4}
 \begin{columns}[T]
 \begin{column}{0.5\textwidth}
-\vspace{1.5cm}
+\vspace{1cm}
 
 \begin{itemize}
 \tightlist
@@ -1125,24 +1302,66 @@ which chance causes have introduced into their experimental results.''
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Another real life problems}
+\begin{frame}{Another real life problems}
 \phantomsection\label{another-real-life-problems}
+\end{frame}
+
+\begin{frame}{Another real life problems}
+\phantomsection\label{another-real-life-problems-1}
+\small
+
 \begin{itemize}
 \tightlist
 \item
   \textbf{Context}: The EPA is assessing drinking water standards to
-  protect public health.
+  protect public health.\\
 \end{itemize}
 
 \begin{columns}[T]
 \begin{column}{0.5\textwidth}
+\small
+
 \begin{itemize}
+\tightlist
 \item
   \textbf{Problem}: If the EPA sets the maximum allowable lead
   concentration in drinking water at 1ppm, and the lead concentrations
   in public buildings are normally distributed with a mean of 0.6 ppm
-  and a standard deviation of 0.2ppm, \textbf{what proportion of public
-  buildings will exceed this threshold and require lead remediation?}
+  and a standard deviation of 0.2ppm.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{What proportion of public buildings will exceed this
+    threshold and require lead remediation?}\\
+  \end{itemize}
+\end{itemize}
+
+\vspace{1cm}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Another real life problems}
+\phantomsection\label{another-real-life-problems-2}
+\small
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Context}: The EPA is assessing drinking water standards to
+  protect public health.\\
+\end{itemize}
+
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\small
+
+\begin{itemize}
+\tightlist
 \item
   Analysis Required:
 
@@ -1152,14 +1371,12 @@ which chance causes have introduced into their experimental results.''
     Calculate the z-score for the threshold of 1 ppm.
   \item
     Determine the proportion of buildings exceeding this lead level
-    using the normal distribution. \vspace{1cm}
+    using the normal distribution.\\
   \end{itemize}
 \end{itemize}
 \end{column}
 
 \begin{column}{0.5\textwidth}
-\vspace{1cm}
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Parameters}
@@ -1181,138 +1398,6 @@ which chance causes have introduced into their experimental results.''
 \end{verbatim}
 \end{column}
 \end{columns}
-\end{frame}
-
-\begin{frame}{What is a P-Value?}
-\phantomsection\label{what-is-a-p-value}
-\end{frame}
-
-\begin{frame}{What is a P-Value?}
-\phantomsection\label{what-is-a-p-value-1}
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Definition}: The p-value is the probability of obtaining a
-  result at least as extreme as the one observed, assuming the null
-  hypothesis is true.
-\end{itemize}
-
-\begin{itemize}
-\tightlist
-\item
-  In Simple Terms, it tells us how likely it is to see the data we have
-  (or something more extreme) if there were actually no effect or
-  difference.
-\end{itemize}
-
-\begin{itemize}
-\item
-  Interpretation:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    A small p-value indicates that the observed result is unlikely under
-    the null hypothesis, suggesting evidence against it.
-  \end{itemize}
-\end{itemize}
-
-\begin{itemize}
-\tightlist
-\item
-  A large p-value suggests that the observed result is consistent with
-  the null hypothesis.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Hypothesis Testing Summary}
-\phantomsection\label{hypothesis-testing-summary}
-\end{frame}
-
-\begin{frame}{Hypothesis Testing Summary}
-\phantomsection\label{hypothesis-testing-summary-1}
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1890}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3963}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4146}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Scenario
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Null Hypothesis is True
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Null Hypothesis is False
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\textbf{Reject Null Hypothesis} & \textbf{Type I Error}: Incorrectly
-rejecting the null hypothesis. & \textbf{Correct Decision}: Correctly
-rejecting the null hypothesis. \\
-\textbf{Fail to Reject Null Hypothesis} & \textbf{Correct Decision}:
-Correctly not rejecting the null hypothesis. & \textbf{Type II Error}:
-Incorrectly failing to reject the null hypothesis. \\
-\bottomrule\noalign{}
-\end{longtable}
-\end{frame}
-
-\begin{frame}{Hypothesis Testing Summary}
-\phantomsection\label{hypothesis-testing-summary-2}
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1890}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3963}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4146}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Scenario
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Null Hypothesis is True
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Null Hypothesis is False
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\textbf{Reject Null Hypothesis} & \textbf{Type I Error}: Incorrectly
-rejecting the null hypothesis. & \textbf{Correct Decision}: Correctly
-rejecting the null hypothesis. \\
-\textbf{Fail to Reject Null Hypothesis} & \textbf{Correct Decision}:
-Correctly not rejecting the null hypothesis. & \textbf{Type II Error}:
-Incorrectly failing to reject the null hypothesis. \\
-\bottomrule\noalign{}
-\end{longtable}
-
-\small - Failing to reject the null hypothesis means our data didn't
-show a significant effect. It doesn't prove the null hypothesis is true;
-it just means we didn't find strong evidence against it.\\
-\end{frame}
-
-\begin{frame}{}
-\phantomsection\label{section}
-\begin{itemize}
-\item
-  \textbf{Explanation}:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \textbf{Type I Error}: False positive. We conclude there is an
-    effect or difference when there is none.
-  \end{itemize}
-\end{itemize}
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Type II Error}: False negative. We fail to detect an effect or
-  difference when one exists.
-\end{itemize}
-
-\begin{itemize}
-\tightlist
-\item
-  \textbf{Correct Decisions}: Accurately concluding the presence or
-  absence of an effect or difference based on the truth of the null
-  hypothesis.
-\end{itemize}
 \end{frame}
 
 \begin{frame}{}

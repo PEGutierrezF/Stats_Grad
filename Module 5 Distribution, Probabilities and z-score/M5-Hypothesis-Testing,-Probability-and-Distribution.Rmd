@@ -1,6 +1,6 @@
 ---
 title: "Hypothesis Testing, Probability and Distributions"
-author: "Pablo E. GutiÃ©rrez-Fonseca"
+author: "Pablo E. Gutierrez-Fonseca"
 date: 'Fall 2024'
 tables: true
 graphics: yes
@@ -16,34 +16,25 @@ header-includes:
 ---
 
 
-## Normality, Probability and Significance
+## Normal distribution: Introduction
 - Why did we focus on normality?
+
+<br>
+
   - The **normal distribution** is a key tool for determining the probability of a given value occurring in a population that follows this distribution.
 
 <br>
 
-- It allows us to make inferences about a population by calculating how likely it is for data to fall within certain ranges.
+  - It allows us to make inferences about a population by calculating how likely it is for data to fall within certain ranges.
 
 <br>
 
-- Many statistical tests assume data follows a **normal distribution**, which helps in determining **significance** and making reliable conclusions.
+  - Many statistical tests assume data follows a **normal distribution**, which helps in determining **significance** and making reliable conclusions.
+
 
 -----------------------------------------------------------------------------------------------------------------
 
-## Hypothesis Testing, Probability and Distributions
-- Hypothesis Testing
-
-<br>
-
-- \textcolor{gray}{Probability and Distributions}
-
-<br>
-
-- \textcolor{gray}{z-score}
-
------------------------------------------------------------------------------------------------------------------
-
-## Normal distribution
+## Normal distribution: Introduction
 - The normal distribution has two parameters: the mean (\(\mu\)) and the standard deviation (\(\sigma\)).
 
 <br>
@@ -153,10 +144,47 @@ print(combined_plot)
 
 ```
 
+-----------------------------------------------------------------------------------------------------------------
+
+## Hypothesis Testing, Probability and Distributions
+- Hypothesis Testing
+    - Null and alternative hypothesis
+    - Test statistic
+
+<br>
+
+- \textcolor{gray}{Probability and Distributions}
+
+<br>
+
+- \textcolor{gray}{z-score}
 
 -----------------------------------------------------------------------------------------------------------------
 
-## Hypothesis Testing 
+## Hypothesis Testing: Null and alternative hypothesis 
+
+- A **null hypothesis** (denoted by \(H_0\)) is a statement of the status quo, one of **no difference or no effect**.   
+  - If the null hypothesis is not rejected, no changes will be made.  
+
+<div align="center">
+\(H_0\): \( \mu = \mu_0 \)
+</div>
+
+<br>
+
+- An **alternative hypothesis** (denoted by \(H_1\)) is one in which **some difference or effect is expected**. 
+
+- One sided alternative hypothesis
+
+\(H_1\): \( \mu < \mu_0 \)  or  \(H_1\): \( \mu > \mu_0 \)
+
+- Two sided alternative hypothesis
+
+\(H_1\): \( \mu \neq \mu_0 \)
+
+-----------------------------------------------------------------------------------------------------------------
+
+## Hypothesis Testing: Test statistic 
 - All inferential tests use a formula that calculates a **test statistic**, quantifying the relationship or difference you are testing.
 
 ::: columns
@@ -197,19 +225,25 @@ cat("$$r = \\frac{\\sum (x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\sum (x_i - \\
 
 -----------------------------------------------------------------------------------------------------------------
 
-## Hypothesis Testing 
-- The **normal distribution curve** allows us to calculate the **probability** of obtaining a test statistic as extreme as the one observed, assuming the **Null Hypothesis is true**.
+## Hypothesis Testing: Test statistic 
+- The **normal distribution curve** allows us to calculate the **probability** of obtaining a **test statistic** as extreme as the one observed, assuming the **Null Hypothesis is true**.
 
 <br>
 
 - This probability is represented by the area under the curve beyond the observed test statistic.
 
 <br>
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4, fig.height=2}
-# Define mean, standard deviation, and observed test statistic
-mean <- 0  # Assume mean is 0 under the null hypothesis
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=3.5, fig.height=2}
+library(ggplot2)
+
+# Define mean, standard deviation, and critical value for p < 0.05 (two-tailed)
+mean <- 0  # Mean under the null hypothesis
 sd <- 1    # Standard deviation for the standard normal distribution
 test_stat <- 1.5  # Example of an observed test statistic
+
+# Critical values for p < 0.05 in a two-tailed test (1.96 standard deviations)
+critical_value <- qnorm(0.975, mean, sd)
 
 # Create a sequence of x values for the plot
 x_vals <- seq(mean - 4 * sd, mean + 4 * sd, length.out = 1000)
@@ -223,22 +257,27 @@ data <- data.frame(x = x_vals, y = y_vals)
 # Plot the normal distribution
 ggplot(data, aes(x = x, y = y)) +
   geom_line(color = "blue", size = 1) +  # Plot the normal distribution curve
-  geom_vline(xintercept = test_stat, color = "red", linetype = "dashed", size = 1.2) +  # Mark the observed test statistic
-  geom_ribbon(data = subset(data, x >= test_stat), aes(ymin = 0, ymax = y), fill = "lightblue", alpha = 0.5) +  # Shade area beyond the test statistic
-  labs(title = "", x = "Test Statistic", y = "Density") +
-  annotate("text", x = test_stat + 0.3, y = 0.05, label = "Observed Test Statistic", color = "red", angle = 90, vjust = 3.5, size=3) +
+  geom_ribbon(data = subset(data, x <= -critical_value | x >= critical_value), 
+              aes(ymin = 0, ymax = y), fill = "lightblue", alpha = 0.5) +  # Shade area beyond critical values
+  geom_vline(xintercept = c(mean, mean + sd, mean - sd, mean + 2 * sd, mean - 2 * sd), 
+             linetype = "dashed", color = "red", size = 0.3) +
+  geom_vline(xintercept = c(-critical_value, critical_value), 
+             color = "green", linetype = "solid", size = 0.3) +  # Lines for critical values
+  scale_x_continuous(breaks = c(mean, mean - sd, mean + sd, mean - 2 * sd, mean + 2 * sd),
+                     labels = c(expression(mu), expression(mu - sigma), expression(mu + sigma),
+                                expression(mu - 2 * sigma), expression(mu + 2 * sigma))) +  # Label x-axis with mean and SDs
+  labs(title = "", 
+       x = "Test Statistic", 
+       y = "Density") +
   theme_minimal() +
   theme(axis.title.x = element_text(size = 8),
-    axis.title.y = element_text(size = 8),
-    plot.title = element_text(hjust = 0.5)
-  )
-
+        axis.title.y = element_text(size = 8),
+        plot.title = element_text(hjust = 0.5))
 ```
-
 
 -----------------------------------------------------------------------------------------------------------------
 
-## Statistical Significance
+## Hypothesis Testing: Test statistic
 - If the **probability** (i.e., *the area under the curve*) of obtaining such an extreme test statistic is less than our chosen significance level (*usually 0.05*), we consider the result to be **statistically significant**.
 
 <br>
@@ -268,8 +307,8 @@ ggplot(data, aes(x = x, y = y)) +
   geom_vline(xintercept = test_stat, color = "red", linetype = "dashed", size = 1) +  # Mark the test statistic (1.96)
   geom_ribbon(data = subset(data, x >= test_stat), aes(ymin = 0, ymax = y), fill = "lightblue", alpha = 0.5) +  # Shade area beyond test statistic (p-value)
   labs(title = "", x = "Test Statistic (z)", y = "Density") +
-  annotate("text", x = test_stat + 0.2, y = 0.05, label = "Test Statistic (z = 1.96)", color = "red", angle = 90, vjust = 3.5, size=2) +
-  annotate("text", x = test_stat + 1.2, y = 0.01, label = "p-value < 0.05", color = "black", size = 3) +
+  annotate("text", x = 2.5, y = 0.25, label = "Test Statistic (z = 1.96)", color = "red", angle = 90, size=2) +
+  annotate("text", x = test_stat + 1.2, y = 0.05, label = "p-value < 0.05", color = "black", size = 2) +
   theme_minimal() +
   theme(
     axis.title.x = element_text(size = 6),
@@ -281,7 +320,7 @@ ggplot(data, aes(x = x, y = y)) +
 
 -----------------------------------------------------------------------------------------------------------------
 
-## Hypothesis Testing 
+## Hypothesis Testing: Test statistic
 - Another way to think about this:
 
 ::: columns
@@ -318,6 +357,10 @@ knitr::include_graphics("figs/plot1.png")
 
 - \textcolor{gray}{z-score}
 
+-----------------------------------------------------------------------------------------------------------------
+
+## Before: p-value, significance and alfa level
+
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -344,6 +387,23 @@ knitr::include_graphics("figs/fisher.png")
 :::
 
 -----------------------------------------------------------------------------------------------------------------
+
+## What is a P-Value?
+- **Definition**: The p-value is the probability of obtaining a result at least as extreme as the one observed, assuming the null hypothesis is true.
+
+<br>
+
+- In Simple Terms, it tells us how likely it is to see the data we have (or something more extreme) if there were actually no effect or difference.
+
+<br>
+
+- Interpretation:
+
+  - A small p-value indicates that the observed result is unlikely under the null hypothesis, suggesting evidence against it.  
+  - A large p-value suggests that the observed result is consistent with the null hypothesis.
+
+
+-----------------------------------------------------------------------------------------------------------------  
 
 ## What is Significance?
 
@@ -391,7 +451,9 @@ knitr::include_graphics("figs/plot2.png")
 <br>
 
 - A p-value of 0.01 (1%) means there's a 1% chance the result happened by chance.
+\tiny
   - A p-value of 0.01 indicates a low chance (1%) of the result occurring by chance, reflecting a more rigorous threshold for significance.
+\
 
 :::
 ::: {.column width="50%"}
@@ -407,9 +469,44 @@ knitr::include_graphics("figs/significance.png")
 
 -----------------------------------------------------------------------------------------------------------------
 
+## Focus - Types of Error
+
+-----------------------------------------------------------------------------------------------------------------
+
+## Focus - Types of Error
+
+| Scenario                      | Null Hypothesis is True                                         | Null Hypothesis is False                                          |
+|-------------------------------|-----------------------------------------------------------------|--------------------------------------------------------------------|
+| **Reject Null Hypothesis**    | **Type I Error**: Incorrectly rejecting the null hypothesis.    | **Correct Decision**: Correctly rejecting the null hypothesis.    |
+| **Fail to Reject Null Hypothesis** | **Correct Decision**: Correctly not rejecting the null hypothesis. | **Type II Error**: Incorrectly failing to reject the null hypothesis. |
+
+
+## Focus - Types of Error
+
+| Scenario                      | Null Hypothesis is True                                         | Null Hypothesis is False                                          |
+|-------------------------------|-----------------------------------------------------------------|--------------------------------------------------------------------|
+| **Reject Null Hypothesis**    | **Type I Error**: Incorrectly rejecting the null hypothesis.    | **Correct Decision**: Correctly rejecting the null hypothesis.    |
+| **Fail to Reject Null Hypothesis** | **Correct Decision**: Correctly not rejecting the null hypothesis. | **Type II Error**: Incorrectly failing to reject the null hypothesis. |
+
+<br> 
+\small
+- Failing to reject the null hypothesis means our data didn't show a significant effect. It doesn't prove the null hypothesis is true; it just means we didn't find strong evidence against it.
+\
+
+## 
+- **Explanation**:  
+
+  - **Type I Error**: False positive. We conclude there is an effect or difference when there is none.  
+  - **Type II Error**: False negative. We fail to detect an effect or difference when one exists.  
+  - **Correct Decisions**: Accurately concluding the presence or absence of an effect or difference based on the truth of the null hypothesis.
+
+
+-----------------------------------------------------------------------------------------------------------------
 
 ## Calculating Significance
 - To quantify a probability, you first need to calculate a **test statistic** and locate it on the normal probability curve.
+
+<br>
 
 - The normal curve acts as a statistical translator.
     - It helps you standardize your test statistic to a common scale.
@@ -432,38 +529,46 @@ knitr::include_graphics("figs/significance.png")
 
 -----------------------------------------------------------------------------------------------------------------
 
-## Z-score
+## z-score
 
-- **Z-scores** link measured or hypothesized values to probabilities.
+- **z-scores** link measured or hypothesized values to probabilities.
 
 <br>
 
-- A Z-score (or standard score) indicates how many standard deviations a value *_x_* is above or below the mean on the normal curve.
+- A z-score (or standard score) indicates how many standard deviations a value *_x_* is above or below the mean on the normal curve.
 
 <br>
 
 - It helps standardize values and connect them to probabilities.
 
-- The Z-score is calculated using the formula:
+<br>
 
-\[ Z = \frac{(x - \mu)}{\sigma} \]
+- The z-score is calculated using the formula:
+
+\[ z = \frac{(x - \mu)}{\sigma} \]
 
 - where:  
   - \( x \) = the value of interest.  
   - \( \mu \) = mean of the population.  
   - \( \sigma \) = standard deviation of the population.  
 
-## Z-Scores: Linking Observations to Probabilities
+-----------------------------------------------------------------------------------------------------------------
 
-- **Z-scores** link observations to probabilities.
-- Using a Z-score for probability:
-  - Z-scores are essentially the **x-axis** of the standard normal distribution.
+## z-scores: Linking observations to probabilities
+
+- **z-scores** link observations to probabilities.
+
+<br>
+
+- Using a z-score for probability:
+  - z-scores are essentially the **x-axis** of the standard normal distribution.
   - They normalize any data set so that the mean is 0 and the standard deviation is 1.
   - The area under the curve tells you the probability of a certain Z-score occurring.
   - By using the Z-score, we can determine the probability associated with different values.
 
+-----------------------------------------------------------------------------------------------------------------
 
-## Finding Probabilities for Z-Scores
+## Finding probabilities for z-scores
  
 ::: columns
 
@@ -484,7 +589,7 @@ knitr::include_graphics("figs/significance.png")
 ::::
 
 :::: column
-```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=3, fig.height=4.5}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2.2, fig.height=3.5}
 # Create a data frame for the standard normal distribution
 df <- data.frame(x = seq(-4, 4, length.out = 1000))
 df$y <- dnorm(df$x)
@@ -495,8 +600,13 @@ p1 <- ggplot(df, aes(x = x, y = y)) +
   geom_line() +
   geom_area(data = subset(df, x < z1), aes(x = x, y = y), fill = "blue", alpha = 0.3) +
   geom_vline(xintercept = z1, linetype = "dashed", color = "red") +
-  labs(title = "P(X < z)", x = "Z-score", y = "Density") +
-  theme_minimal()
+  labs(title = "P(X < z)", x = "Z-score", y = "") +
+  theme_minimal()+
+  theme(plot.title = element_text(size = 5),
+        axis.title.x = element_blank(),
+        axis.title.y = element_text(size = 8),
+        axis.text.y = element_text(size = 4),
+        axis.text.x = element_text(size = 4))  # Adjust title size here
 
 # Plot 2: P(X > z)
 z2 <- 1  # Example Z-score
@@ -504,8 +614,13 @@ p2 <- ggplot(df, aes(x = x, y = y)) +
   geom_line() +
   geom_area(data = subset(df, x > z2), aes(x = x, y = y), fill = "blue", alpha = 0.3) +
   geom_vline(xintercept = z2, linetype = "dashed", color = "red") +
-  labs(title = "P(X > z)", x = "Z-score", y = "Density") +
-  theme_minimal()
+  labs(title = "P(X > z)", x = "Z-score", y = "") +
+  theme_minimal()+
+  theme(plot.title = element_text(size = 5),
+        axis.title.y = element_text(size = 8),
+        axis.title.x = element_blank(),
+        axis.text.y = element_text(size = 4),
+        axis.text.x = element_text(size = 4))  # Adjust title size here
 
 # Plot 3: P(z1 < X < z2)
 z1 <- -1  # Example Z-score 1
@@ -514,8 +629,13 @@ p3 <- ggplot(df, aes(x = x, y = y)) +
   geom_line() +
   geom_area(data = subset(df, x > z1 & x < z2), aes(x = x, y = y), fill = "blue", alpha = 0.3) +
   geom_vline(xintercept = c(z1, z2), linetype = "dashed", color = "red") +
-  labs(title = "P(z1 < X < z2)", x = "Z-score", y = "Density") +
-  theme_minimal()
+  labs(title = "P(z1 < X < z2)", x = "Z-score", y = "") +
+  theme_minimal()+
+  theme(plot.title = element_text(size = 5),
+        axis.title.y = element_text(size = 8),
+        axis.title.x = element_text(size = 8),
+        axis.text.y = element_text(size = 4),
+        axis.text.x = element_text(size = 4))  # Adjust title size here
 
 # Arrange the plots in a grid
 library(gridExtra)
@@ -534,8 +654,8 @@ grid.arrange(p1, p2, p3, ncol = 1)
 ## Example
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
-\vspace{1.5cm}
-- What percent of the area under the curve falls below a z-score of 0.76? 
+\vspace{1cm}
+- What percent of the area under the curve **falls below** a z-score of 0.76? 
 
 <br>
 
@@ -557,7 +677,7 @@ ggplot(data, aes(x = z, y = density)) +
   geom_line() +
   geom_area(data = filter(data, z <= 0.76), fill = "blue", alpha = 0.5) +
   geom_vline(xintercept = 0.76, linetype = "dashed", color = "red") +
-  annotate("text", x = 2, y = 0.05, label = "P(z < 0.76)", color = "blue", size = 5) +
+  annotate("text", x = 2, y = 0.05, label = "P(z < 0.76)", color = "blue", size = 3) +
   labs(title = "", x = "Z-score", y = "Density") + theme_minimal()
 
 ```
@@ -571,7 +691,7 @@ ggplot(data, aes(x = z, y = density)) +
 ## Example
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
-\vspace{1.5cm}
+\vspace{1cm}
 - What percent of the area under the curve falls below a z-score of 0.76? 
 
 <br>
@@ -585,7 +705,6 @@ z_score <- 0.76
 p_value <- pnorm(z_score)
 # Convert to percentage
 percent_area <- p_value * 100
-# Print the result
 percent_area
 ```
 
@@ -622,7 +741,7 @@ ggplot(data, aes(x = z, y = density)) +
 ## Example
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
-\vspace{1.5cm}
+\vspace{1cm}
 - What is the z-score beyond which only 5% of all possible outcomes are higher? 
 
 <br>
@@ -663,7 +782,7 @@ ggplot(data, aes(x = z, y = density)) +
 ## Example
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
-\vspace{1.5cm}
+\vspace{1cm}
 - What is the z-score beyond which only 5% of all possible outcomes are higher? 
 
 <br>
@@ -1061,21 +1180,47 @@ probability
 
 ## Another real life problems
 
+-----------------------------------------------------------------------------------------------------------------
+
+## Another real life problems
+\small
 - **Context**: The EPA is assessing drinking water standards to protect public health.
+\
 
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
-- **Problem**: If the EPA sets the maximum allowable lead concentration in drinking water at 1ppm, and the lead concentrations in public buildings are normally distributed with a mean of 0.6 ppm and a standard deviation of 0.2ppm, **what proportion of public buildings will exceed this threshold and require lead remediation?**
+\small
+- **Problem**: If the EPA sets the maximum allowable lead concentration in drinking water at 1ppm, and the lead concentrations in public buildings are normally distributed with a mean of 0.6 ppm and a standard deviation of 0.2ppm.
+  - **What proportion of public buildings will exceed this threshold and require lead remediation?**
+\
 
-- Analysis Required:
-  - Calculate the z-score for the threshold of 1 ppm.
-  - Determine the proportion of buildings exceeding this lead level using the normal distribution.
 \vspace{1cm}
 
 :::
 ::: {.column width="50%"}
-\vspace{1cm}
 
+:::
+::::::::::::::
+
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+## Another real life problems
+\small
+- **Context**: The EPA is assessing drinking water standards to protect public health.
+\
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+\small
+- Analysis Required:
+  - Calculate the z-score for the threshold of 1 ppm.
+  - Determine the proportion of buildings exceeding this lead level using the normal distribution.
+\
+
+:::
+::: {.column width="50%"}
 ```{r}
 # Parameters
 mean <- 0.6
@@ -1092,69 +1237,6 @@ threshold
 
 :::
 ::::::::::::::
-
------------------------------------------------------------------------------------------------------------------
-
-## What is a P-Value?
-
------------------------------------------------------------------------------------------------------------------
-
-
-## What is a P-Value?
-- **Definition**: The p-value is the probability of obtaining a result at least as extreme as the one observed, assuming the null hypothesis is true.
-
-<br>
-
-- In Simple Terms, it tells us how likely it is to see the data we have (or something more extreme) if there were actually no effect or difference.
-
-<br>
-
-- Interpretation:
-
-  - A small p-value indicates that the observed result is unlikely under the null hypothesis, suggesting evidence against it.  
-  
-<br>
-
-  - A large p-value suggests that the observed result is consistent with the null hypothesis.
-
-
------------------------------------------------------------------------------------------------------------------  
-
-## Hypothesis Testing Summary
-
------------------------------------------------------------------------------------------------------------------
-## Hypothesis Testing Summary
-
-| Scenario                      | Null Hypothesis is True                                         | Null Hypothesis is False                                          |
-|-------------------------------|-----------------------------------------------------------------|--------------------------------------------------------------------|
-| **Reject Null Hypothesis**    | **Type I Error**: Incorrectly rejecting the null hypothesis.    | **Correct Decision**: Correctly rejecting the null hypothesis.    |
-| **Fail to Reject Null Hypothesis** | **Correct Decision**: Correctly not rejecting the null hypothesis. | **Type II Error**: Incorrectly failing to reject the null hypothesis. |
-
-
-## Hypothesis Testing Summary
-
-| Scenario                      | Null Hypothesis is True                                         | Null Hypothesis is False                                          |
-|-------------------------------|-----------------------------------------------------------------|--------------------------------------------------------------------|
-| **Reject Null Hypothesis**    | **Type I Error**: Incorrectly rejecting the null hypothesis.    | **Correct Decision**: Correctly rejecting the null hypothesis.    |
-| **Fail to Reject Null Hypothesis** | **Correct Decision**: Correctly not rejecting the null hypothesis. | **Type II Error**: Incorrectly failing to reject the null hypothesis. |
-
-<br> 
-\small
-- Failing to reject the null hypothesis means our data didn't show a significant effect. It doesn't prove the null hypothesis is true; it just means we didn't find strong evidence against it.
-\
-
-## 
-- **Explanation**:  
-
-  - **Type I Error**: False positive. We conclude there is an effect or difference when there is none.  
-
-<br>
-
-  - **Type II Error**: False negative. We fail to detect an effect or difference when one exists.
-
-<br>
-
-  - **Correct Decisions**: Accurately concluding the presence or absence of an effect or difference based on the truth of the null hypothesis.
 
 
 ##  
