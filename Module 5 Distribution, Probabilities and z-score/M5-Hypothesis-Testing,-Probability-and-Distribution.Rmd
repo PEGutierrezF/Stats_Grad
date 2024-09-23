@@ -691,7 +691,7 @@ ggplot(data, aes(x = z, y = density)) +
   geom_line() +
   geom_area(data = filter(data, z <= 0.76), fill = "blue", alpha = 0.5) +
   geom_vline(xintercept = 0.76, linetype = "dashed", color = "red") +
-  annotate("text", x = 2, y = 0.05, label = "P(z < 0.76)", color = "blue", size = 3) +
+  annotate("text", x = 2, y = 0.05, label = "P(z < 0.76)", color = "blue", size = 4) +
   labs(title = "", x = "Z-score", y = "Density") + theme_minimal()
 
 ```
@@ -706,7 +706,7 @@ ggplot(data, aes(x = z, y = density)) +
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
 \vspace{1cm}
-- What percent of the area under the curve falls below a z-score of 0.76? 
+- What percent of the area under the curve **falls below** a z-score of 0.76? 
 
 <br>
 
@@ -738,7 +738,7 @@ ggplot(data, aes(x = z, y = density)) +
   geom_line() +
   geom_area(data = filter(data, z <= 0.76), fill = "blue", alpha = 0.5) +
   geom_vline(xintercept = 0.76, linetype = "dashed", color = "red") +
-  annotate("text", x = 2, y = 0.05, label = "P(z < 0.76)", color = "blue", size = 5) +
+  annotate("text", x = 2, y = 0.05, label = "P(z < 0.76)", color = "blue", size = 4) +
   labs(title = "",
        x = "Z-score",
        y = "Density") +
@@ -782,7 +782,7 @@ ggplot(data, aes(x = z, y = density)) +
   geom_line() +
   geom_area(data = filter(data, z >= z_score), fill = "blue", alpha = 0.5) +
   geom_vline(xintercept = z_score, linetype = "dashed", color = "red") +
-  annotate("text", x = z_score + 0, y = 0.05, label = "z where:\n P>z = 0.05", color = "red", size = 5) +
+  annotate("text", x = z_score + 0, y = 0.05, label = "z where:\n P>z = 0.05", color = "red", size = 4) +
   labs(title = "", x = "Z-score", y = "Density") + theme_minimal()
 
 ```
@@ -1114,6 +1114,7 @@ ggplot(df, aes(x = x, y = density)) +
        subtitle = paste0("Mean = 15.7, SD = 1.6, Age = ", age_allison_cat),
        x = "Cat's Age",
        y = "Density") +
+  theme(plot.title = element_text(size = 4)) + 
   theme_minimal()
 ```
 
