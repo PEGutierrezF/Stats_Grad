@@ -172,6 +172,21 @@ print(combined_plot)
 
 \vspace{1cm}
 
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+## Hypothesis Testing: Null and alternative hypothesis 
+
+- A **null hypothesis** (denoted by \(H_0\)) is a statement of the status quo, one of **no difference or no effect**.   
+  - If the null hypothesis is not rejected, no changes will be made.  
+
+\centering
+\(H_0\): \( \mu = \mu_0 \)
+\
+
+\vspace{1cm}
+
 - An **alternative hypothesis** (denoted by \(H_1\)) is one in which **some difference or effect is expected**. 
 
 - One sided alternative hypothesis:  
@@ -185,6 +200,7 @@ print(combined_plot)
 \centering
 \(H_1\): \( \mu \neq \mu_0 \)
 \
+
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -495,6 +511,9 @@ knitr::include_graphics("figs/significance.png")
 | **Fail to Reject Null Hypothesis** | **Correct Decision**: Correctly not rejecting the null hypothesis. | **Type II Error**: Incorrectly failing to reject the null hypothesis. |
 
 
+-----------------------------------------------------------------------------------------------------------------
+
+
 ## Focus - Types of Error
 
 | Scenario                      | Null Hypothesis is True                                         | Null Hypothesis is False                                          |
@@ -503,17 +522,41 @@ knitr::include_graphics("figs/significance.png")
 | **Fail to Reject Null Hypothesis** | **Correct Decision**: Correctly not rejecting the null hypothesis. | **Type II Error**: Incorrectly failing to reject the null hypothesis. |
 
 <br> 
+
 \small
-- Failing to reject the null hypothesis means our data didn't show a significant effect. It doesn't prove the null hypothesis is true; it just means we didn't find strong evidence against it.
+- Failing to reject the null hypothesis means our data didn't show a significant effect. **It doesn't prove the null hypothesis is true**; it just means we didn't find strong evidence against it.
 \
 
-## 
+-----------------------------------------------------------------------------------------------------------------
+
+## Focus - Types of Error
+
 - **Explanation**:  
 
-  - **Type I Error**: False positive. We conclude there is an effect or difference when there is none.  
-  - **Type II Error**: False negative. We fail to detect an effect or difference when one exists.  
-  - **Correct Decisions**: Accurately concluding the presence or absence of an effect or difference based on the truth of the null hypothesis.
+:::::::::::::: {.columns}
+::: {.column width="50%"}
 
+- **Type I Error**: False positive. 
+  - We conclude there is an effect or difference when there is none.  
+
+<br>
+
+- **Type II Error**: False negative. 
+  - We fail to detect an effect or difference when one exists.  
+
+<br>
+
+- **Correct Decisions**: Accurately concluding the presence or absence of an effect or difference based on the truth of the null hypothesis.
+
+:::
+::: {.column width="50%"}
+
+```{r, echo=FALSE, fig.cap="", out.width = '80%', fig.align='center'}
+knitr::include_graphics("figs/pregnant.jpg")
+```
+
+:::
+::::::::::::::
 
 -----------------------------------------------------------------------------------------------------------------
 
@@ -833,7 +876,7 @@ ggplot(data, aes(x = z, y = density)) +
   geom_line() +
   geom_area(data = filter(data, z >= z_score), fill = "blue", alpha = 0.5) +
   geom_vline(xintercept = z_score, linetype = "dashed", color = "red") +
-  annotate("text", x = z_score + 0, y = 0.05, label = "z where:\n P>z = 0.05", color = "red", size = 5) +
+  annotate("text", x = z_score + 0, y = 0.05, label = "z where:\n P>z = 0.05", color = "red", size = 4) +
   labs(title = "", x = "Z-score", y = "Density") + theme_minimal()
 
 ```

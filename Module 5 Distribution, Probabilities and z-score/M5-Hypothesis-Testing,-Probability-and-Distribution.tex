@@ -303,6 +303,28 @@ x \sim N(\mu, \sigma)
 \(H_0\): \(\mu = \mu_0\)\\
 
 \vspace{1cm}
+\end{frame}
+
+\begin{frame}{Hypothesis Testing: Null and alternative hypothesis}
+\phantomsection\label{hypothesis-testing-null-and-alternative-hypothesis-1}
+\begin{itemize}
+\tightlist
+\item
+  A \textbf{null hypothesis} (denoted by \(H_0\)) is a statement of the
+  status quo, one of \textbf{no difference or no effect}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If the null hypothesis is not rejected, no changes will be made.
+  \end{itemize}
+\end{itemize}
+
+\centering
+
+\(H_0\): \(\mu = \mu_0\)\\
+
+\vspace{1cm}
 
 \begin{itemize}
 \item
@@ -701,31 +723,70 @@ Incorrectly failing to reject the null hypothesis. \\
 \bottomrule\noalign{}
 \end{longtable}
 
-\small - Failing to reject the null hypothesis means our data didn't
-show a significant effect. It doesn't prove the null hypothesis is true;
-it just means we didn't find strong evidence against it.\\
+\small
+
+\begin{itemize}
+\tightlist
+\item
+  Failing to reject the null hypothesis means our data didn't show a
+  significant effect. \textbf{It doesn't prove the null hypothesis is
+  true}; it just means we didn't find strong evidence against it.\\
+\end{itemize}
 \end{frame}
 
-\begin{frame}{}
-\phantomsection\label{section}
+\begin{frame}{Focus - Types of Error}
+\phantomsection\label{focus---types-of-error-3}
 \begin{itemize}
+\tightlist
 \item
   \textbf{Explanation}:
+\end{itemize}
+
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Type I Error}: False positive.
 
   \begin{itemize}
   \tightlist
   \item
-    \textbf{Type I Error}: False positive. We conclude there is an
-    effect or difference when there is none.\\
-  \item
-    \textbf{Type II Error}: False negative. We fail to detect an effect
-    or difference when one exists.\\
-  \item
-    \textbf{Correct Decisions}: Accurately concluding the presence or
-    absence of an effect or difference based on the truth of the null
-    hypothesis.
+    We conclude there is an effect or difference when there is none.
   \end{itemize}
 \end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Type II Error}: False negative.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    We fail to detect an effect or difference when one exists.
+  \end{itemize}
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Correct Decisions}: Accurately concluding the presence or
+  absence of an effect or difference based on the truth of the null
+  hypothesis.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{figs/pregnant} 
+
+}
+
+\end{figure}
+\end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{Calculating Significance}
@@ -886,7 +947,7 @@ it just means we didn't find strong evidence against it.\\
 \end{column}
 
 \begin{column}{0.48\textwidth}
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-15-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-16-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -918,7 +979,7 @@ it just means we didn't find strong evidence against it.\\
 \begin{column}{0.5\textwidth}
 \vspace{1cm}
 
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-16-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-17-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -962,7 +1023,7 @@ it just means we didn't find strong evidence against it.\\
 \begin{column}{0.5\textwidth}
 \vspace{1cm}
 
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-18-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-19-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -990,7 +1051,7 @@ it just means we didn't find strong evidence against it.\\
 \begin{column}{0.5\textwidth}
 \vspace{1cm}
 
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-19-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-20-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -1034,7 +1095,7 @@ it just means we didn't find strong evidence against it.\\
 \begin{column}{0.5\textwidth}
 \vspace{1cm}
 
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-21-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-22-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -1074,7 +1135,7 @@ it just means we didn't find strong evidence against it.\\
 ## [1] "Probability of falling between 100 and 115: 0.3413"
 \end{verbatim}
 
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-22-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-23-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -1111,7 +1172,7 @@ it just means we didn't find strong evidence against it.\\
 ## [1] "Probability of falling between 100 and 115: 0.3413"
 \end{verbatim}
 
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-24-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-25-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -1150,7 +1211,7 @@ it just means we didn't find strong evidence against it.\\
 ## [1] "Probability of falling between 100 and 115: 0.3413"
 \end{verbatim}
 
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-26-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-27-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -1214,7 +1275,7 @@ it just means we didn't find strong evidence against it.\\
 \end{column}
 
 \begin{column}{0.48\textwidth}
-\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-27-1.pdf}
+\includegraphics{M5-Hypothesis-Testing,-Probability-and-Distribution_files/figure-beamer/unnamed-chunk-28-1.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -1428,7 +1489,7 @@ it just means we didn't find strong evidence against it.\\
 \end{frame}
 
 \begin{frame}{}
-\phantomsection\label{section-1}
+\phantomsection\label{section}
 \end{frame}
 
 \end{document}
