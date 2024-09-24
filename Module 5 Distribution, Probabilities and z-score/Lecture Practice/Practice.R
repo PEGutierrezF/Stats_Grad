@@ -10,6 +10,9 @@ This function returns the value of the cumulative density function (cdf)
 of the normal distribution given a certain random variable q, 
 a population mean ??, and the population standard deviation ??.
 
+We use the R function 'pnorm' to convert from z-scores to areas (areas under the curve) 
+and 'qnorm' to convert from areas (areas under the curve) to z-scores.
+
 
 Example: In this example, we will be calculating the percentage of students 
 at this school who are taller than 75 inches height of males at a certain 

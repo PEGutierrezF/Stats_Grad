@@ -13,16 +13,17 @@ library(lessR)
 #open up our data
 fish <- read_csv('~/Desktop/NR2990/fish_data.csv')
 
+
 fish <- read.csv('fish_data.csv')
 
 View(fish)
 
 #pivot gives us more summary statistics. 
-pivot(fish, c(IQR, skew, kurtosis, mean, sd, var), Length)
+pivot(fish, c(IQR, skew, kurtosis,max, min, mean, sd, var), Length)
 
 ?pivot
 ?c
-
+?lm
 # Fish is our data frame and Length is the column
 quantiles <- quantile(fish$Length, probs = c(0.25, 0.75))
 # Display the results
