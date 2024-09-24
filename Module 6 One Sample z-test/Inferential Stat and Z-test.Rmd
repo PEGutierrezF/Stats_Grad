@@ -14,3 +14,180 @@ header-includes:
   - \titlegraphic{\includegraphics[width=3cm]{logo}}
   - \newcommand{\theHtable}{\thetable}
 ---
+
+
+## Expanding on Hypothesis Testing 
+
+- 1-tailed
+  - Hypothesis includes an expected direction.
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+\vspace{1cm}
+
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=2, fig.height=2}
+library(ggplot2)
+# Set the significance level
+p <- 0.05
+
+# Create a sequence for the lower tail (left tail of the normal distribution)
+tail_low <- seq(-4, qnorm(p), 0.01)
+df_tl <- data.frame(x = c(tail_low, qnorm(p)), y = c(dnorm(tail_low), 0))
+
+# Plot the normal distribution
+ggplot(data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm) +  # Plot the normal distribution
+  geom_polygon(data = df_tl, aes(x, y), fill = "#99CCFF") +  # Fill the lower tail (P(X < x))
+  geom_vline(xintercept = qnorm(p), lty = "dashed", lwd = 0.3) +  # Vertical line at the critical value for left tail
+
+  annotate(geom = "text", x = -2.5, y = 0.3, label = 'P<x') +  # Annotate the critical value
+  
+  theme_classic() +  # Clean theme
+  labs(x = "", y = "")  # Remove axis labels
+
+```
+
+\centering
+
+\tiny
+- Decrease
+- Cooler
+- Smaller
+- Lower
+\
+
+\
+
+:::
+::: {.column width="50%"}
+
+\vspace{1cm}
+
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=2, fig.height=2}
+# Set the significance level
+p <- 0.05
+
+# Create a sequence for the upper tail (one-tailed test)
+tail_high <- seq(qnorm(1-p), 4, 0.01)
+df_th <- data.frame(x = c(qnorm(1-p), tail_high), y = c(0, dnorm(tail_high)))
+
+# Plot the normal distribution
+ggplot(data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm) +  # Plot the normal distribution
+  geom_polygon(data = df_th, aes(x, y), fill = "#99CCFF") +  # Fill the upper tail
+  geom_vline(xintercept = qnorm(1-p), lty = "dashed", lwd = 0.3) +  # Vertical line at the critical value
+  annotate(geom = "text", x = 2.5, y = 0.3, label = 'P>x') +  # Annotate the critical value
+  
+  theme_classic() +  # Clean theme
+  labs(x = "", y = "")  # Remove axis labels
+
+```
+
+\centering
+
+\tiny
+- Increase
+- Warmer
+- Higher
+- Expand
+\
+
+\
+
+:::
+::::::::::::::
+
+
+-------------------------------------------------------------------------------------------
+
+
+## Expanding on Hypothesis Testing 
+
+- 1-tailed - hypothesis includes an expected direction
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+\vspace{1cm}
+
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=2, fig.height=2}
+library(ggplot2)
+# Set the significance level
+p <- 0.05
+
+# Create a sequence for the lower tail (left tail of the normal distribution)
+tail_low <- seq(-4, qnorm(p), 0.01)
+df_tl <- data.frame(x = c(tail_low, qnorm(p)), y = c(dnorm(tail_low), 0))
+
+# Plot the normal distribution
+ggplot(data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm) +  # Plot the normal distribution
+  geom_polygon(data = df_tl, aes(x, y), fill = "#99CCFF") +  # Fill the lower tail (P(X < x))
+  geom_vline(xintercept = qnorm(p), lty = "dashed", lwd = 0.3) +  # Vertical line at the critical value for left tail
+  annotate(geom = "text", x = qnorm(p), y = 0.1, label = sprintf("%.2f", qnorm(p)), hjust = "right") +  # Annotate critical value
+  theme_classic() +  # Clean theme
+  labs(x = "", y = "")  # Remove axis labels
+
+```
+
+
+:::
+::: {.column width="50%"}
+
+\vspace{1cm}
+
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=2, fig.height=2}
+# Set the significance level
+p <- 0.05
+
+# Create a sequence for the upper tail (one-tailed test)
+tail_high <- seq(qnorm(1-p), 4, 0.01)
+df_th <- data.frame(x = c(qnorm(1-p), tail_high), y = c(0, dnorm(tail_high)))
+
+# Plot the normal distribution
+ggplot(data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm) +  # Plot the normal distribution
+  geom_polygon(data = df_th, aes(x, y), fill = "#99CCFF") +  # Fill the upper tail
+  geom_vline(xintercept = qnorm(1-p), lty = "dashed", lwd = 0.3) +  # Vertical line at the critical value
+  annotate(geom = "text", x = qnorm(1-p), y = 0.1, label = sprintf("%.2f", qnorm(1-p)), hjust = "left") +  # Annotate the critical value
+  theme_classic() +  # Clean theme
+  labs(x = "", y = "")  # Remove axis labels
+
+```
+
+
+:::
+::::::::::::::
+
+- If your obtained test statistic falls beyond the critical value (lightblue) for your given Alpha threshold = Significant result, **reject the null**.
+
+
+-------------------------------------------------------------------------------------------
+
+## Expanding on Hypothesis Testing 
+
+- 2-tailed tests: 
+  - Have no expected directionality hypothesized. 
+  - Splits the 5% of the area under the curve that would be considered significant between both tails of the normal distribution curve.
+  - Are therefore less powerful tests (more likely to find a significant result).
+
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=2, fig.height=2}
+p <- 0.025
+tail_low <- seq(-4, qnorm(p), 0.01)
+df_tl <- data.frame(x=c(tail_low,qnorm(p)), y =c(dnorm(tail_low),0))
+tail_high <- seq(qnorm(1-p), 4, 0.01)
+df_th <- data.frame(x=c(qnorm(1-p),tail_high), y=c(0,dnorm(tail_high)))
+
+ggplot(data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm) +
+  geom_polygon(data = df_tl, aes(x,y), fill = "#99CCFF") +
+  geom_polygon(data = df_th, aes(x,y), fill = "#99CCFF") +
+  geom_vline(xintercept = qnorm(p), lty = "dashed", lwd = 0.3) +
+  geom_vline(xintercept = qnorm(1-p), lty = "dashed", lwd = 0.3) +
+  annotate(geom = "text", -1.97, 0.1, label = "-1.96", hjust = "right") +
+  annotate(geom = "text", 1.97, 0.1, label = "1.96", hjust = "left") +
+  theme_classic() +
+  labs(x="", y="")
+```
+
