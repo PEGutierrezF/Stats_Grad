@@ -1,0 +1,16 @@
+---
+title: "Inferential Statistics"
+author: "Pablo E. Gutierrez-Fonseca"
+date: 'Fall 2024'
+tables: true
+graphics: yes
+output:   
+  beamer_presentation:
+    theme: "Boadilla"
+    keep_tex: true
+header-includes: 
+  - \usepackage{graphicx}
+  - \logo{\ifnum\thepage>1\hfill\includegraphics[width=1cm]{logo}\fi}
+  - \titlegraphic{\includegraphics[width=3cm]{logo}}
+  - \newcommand{\theHtable}{\thetable}
+---
