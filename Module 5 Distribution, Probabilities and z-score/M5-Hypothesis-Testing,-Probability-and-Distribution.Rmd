@@ -409,7 +409,7 @@ knitr::include_graphics("figs/fisher.png")
 -----------------------------------------------------------------------------------------------------------------
 
 ## What is a P-Value?
-- The **p-value** (or p-value or probability value) is the probability of getting a value of the **test statistic** that is **at least as extreme** as the one representing the sample data, assuming that the null hypothesis is true
+- The **p-value** (or probability value) is the probability of getting a value of the **test statistic** that is **at least as extreme** as the one representing the sample data, assuming that the null hypothesis is true
 
 <br>
 
@@ -704,6 +704,163 @@ grid.arrange(p1, p2, p3, ncol = 1)
 
 -----------------------------------------------------------------------------------------------------------------
 
+## Finding probabilities for z-scores using R
+
+- **pnorm(z)**: Converts a z-score to a cumulative probability (areas under the curve).
+
+<br>
+
+- **qnorm(p)**: Converts a cumulative probability (areas under the curve) to a z-score.
+
+-----------------------------------------------------------------------------------------------------------------
+
+## Finding probabilities for z-scores using R
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+\small
+- When you want the proportion of values larger than a certain value (right-side or upper tail):  
+\centering
+  - Use: **1 - pnorm(z_score)**
+\
+  - This calculates the area under the normal curve to the right of the specified value (z-score).
+
+<br>
+
+- When you want the proportion of values smaller than a certain value (left-side or lower tail):
+\centering
+  - Use: **pnorm(z_score)**
+\
+  - This gives you the area under the curve to the left of the specified value (z-score).
+\
+:::
+::: {.column width="50%"}
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Define mean and standard deviation
+mean_value <- 0.6
+sd_value <- 0.2
+
+# Define threshold value
+threshold_value <- 1
+
+# Create a sequence of x values for the plot
+x_vals <- seq(mean_value - 4*sd_value, mean_value + 4*sd_value, length.out = 1000)
+
+# Calculate normal density for the x values
+y_vals <- dnorm(x_vals, mean = mean_value, sd = sd_value)
+
+# Create data frame for plotting
+data <- data.frame(x = x_vals, y = y_vals)
+
+# Right Tail Plot (larger values)
+right_tail_plot <- ggplot(data, aes(x, y)) +
+  geom_line(size = 1, color = "blue") +  # Plot the normal distribution curve
+  geom_area(data = subset(data, x >= threshold_value), aes(y = y), fill = "skyblue", alpha = 0.5) +  # Shade the right area
+  geom_vline(xintercept = threshold_value, linetype = "dashed", color = "black", size = 1) +  # Mark the threshold value
+  labs(title = "Right Tail: Proportion Above Threshold",
+       subtitle = paste("Proportion of Values Above", threshold_value, ":", round(1 - pnorm(threshold_value, mean = mean_value, sd = sd_value), 4)),
+       x = "Value",
+       y = "Density") +
+  theme_minimal()
+
+
+# Left Tail Plot (smaller values)
+left_tail_plot <- ggplot(data, aes(x, y)) +
+  geom_line(size = 1, color = "blue") +  # Plot the normal distribution curve
+  geom_area(data = subset(data, x <= threshold_value), aes(y = y), fill = "skyblue", alpha = 0.5) +  # Shade the left area
+  geom_vline(xintercept = threshold_value, linetype = "dashed", color = "black", size = 1) +  # Mark the threshold value
+  labs(title = "Left Tail: Proportion Below Threshold",
+       subtitle = paste("Proportion of Values Below", threshold_value, ":", round(pnorm(threshold_value, mean = mean_value, sd = sd_value), 4)),
+       x = "Value",
+       y = "Density") +
+  theme_minimal()
+
+# Print the plots
+print(right_tail_plot)
+print(left_tail_plot)
+
+```
+
+:::
+::::::::::::::  
+
+-----------------------------------------------------------------------------------------------------------------
+
+## Finding probabilities for z-scores using R
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+\vspace{1cm}
+- For right-tail (upper tail): Use **qnorm(1 - p)** or **set lower.tail = FALSE**.
+
+\vspace{2cm}
+- For left-tail (lower tail): Use **qnorm(p)** where p is the cumulative probability.
+
+
+:::
+::: {.column width="50%"}
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Load necessary library
+library(ggplot2)
+
+# Define mean and standard deviation
+mean_value <- 0.6
+sd_value <- 0.2
+
+# Define cumulative probabilities
+p_left <- 0.25  # For the left tail
+p_right <- 0.75  # For the right tail
+
+# Calculate threshold values using qnorm
+threshold_left <- qnorm(p_left, mean = mean_value, sd = sd_value)
+threshold_right <- qnorm(1 - p_right, mean = mean_value, sd = sd_value)
+
+# Create a sequence of x values for the plot
+x_vals <- seq(mean_value - 4*sd_value, mean_value + 4*sd_value, length.out = 1000)
+
+# Calculate normal density for the x values
+y_vals <- dnorm(x_vals, mean = mean_value, sd = sd_value)
+
+# Create data frame for plotting
+data <- data.frame(x = x_vals, y = y_vals)
+
+# Right Tail Plot (larger values)
+right_tail_plot <- ggplot(data, aes(x, y)) +
+  geom_line(size = 1, color = "blue") +  # Plot the normal distribution curve
+  geom_area(data = subset(data, x >= threshold_right), aes(y = y), fill = "skyblue", alpha = 0.5) +  # Shade the right area
+  geom_vline(xintercept = threshold_right, linetype = "dashed", color = "black", size = 1) +  # Mark the threshold value
+  labs(title = "Right Tail: Cumulative Probability",
+       subtitle = paste("Threshold Value (75th Percentile):", round(threshold_right, 2)),
+       x = "Value",
+       y = "Density") +
+  theme_minimal()
+
+
+# Left Tail Plot (smaller values)
+left_tail_plot <- ggplot(data, aes(x, y)) +
+  geom_line(size = 1, color = "blue") +  # Plot the normal distribution curve
+  geom_area(data = subset(data, x <= threshold_left), aes(y = y), fill = "skyblue", alpha = 0.5) +  # Shade the left area
+  geom_vline(xintercept = threshold_left, linetype = "dashed", color = "black", size = 1) +  # Mark the threshold value
+  labs(title = "Left Tail: Cumulative Probability",
+       subtitle = paste("Threshold Value (25th Percentile):", round(threshold_left, 2)),
+       x = "Value",
+       y = "Density") +
+  theme_minimal()
+
+
+# Print the plots
+print(right_tail_plot)
+print(left_tail_plot)
+```
+
+:::
+:::::::::::::: 
+
+-----------------------------------------------------------------------------------------------------------------
+
 ## Example
 
 -----------------------------------------------------------------------------------------------------------------
@@ -847,10 +1004,9 @@ ggplot(data, aes(x = z, y = density)) +
 - (P>z) = 0.05
 ```{r}
 # Calculate the z-score for 
-# the upper 5% (0.95 cumulative 
-# probability)
-p_value <- 0.95
-z_score <- qnorm(p_value)
+# the upper 5% 
+p_value <- 0.05
+z_score <- qnorm(1-p_value)
 # Print the result
 z_score
 ```
