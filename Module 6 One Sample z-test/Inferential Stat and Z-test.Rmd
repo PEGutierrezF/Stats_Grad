@@ -125,7 +125,8 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   stat_function(fun = dnorm) +  # Plot the normal distribution
   geom_polygon(data = df_tl, aes(x, y), fill = "#99CCFF") +  # Fill the lower tail (P(X < x))
   geom_vline(xintercept = qnorm(p), lty = "dashed", lwd = 0.3) +  
-  annotate(geom = "text", x = -2.9, y = 0.15, label = sprintf("%.2f", qnorm(p)), size=3) +  
+  annotate(geom = "text", x = -2.9, y = 0.15, label = sprintf("%.2f", qnorm(p)), size=3) +
+  annotate(geom = "text", x = -3.3, y = 0.05, label = "0.05", size=3) +  
   theme_classic() +  # Clean theme
   labs(x = "", y = "")  # Remove axis labels
 
@@ -150,7 +151,10 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   stat_function(fun = dnorm) +  # Plot the normal distribution
   geom_polygon(data = df_th, aes(x, y), fill = "#99CCFF") +  # Fill the upper tail
   geom_vline(xintercept = qnorm(1-p), lty = "dashed", lwd = 0.3) +  # Vertical line at the critical value
-  annotate(geom = "text", x = 2.7, y = 0.15, label = sprintf("%.2f", qnorm(1-p)), size=3) +  # Annotate the critical value
+  annotate(geom = "text", x = 2.7, y = 0.15, label = sprintf("%.2f", qnorm(1-p)), size=3) +  
+  annotate(geom = "text", x = 3, y = 0.05, label = "0.05", size=3) +  
+  
+  
   theme_classic() +  # Clean theme
   labs(x = "", y = "")  # Remove axis labels
 
@@ -189,10 +193,59 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   annotate(geom = "text", -2.9, 0.15, label = "-1.96", size=3) +
   annotate(geom = "text", 2.7, 0.15, label = "1.96", size=3) +
   
-  annotate(geom = "text", -3.5, 0.05, label = "0.025", size=3) +
+  annotate(geom = "text", -3.3, 0.05, label = "0.025", size=3) +
   annotate(geom = "text",  3, 0.05, label = "0.025", size=3) +
   
   theme_classic() +
   labs(x="", y="")
 ```
 \
+
+
+## Significant or Not?
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+- **Not significant**=
+\vspace{1cm}
+
+- Accept the null hypothesis.  
+
+<br>
+
+- There is **no** difference between the sample and population mean.
+
+<br>
+
+- Obtained test statistic < critical value threshold.
+
+<br>
+
+- p-value > alpha threshold (usually 0.05).
+
+
+:::
+::: {.column width="50%"}
+
+**Significant**= 
+\vspace{1cm}
+
+- Reject the null hypothesis, 
+
+<br>
+
+- There **is** a difference between the sample and population mean.
+
+<br>
+
+- Obtained test statistic > critical value threshold.
+
+<br>
+
+- p-value < alpha threshold (usually 0.05).
+
+
+:::
+::::::::::::::
+  
