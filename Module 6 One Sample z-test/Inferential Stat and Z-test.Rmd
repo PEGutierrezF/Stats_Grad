@@ -19,7 +19,7 @@ header-includes:
 ## Expanding on Hypothesis Testing 
 
 - 1-tailed
-  - Hypothesis includes an expected direction.
+  - Hypothesis includes an **expected direction**.
 
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
@@ -41,7 +41,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   geom_polygon(data = df_tl, aes(x, y), fill = "#99CCFF") +  # Fill the lower tail (P(X < x))
   geom_vline(xintercept = qnorm(p), lty = "dashed", lwd = 0.3) +  # Vertical line at the critical value for left tail
 
-  annotate(geom = "text", x = -2.5, y = 0.3, label = 'P<x') +  # Annotate the critical value
+  annotate(geom = "text", x = -2.7, y = 0.3, label = 'P<x') +  # Annotate the critical value
   
   theme_classic() +  # Clean theme
   labs(x = "", y = "")  # Remove axis labels
@@ -77,7 +77,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   stat_function(fun = dnorm) +  # Plot the normal distribution
   geom_polygon(data = df_th, aes(x, y), fill = "#99CCFF") +  # Fill the upper tail
   geom_vline(xintercept = qnorm(1-p), lty = "dashed", lwd = 0.3) +  # Vertical line at the critical value
-  annotate(geom = "text", x = 2.5, y = 0.3, label = 'P>x') +  # Annotate the critical value
+  annotate(geom = "text", x = 2.7, y = 0.3, label = 'P>x') +  # Annotate the critical value
   
   theme_classic() +  # Clean theme
   labs(x = "", y = "")  # Remove axis labels
@@ -104,7 +104,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 
 ## Expanding on Hypothesis Testing 
 
-- 1-tailed - hypothesis includes an expected direction
+- 1-tailed - hypothesis includes an **expected direction**.
 
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
@@ -124,8 +124,8 @@ df_tl <- data.frame(x = c(tail_low, qnorm(p)), y = c(dnorm(tail_low), 0))
 ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   stat_function(fun = dnorm) +  # Plot the normal distribution
   geom_polygon(data = df_tl, aes(x, y), fill = "#99CCFF") +  # Fill the lower tail (P(X < x))
-  geom_vline(xintercept = qnorm(p), lty = "dashed", lwd = 0.3) +  # Vertical line at the critical value for left tail
-  annotate(geom = "text", x = qnorm(p), y = 0.1, label = sprintf("%.2f", qnorm(p)), hjust = "right") +  # Annotate critical value
+  geom_vline(xintercept = qnorm(p), lty = "dashed", lwd = 0.3) +  
+  annotate(geom = "text", x = -2.9, y = 0.15, label = sprintf("%.2f", qnorm(p)), size=3) +  
   theme_classic() +  # Clean theme
   labs(x = "", y = "")  # Remove axis labels
 
@@ -150,7 +150,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   stat_function(fun = dnorm) +  # Plot the normal distribution
   geom_polygon(data = df_th, aes(x, y), fill = "#99CCFF") +  # Fill the upper tail
   geom_vline(xintercept = qnorm(1-p), lty = "dashed", lwd = 0.3) +  # Vertical line at the critical value
-  annotate(geom = "text", x = qnorm(1-p), y = 0.1, label = sprintf("%.2f", qnorm(1-p)), hjust = "left") +  # Annotate the critical value
+  annotate(geom = "text", x = 2.7, y = 0.15, label = sprintf("%.2f", qnorm(1-p)), size=3) +  # Annotate the critical value
   theme_classic() +  # Clean theme
   labs(x = "", y = "")  # Remove axis labels
 
@@ -168,11 +168,12 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 ## Expanding on Hypothesis Testing 
 
 - 2-tailed tests: 
-  - Have no expected directionality hypothesized. 
+  - Have n**o expected directionality** hypothesized. 
   - Splits the 5% of the area under the curve that would be considered significant between both tails of the normal distribution curve.
   - Are therefore less powerful tests (more likely to find a significant result).
 
-```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=2, fig.height=2}
+\centering
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=2.5, fig.height=2}
 p <- 0.025
 tail_low <- seq(-4, qnorm(p), 0.01)
 df_tl <- data.frame(x=c(tail_low,qnorm(p)), y =c(dnorm(tail_low),0))
@@ -185,9 +186,13 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   geom_polygon(data = df_th, aes(x,y), fill = "#99CCFF") +
   geom_vline(xintercept = qnorm(p), lty = "dashed", lwd = 0.3) +
   geom_vline(xintercept = qnorm(1-p), lty = "dashed", lwd = 0.3) +
-  annotate(geom = "text", -1.97, 0.1, label = "-1.96", hjust = "right") +
-  annotate(geom = "text", 1.97, 0.1, label = "1.96", hjust = "left") +
+  annotate(geom = "text", -2.9, 0.15, label = "-1.96", size=3) +
+  annotate(geom = "text", 2.7, 0.15, label = "1.96", size=3) +
+  
+  annotate(geom = "text", -3.5, 0.05, label = "0.025", size=3) +
+  annotate(geom = "text",  3, 0.05, label = "0.025", size=3) +
+  
   theme_classic() +
   labs(x="", y="")
 ```
-
+\
