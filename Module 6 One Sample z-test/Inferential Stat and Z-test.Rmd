@@ -201,6 +201,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 ```
 \
 
+-------------------------------------------------------------------------------------------
 
 ## Significant or Not?
 
@@ -248,4 +249,46 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 
 :::
 ::::::::::::::
-  
+
+-------------------------------------------------------------------------------------------  
+
+## Basic steps for an **Inferential Test**
+
+
+:::::::::::::: {.columns}
+::: {.column width="70%"}
+
+- A statement of null hypothesis. 
+
+<br>
+
+- Choose the appropriate test.
+
+<br>
+
+- Set the level of Type I error risk (alpha)
+
+<br>
+
+- Analyze data distribution 
+
+<br>
+
+- Compute the test statistic (obtained) value
+
+- Assess significance:
+  - Determine the critical value needed to  reject the null hypothesis and compare it to your   - calculated test statistic
+  - Determine the p-value associated with your calculated test statistic   
+
+<br>
+
+- Summarize
+
+
+:::
+::: {.column width="30%"}
+
+contents...
+
+:::
+::::::::::::::
