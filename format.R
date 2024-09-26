@@ -38,7 +38,7 @@ knitr::include_graphics("fig/Histogram.jpg")
 ```
 
 Figures
-```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=3, fig.height=4.5}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=3, fig.height=4.5}
 ```
 
 
