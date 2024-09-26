@@ -363,4 +363,251 @@ contents\ldots{}
 \end{columns}
 \end{frame}
 
+\begin{frame}{Basic steps for an \textbf{Inferential Test}}
+\phantomsection\label{basic-steps-for-an-inferential-test-1}
+\begin{itemize}
+\item
+  We can select an appropriate test simply by answering some questions.
+\item
+  What type of data do we have?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If we have \textbf{frequency data}, we select the Chi-square family.
+  \item
+    \textbf{Continuous and categorical variables} will have a variety of
+    different tests depending on the research question:
+  \end{itemize}
+\item
+  What type of research question are we considering?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If \textbf{comparing one sample mean} to a \textbf{population} =
+    \textcolor{red}{z-test}.
+  \item
+    If focus is on \textbf{differences} we go to the family of tests
+    concerned with comparing groups or treatments
+    (i.e.~\textcolor{red}{t-tests, ANOVA}).
+  \item
+    If the focus is on \textbf{relationships} between variables, we go
+    to the \textcolor{red}{correlation tests}.
+  \item
+    If we want to \textbf{predict outcomes} we go to the
+    \textcolor{red}{regression family}.
+  \end{itemize}
+\end{itemize}
+
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+\centering
+
+\(y = \beta_0 + \beta_1 x + \epsilon\)
+\end{column}
+
+\begin{column}{0.6\textwidth}
+where:\\
+- \(y\) is the dependent variable,\\
+- \(x\) is the independent variable,\\
+- \(\beta_0\) is the intercept,\\
+- \(\beta_1\) is the slope,\\
+- \(\epsilon\) is the error term.
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Basic steps for an \textbf{Inferential Test}}
+\phantomsection\label{basic-steps-for-an-inferential-test-2}
+\begin{itemize}
+\item
+  We can select an appropriate test simply by answering some questions.
+
+  \begin{itemize}
+  \item
+    How many variables, how many groups are we including? (multivariate)
+  \item
+    Are observations independent from each other or purposely paired?
+  \item
+    Is my data not normally distributed? (non-parametric tests)
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Statistical shorthand \textbf{z-test} example}
+\phantomsection\label{statistical-shorthand-z-test-example}
+\centering
+
+\(z_{100} = 1.4, p = 0.16\)\\
+\end{frame}
+
+\begin{frame}{Statistical shorthand \textbf{z-test} example}
+\phantomsection\label{statistical-shorthand-z-test-example-1}
+\centering
+
+\(z_{100} = 1.4, \, p = 0.16\) \[
+\text{\huge $\downarrow$} \quad
+\] \centering \[
+\underbrace{z_{\underbrace{100}_{\text{Sample size}}}}_{\text{Test statistic}} = \underbrace{1.4}_{\text{z-value}}, \quad \underbrace{p = 0.16}_{\text{p-value}}
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  Every statistical test has a letter designating the type of test.
+\item
+  Because power is so closely tied to sample size, we report sample
+  size.
+\item
+  For clarity (and to confirm the correct-tailed test is used to assess
+  the p-value), include the calculated test statistic value.
+\item
+  Always report the p-value.
+\item
+  Some tests will also include a secondary metric to assess how
+  meaningful results are (if significant).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{How to summarize your analysis: Key Components of a
+Statistical Summary}
+\phantomsection\label{how-to-summarize-your-analysis-key-components-of-a-statistical-summary}
+\textcolor{teal}{Before installing a new air quality monitoring instrument, we tested to see if a sample of measurements taken at the testing lab differed significantly different from the long-term mean for the larger network population.}
+
+\textcolor{orange}{Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).}
+
+\textcolor{blue}{While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference (z(100) = 1.4, p = 0.16).}
+
+\textcolor{darkgray}{Based on these results we approve the installation of this instrument at the new site. However, we would suggest statistical comparisons of the current and new unit side-by-side, prior to decommissioning the current instrument.}
+\end{frame}
+
+\begin{frame}{How to summarize your analysis: Key Components of a
+Statistical Summary}
+\phantomsection\label{how-to-summarize-your-analysis-key-components-of-a-statistical-summary-1}
+\textcolor{teal}{Introduction/Background:\\
+Before installing a new air quality monitoring instrument, we tested to see if a sample of measurements taken at the testing lab differed significantly different from the long-term mean for the larger network population.}
+
+\textcolor{orange}{Methods:\\
+Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).}
+
+\textcolor{blue}{Results:\\
+While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference \( z_{100} = 1.4, \, p = 0.16 \).}
+
+\textcolor{darkgray}{Implications:\\
+Based on these results we approve the installation of this instrument at the new site. However, we would suggest statistical comparisons of the current and new unit side-by-side, prior to decommissioning the current instrument.}
+\end{frame}
+
+\begin{frame}{}
+\phantomsection\label{section}
+\vspace{2cm}
+\centering
+
+\textcolor{blue}{Our First Inferential Tests!\\
+One sample z-test}\\
+\strut \\
+\strut \\
+\end{frame}
+
+\begin{frame}{When would you run a one-sample z-test?}
+\phantomsection\label{when-would-you-run-a-one-sample-z-test}
+\begin{itemize}
+\tightlist
+\item
+  Use the One Sample z-test when:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    You want to test for a difference between one sample mean and a
+    larger population mean.
+  \item
+    There is only one group (sample) being tested against the larger
+    population.
+  \item
+    You know (or can estimate) the mean and standard deviation of the
+    population.
+  \item
+    Data is normally distributed.
+  \end{itemize}
+\end{itemize}
+
+\[
+z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}
+\]
+
+where:\\
+- \(\bar{X}\): Sample mean.\\
+- \(\mu\): Population mean.\\
+- \(\sigma\): Population standard deviation. - \(n\): Sample size.
+\end{frame}
+
+\begin{frame}{When would you run a one-sample z-test?}
+\phantomsection\label{when-would-you-run-a-one-sample-z-test-1}
+\begin{itemize}
+\tightlist
+\item
+  Use the One Sample z-test when:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    You want to test for a difference between one sample mean and a
+    larger population mean.
+  \item
+    There is only one group (sample) being tested against the larger
+    population.
+  \item
+    You know (or can estimate) the mean and standard deviation of the
+    population.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \textcolor{orange}{Expert Information.}
+    \item
+      \textcolor{orange}{Scientific Literature.}
+    \item
+      \textcolor{orange}{Data archives.}
+    \item
+      \textcolor{orange}{Meaningful (hypothesized value).}
+    \end{itemize}
+  \item
+    Data is normally distributed.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Flowcharts: Keeping it simple with questions}
+\phantomsection\label{flowcharts-keeping-it-simple-with-questions}
+\end{frame}
+
+\begin{frame}{One sample z-test}
+\phantomsection\label{one-sample-z-test}
+Assume you have a sample of \textbf{20 observations}. The mean of this
+\textbf{sample is 150}, and you want to determine whether there is a
+\textbf{difference between the sample mean and the larger population
+mean}. Since you are not specifying a direction for this difference, you
+will conduct a two-tailed test.
+
+The \textbf{population mean is 164}, and the \textbf{population standard
+deviation is 33}.
+
+Next, calculate the obtained value for this \textbf{one-sample z-test.}
+
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\[
+z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}
+\]
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\[
+z = \frac{150 - 164}{\frac{33}{\sqrt{20}}}
+\]
+\end{column}
+\end{columns}
+\end{frame}
+
 \end{document}

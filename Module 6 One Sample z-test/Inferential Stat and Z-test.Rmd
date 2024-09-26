@@ -293,3 +293,197 @@ contents...
 
 :::
 ::::::::::::::
+
+------------------------------------------------------------------------------------------- 
+
+## Basic steps for an **Inferential Test**
+
+- We can select an appropriate test simply by answering some questions.
+
+- What type of data do we have?
+  - If we have **frequency data**, we select the Chi-square family.
+  - **Continuous and categorical variables** will  have a variety of different tests depending on the research question:
+  
+- What type of research question are we considering?
+  - If **comparing one sample mean** to a **population** = \textcolor{red}{z-test}.
+  - If focus is on **differences** we go to the family of tests concerned with comparing groups or treatments (i.e. \textcolor{red}{t-tests, ANOVA}).
+  - If the focus is on **relationships** between variables, we go to the \textcolor{red}{correlation tests}.
+  - If we want to **predict outcomes** we go to the \textcolor{red}{regression family}.
+
+:::::::::::::: {.columns}
+::: {.column width="40%"}
+
+\centering
+
+\( y = \beta_0 + \beta_1 x + \epsilon \)
+
+:::
+::: {.column width="60%"}
+
+where:  
+- \( y \) is the dependent variable,  
+- \( x \) is the independent variable,  
+- \( \beta_0 \) is the intercept,  
+- \( \beta_1 \) is the slope,  
+- \( \epsilon \) is the error term.  
+
+:::
+::::::::::::::
+
+------------------------------------------------------------------------------------------- 
+
+## Basic steps for an **Inferential Test**
+
+- We can select an appropriate test simply by answering some questions.
+
+  - How many variables, how many groups are we including? (multivariate)
+
+  - Are observations independent from each other or purposely paired?
+
+  - Is my data not normally distributed? (non-parametric tests)
+
+-------------------------------------------------------------------------------------------
+
+## Statistical shorthand **z-test** example
+
+\centering
+\( z_{100} = 1.4, p = 0.16 \)
+\
+
+-------------------------------------------------------------------------------------------
+
+## Statistical shorthand **z-test** example
+
+\centering
+\( z_{100} = 1.4, \, p = 0.16 \)
+\[
+\text{\huge $\downarrow$} \quad
+\]
+\centering
+\[
+\underbrace{z_{\underbrace{100}_{\text{Sample size}}}}_{\text{Test statistic}} = \underbrace{1.4}_{\text{z-value}}, \quad \underbrace{p = 0.16}_{\text{p-value}}
+\]
+
+- Every statistical test has a letter designating the type of test.
+- Because power is so closely tied to sample size, we report sample size.
+- For clarity (and to confirm the correct-tailed test is used to assess the p-value), include the calculated test statistic value.
+- Always report the p-value.
+- Some tests will also include a secondary metric to assess how meaningful results are (if significant).
+
+-------------------------------------------------------------------------------------------
+
+## How to summarize your analysis: Key Components of a Statistical Summary
+
+\textcolor{teal}{Before installing a new air quality monitoring instrument, we tested to see if a sample of measurements taken at the testing lab differed significantly different from the long-term mean for the larger network population.}  
+
+<br>
+
+\textcolor{orange}{Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).}  
+
+<br>
+
+\textcolor{blue}{While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference (z(100) = 1.4, p = 0.16).}    
+
+<br>
+
+\textcolor{darkgray}{Based on these results we approve the installation of this instrument at the new site. However, we would suggest statistical comparisons of the current and new unit side-by-side, prior to decommissioning the current instrument.}
+
+-------------------------------------------------------------------------------------------
+
+## How to summarize your analysis: Key Components of a Statistical Summary
+
+\textcolor{teal}{Introduction/Background:\\
+Before installing a new air quality monitoring instrument, we tested to see if a sample of measurements taken at the testing lab differed significantly different from the long-term mean for the larger network population.} 
+
+<br>
+
+\textcolor{orange}{Methods:\\
+Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).}  
+
+<br>
+
+\textcolor{blue}{Results:\\
+While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference \( z_{100} = 1.4, \, p = 0.16 \).} 
+
+<br>
+
+\textcolor{darkgray}{Implications:\\
+Based on these results we approve the installation of this instrument at the new site. However, we would suggest statistical comparisons of the current and new unit side-by-side, prior to decommissioning the current instrument.}
+
+
+## 
+\vspace{2cm}
+\centering
+\textcolor{blue}{Our First Inferential Tests!\\
+One sample z-test}
+\
+\
+\
+
+-------------------------------------------------------------------------------------------
+
+## When would you run a one-sample z-test?
+
+- Use the One Sample z-test when:
+  - You want to test for a difference between one sample mean and a larger population mean.
+  - There is only one group (sample) being tested against the larger population.
+  - You know (or can estimate) the mean and standard deviation of the population.
+  - Data is normally distributed.
+
+\[
+z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}
+\]
+
+where:  
+- \( \bar{X} \): Sample mean.  
+- \( \mu \): Population mean.  
+- \( \sigma \): Population standard deviation.
+- \( n \): Sample size.
+
+
+-------------------------------------------------------------------------------------------
+
+## When would you run a one-sample z-test?
+
+- Use the One Sample z-test when:
+  - You want to test for a difference between one sample mean and a larger population mean.
+  - There is only one group (sample) being tested against the larger population.
+  - You know (or can estimate) the mean and standard deviation of the population.
+    - \textcolor{orange}{Expert Information.}
+    - \textcolor{orange}{Scientific Literature.}
+    - \textcolor{orange}{Data archives.}
+    - \textcolor{orange}{Meaningful (hypothesized value).}
+  - Data is normally distributed.
+
+-----------------------------------------------------------------------------
+
+
+## Flowcharts: Keeping it simple with questions
+
+-----------------------------------------------------------------------------
+
+## One sample z-test
+
+Assume you have a sample of **20 observations**. The mean of this **sample is 150**, and you want to determine whether there is a **difference between the sample mean and the larger population mean**. Since you are not specifying a direction for this difference, you will conduct a two-tailed test.
+
+The **population mean is 164**, and the **population standard deviation is 33**.
+
+Next, calculate the obtained value for this **one-sample z-test.**
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+\[
+z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}
+\]
+
+:::
+::: {.column width="50%"}
+
+\[
+z = \frac{150 - 164}{\frac{33}{\sqrt{20}}}
+\]
+
+:::
+::::::::::::::
+
