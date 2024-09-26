@@ -577,3 +577,101 @@ p_value  # This will give the result
 ```
 
 - Since this p-value (0.0578) is greater than the alpha threshold of 0.05, we conclude that the result is **not significant**.
+
+-----------------------------------------------------------------------------
+
+## Example
+
+- A rental car company claims the mean time to rent a car on their website is 60 seconds with a standard deviation of 30 seconds. A random sample 36 customers attempted to rent a car on the website. The mean time to rent was 75 seconds. Is this enough evidence to contradict the company's claim?
+\vspace{0.5cm}
+
+Step 1: Set up the hypotheses
+\vspace{0.5cm}
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+- **Null hypothesis (\( H_0: \))**: The mean rental time is 60 seconds.
+  \[
+  H_0: \mu = 60
+  \]
+
+:::
+::: {.column width="50%"}
+
+- **Alternative hypothesis (\( H_1: \))**: The mean rental time is different from 60 seconds.
+  \[
+  H_1: \mu \neq 60
+  \]
+  
+:::
+::::::::::::::
+
+
+-----------------------------------------------------------------------------
+
+
+## Example
+
+- A rental car company claims the mean time to rent a car on their website is 60 seconds with a standard deviation of 30 seconds. A random sample 36 customers attempted to rent a car on the website. The mean time to rent was 75 seconds. Is this enough evidence to contradict the company's claim?
+\vspace{0.5cm}
+
+Step 1: Test statistic formula
+\vspace{0.5cm}
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+
+\[
+z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}
+\]
+
+:::
+::: {.column width="50%"}
+
+\[
+z = \frac{75 - 60}{\frac{30}{\sqrt{36}}} = \frac{15}{5} = 3
+\]
+  
+:::
+::::::::::::::
+
+
+-----------------------------------------------------------------------------
+
+## Example
+
+- A rental car company claims the mean time to rent a car on their website is 60 seconds with a standard deviation of 30 seconds. A random sample 36 customers attempted to rent a car on the website. The mean time to rent was 75 seconds. Is this enough evidence to contradict the company's claim?
+\vspace{0.5cm}
+
+Step 2: Set up the hypotheses
+
+:::::::::::::: {.columns}
+::: {.column width="40%"}
+
+For a **one-tailed test** at a significance level of \( \alpha = 0.05 \), the critical z-value is approximately **1.645** (since we are only looking at one tail).
+
+
+:::
+::: {.column width="60%"}
+
+```{r}
+# Given z-value
+z_value <- 3
+# Calculate the one-tailed p-value
+p_value <- 1 - pnorm(z_value)
+# Print the p-value
+p_value
+```
+  
+:::
+::::::::::::::
+
+
+-----------------------------------------------------------------------------
+
+## Example: Car rental
+
+\textcolor{teal}{We tested a rental car company's claim that reservations could be made online in 60 seconds on average.} \textcolor{orange}{ Using a random sample of 36 online rentals in a one-tailed, one-sample z-test} \textcolor{blue}{ we found that mean reservation time is actually significantly higher than the company claims (\( z_{(36)}=3, \, p=0.001 \)).} \textcolor{darkgray}{  This result indicates that it is highly unlikely customers can rent a car in 60 seconds as claimed.  We suggest that the rental company adjust its claim to match the 75 second mean encountered for our test sample to avoid misleading potential customers.}
+

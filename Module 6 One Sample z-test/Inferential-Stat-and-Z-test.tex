@@ -752,4 +752,120 @@ calculated test statistic. You have several options to achieve this:
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Example}
+\phantomsection\label{example}
+\begin{itemize}
+\tightlist
+\item
+  A rental car company claims the mean time to rent a car on their
+  website is 60 seconds with a standard deviation of 30 seconds. A
+  random sample 36 customers attempted to rent a car on the website. The
+  mean time to rent was 75 seconds. Is this enough evidence to
+  contradict the company's claim? \vspace{0.5cm}
+\end{itemize}
+
+Step 1: Set up the hypotheses \vspace{0.5cm}
+
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Null hypothesis (\(H_0:\))}: The mean rental time is 60
+  seconds. \[
+  H_0: \mu = 60
+  \]
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Alternative hypothesis (\(H_1:\))}: The mean rental time is
+  different from 60 seconds. \[
+  H_1: \mu \neq 60
+  \]
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Example}
+\phantomsection\label{example-1}
+\begin{itemize}
+\tightlist
+\item
+  A rental car company claims the mean time to rent a car on their
+  website is 60 seconds with a standard deviation of 30 seconds. A
+  random sample 36 customers attempted to rent a car on the website. The
+  mean time to rent was 75 seconds. Is this enough evidence to
+  contradict the company's claim? \vspace{0.5cm}
+\end{itemize}
+
+Step 1: Test statistic formula \vspace{0.5cm}
+
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\[
+z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}
+\]
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\[
+z = \frac{75 - 60}{\frac{30}{\sqrt{36}}} = \frac{15}{5} = 3
+\]
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Example}
+\phantomsection\label{example-2}
+\begin{itemize}
+\tightlist
+\item
+  A rental car company claims the mean time to rent a car on their
+  website is 60 seconds with a standard deviation of 30 seconds. A
+  random sample 36 customers attempted to rent a car on the website. The
+  mean time to rent was 75 seconds. Is this enough evidence to
+  contradict the company's claim? \vspace{0.5cm}
+\end{itemize}
+
+Step 2: Set up the hypotheses
+
+\begin{columns}[T]
+\begin{column}{0.4\textwidth}
+For a \textbf{one-tailed test} at a significance level of
+\(\alpha = 0.05\), the critical z-value is approximately \textbf{1.645}
+(since we are only looking at one tail).
+\end{column}
+
+\begin{column}{0.6\textwidth}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Given z{-}value}
+\NormalTok{z\_value }\OtherTok{\textless{}{-}} \DecValTok{3}
+\CommentTok{\# Calculate the one{-}tailed p{-}value}
+\NormalTok{p\_value }\OtherTok{\textless{}{-}} \DecValTok{1} \SpecialCharTok{{-}} \FunctionTok{pnorm}\NormalTok{(z\_value)}
+\CommentTok{\# Print the p{-}value}
+\NormalTok{p\_value}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.001349898
+\end{verbatim}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Example: Car rental}
+\phantomsection\label{example-car-rental}
+\textcolor{teal}{We tested a rental car company's claim that reservations could be made online in 60 seconds on average.}
+\textcolor{orange}{ Using a random sample of 36 online rentals in a one-tailed, one-sample z-test}
+\textcolor{blue}{ we found that mean reservation time is actually significantly higher than the company claims (\( z_{(36)}=3, \, p=0.001 \)).}
+\textcolor{darkgray}{  This result indicates that it is highly unlikely customers can rent a car in 60 seconds as claimed.  We suggest that the rental company adjust its claim to match the 75 second mean encountered for our test sample to avoid misleading potential customers.}
+\end{frame}
+
 \end{document}
