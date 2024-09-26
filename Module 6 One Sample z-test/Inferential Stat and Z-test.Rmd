@@ -487,3 +487,93 @@ z = \frac{150 - 164}{\frac{33}{\sqrt{20}}} = -1.897
 :::
 ::::::::::::::
 
+
+
+-----------------------------------------------------------------------------
+
+## One sample z-test
+
+Assume you have a sample of **20 observations**. The mean of this **sample is 150**, and you want to determine whether there is a **difference between the sample mean and the larger population mean**. Since you are not specifying a direction for this difference, you will conduct a two-tailed test.
+
+The **population mean is 164**, and the **population standard deviation is 33**.
+
+Next, calculate the obtained value for this **one-sample z-test.**
+
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2.3, fig.height=1.8}
+p <- 0.025
+tail_low <- seq(-4, qnorm(p), 0.01)
+df_tl <- data.frame(x=c(tail_low,qnorm(p)), y =c(dnorm(tail_low),0))
+tail_high <- seq(qnorm(1-p), 4, 0.01)
+df_th <- data.frame(x=c(qnorm(1-p),tail_high), y=c(0,dnorm(tail_high)))
+
+ggplot(data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm) +
+  geom_polygon(data = df_tl, aes(x,y), fill = "#99CCFF") +
+  geom_polygon(data = df_th, aes(x,y), fill = "#99CCFF") +
+  geom_vline(xintercept = qnorm(p), lty = "dashed", lwd = 0.3) +
+  geom_vline(xintercept = qnorm(1-p), lty = "dashed", lwd = 0.3) +
+  annotate(geom = "text", -2.9, 0.15, label = "Reject\n Null", size=3) +
+  annotate(geom = "text", 2.7, 0.15, label = "Reject\n Null", size=3) +
+  
+  annotate(geom = "text", -3.3, 0.05, label = "0.025", size=3) +
+  annotate(geom = "text",  3, 0.05, label = "0.025", size=3) +
+  
+  theme_classic() +
+  labs(x="", y="")
+```
+
+:::
+::: {.column width="50%"}
+\vspace{1cm}
+\[
+z = \frac{150 - 164}{\frac{33}{\sqrt{20}}} = -1.897
+\]
+
+:::
+::::::::::::::
+
+
+-----------------------------------------------------------------------------
+
+## Critical Value Approach
+
+- In the critical value approach, we compare the calculated test statistic to the critical value from the standard normal distribution. For a two-tailed test at the \( \alpha = 0.05 \) significance level, the critical values are approximately ±1.96, which corresponds to the **0.025** in each tail.
+
+\vspace{1cm}
+
+- Decision Rule
+
+- If \( | \text{calculated test statistic} | > \text{critical value} \) = **Significant**
+- If \( | \text{calculated test statistic} | \leq \text{critical value} \) = **Not Significant**
+
+
+-----------------------------------------------------------------------------
+
+## Critical Value Approach
+
+In this case:
+
+\centering
+\[
+|-1.897| < 1.96
+\]
+\
+
+- Thus, we fail to reject the null hypothesis, indicating that there is **no significant** difference between the sample mean and the population mean.
+
+-----------------------------------------------------------------------------
+
+## Finding the p-value
+
+Now we need to determine the probability (p-value) associated with the calculated test statistic. You have several options to achieve this:
+
+```{r}
+z_value <- -1.897
+p_value <- 2 * pnorm(z_value)  # Two-tailed p-value
+p_value  # This will give the result
+```
+
+- Since this p-value (0.0578) is greater than the alpha threshold of 0.05, we conclude that the result is **not significant**.

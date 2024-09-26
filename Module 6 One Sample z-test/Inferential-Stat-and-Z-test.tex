@@ -77,6 +77,46 @@
 \makeatother
 \usepackage{xcolor}
 \newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
 \usepackage{calc} % for calculating minipage widths
 \usepackage{caption}
@@ -612,6 +652,104 @@ z = \frac{150 - 164}{\frac{33}{\sqrt{20}}} = -1.897
 \]
 \end{column}
 \end{columns}
+\end{frame}
+
+\begin{frame}{One sample z-test}
+\phantomsection\label{one-sample-z-test-1}
+Assume you have a sample of \textbf{20 observations}. The mean of this
+\textbf{sample is 150}, and you want to determine whether there is a
+\textbf{difference between the sample mean and the larger population
+mean}. Since you are not specifying a direction for this difference, you
+will conduct a two-tailed test.
+
+The \textbf{population mean is 164}, and the \textbf{population standard
+deviation is 33}.
+
+Next, calculate the obtained value for this \textbf{one-sample z-test.}
+
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\includegraphics{Inferential-Stat-and-Z-test_files/figure-beamer/unnamed-chunk-6-1.pdf}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\vspace{1cm}
+
+\[
+z = \frac{150 - 164}{\frac{33}{\sqrt{20}}} = -1.897
+\]
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Critical Value Approach}
+\phantomsection\label{critical-value-approach}
+\begin{itemize}
+\tightlist
+\item
+  In the critical value approach, we compare the calculated test
+  statistic to the critical value from the standard normal distribution.
+  For a two-tailed test at the \(\alpha = 0.05\) significance level, the
+  critical values are approximately ±1.96, which corresponds to the
+  \textbf{0.025} in each tail.
+\end{itemize}
+
+\vspace{1cm}
+
+\begin{itemize}
+\item
+  Decision Rule
+\item
+  If \(| \text{calculated test statistic} | > \text{critical value}\) =
+  \textbf{Significant}
+\item
+  If \(| \text{calculated test statistic} | \leq \text{critical value}\)
+  = \textbf{Not Significant}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Critical Value Approach}
+\phantomsection\label{critical-value-approach-1}
+In this case:
+
+\centering
+
+\[
+|-1.897| < 1.96
+\]\\
+
+\begin{itemize}
+\tightlist
+\item
+  Thus, we fail to reject the null hypothesis, indicating that there is
+  \textbf{no significant} difference between the sample mean and the
+  population mean.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Finding the p-value}
+\phantomsection\label{finding-the-p-value}
+Now we need to determine the probability (p-value) associated with the
+calculated test statistic. You have several options to achieve this:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z\_value }\OtherTok{\textless{}{-}} \SpecialCharTok{{-}}\FloatTok{1.897}
+\NormalTok{p\_value }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*} \FunctionTok{pnorm}\NormalTok{(z\_value)  }\CommentTok{\# Two{-}tailed p{-}value}
+\NormalTok{p\_value  }\CommentTok{\# This will give the result}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.05782794
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Since this p-value (0.0578) is greater than the alpha threshold of
+  0.05, we conclude that the result is \textbf{not significant}.
+\end{itemize}
 \end{frame}
 
 \end{document}
