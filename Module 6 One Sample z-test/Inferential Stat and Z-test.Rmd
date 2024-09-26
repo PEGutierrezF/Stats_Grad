@@ -26,7 +26,7 @@ header-includes:
 
 \vspace{1cm}
 
-```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=2, fig.height=2}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2, fig.height=2}
 library(ggplot2)
 # Set the significance level
 p <- 0.05
@@ -64,7 +64,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 
 \vspace{1cm}
 
-```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=2, fig.height=2}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2, fig.height=2}
 # Set the significance level
 p <- 0.05
 
@@ -111,7 +111,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 
 \vspace{1cm}
 
-```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=2, fig.height=2}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2, fig.height=2}
 library(ggplot2)
 # Set the significance level
 p <- 0.05
@@ -138,7 +138,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 
 \vspace{1cm}
 
-```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=2, fig.height=2}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2, fig.height=2}
 # Set the significance level
 p <- 0.05
 
@@ -172,7 +172,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 ## Expanding on Hypothesis Testing 
 
 - 2-tailed tests: 
-  - Have n**o expected directionality** hypothesized. 
+  - Have **no expected directionality** hypothesized. 
   - Splits the 5% of the area under the curve that would be considered significant between both tails of the normal distribution curve.
   - Are therefore less powerful tests (more likely to find a significant result).
 
@@ -201,6 +201,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 ```
 \
 
+
 -------------------------------------------------------------------------------------------
 
 ## Significant or Not?
@@ -208,7 +209,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
 
-- **Not significant**=
+- **Not significant**:
 \vspace{1cm}
 
 - Accept the null hypothesis.  
@@ -229,7 +230,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 :::
 ::: {.column width="50%"}
 
-**Significant**= 
+**Significant**: 
 \vspace{1cm}
 
 - Reject the null hypothesis, 
