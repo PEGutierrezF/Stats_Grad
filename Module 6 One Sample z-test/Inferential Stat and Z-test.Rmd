@@ -472,16 +472,16 @@ Next, calculate the obtained value for this **one-sample z-test.**
 
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
-
+\vspace{1cm}
 \[
 z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}
 \]
 
 :::
 ::: {.column width="50%"}
-
+\vspace{1cm}
 \[
-z = \frac{150 - 164}{\frac{33}{\sqrt{20}}}
+z = \frac{150 - 164}{\frac{33}{\sqrt{20}}} = -1.897
 \]
 
 :::
