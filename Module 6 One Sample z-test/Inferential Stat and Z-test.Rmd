@@ -578,20 +578,25 @@ p_value  # This will give the result
 
 - Since this p-value (0.0578) is greater than the alpha threshold of 0.05, we conclude that the result is **not significant**.
 
+
 -----------------------------------------------------------------------------
 
-## Example
+## Example: Car rental
 
-- A rental car company claims the mean time to rent a car on their website is 60 seconds with a standard deviation of 30 seconds. A random sample 36 customers attempted to rent a car on the website. The mean time to rent was 75 seconds. Is this enough evidence to contradict the company's claim?
+-----------------------------------------------------------------------------
+
+## Example: Car rental
+
+- A rental car company claims the mean time to rent a car on their **website is 60 seconds with a standard deviation of 30 seconds**. A random sample **36 customers** attempted to rent a car on the website. The **mean time to rent was 75 seconds**. Is this enough evidence to contradict the company's claim?
 \vspace{0.5cm}
 
-Step 1: Set up the hypotheses
+- Step 1: Set up the hypotheses
 \vspace{0.5cm}
 
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
 
-- **Null hypothesis (\( H_0: \))**: The mean rental time is 60 seconds.
+- **Null hypothesis (\( H_0 \))**: The mean rental time is 60 seconds.
   \[
   H_0: \mu = 60
   \]
@@ -599,9 +604,9 @@ Step 1: Set up the hypotheses
 :::
 ::: {.column width="50%"}
 
-- **Alternative hypothesis (\( H_1: \))**: The mean rental time is different from 60 seconds.
+- **Alternative hypothesis (\( H_1 \))**: The mean rental time is greater than 60 seconds.
   \[
-  H_1: \mu \neq 60
+  H_1: \mu > 60
   \]
   
 :::
@@ -611,12 +616,12 @@ Step 1: Set up the hypotheses
 -----------------------------------------------------------------------------
 
 
-## Example
+## Example: Car rental
 
-- A rental car company claims the mean time to rent a car on their website is 60 seconds with a standard deviation of 30 seconds. A random sample 36 customers attempted to rent a car on the website. The mean time to rent was 75 seconds. Is this enough evidence to contradict the company's claim?
+- A rental car company claims the mean time to rent a car on their **website is 60 seconds with a standard deviation of 30 seconds**. A random sample **36 customers** attempted to rent a car on the website. The **mean time to rent was 75 seconds**. Is this enough evidence to contradict the company's claim?
 \vspace{0.5cm}
 
-Step 1: Test statistic formula
+- Step 2: Test statistic formula
 \vspace{0.5cm}
 
 :::::::::::::: {.columns}
@@ -640,12 +645,12 @@ z = \frac{75 - 60}{\frac{30}{\sqrt{36}}} = \frac{15}{5} = 3
 
 -----------------------------------------------------------------------------
 
-## Example
+## Example: Car rental
 
-- A rental car company claims the mean time to rent a car on their website is 60 seconds with a standard deviation of 30 seconds. A random sample 36 customers attempted to rent a car on the website. The mean time to rent was 75 seconds. Is this enough evidence to contradict the company's claim?
+- A rental car company claims the mean time to rent a car on their **website is 60 seconds with a standard deviation of 30 seconds**. A random sample **36 customers** attempted to rent a car on the website. The **mean time to rent was 75 seconds**. Is this enough evidence to contradict the company's claim?
 \vspace{0.5cm}
 
-Step 2: Set up the hypotheses
+- Step 3: Set up the hypotheses
 
 :::::::::::::: {.columns}
 ::: {.column width="40%"}
