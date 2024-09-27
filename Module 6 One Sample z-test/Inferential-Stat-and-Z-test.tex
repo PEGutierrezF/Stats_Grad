@@ -479,17 +479,17 @@ where:\\
 \phantomsection\label{statistical-shorthand-z-test-example}
 \centering
 
-\(z_{100} = 1.4, p = 0.16\)\\
+\(z_{(100)} = 1.4, p = 0.16\)\\
 \end{frame}
 
 \begin{frame}{Statistical shorthand \textbf{z-test} example}
 \phantomsection\label{statistical-shorthand-z-test-example-1}
 \centering
 
-\(z_{100} = 1.4, \, p = 0.16\) \[
+\(z_{(100)} = 1.4, \, p = 0.16\) \[
 \text{\huge $\downarrow$} \quad
 \] \centering \[
-\underbrace{z_{\underbrace{100}_{\text{Sample size}}}}_{\text{Test statistic}} = \underbrace{1.4}_{\text{z-value}}, \quad \underbrace{p = 0.16}_{\text{p-value}}
+\underbrace{z_{\underbrace{(100)}_{\text{Sample size}}}}_{\text{Test statistic}} = \underbrace{1.4}_{\text{z-value}}, \quad \underbrace{p = 0.16}_{\text{p-value}}
 \]
 
 \begin{itemize}
@@ -517,7 +517,7 @@ Statistical Summary}
 
 \textcolor{orange}{Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).}
 
-\textcolor{blue}{While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference (z(100) = 1.4, p = 0.16).}
+\textcolor{blue}{While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference (\( z_{(100)} = 1.4, \, p = 0.16 \)).}
 
 \textcolor{darkgray}{Based on these results we approve the installation of this instrument at the new site. However, we would suggest statistical comparisons of the current and new unit side-by-side, prior to decommissioning the current instrument.}
 \end{frame}
@@ -532,7 +532,7 @@ Before installing a new air quality monitoring instrument, we tested to see if a
 Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).}
 
 \textcolor{blue}{Results:\\
-While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference \( z_{100} = 1.4, \, p = 0.16 \).}
+While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference (\( z_{(100)} = 1.4, \, p = 0.16 \)).}
 
 \textcolor{darkgray}{Implications:\\
 Based on these results we approve the installation of this instrument at the new site. However, we would suggest statistical comparisons of the current and new unit side-by-side, prior to decommissioning the current instrument.}
@@ -559,11 +559,11 @@ One sample z-test}\\
   \begin{itemize}
   \tightlist
   \item
-    You want to test for a difference between one sample mean and a
-    larger population mean.
+    You want to test for a \textbf{difference} between one
+    \textbf{sample mean} and a larger \textbf{population mean}.
   \item
-    There is only one group (sample) being tested against the larger
-    population.
+    There is only \textbf{one group (sample)} being tested against the
+    larger \textbf{population}.
   \item
     You know (or can estimate) the mean and standard deviation of the
     population.
@@ -592,11 +592,11 @@ where:\\
   \begin{itemize}
   \tightlist
   \item
-    You want to test for a difference between one sample mean and a
-    larger population mean.
+    You want to test for a \textbf{difference} between one
+    \textbf{sample mean} and a larger \textbf{population mean}.
   \item
-    There is only one group (sample) being tested against the larger
-    population.
+    There is only \textbf{one group (sample)} being tested against the
+    larger \textbf{population}.
   \item
     You know (or can estimate) the mean and standard deviation of the
     population.
@@ -687,11 +687,11 @@ z = \frac{150 - 164}{\frac{33}{\sqrt{20}}} = -1.897
 \begin{itemize}
 \tightlist
 \item
-  In the critical value approach, we compare the calculated test
-  statistic to the critical value from the standard normal distribution.
-  For a two-tailed test at the \(\alpha = 0.05\) significance level, the
-  critical values are approximately ±1.96, which corresponds to the
-  \textbf{0.025} in each tail.
+  In the critical value approach, we compare the calculated \textbf{test
+  statistic} to the \textbf{critical value} from the standard normal
+  distribution. For a \textbf{two-tailed test} at the \(\alpha = 0.05\)
+  significance level, the critical values are approximately ±1.96, which
+  corresponds to the \textbf{0.025} in each tail.
 \end{itemize}
 
 \vspace{1cm}
@@ -822,8 +822,38 @@ z = \frac{75 - 60}{\frac{30}{\sqrt{36}}} = \frac{15}{5} = 3
 \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Example: Car rental}
+\begin{frame}{Example: Car rental}
 \phantomsection\label{example-car-rental-3}
+\begin{itemize}
+\item
+  A rental car company claims the mean time to rent a car on their
+  \textbf{website is 60 seconds with a standard deviation of 30
+  seconds}. A random sample \textbf{36 customers} attempted to rent a
+  car on the website. The \textbf{mean time to rent was 75 seconds}. Is
+  this enough evidence to contradict the company's claim? \vspace{0.5cm}
+\item
+  Step 2: Test statistic formula \vspace{0.5cm}
+\end{itemize}
+
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\centering
+
+\[
+|3| > 1.645
+\]\\
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\[
+z = \frac{75 - 60}{\frac{30}{\sqrt{36}}} = \frac{15}{5} = 3
+\]
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Example: Car rental}
+\phantomsection\label{example-car-rental-4}
 \begin{itemize}
 \item
   A rental car company claims the mean time to rent a car on their
@@ -838,8 +868,8 @@ z = \frac{75 - 60}{\frac{30}{\sqrt{36}}} = \frac{15}{5} = 3
 \begin{columns}[T]
 \begin{column}{0.4\textwidth}
 For a \textbf{one-tailed test} at a significance level of
-\(\alpha = 0.05\), the critical z-value is approximately \textbf{1.645}
-(since we are only looking at one tail).
+\textbf{\(\alpha = 0.05\)}, the critical z-value is approximately
+\textbf{1.645} (since we are only looking at one tail).
 \end{column}
 
 \begin{column}{0.6\textwidth}
@@ -862,7 +892,7 @@ For a \textbf{one-tailed test} at a significance level of
 \end{frame}
 
 \begin{frame}{Example: Car rental}
-\phantomsection\label{example-car-rental-4}
+\phantomsection\label{example-car-rental-5}
 \textcolor{teal}{We tested a rental car company's claim that reservations could be made online in 60 seconds on average.}
 \textcolor{orange}{ Using a random sample of 36 online rentals in a one-tailed, one-sample z-test}
 \textcolor{blue}{ we found that mean reservation time is actually significantly higher than the company claims (\( z_{(36)}=3, \, p=0.001 \)).}
