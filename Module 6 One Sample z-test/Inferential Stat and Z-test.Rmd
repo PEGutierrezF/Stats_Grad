@@ -711,3 +711,11 @@ p_value
 
 \textcolor{teal}{We tested a rental car company's claim that reservations could be made online in 60 seconds on average.} \textcolor{orange}{ Using a random sample of 36 online rentals in a one-tailed, one-sample z-test} \textcolor{blue}{ we found that mean reservation time is actually significantly higher than the company claims (\( z_{(36)}=3, \, p=0.001 \)).} \textcolor{darkgray}{  This result indicates that it is highly unlikely customers can rent a car in 60 seconds as claimed.  We suggest that the rental company adjust its claim to match the 75 second mean encountered for our test sample to avoid misleading potential customers.}
 
+
+-----------------------------------------------------------------------------
+
+## Example: Another example
+
+
+-----------------------------------------------------------------------------
+
