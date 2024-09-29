@@ -756,6 +756,9 @@ water_sample = c(15.84, 15.33, 15.58)
 z.test(water_sample, mu=15,  sigma.x = 0.25, alternative="greater")
 ```
 
+The test statistic for the one-sample **z-test is 4.0415** and the corresponding **p-value is \( p = 2.66 \times 10^{-5} \)**.
+
+
 -----------------------------------------------------------------------------
 
 ## Example: Another example
