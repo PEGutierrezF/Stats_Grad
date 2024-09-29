@@ -905,9 +905,62 @@ For a \textbf{one-tailed test} at a significance level of
 
 \begin{frame}{Example: Another example}
 \phantomsection\label{example-another-example-1}
+A water quality regulation specifies that the lead level in drinking
+water should be no more than \textbf{15 ppb}. The amount of lead in a
+water sample is random but follows a normal distribution with a mean
+\(\mu\) and standard deviation \(\sigma\) = 0.25. A random sample of
+three lead measurements yielded values of 15.84, 15.33, and 15.58.
+Perform a one-sided z-test to determine if the mean lead level exceeds
+15 ppb.
+
+\vspace{0.5cm}
+
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \[
+  H_0: \mu = 15
+  \]
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\tightlist
+\item
+  \[
+  H_1: \mu > 15
+  \]
+\end{itemize}
+\end{column}
+\end{columns}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]{Example: Another example}
+\phantomsection\label{example-another-example-2}
+\begin{verbatim}
+## 
+##  One-sample z-Test
+## 
+## data:  water_sample
+## z = 4.0415, p-value = 2.656e-05
+## alternative hypothesis: true mean is greater than 15
+## 95 percent confidence interval:
+##  15.34592       NA
+## sample estimates:
+## mean of x 
+##  15.58333
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Example: Another example}
+\phantomsection\label{example-another-example-3}
+\textcolor{teal}{We tested a water sample to determine whether the mean lead level exceeds the regulatory limit of 15 ppb.}
+\textcolor{orange}{Using a random sample of three lead measurements in a one-tailed, one-sample z-test,}
+\textcolor{blue}{we found that the mean lead level is significantly greater than the regulatory limit (\( z_{(3)}=4.04, \,p=2.66 \times 10^{-5} \)).}
+\textcolor{darkgray}{This result indicates that it is highly unlikely that the true mean lead level is 15 ppb or lower. We suggest further investigation and corrective actions to reduce the lead concentration, as the sample mean was 15.58 ppb.}
 \end{frame}
 
 \end{document}

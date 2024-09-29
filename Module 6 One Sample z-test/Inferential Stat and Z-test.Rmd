@@ -723,9 +723,42 @@ p_value
 
 ## Example: Another example
 
+A water quality regulation specifies that the lead level in drinking water should be no more than **15 ppb**. The amount of lead in a water sample is random but follows a normal distribution with a mean \( \mu \) and standard deviation \( \sigma \) = 0.25. A random sample of three lead measurements yielded values of 15.84, 15.33, and 15.58. Perform a one-sided z-test to determine if the mean lead level exceeds 15 ppb. 
 
+\vspace{0.5cm}
 
+:::::::::::::: {.columns}
+::: {.column width="50%"}
+
+- \[
+  H_0: \mu = 15
+  \]
+
+:::
+::: {.column width="50%"}
+
+- \[
+  H_1: \mu > 15
+  \]
+  
+:::
+::::::::::::::
 
 -----------------------------------------------------------------------------
 
+## Example: Another example
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE,}
+library(BSDA)
+
+water_sample = c(15.84, 15.33, 15.58)
+z.test(water_sample, mu=15,  sigma.x = 0.25, alternative="greater")
+```
+
+-----------------------------------------------------------------------------
+
+## Example: Another example
+
+\textcolor{teal}{We tested a water sample to determine whether the mean lead level exceeds the regulatory limit of 15 ppb.} \textcolor{orange}{Using a random sample of three lead measurements in a one-tailed, one-sample z-test,} \textcolor{blue}{we found that the mean lead level is significantly greater than the regulatory limit (\( z_{(3)}=4.04, \,p=2.66 \times 10^{-5} \)).} \textcolor{darkgray}{This result indicates that it is highly unlikely that the true mean lead level is 15 ppb or lower. We suggest further investigation and corrective actions to reduce the lead concentration, as the sample mean was 15.58 ppb.}
 
