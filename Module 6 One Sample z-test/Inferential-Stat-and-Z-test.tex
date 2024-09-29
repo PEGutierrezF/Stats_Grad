@@ -938,8 +938,22 @@ Perform a one-sided z-test to determine if the mean lead level exceeds
 \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Example: Another example}
+\begin{frame}{Example: Another example}
 \phantomsection\label{example-another-example-2}
+library(BSDA)
+
+z.test(x, y, alternative=`greater', mu=, sigma.x=,
+sigma.y=NULL,conf.level=.95)
+
+where:
+
+x: values for the first sample alternative: the alternative hypothesis
+(`greater', `less', `two.sided') mu: mean population. sigma.x:
+population standard deviation,
+\end{frame}
+
+\begin{frame}[fragile]{Example: Another example}
+\phantomsection\label{example-another-example-3}
 \begin{verbatim}
 ## 
 ##  One-sample z-Test
@@ -959,7 +973,7 @@ corresponding \textbf{p-value is \(p = 2.66 \times 10^{-5}\)}.
 \end{frame}
 
 \begin{frame}{Example: Another example}
-\phantomsection\label{example-another-example-3}
+\phantomsection\label{example-another-example-4}
 \textcolor{teal}{We tested a water sample to determine whether the mean lead level exceeds the regulatory limit of 15 ppb.}
 \textcolor{orange}{Using a random sample of three lead measurements in a one-tailed, one-sample z-test,}
 \textcolor{blue}{we found that the mean lead level is significantly greater than the regulatory limit (\( z_{(3)}=4.04, \,p=2.66 \times 10^{-5} \)).}
