@@ -486,7 +486,7 @@ knitr::include_graphics("fig/which_test_flowchart.png")
 
 ## Flowcharts: Keeping it simple with questions
 
-```{r figure_1, echo = FALSE, fig.align='center', fig.cap = "Flowchart 1: Some explanation"}
+```{r figure_1, echo = FALSE, fig.align='center'}
 DiagrammeR::mermaid("
     graph TD;
 
