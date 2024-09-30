@@ -15,7 +15,6 @@ header-includes:
   - \newcommand{\theHtable}{\thetable}
 ---
 
-
 ## Expanding on Hypothesis Testing 
 
 - 1-tailed
@@ -125,6 +124,8 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   stat_function(fun = dnorm) +  # Plot the normal distribution
   geom_polygon(data = df_tl, aes(x, y), fill = "#99CCFF") +  # Fill the lower tail (P(X < x))
   geom_vline(xintercept = qnorm(p), lty = "dashed", lwd = 0.3) +  
+    annotate("text", x = -2.95, y = 0.3, label = "Critical value", color = "red", angle = 90, size=3) +
+  
   annotate(geom = "text", x = -2.9, y = 0.15, label = sprintf("%.2f", qnorm(p)), size=3) +
   annotate(geom = "text", x = -3.3, y = 0.05, label = "0.05", size=3) +  
   theme_classic() +  # Clean theme
@@ -151,6 +152,8 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   stat_function(fun = dnorm) +  # Plot the normal distribution
   geom_polygon(data = df_th, aes(x, y), fill = "#99CCFF") +  # Fill the upper tail
   geom_vline(xintercept = qnorm(1-p), lty = "dashed", lwd = 0.3) +  # Vertical line at the critical value
+  annotate("text", x = 2.75, y = 0.3, label = "Critical value", color = "red", angle = 90, size=3) +
+
   annotate(geom = "text", x = 2.7, y = 0.15, label = sprintf("%.2f", qnorm(1-p)), size=3) +  
   annotate(geom = "text", x = 3, y = 0.05, label = "0.05", size=3) +  
   
@@ -255,44 +258,46 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 
 ## Basic steps for an **Inferential Test**
 
+- A statement of null hypothesis:  
 
-:::::::::::::: {.columns}
-::: {.column width="70%"}
+\centering\textcolor{red}{Know the research Hypothesis}\  
 
-- A statement of null hypothesis. 
+- Choose the appropriate test:  
 
-<br>
+\centering\textcolor{red}{Including if a 1 or 2-tailed test}\  
 
-- Choose the appropriate test.
+- Set the level of Type I error risk (alpha):  
 
-<br>
+\centering\textcolor{red}{Usually < 0.05}\  
 
-- Set the level of Type I error risk (alpha)
+- Analyze data distribution:  
 
-<br>
-
-- Analyze data distribution 
-
-<br>
-
-- Compute the test statistic (obtained) value
-
-- Assess significance:
-  - Determine the critical value needed to  reject the null hypothesis and compare it to your   - calculated test statistic
-  - Determine the p-value associated with your calculated test statistic   
-
-<br>
-
-- Summarize
+\centering\textcolor{red}{do you meet assumptions like normality and independence?}\  
 
 
-:::
-::: {.column width="30%"}
+-------------------------------------------------------------------------------------------  
 
-contents...
+## Basic steps for an **Inferential Test**
 
-:::
-::::::::::::::
+
+- Compute the test statistic (obtained) value:  
+
+\centering\textcolor{red}{Calculated from formula}\  
+
+- Assess significance:  
+
+- Determine the critical value needed to  reject the null hypothesis and compare it to your:  
+
+\centering\textcolor{red}{|calculated| > critical value = significant}\ 
+
+- Determine the p-value associated with your calculated test statistic  
+
+\centering\textcolor{red}{P-value < alpha threshold = significant}\  
+
+- Summarize:  
+
+\centering\textcolor{red}{Clear, succinct paragraph with all pertinent information and interpretation}\  
+
 
 ------------------------------------------------------------------------------------------- 
 
@@ -459,6 +464,21 @@ where:
 
 
 ## Flowcharts: Keeping it simple with questions
+
+```{r, echo=FALSE, fig.cap="", out.width = '60%', fig.align='center'}
+knitr::include_graphics("fig/parametric.jpg")
+```
+
+
+-----------------------------------------------------------------------------
+
+
+## Flowcharts: Keeping it simple with questions
+
+```{r, echo=FALSE, fig.cap="", out.width = '100%', fig.align='center'}
+knitr::include_graphics("fig/which_test_flowchart.png")
+```
+
 
 -----------------------------------------------------------------------------
 
@@ -723,7 +743,7 @@ p_value
 
 ## Example: Another example
 
-A water quality regulation specifies that the lead level in drinking water should be no more than **15 ppb**. The amount of lead in a water sample is random but follows a normal distribution with a mean \( \mu \) and standard deviation \( \sigma \) = 0.25. A random sample of three lead measurements yielded values of 15.84, 15.33, and 15.58. Perform a one-sided z-test to determine if the mean lead level exceeds 15 ppb. 
+A water quality regulation specifies that the lead level in drinking water should be no more than **15 ppb** ( \( \mu \)) with a standard deviation \( \sigma \) = 0.25. A random sample of three lead measurements yielded values of 15.84, 15.33, and 15.58. Perform a one-sided z-test to determine if the mean lead level exceeds 15 ppb. 
 
 \vspace{0.5cm}
 
@@ -780,4 +800,5 @@ The test statistic for the one-sample **z-test is 4.0415** and the corresponding
 ## Example: Another example
 
 \textcolor{teal}{We tested a water sample to determine whether the mean lead level exceeds the regulatory limit of 15 ppb.} \textcolor{orange}{Using a random sample of three lead measurements in a one-tailed, one-sample z-test,} \textcolor{blue}{we found that the mean lead level is significantly greater than the regulatory limit (\( z_{(3)}=4.04, \,p=2.66 \times 10^{-5} \)).} \textcolor{darkgray}{This result indicates that it is highly unlikely that the true mean lead level is 15 ppb or lower. We suggest further investigation and corrective actions to reduce the lead concentration, as the sample mean was 15.58 ppb.}
+
 

@@ -348,63 +348,78 @@
 
 \begin{frame}{Basic steps for an \textbf{Inferential Test}}
 \phantomsection\label{basic-steps-for-an-inferential-test}
-\begin{columns}[T]
-\begin{column}{0.7\textwidth}
 \begin{itemize}
 \tightlist
 \item
-  A statement of null hypothesis.
+  A statement of null hypothesis:
 \end{itemize}
 
-\begin{itemize}
-\tightlist
-\item
-  Choose the appropriate test.
-\end{itemize}
+\centering\textcolor{red}{Know the research Hypothesis}~
 
 \begin{itemize}
 \tightlist
 \item
-  Set the level of Type I error risk (alpha)
+  Choose the appropriate test:
 \end{itemize}
+
+\centering\textcolor{red}{Including if a 1 or 2-tailed test}~
 
 \begin{itemize}
 \tightlist
 \item
-  Analyze data distribution
+  Set the level of Type I error risk (alpha):
 \end{itemize}
 
-\begin{itemize}
-\item
-  Compute the test statistic (obtained) value
-\item
-  Assess significance:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Determine the critical value needed to reject the null hypothesis
-    and compare it to your - calculated test statistic
-  \item
-    Determine the p-value associated with your calculated test statistic
-  \end{itemize}
-\end{itemize}
+\centering\textcolor{red}{Usually < 0.05}~
 
 \begin{itemize}
 \tightlist
 \item
-  Summarize
+  Analyze data distribution:
 \end{itemize}
-\end{column}
 
-\begin{column}{0.3\textwidth}
-contents\ldots{}
-\end{column}
-\end{columns}
+\centering\textcolor{red}{do you meet assumptions like normality and independence?}~
 \end{frame}
 
 \begin{frame}{Basic steps for an \textbf{Inferential Test}}
 \phantomsection\label{basic-steps-for-an-inferential-test-1}
+\begin{itemize}
+\tightlist
+\item
+  Compute the test statistic (obtained) value:
+\end{itemize}
+
+\centering\textcolor{red}{Calculated from formula}~
+
+\begin{itemize}
+\item
+  Assess significance:
+\item
+  Determine the critical value needed to reject the null hypothesis and
+  compare it to your:
+\end{itemize}
+
+\centering\textcolor{red}{|calculated| > critical value = significant}~
+
+\begin{itemize}
+\tightlist
+\item
+  Determine the p-value associated with your calculated test statistic
+\end{itemize}
+
+\centering\textcolor{red}{P-value < alpha threshold = significant}~
+
+\begin{itemize}
+\tightlist
+\item
+  Summarize:
+\end{itemize}
+
+\centering\textcolor{red}{Clear, succinct paragraph with all pertinent information and interpretation}~
+\end{frame}
+
+\begin{frame}{Basic steps for an \textbf{Inferential Test}}
+\phantomsection\label{basic-steps-for-an-inferential-test-2}
 \begin{itemize}
 \item
   We can select an appropriate test simply by answering some questions.
@@ -459,7 +474,7 @@ where:\\
 \end{frame}
 
 \begin{frame}{Basic steps for an \textbf{Inferential Test}}
-\phantomsection\label{basic-steps-for-an-inferential-test-2}
+\phantomsection\label{basic-steps-for-an-inferential-test-3}
 \begin{itemize}
 \item
   We can select an appropriate test simply by answering some questions.
@@ -620,6 +635,24 @@ where:\\
 
 \begin{frame}{Flowcharts: Keeping it simple with questions}
 \phantomsection\label{flowcharts-keeping-it-simple-with-questions}
+\begin{figure}
+
+{\centering \includegraphics[width=0.6\linewidth]{fig/parametric} 
+
+}
+
+\end{figure}
+\end{frame}
+
+\begin{frame}{Flowcharts: Keeping it simple with questions}
+\phantomsection\label{flowcharts-keeping-it-simple-with-questions-1}
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{fig/which_test_flowchart} 
+
+}
+
+\end{figure}
 \end{frame}
 
 \begin{frame}{One sample z-test}
@@ -669,7 +702,7 @@ Next, calculate the obtained value for this \textbf{one-sample z-test.}
 
 \begin{columns}[T]
 \begin{column}{0.5\textwidth}
-\includegraphics{Inferential-Stat-and-Z-test_files/figure-beamer/unnamed-chunk-6-1.pdf}
+\includegraphics{Inferential-Stat-and-Z-test_files/figure-beamer/unnamed-chunk-8-1.pdf}
 \end{column}
 
 \begin{column}{0.5\textwidth}
@@ -906,12 +939,10 @@ For a \textbf{one-tailed test} at a significance level of
 \begin{frame}{Example: Another example}
 \phantomsection\label{example-another-example-1}
 A water quality regulation specifies that the lead level in drinking
-water should be no more than \textbf{15 ppb}. The amount of lead in a
-water sample is random but follows a normal distribution with a mean
-\(\mu\) and standard deviation \(\sigma\) = 0.25. A random sample of
-three lead measurements yielded values of 15.84, 15.33, and 15.58.
-Perform a one-sided z-test to determine if the mean lead level exceeds
-15 ppb.
+water should be no more than \textbf{15 ppb} ( \(\mu\)) with a standard
+deviation \(\sigma\) = 0.25. A random sample of three lead measurements
+yielded values of 15.84, 15.33, and 15.58. Perform a one-sided z-test to
+determine if the mean lead level exceeds 15 ppb.
 
 \vspace{0.5cm}
 
