@@ -917,23 +917,15 @@ Perform a one-sided z-test to determine if the mean lead level exceeds
 
 \begin{columns}[T]
 \begin{column}{0.5\textwidth}
-\begin{itemize}
-\tightlist
-\item
-  \[
+\[
   H_0: \mu = 15
-  \]
-\end{itemize}
+\]
 \end{column}
 
 \begin{column}{0.5\textwidth}
-\begin{itemize}
-\tightlist
-\item
-  \[
+\[
   H_1: \mu > 15
-  \]
-\end{itemize}
+\]
 \end{column}
 \end{columns}
 \end{frame}
@@ -942,14 +934,22 @@ Perform a one-sided z-test to determine if the mean lead level exceeds
 \phantomsection\label{example-another-example-2}
 library(BSDA)
 
-z.test(x, y, alternative=`greater', mu=, sigma.x=,
-sigma.y=NULL,conf.level=.95)
+z.test(x, alternative=`greater', mu=, sigma.x=)
 
 where:
 
-x: values for the first sample alternative: the alternative hypothesis
-(`greater', `less', `two.sided') mu: mean population. sigma.x:
-population standard deviation,
+\begin{itemize}
+\tightlist
+\item
+  x: values for the first sample
+\item
+  alternative: the alternative hypothesis (`greater', `less',
+  `two.sided')
+\item
+  mu: mean population.
+\item
+  sigma.x: population standard deviation,
+\end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Example: Another example}

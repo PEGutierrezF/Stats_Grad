@@ -730,16 +730,16 @@ A water quality regulation specifies that the lead level in drinking water shoul
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
 
-- \[
+\[
   H_0: \mu = 15
-  \]
+\]
 
 :::
 ::: {.column width="50%"}
 
-- \[
+\[
   H_1: \mu > 15
-  \]
+\]
   
 :::
 ::::::::::::::
@@ -750,14 +750,14 @@ A water quality regulation specifies that the lead level in drinking water shoul
 
 library(BSDA)
 
-z.test(x, y, alternative='greater', mu=, sigma.x=, sigma.y=NULL,conf.level=.95)
+z.test(x, alternative='greater', mu=, sigma.x=)
 
 where:
 
-x: values for the first sample
-alternative: the alternative hypothesis ('greater', 'less', 'two.sided')
-mu: mean population.
-sigma.x: population standard deviation,
+- x: values for the first sample
+- alternative: the alternative hypothesis ('greater', 'less', 'two.sided')
+- mu: mean population.
+- sigma.x: population standard deviation,
 
 -----------------------------------------------------------------------------
 
