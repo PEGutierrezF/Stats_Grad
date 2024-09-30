@@ -480,6 +480,31 @@ knitr::include_graphics("fig/which_test_flowchart.png")
 ```
 
 
+
+-----------------------------------------------------------------------------
+
+
+## Flowcharts: Keeping it simple with questions
+
+```{r figure_1, echo = FALSE, fig.align='center', fig.cap = "Flowchart 1: Some explanation"}
+DiagrammeR::mermaid("
+    graph TD;
+
+        A[What type of data?]--> B[Continuous];
+        B--Research Question--> C[Differences];
+        B--Research Question--> D[Relationships];
+        
+        C --Num. samples to compare--> E[1 group]
+        
+        E --> F[Normally distribute?];
+        F --Yes--> G[One sample z-test];
+        
+        F --No--> H[Wilcoxon signed rank z-test]
+
+    ", height = '190%', width = '160%')
+```
+
+
 -----------------------------------------------------------------------------
 
 ## One sample z-test
