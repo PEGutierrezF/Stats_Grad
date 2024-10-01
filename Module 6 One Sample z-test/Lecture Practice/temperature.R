@@ -7,12 +7,16 @@
 library(tidyverse)
 library(lessR)
 library(readxl)
+
+install.packages('BSDA')
 library(BSDA)
 
+1-pnorm(1.64)
 
 #open data
 climate_data <- read_xlsx("Lecture Practice/Global Climate Anomalies.xlsx", sheet="fall_2024")
 
+head(climate_data)
 # Population 
 mean(filter(climate_data, era=="Historical")$Annual_Anom_J_D)
 sd(filter(climate_data, era=="Historical")$Annual_Anom_J_D)
@@ -34,9 +38,9 @@ sd(filter(climate_data, era=="Base Population")$Annual_Anom_J_D)
 
 
 z.test(x=Historical,
-       mu=53.8,
-       alternative = "two.sided",
-       sigma.x = 22.63869)
+       mu=53.8, sigma.x = 22.63869,
+       alternative = "two.sided"
+       )
 
 
 
