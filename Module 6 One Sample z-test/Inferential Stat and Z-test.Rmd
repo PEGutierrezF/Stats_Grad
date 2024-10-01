@@ -17,6 +17,24 @@ header-includes:
 - \newcommand{\theHtable}{\thetable}
 ---
 
+## Expanding on Hypothesis Testing
+
+- In most real-world applications, a **two-sided** or **two-tailed hypothesis test** is often the most appropriate. This method tests for any difference between the sample and population mean, regardless of the direction of the difference. The null and alternative hypotheses are expressed as:
+
+  \[
+  H_0: \mu = 170 \quad \text{vs.} \quad H_1: \mu \neq 170
+  \]
+
+- To test this hypothesis, we define both rejection and acceptance regions. These regions are determined by our chosen significance level, typically set at **0.05**.
+
+## Types of Hypothesis Tests:
+- **Two-tailed** test: Tests if the sample mean is significantly different from the population mean, in either direction.
+- **Left-tailed** test: Tests if the sample mean is significantly **less than** the population mean.
+- **Right-tailed** test: Tests if the sample mean is significantly **greater than** the population mean.
+
+The tails in a distribution are the extreme regions where values of the test statistic indicate significant evidence against the null hypothesis, aligning with the alternative hypothesis.
+
+
 ## Expanding on Hypothesis Testing 
 
 - 1-tailed
