@@ -1,18 +1,20 @@
 ---
 title: "Inferential Statistics"
 author: "Pablo E. Gutierrez-Fonseca"
-date: 'Fall 2024'
-tables: true
-graphics: yes
-output:   
+date: "Fall 2024"
+output:
   beamer_presentation:
-    theme: "Boadilla"
+    theme: Boadilla
     keep_tex: true
-header-includes: 
-  - \usepackage{graphicx}
-  - \logo{\ifnum\thepage>1\hfill\includegraphics[width=1cm]{logo}\fi}
-  - \titlegraphic{\includegraphics[width=3cm]{logo}}
-  - \newcommand{\theHtable}{\thetable}
+  ioslides_presentation: default
+graphics: true
+always_allow_html: true
+tables: true
+header-includes:
+- \usepackage{graphicx}
+- \logo{\ifnum\thepage>1\hfill\includegraphics[width=1cm]{logo}\fi}
+- \titlegraphic{\includegraphics[width=3cm]{logo}}
+- \newcommand{\theHtable}{\thetable}
 ---
 
 ## Expanding on Hypothesis Testing 
@@ -463,7 +465,7 @@ where:
 -----------------------------------------------------------------------------
 
 
-## Flowcharts: Keeping it simple with questions
+## Flowcharts: 
 
 ```{r, echo=FALSE, fig.cap="", out.width = '60%', fig.align='center'}
 knitr::include_graphics("fig/parametric.jpg")
@@ -473,7 +475,7 @@ knitr::include_graphics("fig/parametric.jpg")
 -----------------------------------------------------------------------------
 
 
-## Flowcharts: Keeping it simple with questions
+## Flowcharts
 
 ```{r, echo=FALSE, fig.cap="", out.width = '100%', fig.align='center'}
 knitr::include_graphics("fig/which_test_flowchart.png")
@@ -484,7 +486,7 @@ knitr::include_graphics("fig/which_test_flowchart.png")
 -----------------------------------------------------------------------------
 
 
-## Flowcharts: Keeping it simple with questions
+## Flowcharts
 
 ```{r figure_1, echo = FALSE, fig.align='center'}
 DiagrammeR::mermaid("
@@ -501,7 +503,8 @@ DiagrammeR::mermaid("
         
         F --No--> H[Wilcoxon signed rank z-test]
 
-    ", height = '190%', width = '160%')
+    ", height = '100%', width = '100%')
+
 ```
 
 

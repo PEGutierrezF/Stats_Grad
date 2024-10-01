@@ -1,6 +1,4 @@
 
-
-
 \vspace{1cm}
 
 \textcolor{gray}{TEXT}
