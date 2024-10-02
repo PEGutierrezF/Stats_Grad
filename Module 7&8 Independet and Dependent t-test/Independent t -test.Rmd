@@ -98,22 +98,202 @@ where n is the number of paired observations
 # Basic Steps for an Inferential t-Test
 
 .pull-left[ 
+
+```{r, eval=F}
+t.test(x= , y = ,
+       mu = 0, 
+       paired = , 
+       var.equal= .
+       alternative = c("two.sided", "less", "greater"))
+
+```
+
+
+
+```{r, eval=F}
+wilcox.testt(x= , y = ,
+       mu = 0, 
+       paired = , 
+       var.equal= .
+       alternative = c("two.sided", "less", "greater"))
+
+```
+
+]
+
+
+.pull-right[ 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(DiagrammeR)
 mermaid("
-graph TB
-    A[Normally Distribute data] --Yes--> B
-    A[Normally Distribute data] --No--> C[Wilconxon test]
-    ", height = '100%', width = '100%')
+graph TD;
+    A[Normally distribute data?]--Yes--> B[t.test]
+    A[Normally distribute data?]--No--> C[wilcox.test]
+    
+")
 ```
 ]
 
-.pull-right[
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-mermaid("
-graph LR
-    C[Equal Variance var.test] --Yes--> D[var.equal=TRUE}
-    C[Equal Variance var.test] --No--> D[var.equal=FALE]
-    ", height = '100%', width = '100%')
+
+---
+
+# Basic Steps for an Inferential t-Test
+
+
+.pull-left[ 
+```{r, eval=F}
+t.test(x= , y = ,
+       mu = 0, 
+       paired = , #<<
+       var.equal= ,
+       alternative = c("two.sided", "less", "greater"))
+
 ```
+]
+
+
+.pull-right[ 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(DiagrammeR)
+mermaid("
+graph TD;
+    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]
+    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]
+    
+")
+```
+]
+
+
+---
+
+# Basic Steps for an Inferential t-Test
+
+
+.pull-left[ 
+```{r, eval=F}
+t.test(x= , y = ,
+       alternative = c("two.sided", "less", "greater"),
+       mu = 0, 
+       paired = , 
+       var.equal= , #<<
+       alternative = c("two.sided", "less", "greater"))
+```
+]
+
+
+.pull-right[ 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(DiagrammeR)
+mermaid("
+graph TD;
+    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];
+    A -->|No| C[Set var.equal to FALSE];
+")
+```
+]
+
+
+---
+
+# Basic Steps for an Inferential t-Test
+
+
+.pull-left[ 
+```{r, eval=F}
+t.test(x= , y = ,
+       alternative = c("two.sided", "less", "greater"),
+       mu = 0, 
+       paired = , 
+       var.equal= , 
+       alternative = c("two.sided", "less", "greater"))#<<
+```
+]
+
+
+.pull-right[ 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(DiagrammeR)
+mermaid("
+graph TD;
+    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];
+    A -->|Yes| C[Use alternative = 'greater'];
+    A -->|No| D[Use alternative = 'two.sided'];
+")
+```
+]
+
+
+---
+
+# Effect Size (Cohen's)
+
+- Effect size is a measure of how different two groups are from one another.
+
+
+.pull-left[
+**Independent t-test**
+
+
+$$
+ES = \frac{\bar{X}_1 - \bar{X}_2}{SD}
+$$
+
+]
+
+
+.pull-right[
+**Dependent t-test** 
+$$
+ES = \frac{\bar{X}_D}{SD}
+$$
+Where:
+\(\bar{X}_D\) is the mean of the differences between paired observations, and \(s_D\) is the standard deviation of the differences.
+
+
+
+]
+
+
+
+---
+
+# Effect Size (Cohen's)
+
+- Effect size is a measure of how different two groups are from one another.
+
+
+.pull-left[
+**Independent t-test**
+
+
+$$
+ES = \frac{\bar{X}_1 - \bar{X}_2}{SD}
+$$
+
+<br>
+<br>
+<br>
+
+- Cohen's ES (d)  
+  - Small = 0.0 - .20  
+  - Medium = 0.20 - 0.50  
+  - Large = 0.50 and above  
+
+
+
+]
+
+
+.pull-right[
+**Dependent t-test** 
+$$
+ES = \frac{\bar{X}_D}{SD}
+$$
+Where:
+\(\bar{X}_D\) is the mean of the differences between paired observations, and \(s_D\) is the standard deviation of the differences.
+
+
+
 ]

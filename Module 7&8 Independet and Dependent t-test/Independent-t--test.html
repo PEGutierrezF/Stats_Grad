@@ -9,7 +9,8 @@
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/nhsr.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/nhsr-fonts.css" rel="stylesheet" />
-    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+    <link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
+    <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
     <script src="libs/d3-3.3.8/d3.min.js"></script>
     <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
     <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
@@ -144,13 +145,179 @@ where n is the number of paired observations
 # Basic Steps for an Inferential t-Test
 
 .pull-left[ 
-<div id="htmlwidget-08124e8d3d23083bc316" style="width:100%;height:100%;" class="DiagrammeR html-widget "></div>
-<script type="application/json" data-for="htmlwidget-08124e8d3d23083bc316">{"x":{"diagram":"\ngraph TB\n    A[Normally Distribute data] --Yes--> B\n    A[Normally Distribute data] --No--> C[Wilconxon test]\n    "},"evals":[],"jsHooks":[]}</script>
+
+
+``` r
+t.test(x= , y = ,
+       mu = 0, 
+       paired = , 
+       var.equal= .
+       alternative = c("two.sided", "less", "greater"))
+```
+
+
+
+
+``` r
+wilcox.testt(x= , y = ,
+       mu = 0, 
+       paired = , 
+       var.equal= .
+       alternative = c("two.sided", "less", "greater"))
+```
+
 ]
 
+
+.pull-right[ 
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-1d1e21bfb7c8763b8e87" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-1d1e21bfb7c8763b8e87">{"x":{"diagram":"\ngraph TD;\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n"},"evals":[],"jsHooks":[]}</script>
+]
+
+
+---
+
+# Basic Steps for an Inferential t-Test
+
+
+.pull-left[ 
+
+``` r
+t.test(x= , y = ,
+       mu = 0, 
+*      paired = ,
+       var.equal= ,
+       alternative = c("two.sided", "less", "greater"))
+```
+]
+
+
+.pull-right[ 
+
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-6514eda12895cd06032d" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-6514eda12895cd06032d">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
+]
+
+
+---
+
+# Basic Steps for an Inferential t-Test
+
+
+.pull-left[ 
+
+``` r
+t.test(x= , y = ,
+       alternative = c("two.sided", "less", "greater"),
+       mu = 0, 
+       paired = , 
+*      var.equal= ,
+       alternative = c("two.sided", "less", "greater"))
+```
+]
+
+
+.pull-right[ 
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-33df7c8f2f74f78a4399" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-33df7c8f2f74f78a4399">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
+]
+
+
+---
+
+# Basic Steps for an Inferential t-Test
+
+
+.pull-left[ 
+
+``` r
+t.test(x= , y = ,
+       alternative = c("two.sided", "less", "greater"),
+       mu = 0, 
+       paired = , 
+       var.equal= , 
+*      alternative = c("two.sided", "less", "greater"))
+```
+]
+
+
+.pull-right[ 
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-bd41fc22bc4718edd609" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-bd41fc22bc4718edd609">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
+]
+
+
+---
+
+# Effect Size (Cohen's)
+
+- Effect size is a measure of how different two groups are from one another.
+
+
+.pull-left[
+**Independent t-test**
+
+
+$$
+ES = \frac{\bar{X}_1 - \bar{X}_2}{SD}
+$$
+
+]
+
+
 .pull-right[
-<div id="htmlwidget-f7e4f584fca4633acec5" style="width:100%;height:100%;" class="DiagrammeR html-widget "></div>
-<script type="application/json" data-for="htmlwidget-f7e4f584fca4633acec5">{"x":{"diagram":"\ngraph LR\n    C[Equal Variance var.test] --Yes--> D[var.equal=TRUE}\n    C[Equal Variance var.test] --No--> D[var.equal=FALE]\n    "},"evals":[],"jsHooks":[]}</script>
+**Dependent t-test** 
+$$
+ES = \frac{\bar{X}_D}{SD}
+$$
+Where:
+\(\bar{X}_D\) is the mean of the differences between paired observations, and \(s_D\) is the standard deviation of the differences.
+
+
+
+]
+
+
+
+---
+
+# Effect Size (Cohen's)
+
+- Effect size is a measure of how different two groups are from one another.
+
+
+.pull-left[
+**Independent t-test**
+
+
+$$
+ES = \frac{\bar{X}_1 - \bar{X}_2}{SD}
+$$
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+- Cohen's ES (d)  
+  - Small = 0.0 - .20  
+  - Medium = 0.20 - 0.50  
+  - Large = 0.50 and above  
+
+
+
+]
+
+
+.pull-right[
+**Dependent t-test** 
+$$
+ES = \frac{\bar{X}_D}{SD}
+$$
+Where:
+\(\bar{X}_D\) is the mean of the differences between paired observations, and \(s_D\) is the standard deviation of the differences.
+
+
+
 ]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
