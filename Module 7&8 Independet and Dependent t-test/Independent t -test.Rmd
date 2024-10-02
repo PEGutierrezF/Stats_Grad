@@ -1,0 +1,119 @@
+---
+title: "Idependent t-tests"
+subtitle: "Tests Between the Means of Different Groups"
+author: "Pablo E. Gutierrez-Fonseca"
+institute: ""
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, "nhsr", "nhsr-fonts"]
+    nature:
+      highlightLanguage: ["r"]
+      countIncrementalSlides: false
+      highlightStyle: github
+      highlightLines: true
+      ratio: "16:9"
+    includes:
+      after_body:
+xaringanExtra:
+    use_panelset: true
+---
+
+```{r xaringan-logo, echo=FALSE, warning=FALSE}
+library(xaringanExtra)
+xaringanExtra::use_logo(
+  image_url = "logo.png")
+```
+
+# When would you run a t-test?
+
+- You have a continuous response variable.
+
+- You want to test for a **difference between two sample means**: considering the variance within each group, do the groups belong to two distinct populations, or not?
+
+- Data is **normally distributed** and both groups have approximately **equal variance**. 
+
+- If the groups are **not related** in any way = **Independent t-test**
+
+- If the groups are **related (paired)** = Dependent t-test (or matched pairs t-test).
+
+
+---
+
+# Independent vs. Dependent groups
+
+How do I know if my samples are independent or dependent?  
+
+Can you tell exactly which observation should be paired with which other observation?  If you can’t tell, your groups are independent
+
+.pull-left[
+**Examples of Independent Samples**
+
+1. Treated and untreated, randomly located plots.
+2. Monitoring sites set up with Systematic (grid) sampling.
+3. Infested and uninfested forest stands selected with stratified random sampling.
+]
+
+.pull-right[
+**Examples of Dependent Samples**
+
+1. Before and After data taken on the same observation.
+2. Paired watersheds / plots.
+3. Parent / offspring studies.
+4. Twin studies / partner studies. 
+]
+
+---
+
+# Independent vs. Dependent groups
+
+.pull-left[
+**Independent t-test** quantifies the difference between sample means (numerator) vs. the amount of variability in the samples (denominator). 
+
+
+$$
+t = \frac{\bar{X}_1 - \bar{X}_2}{\sqrt{\frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2} \left( \frac{1}{n_1} + \frac{1}{n_2} \right)}}
+$$
+DF (for the critical value)= (n1 + n2)-2
+
+]
+
+
+.pull-right[
+**Dependent t-test** quantifies the magnitude of the difference between paired observations (numerator) vs. the amount of variability in the samples (denominator).
+
+$$
+t = \frac{\sum D}{\sqrt{\frac{n \sum D^2 - (\sum D)^2}{n-1}}}
+$$
+
+DF (for the critical value) = n-1    
+where n is the number of paired observations
+
+
+]
+
+---
+
+# Basic Steps for an Inferential t-Test
+
+.pull-left[ 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(DiagrammeR)
+mermaid("
+graph TB
+    A[Normally Distribute data] --Yes--> B
+    A[Normally Distribute data] --No--> C[Wilconxon test]
+    ", height = '100%', width = '100%')
+```
+]
+
+.pull-right[
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+mermaid("
+graph LR
+    C[Equal Variance var.test] --Yes--> D[var.equal=TRUE}
+    C[Equal Variance var.test] --No--> D[var.equal=FALE]
+    ", height = '100%', width = '100%')
+```
+]
