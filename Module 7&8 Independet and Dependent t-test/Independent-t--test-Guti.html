@@ -4,7 +4,7 @@
     <title>t-tests</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutierrez-Fonseca" />
-    <meta name="date" content="2024-10-03" />
+    <meta name="date" content="2024-10-02" />
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
@@ -28,13 +28,16 @@ class: center, middle, inverse, title-slide
 # t-tests
 ]
 .subtitle[
-## Tests between the means of different groups
+## Tests Between the Means of Different Groups
 ]
 .author[
 ### Pablo E. Gutierrez-Fonseca
 ]
+.institute[
+### UVM
+]
 .date[
-### 2024-10-03
+### 2024-10-02
 ]
 
 ---
@@ -123,7 +126,7 @@ t.test(x= , y = ,
        alternative = c("two.sided", "less", "greater"))
 ```
 
-&lt;br&gt;
+
 
 
 ``` r
@@ -138,12 +141,8 @@ wilcox.testt(x= , y = ,
 
 
 .pull-right[ 
-&lt;center&gt;
-
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-30ecf942ed5863fe52c3" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-30ecf942ed5863fe52c3">{"x":{"diagram":"graph TD\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n"},"evals":[],"jsHooks":[]}</script>
-
-&lt;/center&gt;
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-cbcb68f612e90bead1ca" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-cbcb68f612e90bead1ca">{"x":{"diagram":"\ngraph TD;\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -157,18 +156,17 @@ wilcox.testt(x= , y = ,
 ``` r
 t.test(x= , y = ,
        mu = 0, 
-       `paired = `, 
+*      paired = ,
        var.equal= ,
-       alternative = c("two.sided", "less", "greater")
-       )
+       alternative = c("two.sided", "less", "greater"))
 ```
 ]
 
 
 .pull-right[ 
 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-7386d95318bfb8e8a878" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-7386d95318bfb8e8a878">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-6b6ae205d0c42fc59f78" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-6b6ae205d0c42fc59f78">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -183,16 +181,15 @@ t.test(x= , y = ,
 t.test(x= , y = ,
        mu = 0, 
        paired = , 
-       `var.equal= `, 
-       alternative = c("two.sided", "less", "greater")
-       )
+*      var.equal= ,
+       alternative = c("two.sided", "less", "greater"))
 ```
 ]
 
 
 .pull-right[ 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-ba7f0af56513471b999c" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-ba7f0af56513471b999c">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-c46b7b444c4934e38ff6" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-c46b7b444c4934e38ff6">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -208,40 +205,18 @@ t.test(x= , y = ,
        mu = 0, 
        paired = , 
        var.equal= , 
-       `alternative = c("two.sided", "less", "greater")`
-       )
+*      alternative = c("two.sided", "less", "greater"))
 ```
 ]
 
 
 .pull-right[ 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-f1e3d8445507eff986dc" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-f1e3d8445507eff986dc">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-ef2a884548ae4911c372" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-ef2a884548ae4911c372">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
 ---
-
-# Step in R
-
-1. Import libraries and/or install packages.
-
-2. Import your data.
-
-3. Run descriptive statistics.
-
-4. Visualize your distribution.
-
-5. Test for normality.
-
-6. Test for equal variance.
-
-7. Determine if the test is paired or unpaired.
-
-8. Run the code for the appropriate test.
-
----
-
 
 # Effect Size (Cohen's)
 
@@ -264,7 +239,9 @@ $$
 $$
 ES = \frac{\bar{X}_D}{SD}
 $$
-Where: `\(\bar{X}_D\)` is the mean of the differences between paired observations, and SD is the standard deviation of the differences.
+Where:
+\(\bar{X}_D\) is the mean of the differences between paired observations, and \(s_D\) is the standard deviation of the differences.
+
 
 
 ]
@@ -305,42 +282,23 @@ $$
 $$
 ES = \frac{\bar{X}_D}{SD}
 $$
-Where: `\(\bar{X}_D\)` is the mean of the differences between paired observations, and SD is the standard deviation of the differences.
+Where:
+\(\bar{X}_D\) is the mean of the differences between paired observations, and \(s_D\) is the standard deviation of the differences.
+
+
 
 ]
 
----
-
-# The Basic Steps for an Inferential Test in R
-
-- Start with a research question and your data ready.
-
-- Follow these steps:
-1. State your hypothesis. 
-2. Work in R
-    - Import libraries and load necessary packages.
-    - Import your data.
-    - Run descriptive statistics to understand your data.
-    - Visualize the data distribution.
-    - est for normality and check other assumptions (e.g., equal variance).
-3. Select the appropriate statistical test. 
-4. Run the analysis in R and evaluate statistical significance.
-5. Calculate Cohen's Effect Size (if relevant).
-5. Summarize your findings.
 
 ---
-
-
-
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightLanguage": "r",
+"countIncrementalSlides": false,
 "highlightStyle": "github",
 "highlightLines": true,
-"highlightSpans": true,
-"countIncrementalSlides": true,
 "ratio": "16:9"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {

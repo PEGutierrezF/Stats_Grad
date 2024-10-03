@@ -12,3 +12,6 @@ class: center, middle
 
 
 `` hihglight yellow
+
+<center>
+</center>

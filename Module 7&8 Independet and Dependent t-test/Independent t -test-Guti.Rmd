@@ -1,22 +1,21 @@
 ---
 title: "t-tests"
-subtitle: "Tests between the means of different groups"
+subtitle: "Tests Between the Means of Different Groups"
 author: "Pablo E. Gutierrez-Fonseca"
-institute: ""
+institute: "UVM"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
     lib_dir: libs
     css: [default, "css/nhsr.css", "css/nhsr-fonts.css", "css/custom.css"]
     nature:
-      highlightLanguage: r
+      highlightLanguage: ["r"]
+      countIncrementalSlides: false
       highlightStyle: github
       highlightLines: true
-      highlightSpans: true 
-      countIncrementalSlides: true
       ratio: "16:9"
     includes:
-      after_body: [css/insert-logo.html]
+      after_body: css/insert-logo.html
 xaringanExtra:
     use_panelset: true
 ---
@@ -104,7 +103,7 @@ t.test(x= , y = ,
 
 ```
 
-<br>
+
 
 ```{r, eval=F}
 wilcox.testt(x= , y = ,
@@ -119,18 +118,15 @@ wilcox.testt(x= , y = ,
 
 
 .pull-right[ 
-<center>
-
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-DiagrammeR::mermaid("graph TD
+library(DiagrammeR)
+mermaid("
+graph TD;
     A[Normally distribute data?]--Yes--> B[t.test]
     A[Normally distribute data?]--No--> C[wilcox.test]
     
-"
-)
+")
 ```
-
-</center>
 ]
 
 
@@ -143,10 +139,9 @@ DiagrammeR::mermaid("graph TD
 ```{r, eval=F}
 t.test(x= , y = ,
        mu = 0, 
-       `paired = `, 
+       paired = , #<<
        var.equal= ,
-       alternative = c("two.sided", "less", "greater")
-       )
+       alternative = c("two.sided", "less", "greater"))
 
 ```
 ]
@@ -176,9 +171,8 @@ graph TD;
 t.test(x= , y = ,
        mu = 0, 
        paired = , 
-       `var.equal= `, 
-       alternative = c("two.sided", "less", "greater")
-       )
+       var.equal= , #<<
+       alternative = c("two.sided", "less", "greater"))
 ```
 ]
 
@@ -206,8 +200,7 @@ t.test(x= , y = ,
        mu = 0, 
        paired = , 
        var.equal= , 
-       `alternative = c("two.sided", "less", "greater")`
-       )
+       alternative = c("two.sided", "less", "greater"))#<<
 ```
 ]
 
@@ -226,27 +219,6 @@ graph TD;
 
 
 ---
-
-# Step in R
-
-1. Import libraries and/or install packages.
-
-2. Import your data.
-
-3. Run descriptive statistics.
-
-4. Visualize your distribution.
-
-5. Test for normality.
-
-6. Test for equal variance.
-
-7. Determine if the test is paired or unpaired.
-
-8. Run the code for the appropriate test.
-
----
-
 
 # Effect Size (Cohen's)
 
@@ -269,7 +241,9 @@ $$
 $$
 ES = \frac{\bar{X}_D}{SD}
 $$
-Where: $\bar{X}_D$ is the mean of the differences between paired observations, and SD is the standard deviation of the differences.
+Where:
+\(\bar{X}_D\) is the mean of the differences between paired observations, and \(s_D\) is the standard deviation of the differences.
+
 
 
 ]
@@ -310,32 +284,12 @@ $$
 $$
 ES = \frac{\bar{X}_D}{SD}
 $$
-Where: $\bar{X}_D$ is the mean of the differences between paired observations, and SD is the standard deviation of the differences.
+Where:
+\(\bar{X}_D\) is the mean of the differences between paired observations, and \(s_D\) is the standard deviation of the differences.
+
+
 
 ]
 
----
-
-# The Basic Steps for an Inferential Test in R
-
-- Start with a research question and your data ready.
-
-- Follow these steps:
-1. State your hypothesis. 
-2. Work in R
-    - Import libraries and load necessary packages.
-    - Import your data.
-    - Run descriptive statistics to understand your data.
-    - Visualize the data distribution.
-    - est for normality and check other assumptions (e.g., equal variance).
-3. Select the appropriate statistical test. 
-4. Run the analysis in R and evaluate statistical significance.
-5. Calculate Cohen's Effect Size (if relevant).
-5. Summarize your findings.
 
 ---
-
-```{r}
-
-```
-
