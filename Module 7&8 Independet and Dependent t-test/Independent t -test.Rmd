@@ -2,12 +2,12 @@
 title: "Idependent t-tests"
 subtitle: "Tests Between the Means of Different Groups"
 author: "Pablo E. Gutierrez-Fonseca"
-institute: ""
+institute: "UVM"
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
     lib_dir: libs
-    css: [default, "nhsr", "nhsr-fonts"]
+    css: [default, "css/nhsr.css", "css/nhsr-fonts.css", "css/custom.css"]
     nature:
       highlightLanguage: ["r"]
       countIncrementalSlides: false
@@ -19,6 +19,7 @@ output:
 xaringanExtra:
     use_panelset: true
 ---
+
 
 ```{r xaringan-logo, echo=FALSE, warning=FALSE}
 library(xaringanExtra)
@@ -297,3 +298,6 @@ Where:
 
 
 ]
+
+
+---

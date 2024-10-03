@@ -7,8 +7,6 @@
     <meta name="date" content="2024-10-02" />
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/nhsr.css" rel="stylesheet" />
-    <link href="libs/remark-css-0.0.1/nhsr-fonts.css" rel="stylesheet" />
     <link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
     <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
     <script src="libs/d3-3.3.8/d3.min.js"></script>
@@ -18,6 +16,9 @@
     <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
     <script src="libs/chromatography-0.1/chromatography.js"></script>
     <script src="libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
+    <link rel="stylesheet" href="css/nhsr.css" type="text/css" />
+    <link rel="stylesheet" href="css/nhsr-fonts.css" type="text/css" />
+    <link rel="stylesheet" href="css/custom.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -32,11 +33,15 @@ class: center, middle, inverse, title-slide
 .author[
 ### Pablo E. Gutierrez-Fonseca
 ]
+.institute[
+### UVM
+]
 .date[
 ### 2024-10-02
 ]
 
 ---
+
 
 
 <div>
@@ -170,8 +175,8 @@ wilcox.testt(x= , y = ,
 
 
 .pull-right[ 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-1d1e21bfb7c8763b8e87" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-1d1e21bfb7c8763b8e87">{"x":{"diagram":"\ngraph TD;\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-54ca79f95a92f8603bc3" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-54ca79f95a92f8603bc3">{"x":{"diagram":"\ngraph TD;\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -194,8 +199,8 @@ t.test(x= , y = ,
 
 .pull-right[ 
 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-6514eda12895cd06032d" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-6514eda12895cd06032d">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-86cfe5e8e934fabc42a2" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-86cfe5e8e934fabc42a2">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -218,8 +223,8 @@ t.test(x= , y = ,
 
 
 .pull-right[ 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-33df7c8f2f74f78a4399" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-33df7c8f2f74f78a4399">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-5092ec1150aaa2346332" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-5092ec1150aaa2346332">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -242,8 +247,8 @@ t.test(x= , y = ,
 
 
 .pull-right[ 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-bd41fc22bc4718edd609" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-bd41fc22bc4718edd609">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-925e7b0cbacdf032606c" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-925e7b0cbacdf032606c">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -319,6 +324,9 @@ Where:
 
 
 ]
+
+
+---
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
