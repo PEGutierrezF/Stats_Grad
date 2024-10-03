@@ -150,9 +150,11 @@ blockquote {
 
 /*-- NHS organisation logo --*/
 .title-slide {
-  background-image:    url(../img/logo-title-slide.png);
-  background-position: 95% 10%;
-  background-size:     300px;
+  background-image: url(../css/logo.png);
+  background-position: 50% 85%;
+  background-size: 200px;
+  background-color: #fff;
+  padding-left: 100px;  /* delete this for 4:3 aspect ratio */
 }
 
 /*-- Headings --*/
@@ -163,6 +165,23 @@ blockquote {
 /*-- Hides slide number from title slide --*/
 .title-slide .remark-slide-number {
   display:             none;
+}
+
+/*-- Title slide heading adjustments --*/
+.title-slide h1 {
+  color:               #000000;
+  margin-top:          -20px;  /* Move the title up */
+  margin-bottom:       20px;   /* Space between title and subtitle */
+}
+
+.title-slide h2 {
+  color:               #005EB8;
+  margin-top:          -15px;  /* Move the subtitle up */
+  margin-bottom:       60px;   /* Space between subtitle and your name */
+}
+
+.title-slide .author {
+  margin-top:          0px;    /* Ensures no extra margin on top of the author name */
 }
 
 /*-- CUSTOM CLASSES FOR TEXT EMPHASIS --*/

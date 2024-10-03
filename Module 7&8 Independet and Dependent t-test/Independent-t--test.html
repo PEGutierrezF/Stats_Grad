@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Idependent t-tests</title>
+    <title>t-tests</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutierrez-Fonseca" />
-    <meta name="date" content="2024-10-02" />
+    <meta name="date" content="2024-10-03" />
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
-    <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
     <script src="libs/d3-3.3.8/d3.min.js"></script>
     <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
     <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
@@ -25,58 +25,21 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# Idependent t-tests
+# t-tests
 ]
 .subtitle[
-## Tests Between the Means of Different Groups
+## Tests between the means of different groups
 ]
 .author[
 ### Pablo E. Gutierrez-Fonseca
 ]
-.institute[
-### UVM
-]
 .date[
-### 2024-10-02
+### 2024-10-03
 ]
 
 ---
 
 
-
-<div>
-<style type="text/css">.xaringan-extra-logo {
-width: 110px;
-height: 128px;
-z-index: 0;
-background-image: url(logo.png);
-background-size: contain;
-background-repeat: no-repeat;
-position: absolute;
-top:1em;right:1em;
-}
-</style>
-<script>(function () {
-  let tries = 0
-  function addLogo () {
-    if (typeof slideshow === 'undefined') {
-      tries += 1
-      if (tries < 10) {
-        setTimeout(addLogo, 100)
-      }
-    } else {
-      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
-        .forEach(function (slide) {
-          const logo = document.createElement('div')
-          logo.classList = 'xaringan-extra-logo'
-          logo.href = null
-          slide.appendChild(logo)
-        })
-    }
-  }
-  document.addEventListener('DOMContentLoaded', addLogo)
-})()</script>
-</div>
 
 # When would you run a t-test?
 
@@ -160,7 +123,7 @@ t.test(x= , y = ,
        alternative = c("two.sided", "less", "greater"))
 ```
 
-
+&lt;br&gt;
 
 
 ``` r
@@ -175,8 +138,8 @@ wilcox.testt(x= , y = ,
 
 
 .pull-right[ 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-54ca79f95a92f8603bc3" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-54ca79f95a92f8603bc3">{"x":{"diagram":"\ngraph TD;\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b6e65e4f1c081f29de8d" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-b6e65e4f1c081f29de8d">{"x":{"diagram":"\ngraph TD;\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -190,17 +153,18 @@ wilcox.testt(x= , y = ,
 ``` r
 t.test(x= , y = ,
        mu = 0, 
-*      paired = ,
+       `paired = `, 
        var.equal= ,
-       alternative = c("two.sided", "less", "greater"))
+       alternative = c("two.sided", "less", "greater")
+       )
 ```
 ]
 
 
 .pull-right[ 
 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-86cfe5e8e934fabc42a2" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-86cfe5e8e934fabc42a2">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-261654bb928e972efaa1" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-261654bb928e972efaa1">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -213,18 +177,18 @@ t.test(x= , y = ,
 
 ``` r
 t.test(x= , y = ,
-       alternative = c("two.sided", "less", "greater"),
        mu = 0, 
        paired = , 
-*      var.equal= ,
-       alternative = c("two.sided", "less", "greater"))
+       `var.equal= `, 
+       alternative = c("two.sided", "less", "greater")
+       )
 ```
 ]
 
 
 .pull-right[ 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-5092ec1150aaa2346332" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-5092ec1150aaa2346332">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-56cfcad4862322592813" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-56cfcad4862322592813">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -237,18 +201,18 @@ t.test(x= , y = ,
 
 ``` r
 t.test(x= , y = ,
-       alternative = c("two.sided", "less", "greater"),
        mu = 0, 
        paired = , 
        var.equal= , 
-*      alternative = c("two.sided", "less", "greater"))
+       `alternative = c("two.sided", "less", "greater")`
+       )
 ```
 ]
 
 
 .pull-right[ 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-925e7b0cbacdf032606c" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-925e7b0cbacdf032606c">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-38db00b648b2a3b03a4f" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-38db00b648b2a3b03a4f">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -332,9 +296,10 @@ Where:
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
 "highlightLanguage": "r",
-"countIncrementalSlides": false,
 "highlightStyle": "github",
 "highlightLines": true,
+"highlightSpans": true,
+"countIncrementalSlides": true,
 "ratio": "16:9"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
@@ -432,6 +397,33 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   }
   preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
 })(document);</script>
+<style>
+.logo {
+  background-image: url(css/logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 110px;
+  height: 128px;
+  z-index: 0;
+}
+</style>
+
+<script>
+document
+  .querySelectorAll(
+    '.remark-slide-content' +
+    ':not(.title-slide)' +
+    // add additional classes to exclude here, e.g.
+    // ':not(.inverse)' +
+    ':not(.hide-logo)'
+  )
+  .forEach(el => {
+    el.innerHTML += '<div class="logo"></div>';
+  });
+</script>
 
 <script>
 slideshow._releaseMath = function(el) {

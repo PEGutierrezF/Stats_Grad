@@ -1,31 +1,26 @@
 ---
-title: "Idependent t-tests"
-subtitle: "Tests Between the Means of Different Groups"
+title: "t-tests"
+subtitle: "Tests between the means of different groups"
 author: "Pablo E. Gutierrez-Fonseca"
-institute: "UVM"
+institute: ""
 date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
     lib_dir: libs
     css: [default, "css/nhsr.css", "css/nhsr-fonts.css", "css/custom.css"]
     nature:
-      highlightLanguage: ["r"]
-      countIncrementalSlides: false
+      highlightLanguage: r
       highlightStyle: github
       highlightLines: true
+      highlightSpans: true 
+      countIncrementalSlides: true
       ratio: "16:9"
     includes:
-      after_body:
+      after_body: [css/insert-logo.html]
 xaringanExtra:
     use_panelset: true
 ---
 
-
-```{r xaringan-logo, echo=FALSE, warning=FALSE}
-library(xaringanExtra)
-xaringanExtra::use_logo(
-  image_url = "logo.png")
-```
 
 # When would you run a t-test?
 
@@ -109,7 +104,7 @@ t.test(x= , y = ,
 
 ```
 
-
+<br>
 
 ```{r, eval=F}
 wilcox.testt(x= , y = ,
@@ -145,9 +140,10 @@ graph TD;
 ```{r, eval=F}
 t.test(x= , y = ,
        mu = 0, 
-       paired = , #<<
+       `paired = `, 
        var.equal= ,
-       alternative = c("two.sided", "less", "greater"))
+       alternative = c("two.sided", "less", "greater")
+       )
 
 ```
 ]
@@ -175,11 +171,11 @@ graph TD;
 .pull-left[ 
 ```{r, eval=F}
 t.test(x= , y = ,
-       alternative = c("two.sided", "less", "greater"),
        mu = 0, 
        paired = , 
-       var.equal= , #<<
-       alternative = c("two.sided", "less", "greater"))
+       `var.equal= `, 
+       alternative = c("two.sided", "less", "greater")
+       )
 ```
 ]
 
@@ -204,11 +200,11 @@ graph TD;
 .pull-left[ 
 ```{r, eval=F}
 t.test(x= , y = ,
-       alternative = c("two.sided", "less", "greater"),
        mu = 0, 
        paired = , 
        var.equal= , 
-       alternative = c("two.sided", "less", "greater"))#<<
+       `alternative = c("two.sided", "less", "greater")`
+       )
 ```
 ]
 
