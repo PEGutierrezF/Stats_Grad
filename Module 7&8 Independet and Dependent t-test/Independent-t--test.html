@@ -138,8 +138,8 @@ wilcox.testt(x= , y = ,
 
 
 .pull-right[ 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b6e65e4f1c081f29de8d" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-b6e65e4f1c081f29de8d">{"x":{"diagram":"\ngraph TD;\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-58a90e810d49c4f002e2" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-58a90e810d49c4f002e2">{"x":{"diagram":"\ngraph TD;\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -163,8 +163,8 @@ t.test(x= , y = ,
 
 .pull-right[ 
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-261654bb928e972efaa1" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-261654bb928e972efaa1">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-01bff38f796eba0df213" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-01bff38f796eba0df213">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -187,8 +187,8 @@ t.test(x= , y = ,
 
 
 .pull-right[ 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-56cfcad4862322592813" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-56cfcad4862322592813">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-5bf080d0737b64b8e684" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-5bf080d0737b64b8e684">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
@@ -211,12 +211,33 @@ t.test(x= , y = ,
 
 
 .pull-right[ 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-38db00b648b2a3b03a4f" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-38db00b648b2a3b03a4f">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b72d0ede5faa8cf0f69d" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-b72d0ede5faa8cf0f69d">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
 ---
+
+# Step in R
+
+1. Import libraries and/or install packages.
+
+2. Import your data.
+
+3. Run descriptive statistics.
+
+4. Visualize your distribution.
+
+5. Test for normality.
+
+6. Test for equal variance.
+
+7. Determine if the test is paired or unpaired.
+
+8. Run the code for the appropriate test.
+
+---
+
 
 # Effect Size (Cohen's)
 
@@ -239,9 +260,7 @@ $$
 $$
 ES = \frac{\bar{X}_D}{SD}
 $$
-Where:
-\(\bar{X}_D\) is the mean of the differences between paired observations, and \(s_D\) is the standard deviation of the differences.
-
+Where: `\(\bar{X}_D\)` is the mean of the differences between paired observations, and SD is the standard deviation of the differences.
 
 
 ]
@@ -282,15 +301,33 @@ $$
 $$
 ES = \frac{\bar{X}_D}{SD}
 $$
-Where:
-\(\bar{X}_D\) is the mean of the differences between paired observations, and \(s_D\) is the standard deviation of the differences.
-
-
+Where: `\(\bar{X}_D\)` is the mean of the differences between paired observations, and SD is the standard deviation of the differences.
 
 ]
 
+---
+
+# The Basic Steps for an Inferential Test in R
+
+- Start with a research question and your data ready.
+
+- Follow these steps:
+1. State your hypothesis. 
+2. Work in R
+    - Import libraries and load necessary packages.
+    - Import your data.
+    - Run descriptive statistics to understand your data.
+    - Visualize the data distribution.
+    - est for normality and check other assumptions (e.g., equal variance).
+3. Select the appropriate statistical test. 
+4. Run the analysis in R and evaluate statistical significance.
+5. Calculate Cohen’s Effect Size (if relevant).
+5. Summarize your findings.
 
 ---
+
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
