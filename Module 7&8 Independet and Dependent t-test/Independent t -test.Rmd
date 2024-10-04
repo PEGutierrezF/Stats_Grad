@@ -119,15 +119,21 @@ wilcox.testt(x= , y = ,
 
 
 .pull-right[ 
+
 <center>
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-DiagrammeR::mermaid("graph TD
+DiagrammeR::mermaid("
+
+  graph TD
     A[Normally distribute data?]--Yes--> B[t.test]
     A[Normally distribute data?]--No--> C[wilcox.test]
     
-"
-)
+  style A fill:lightblue,stroke:#333,stroke-width:1px
+  style B fill:lightblue,stroke:#333,stroke-width:1px
+  style C fill:lightblue,stroke:#333,stroke-width:1px
+
+")
 ```
 
 </center>
@@ -153,6 +159,7 @@ t.test(x= , y = ,
 
 
 .pull-right[ 
+<center>
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(DiagrammeR)
@@ -163,6 +170,8 @@ graph TD;
     
 ")
 ```
+</center>
+
 ]
 
 
@@ -184,6 +193,8 @@ t.test(x= , y = ,
 
 
 .pull-right[ 
+<center>
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(DiagrammeR)
 mermaid("
@@ -192,6 +203,8 @@ graph TD;
     A -->|No| C[Set var.equal to FALSE];
 ")
 ```
+
+</center>
 ]
 
 
@@ -213,6 +226,8 @@ t.test(x= , y = ,
 
 
 .pull-right[ 
+<center>
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(DiagrammeR)
 mermaid("
@@ -222,6 +237,7 @@ graph TD;
     A -->|No| D[Use alternative = 'two.sided'];
 ")
 ```
+</center>
 ]
 
 

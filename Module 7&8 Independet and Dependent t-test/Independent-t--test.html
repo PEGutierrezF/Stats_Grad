@@ -4,7 +4,7 @@
     <title>t-tests</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutierrez-Fonseca" />
-    <meta name="date" content="2024-10-03" />
+    <meta name="date" content="2024-10-04" />
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
@@ -34,7 +34,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutierrez-Fonseca
 ]
 .date[
-### 2024-10-03
+### 2024-10-04
 ]
 
 ---
@@ -138,10 +138,11 @@ wilcox.testt(x= , y = ,
 
 
 .pull-right[ 
+
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-30ecf942ed5863fe52c3" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-30ecf942ed5863fe52c3">{"x":{"diagram":"graph TD\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-e40f860b77d2d6a199b5" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-e40f860b77d2d6a199b5">{"x":{"diagram":"\n\n  graph TD\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n\n"},"evals":[],"jsHooks":[]}</script>
 
 &lt;/center&gt;
 ]
@@ -166,9 +167,12 @@ t.test(x= , y = ,
 
 
 .pull-right[ 
+&lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-7386d95318bfb8e8a878" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-7386d95318bfb8e8a878">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-d55cf5756540fdc4464f" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-d55cf5756540fdc4464f">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
+&lt;/center&gt;
+
 ]
 
 
@@ -191,8 +195,12 @@ t.test(x= , y = ,
 
 
 .pull-right[ 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-ba7f0af56513471b999c" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-ba7f0af56513471b999c">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
+&lt;center&gt;
+
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-4c05a0448ddd6c7f332e" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-4c05a0448ddd6c7f332e">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
+
+&lt;/center&gt;
 ]
 
 
@@ -215,8 +223,11 @@ t.test(x= , y = ,
 
 
 .pull-right[ 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-f1e3d8445507eff986dc" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-f1e3d8445507eff986dc">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
+&lt;center&gt;
+
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-87bf09a7b8e3583f3a84" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-87bf09a7b8e3583f3a84">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
+&lt;/center&gt;
 ]
 
 
