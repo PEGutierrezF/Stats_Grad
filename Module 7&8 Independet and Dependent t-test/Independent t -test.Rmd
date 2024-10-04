@@ -373,13 +373,15 @@ byf.shapiro(depth_cm~waterbody, data=stream_data)
 ]
 
 .pull-right[ 
-If \( p > 0.05 \), we conclude that our data is normally distributed. 
+- Since both p-values are greater than 0.05, we fail to reject the null hypothesis for both streams. 
+
+- This indicates that the data are **normally distributed** for both Stream 1 and Stream 2. 
 ]
 
 
 ---
 
-Step 2. Equal variance
+# Step 2. Equal variance
 
 .pull-left[
 ```{r, highlight.output = 5}
@@ -396,6 +398,14 @@ var.test(depth_cm ~ waterbody, data=stream_data)
 ]
 
 ---
+
+# Conducting the t-test
+
+Based on the results of the Shapiro-Wilk normality test, which indicated that both Stream 1 and Stream 2 data are normally distributed, and the F-test for equal variance, which showed that the variances are equal, we proceeded to conduct a two-tailed independent t-test.
+
+---
+
+# Conducting the t-test
 
 ```{r tx-wrangle, highlight.output = 5}
 t.test(depth_cm ~ waterbody, data=stream_data,

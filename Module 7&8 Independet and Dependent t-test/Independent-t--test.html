@@ -141,8 +141,8 @@ wilcox.testt(x= , y = ,
 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f6871541d8f09b9134f2" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-f6871541d8f09b9134f2">{"x":{"diagram":"\n\n  graph TD\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7df9de2025d78c3f5694" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-7df9de2025d78c3f5694">{"x":{"diagram":"\n\n  graph TD\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n\n"},"evals":[],"jsHooks":[]}</script>
 
 &lt;/center&gt;
 ]
@@ -169,8 +169,8 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-7c35e028468861af9fb8" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-7c35e028468861af9fb8">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-ba40b3b98a882c7f855a" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-ba40b3b98a882c7f855a">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
 &lt;/center&gt;
 
 ]
@@ -197,8 +197,8 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-415d5d1685283453e450" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-415d5d1685283453e450">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-326ec304f25dd275f3aa" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-326ec304f25dd275f3aa">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
 
 &lt;/center&gt;
 ]
@@ -225,8 +225,8 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8670eac070d9ff496a27" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-8670eac070d9ff496a27">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-a0cf36c243217f7b392f" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-a0cf36c243217f7b392f">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
 &lt;/center&gt;
 ]
 
@@ -393,13 +393,15 @@ byf.shapiro(depth_cm~waterbody, data=stream_data)
 ]
 
 .pull-right[ 
-If \( p &gt; 0.05 \), we conclude that our data is normally distributed. 
+- Since both p-values are greater than 0.05, we fail to reject the null hypothesis for both streams. 
+
+- This indicates that the data are **normally distributed** for both Stream 1 and Stream 2. 
 ]
 
 
 ---
 
-Step 2. Equal variance
+# Step 2. Equal variance
 
 .pull-left[
 
@@ -431,6 +433,14 @@ var.test(depth_cm ~ waterbody, data=stream_data)
 ]
 
 ---
+
+# Conducting the t-test
+
+Based on the results of the Shapiro-Wilk normality test, which indicated that both Stream 1 and Stream 2 data are normally distributed, and the F-test for equal variance, which showed that the variances are equal, we proceeded to conduct a two-tailed independent t-test.
+
+---
+
+# Conducting the t-test
 
 
 ``` r
