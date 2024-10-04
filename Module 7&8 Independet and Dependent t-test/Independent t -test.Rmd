@@ -350,21 +350,31 @@ Where: $\bar{X}_D$ is the mean of the differences between paired observations, a
 5. Summarize your findings.
 
 ---
+# Two-tailed t-test Example
 
-```{r}
-library(readxl)
-df <- read_xlsx('Lecturer Practice/Indep_remediated.xlsx')
-df
+**Research Question**:  The state is looking to choose a stream for habitat restoration for native trout species.  Streams with deeper pools will provide necessary cover in the winter months and minimize potential scouring from severe rain events.  Which stream should they focus on?  Test to see if there is a significant difference in depth between stream 1 and stream 2?
+
+```{r, warning=FALSE}
+stream_data <- read.csv('Lecturer Practice/waterdata.csv')
+head(stream_data)
 
 ```
 
 ---
 
 ```{r tx-wrangle, highlight.output = 5}
-t.test(Unremediated ~ Treatment, data=df,
+t.test(depth_cm ~ waterbody, data=stream_data,
        alternative = c("two.sided"),
        mu = 0, 
-      # paired = FALSE, 
+       paired = FALSE, 
        var.equal = TRUE,
        conf.level = 0.95)
 ```
+
+---
+
+# Summary
+
+.red[We tested to see if there was a significant difference in pool depth between Stream 1 and Stream 2, which are being considered for habitat restoration for native trout species.] .orange[Using a two-tailed independent t-test to compare depth measurements from 71 total samples,] .blue[we found a significant and meaningful difference between the streams (t(69) = -12.92, p < 2.2e-16).] .darkgray[This indicates that Stream 2, with deeper pools, may provide more suitable habitat for trout, offering better cover during winter and reducing the risk of scouring during severe rain events.]
+
+

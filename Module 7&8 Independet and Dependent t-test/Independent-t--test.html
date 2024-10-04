@@ -8,7 +8,7 @@
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
-    <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
     <script src="libs/d3-3.3.8/d3.min.js"></script>
     <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
     <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
@@ -141,8 +141,8 @@ wilcox.testt(x= , y = ,
 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-83cb32e869b26ee93c32" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-83cb32e869b26ee93c32">{"x":{"diagram":"\n\n  graph TD\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-97f61777858aec308073" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-97f61777858aec308073">{"x":{"diagram":"\n\n  graph TD\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n\n"},"evals":[],"jsHooks":[]}</script>
 
 &lt;/center&gt;
 ]
@@ -169,8 +169,8 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-8fcd2b8a0c1486c1e201" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-8fcd2b8a0c1486c1e201">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-c00d687ad01d1f63d865" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-c00d687ad01d1f63d865">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
 &lt;/center&gt;
 
 ]
@@ -197,8 +197,8 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-c04b6dbabbfda8a60a98" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-c04b6dbabbfda8a60a98">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-af8680f9a1ab1dfdb672" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-af8680f9a1ab1dfdb672">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
 
 &lt;/center&gt;
 ]
@@ -225,8 +225,8 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-66069729106f9f84d01a" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-66069729106f9f84d01a">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-6e1416347511e263bc95" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-6e1416347511e263bc95">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
 &lt;/center&gt;
 ]
 
@@ -340,39 +340,34 @@ Where: `\(\bar{X}_D\)` is the mean of the differences between paired observation
 5. Summarize your findings.
 
 ---
+# Two-tailed t-test Example
+
+**Research Question**:  The state is looking to choose a stream for habitat restoration for native trout species.  Streams with deeper pools will provide necessary cover in the winter months and minimize potential scouring from severe rain events.  Which stream should they focus on?  Test to see if there is a significant difference in depth between stream 1 and stream 2?
 
 
 ``` r
-library(readxl)
-df &lt;- read_xlsx('Lecturer Practice/Indep_remediated.xlsx')
-df
+stream_data &lt;- read.csv('Lecturer Practice/waterdata.csv')
+head(stream_data)
 ```
 
 ```
-## # A tibble: 40 × 3
-##    `Test Sample` Treatment    Unremediated
-##            &lt;dbl&gt; &lt;chr&gt;               &lt;dbl&gt;
-##  1             1 Unremediated          129
-##  2             2 Unremediated          182
-##  3             3 Unremediated          157
-##  4             4 Unremediated          191
-##  5             5 Unremediated          160
-##  6             6 Unremediated          148
-##  7             7 Unremediated          104
-##  8             8 Unremediated          152
-##  9             9 Unremediated          173
-## 10            10 Unremediated          190
-## # ℹ 30 more rows
+##   X waterbody depth_cm
+## 1 1   stream1     42.6
+## 2 2   stream1     48.4
+## 3 3   stream1     46.2
+## 4 4   stream1     44.2
+## 5 5   stream1     44.4
+## 6 6   stream1     50.6
 ```
 
 ---
 
 
 ``` r
-t.test(Unremediated ~ Treatment, data=df,
+t.test(depth_cm ~ waterbody, data=stream_data,
        alternative = c("two.sided"),
        mu = 0, 
-      # paired = FALSE, 
+       paired = FALSE, 
        var.equal = TRUE,
        conf.level = 0.95)
 ```
@@ -381,15 +376,23 @@ t.test(Unremediated ~ Treatment, data=df,
 ## 
 ## 	Two Sample t-test
 ## 
-## data:  Unremediated by Treatment
-*## t = -3.2468, df = 38, p-value = 0.00244
-## alternative hypothesis: true difference in means between group Remediated and group Unremediated is not equal to 0
+## data:  depth_cm by waterbody
+*## t = -12.924, df = 69, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means between group stream1 and group stream2 is not equal to 0
 ## 95 percent confidence interval:
-##  -65.42703 -15.17297
+##  -13.298846  -9.742143
 ## sample estimates:
-##   mean in group Remediated mean in group Unremediated 
-##                     114.85                     155.15
+## mean in group stream1 mean in group stream2 
+##              44.42424              55.94474
 ```
+
+---
+
+# Summary
+
+.red[We tested to see if there was a significant difference in pool depth between Stream 1 and Stream 2, which are being considered for habitat restoration for native trout species.] .orange[Using a two-tailed independent t-test to compare depth measurements from 71 total samples,] .blue[we found a significant and meaningful difference between the streams (t(69) = -12.92, p &lt; 2.2e-16).] .darkgray[This indicates that Stream 2, with deeper pools, may provide more suitable habitat for trout, offering better cover during winter and reducing the risk of scouring during severe rain events.]
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

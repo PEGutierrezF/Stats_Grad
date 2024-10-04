@@ -847,3 +847,4 @@ The test statistic for the one-sample **z-test is 4.0415** and the corresponding
 \textcolor{teal}{We tested a water sample to determine whether the mean lead level exceeds the regulatory limit of 15 ppb.} \textcolor{orange}{Using a random sample of three lead measurements in a one-tailed, one-sample z-test,} \textcolor{blue}{we found that the mean lead level is significantly greater than the regulatory limit (\( z_{(3)}=4.04, \,p=2.66 \times 10^{-5} \)).} \textcolor{darkgray}{This result indicates that it is highly unlikely that the true mean lead level is 15 ppb or lower. We suggest further investigation and corrective actions to reduce the lead concentration, as the sample mean was 15.58 ppb.}
 
 
+
