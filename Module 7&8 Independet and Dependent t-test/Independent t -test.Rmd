@@ -21,6 +21,14 @@ xaringanExtra:
     use_panelset: true
 ---
 
+# Degrees of Freedom
+
+Degrees of freedom is, for most purposes, sample size minus the number of things you want to estimate.
+
+Don’t worry about memorizing a definition, just know when to use it and what it means for your analysis.
+
+---
+
 
 # When would you run a t-test?
 
