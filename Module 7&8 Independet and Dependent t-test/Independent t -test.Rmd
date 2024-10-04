@@ -355,10 +355,45 @@ Where: $\bar{X}_D$ is the mean of the differences between paired observations, a
 **Research Question**:  The state is looking to choose a stream for habitat restoration for native trout species.  Streams with deeper pools will provide necessary cover in the winter months and minimize potential scouring from severe rain events.  Which stream should they focus on?  Test to see if there is a significant difference in depth between stream 1 and stream 2?
 
 ```{r, warning=FALSE}
-stream_data <- read.csv('Lecturer Practice/waterdata.csv')
+stream_data <- read.csv('Lecturer Practice/two_tail_water data.csv')
 head(stream_data)
-
 ```
+
+---
+
+# Step 1. Normality test
+
+- Test for normality
+
+.pull-left[ 
+```{r  warning=FALSE, highlight.output = 7:8}
+library(RVAideMemoire)
+byf.shapiro(depth_cm~waterbody, data=stream_data)
+```
+]
+
+.pull-right[ 
+If \( p > 0.05 \), we conclude that our data is normally distributed. 
+]
+
+
+---
+
+Step 2. Equal variance
+
+.pull-left[
+```{r, highlight.output = 5}
+#var.test
+var.test(depth_cm ~ waterbody, data=stream_data)
+```
+]
+
+.pull-right[
+
+- Since the p-value is greater than 0.05, we fail to reject the null hypothesis. 
+
+- Therefore, we conclude that the **variances** of pool depth between the two streams are **equal**.
+]
 
 ---
 
@@ -375,6 +410,6 @@ t.test(depth_cm ~ waterbody, data=stream_data,
 
 # Summary
 
-.red[We tested to see if there was a significant difference in pool depth between Stream 1 and Stream 2, which are being considered for habitat restoration for native trout species.] .orange[Using a two-tailed independent t-test to compare depth measurements from 71 total samples,] .blue[we found a significant and meaningful difference between the streams (t(69) = -12.92, p < 2.2e-16).] .darkgray[This indicates that Stream 2, with deeper pools, may provide more suitable habitat for trout, offering better cover during winter and reducing the risk of scouring during severe rain events.]
+<span style="color:#00796B;">We tested to see if there was a significant difference in pool depth between Stream 1 and Stream 2, which are being considered for habitat restoration for native trout species.</span> <span style="color:#E65100;">Using a two-tailed independent t-test to compare depth measurements from 71 total samples,</span> <span style="color:#1E88E5;">we found a significant and meaningful difference between the streams ( $t_{(69)} = -12.92, \, p < 2.2 \times 10^{-16})$.</span>  <span style="color:#424242;">This indicates that Stream 2, with deeper pools, may provide more suitable habitat for trout, offering better cover during winter and reducing the risk of scouring during severe rain events.</span> 
 
-
+---
