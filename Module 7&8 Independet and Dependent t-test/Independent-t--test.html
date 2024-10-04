@@ -141,8 +141,8 @@ wilcox.testt(x= , y = ,
 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-e40f860b77d2d6a199b5" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-e40f860b77d2d6a199b5">{"x":{"diagram":"\n\n  graph TD\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-83cb32e869b26ee93c32" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-83cb32e869b26ee93c32">{"x":{"diagram":"\n\n  graph TD\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n\n"},"evals":[],"jsHooks":[]}</script>
 
 &lt;/center&gt;
 ]
@@ -169,8 +169,8 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-d55cf5756540fdc4464f" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-d55cf5756540fdc4464f">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-8fcd2b8a0c1486c1e201" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-8fcd2b8a0c1486c1e201">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
 &lt;/center&gt;
 
 ]
@@ -197,8 +197,8 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-4c05a0448ddd6c7f332e" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-4c05a0448ddd6c7f332e">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-c04b6dbabbfda8a60a98" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-c04b6dbabbfda8a60a98">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
 
 &lt;/center&gt;
 ]
@@ -225,8 +225,8 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-87bf09a7b8e3583f3a84" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-87bf09a7b8e3583f3a84">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-66069729106f9f84d01a" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-66069729106f9f84d01a">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
 &lt;/center&gt;
 ]
 
@@ -342,7 +342,54 @@ Where: `\(\bar{X}_D\)` is the mean of the differences between paired observation
 ---
 
 
+``` r
+library(readxl)
+df &lt;- read_xlsx('Lecturer Practice/Indep_remediated.xlsx')
+df
+```
 
+```
+## # A tibble: 40 × 3
+##    `Test Sample` Treatment    Unremediated
+##            &lt;dbl&gt; &lt;chr&gt;               &lt;dbl&gt;
+##  1             1 Unremediated          129
+##  2             2 Unremediated          182
+##  3             3 Unremediated          157
+##  4             4 Unremediated          191
+##  5             5 Unremediated          160
+##  6             6 Unremediated          148
+##  7             7 Unremediated          104
+##  8             8 Unremediated          152
+##  9             9 Unremediated          173
+## 10            10 Unremediated          190
+## # ℹ 30 more rows
+```
+
+---
+
+
+``` r
+t.test(Unremediated ~ Treatment, data=df,
+       alternative = c("two.sided"),
+       mu = 0, 
+      # paired = FALSE, 
+       var.equal = TRUE,
+       conf.level = 0.95)
+```
+
+```
+## 
+## 	Two Sample t-test
+## 
+## data:  Unremediated by Treatment
+*## t = -3.2468, df = 38, p-value = 0.00244
+## alternative hypothesis: true difference in means between group Remediated and group Unremediated is not equal to 0
+## 95 percent confidence interval:
+##  -65.42703 -15.17297
+## sample estimates:
+##   mean in group Remediated mean in group Unremediated 
+##                     114.85                     155.15
+```
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

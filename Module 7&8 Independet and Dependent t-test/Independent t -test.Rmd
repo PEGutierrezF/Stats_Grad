@@ -352,6 +352,19 @@ Where: $\bar{X}_D$ is the mean of the differences between paired observations, a
 ---
 
 ```{r}
+library(readxl)
+df <- read_xlsx('Lecturer Practice/Indep_remediated.xlsx')
+df
 
 ```
 
+---
+
+```{r tx-wrangle, highlight.output = 5}
+t.test(Unremediated ~ Treatment, data=df,
+       alternative = c("two.sided"),
+       mu = 0, 
+      # paired = FALSE, 
+       var.equal = TRUE,
+       conf.level = 0.95)
+```
