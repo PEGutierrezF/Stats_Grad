@@ -21,11 +21,34 @@ xaringanExtra:
     use_panelset: true
 ---
 
-# Degrees of Freedom
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(ggpubr)
+library(cowplot)
+library(DiagrammeR)
+```
 
-Degrees of freedom is, for most purposes, sample size minus the number of things you want to estimate.
+# t-test
 
-Don’t worry about memorizing a definition, just know when to use it and what it means for your analysis.
+A **t-test** is an inferential statistic used to determine if there is a statistically significant difference between the means of two variables.
+
+- **Student t-test** is named after its inventor, William Gosset, who published under the pseudonym of student.
+
+<center>
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4.5, fig.height=5}
+set.seed(1234)
+wdata = data.frame(
+  data = factor(rep(c("Sample 1", "Sample 2"), each=200)),
+  weight = c(rnorm(200, 55), rnorm(200, 58)))
+
+gghistogram(
+  wdata, x = "weight", y = "..density..",
+  add = "mean", rug = TRUE,
+  fill = "data", palette = c("#00AFBB", "#E7B800"),
+  add_density = TRUE
+  )
+
+```
+
 
 ---
 
@@ -49,7 +72,7 @@ Don’t worry about memorizing a definition, just know when to use it and what i
 
 How do I know if my samples are independent or dependent?  
 
-Can you tell exactly which observation should be paired with which other observation?  If you can’t tell, your groups are independent
+Can you tell exactly which observation should be paired with which other observation?  If you can't tell, your groups are independent
 
 .pull-left[
 **Examples of Independent Samples**
@@ -170,7 +193,6 @@ t.test(x= , y = ,
 <center>
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(DiagrammeR)
 mermaid("
 graph TD;
     A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]
@@ -204,7 +226,6 @@ t.test(x= , y = ,
 <center>
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(DiagrammeR)
 mermaid("
 graph TD;
     A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];
@@ -237,7 +258,6 @@ t.test(x= , y = ,
 <center>
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
-library(DiagrammeR)
 mermaid("
 graph TD;
     A[Two-sided?] -->|Yes| B[Use alternative = 'less'];
@@ -369,13 +389,22 @@ head(stream_data)
 
 ---
 
+# Load libraries
+```{r message=FALSE, warning=FALSE}
+library(RVAideMemoire) # for shapiro.text()
+library(dplyr) # for filter() and more
+
+```
+
+
+---
+
 # Step 1. Normality test
 
 - Test for normality
 
 .pull-left[ 
 ```{r  warning=FALSE, highlight.output = 7:8}
-library(RVAideMemoire)
 byf.shapiro(depth_cm~waterbody, data=stream_data)
 ```
 ]
@@ -416,18 +445,32 @@ Based on the results of the Shapiro-Wilk normality test, which indicated that bo
 # Conducting the t-test
 
 ```{r tx-wrangle, highlight.output = 5}
-t.test(depth_cm ~ waterbody, data=stream_data,
-       alternative = c("two.sided"),
+t.test(filter(stream_data, waterbody == "stream1")$depth_cm, 
+       filter(stream_data, waterbody == "stream2")$depth_cm,
+       alternative = "two.sided",
        mu = 0, 
        paired = FALSE, 
-       var.equal = TRUE,
-       conf.level = 0.95)
+       var.equal = TRUE)
 ```
+
 
 ---
 
 # Summary
 
 <span style="color:#00796B;">We tested to see if there was a significant difference in pool depth between Stream 1 and Stream 2, which are being considered for habitat restoration for native trout species.</span> <span style="color:#E65100;">Using a two-tailed independent t-test to compare depth measurements from 71 total samples,</span> <span style="color:#1E88E5;">we found a significant and meaningful difference between the streams ( $t_{(69)} = -12.92, \, p < 2.2 \times 10^{-16})$.</span>  <span style="color:#424242;">This indicates that Stream 2, with deeper pools, may provide more suitable habitat for trout, offering better cover during winter and reducing the risk of scouring during severe rain events.</span> 
+
+<center>
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4, fig.height=4.5}
+ggplot(stream_data, aes(x = waterbody, y = depth_cm, fill = waterbody)) +
+  geom_boxplot() +
+  stat_summary(fun = mean, geom = "point", shape = 5, size = 4, color = "black") +
+  labs(title = "Depth Measurements in Stream 1 and Stream 2",
+       x = "Waterbody",
+       y = "Depth (cm)") +
+  theme_minimal() +
+  scale_fill_manual(values = c("#00AFBB", "#E7B800")) +
+  theme(legend.position = "none")
+```
 
 ---

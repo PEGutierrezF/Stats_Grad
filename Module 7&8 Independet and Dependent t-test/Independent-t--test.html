@@ -4,11 +4,11 @@
     <title>t-tests</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutierrez-Fonseca" />
-    <meta name="date" content="2024-10-04" />
+    <meta name="date" content="2024-10-06" />
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet" />
-    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+    <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
     <script src="libs/d3-3.3.8/d3.min.js"></script>
     <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
     <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
@@ -34,17 +34,23 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutierrez-Fonseca
 ]
 .date[
-### 2024-10-04
+### 2024-10-06
 ]
 
 ---
 
 
-# Degrees of Freedom
 
-Degrees of freedom is, for most purposes, sample size minus the number of things you want to estimate.
 
-Don’t worry about memorizing a definition, just know when to use it and what it means for your analysis.
+# t-test
+
+A **t-test** is an inferential statistic used to determine if there is a statistically significant difference between the means of two variables.
+
+- **Student t-test** is named after its inventor, William Gosset, who published under the pseudonym of student.
+
+&lt;center&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+
 
 ---
 
@@ -68,7 +74,7 @@ Don’t worry about memorizing a definition, just know when to use it and what i
 
 How do I know if my samples are independent or dependent?  
 
-Can you tell exactly which observation should be paired with which other observation?  If you can’t tell, your groups are independent
+Can you tell exactly which observation should be paired with which other observation?  If you can't tell, your groups are independent
 
 .pull-left[
 **Examples of Independent Samples**
@@ -149,8 +155,8 @@ wilcox.testt(x= , y = ,
 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-b1aadbb712c286d2c796" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-b1aadbb712c286d2c796">{"x":{"diagram":"\n\n  graph TD\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-2516b12334d4297a6d9b" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-2516b12334d4297a6d9b">{"x":{"diagram":"\n\n  graph TD\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n\n"},"evals":[],"jsHooks":[]}</script>
 
 &lt;/center&gt;
 ]
@@ -177,8 +183,8 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-19735747d87c1c9af3c9" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-19735747d87c1c9af3c9">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-9c14a56f8b7b63255a02" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-9c14a56f8b7b63255a02">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
 &lt;/center&gt;
 
 ]
@@ -205,8 +211,8 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-670d74ff2e747019d6a6" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-670d74ff2e747019d6a6">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-60a04fea4a2210156531" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-60a04fea4a2210156531">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
 
 &lt;/center&gt;
 ]
@@ -233,8 +239,8 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-cf6547ca0d73790f5927" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-cf6547ca0d73790f5927">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-f0a013cfdce91f9f849e" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-f0a013cfdce91f9f849e">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
 &lt;/center&gt;
 ]
 
@@ -370,19 +376,21 @@ head(stream_data)
 
 ---
 
+# Load libraries
+
+``` r
+library(RVAideMemoire) # for shapiro.text()
+library(dplyr) # for filter() and more
+```
+
+
+---
+
 # Step 1. Normality test
 
 - Test for normality
 
 .pull-left[ 
-
-``` r
-library(RVAideMemoire)
-```
-
-```
-## *** Package RVAideMemoire v 0.9-83-7 ***
-```
 
 ``` r
 byf.shapiro(depth_cm~waterbody, data=stream_data)
@@ -452,33 +460,37 @@ Based on the results of the Shapiro-Wilk normality test, which indicated that bo
 
 
 ``` r
-t.test(depth_cm ~ waterbody, data=stream_data,
-       alternative = c("two.sided"),
+t.test(filter(stream_data, waterbody == "stream1")$depth_cm, 
+       filter(stream_data, waterbody == "stream2")$depth_cm,
+       alternative = "two.sided",
        mu = 0, 
        paired = FALSE, 
-       var.equal = TRUE,
-       conf.level = 0.95)
+       var.equal = TRUE)
 ```
 
 ```
 ## 
 ## 	Two Sample t-test
 ## 
-## data:  depth_cm by waterbody
+## data:  filter(stream_data, waterbody == "stream1")$depth_cm and filter(stream_data, waterbody == "stream2")$depth_cm
 *## t = -12.924, df = 69, p-value &lt; 2.2e-16
-## alternative hypothesis: true difference in means between group stream1 and group stream2 is not equal to 0
+## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  -13.298846  -9.742143
 ## sample estimates:
-## mean in group stream1 mean in group stream2 
-##              44.42424              55.94474
+## mean of x mean of y 
+##  44.42424  55.94474
 ```
+
 
 ---
 
 # Summary
 
 &lt;span style="color:#00796B;"&gt;We tested to see if there was a significant difference in pool depth between Stream 1 and Stream 2, which are being considered for habitat restoration for native trout species.&lt;/span&gt; &lt;span style="color:#E65100;"&gt;Using a two-tailed independent t-test to compare depth measurements from 71 total samples,&lt;/span&gt; &lt;span style="color:#1E88E5;"&gt;we found a significant and meaningful difference between the streams ( `\(t_{(69)} = -12.92, \, p &lt; 2.2 \times 10^{-16})\)`.&lt;/span&gt;  &lt;span style="color:#424242;"&gt;This indicates that Stream 2, with deeper pools, may provide more suitable habitat for trout, offering better cover during winter and reducing the risk of scouring during severe rain events.&lt;/span&gt; 
+
+&lt;center&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-16-1.png)&lt;!-- --&gt;
 
 ---
     </textarea>
