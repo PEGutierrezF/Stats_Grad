@@ -378,6 +378,9 @@ Where: $\bar{X}_D$ is the mean of the differences between paired observations, a
 5. Summarize your findings.
 
 ---
+# Example #1
+
+---
 # Two-tailed t-test Example
 
 **Research Question**:  The state is looking to choose a stream for habitat restoration for native trout species.  Streams with deeper pools will provide necessary cover in the winter months and minimize potential scouring from severe rain events.  Which stream should they focus on?  Test to see if there is a significant difference in depth between stream 1 and stream 2?
@@ -393,7 +396,7 @@ head(stream_data)
 ```{r message=FALSE, warning=FALSE}
 library(RVAideMemoire) # for shapiro.text()
 library(dplyr) # for filter() and more
-
+library(lsr) # Cohen’s d for two-sample t-test
 ```
 
 
@@ -453,12 +456,25 @@ t.test(filter(stream_data, waterbody == "stream1")$depth_cm,
        var.equal = TRUE)
 ```
 
+---
+
+# Effect size 
+
+```{r}
+cohensD(depth_cm ~ waterbody, data=stream_data)
+```
+---
+
+# Summary
+
+<span style="color:#00796B;">We tested to see if there was a significant difference in pool depth between Stream 1 and Stream 2, which are being considered for habitat restoration for native trout species.</span> <span style="color:#E65100;">Using a two-tailed independent t-test to compare depth measurements from 71 total samples,</span> <span style="color:#1E88E5;">we found a significant and meaningful difference between the streams ( $t_{(69)} = -12.92, \, p < 2.2 \times 10^{-16}, ES=3.08)$.</span>  <span style="color:#424242;">This indicates that Stream 2, with deeper pools, may provide more suitable habitat for trout, offering better cover during winter and reducing the risk of scouring during severe rain events.</span> 
+
 
 ---
 
 # Summary
 
-<span style="color:#00796B;">We tested to see if there was a significant difference in pool depth between Stream 1 and Stream 2, which are being considered for habitat restoration for native trout species.</span> <span style="color:#E65100;">Using a two-tailed independent t-test to compare depth measurements from 71 total samples,</span> <span style="color:#1E88E5;">we found a significant and meaningful difference between the streams ( $t_{(69)} = -12.92, \, p < 2.2 \times 10^{-16})$.</span>  <span style="color:#424242;">This indicates that Stream 2, with deeper pools, may provide more suitable habitat for trout, offering better cover during winter and reducing the risk of scouring during severe rain events.</span> 
+<span style="color:#00796B;">We tested to see if there was a significant difference in pool depth between Stream 1 and Stream 2, which are being considered for habitat restoration for native trout species.</span> <span style="color:#E65100;">Using a two-tailed independent t-test to compare depth measurements from 71 total samples,</span> <span style="color:#1E88E5;">we found a significant and meaningful difference between the streams ( $t_{(69)} = -12.92, \, p < 2.2 \times 10^{-16}, ES=3.08)$.</span>  <span style="color:#424242;">This indicates that Stream 2, with deeper pools, may provide more suitable habitat for trout, offering better cover during winter and reducing the risk of scouring during severe rain events.</span> 
 
 <center>
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4, fig.height=4.5}
@@ -473,4 +489,77 @@ ggplot(stream_data, aes(x = waterbody, y = depth_cm, fill = waterbody)) +
   theme(legend.position = "none")
 ```
 
+
 ---
+
+# Example #2
+
+
+---
+
+# Non-parametric t-test
+
+**Research Question**:  We want to know if different groups of squid differ in their predatory preferences.  Test to see if there is a significant difference between the number of "fish_in_stomach" between population_one and population_two quid groups.
+
+---
+
+# Load data and Test for normality
+
+- Load data
+```{r, warning=FALSE}
+squids <- read.csv('Lecturer Practice/Wilcox.practice_squids.csv')
+```
+
+- Test for normality
+```{r, warning=FALSE, highlight.output = 7:8}
+byf.shapiro(fish_in_stomach~population, data=squids)
+```
+
+---
+
+# Equal variance
+
+```{r, highlight.output = 5}
+var.test(fish_in_stomach~population, data=squids)
+```
+
+---
+
+# Conducting the non-parametric t-test
+
+```{r, warning=FALSE, highlight.output = 5}
+wilcox.test(fish_in_stomach~population, data=squids,
+       alternative = c("two.sided"),
+       mu = 0, 
+       paired = FALSE, 
+       var.equal = FALSE,
+       conf.level = 0.95)
+```
+
+---
+
+# Summary 
+
+<span style="color:#00796B;">We investigated whether there are significant differences in predatory preferences between two groups of squid by comparing the number of fish found in their stomachs. </span> <span style="color:#E65100;">Using a Wilcoxon rank-sum test on stomach content data from both populations, we analyzed a total of 71 samples. </span> <span style="color:#1E88E5;">The results indicated a significant difference between the two squid populations ( $W_{(69)} = 480.5, \, p = 1.048 \times 10^{-5})$, suggesting that the predatory preferences of these groups are not equal. </span>  <span style="color:#424242;"> This finding may provide insights into the ecological roles and feeding strategies of these squid populations in their respective habitats.</span> 
+
+
+---
+
+# Summary 
+
+<span style="color:#00796B;">We investigated whether there are significant differences in predatory preferences between two groups of squid by comparing the number of fish found in their stomachs. </span> <span style="color:#E65100;">Using a Wilcoxon rank-sum test on stomach content data from both populations, we analyzed a total of 71 samples. </span> <span style="color:#1E88E5;">The results indicated a significant difference between the two squid populations ( $W_{(69)} = 480.5, \, p = 1.048 \times 10^{-5})$, suggesting that the predatory preferences of these groups are not equal. </span>  <span style="color:#424242;"> This finding may provide insights into the ecological roles and feeding strategies of these squid populations in their respective habitats.</span> 
+
+<center>
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4, fig.height=4.5}
+# Create the box plot
+ggplot(squids, aes(x = population, y = fish_in_stomach, fill = population)) +
+  geom_boxplot() +
+  stat_summary(fun = mean, geom = "point", shape = 5, size = 4, color = "black") +
+  labs(title = "Fish in Stomach Measurements for Squid Populations",
+       x = "Population",
+       y = "Number of Fish in Stomach") +
+  theme_minimal() +
+  scale_fill_manual(values = c("#00AFBB", "#E7B800")) +
+  theme(legend.position = "none")
+```
+
