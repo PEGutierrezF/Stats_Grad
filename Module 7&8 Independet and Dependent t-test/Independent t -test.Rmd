@@ -65,7 +65,7 @@ gghistogram(
 - If the groups are **related (paired)** = Dependent t-test (or matched pairs t-test).
 
 ---
-## Flowcharts
+# Flowcharts
 
 ```{r figure_1, echo = FALSE, fig.align='center'}
 DiagrammeR::mermaid("
@@ -98,7 +98,26 @@ DiagrammeR::mermaid("
         Q --> R[Use ANOVA] 
         Q --> S[Non-parametric ANOVA]
 
-    ", height = '550px', width = '850px')
+  style A fill:lightblue,stroke:#333,stroke-width:1px
+  style B fill:lightblue,stroke:#333,stroke-width:1px
+  style C fill:lightblue,stroke:#333,stroke-width:1px
+  style D fill:lightblue,stroke:#333,stroke-width:1px
+  style E fill:lightblue,stroke:#333,stroke-width:1px
+  style F fill:lightblue,stroke:#333,stroke-width:1px
+  style G fill:lightblue,stroke:#333,stroke-width:1px
+  style H fill:lightblue,stroke:#333,stroke-width:1px
+  style I fill:lightblue,stroke:#333,stroke-width:1px
+  style J fill:lightblue,stroke:#333,stroke-width:1px
+  style K fill:lightblue,stroke:#333,stroke-width:1px
+  style L fill:lightblue,stroke:#333,stroke-width:1px
+  style M fill:lightblue,stroke:#333,stroke-width:1px
+  style N fill:lightblue,stroke:#333,stroke-width:1px
+  style O fill:lightblue,stroke:#333,stroke-width:1px
+  style P fill:lightblue,stroke:#333,stroke-width:1px
+  style Q fill:lightblue,stroke:#333,stroke-width:1px
+  style Z fill:lightblue,stroke:#333,stroke-width:1px
+
+  ", height = '550px', width = '850px')
 
 ```
 
