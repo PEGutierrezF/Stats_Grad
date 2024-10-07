@@ -44,7 +44,7 @@ class: center, middle, inverse, title-slide
 
 # t-test
 
-A **t-test** is an inferential statistic used to determine if there is a statistically significant difference between the means of two variables.
+- A **t-test** is an inferential statistic used to determine if there is a statistically significant difference between the means of two variables.
 
 - **Student t-test** is named after its inventor, William Gosset, who published under the pseudonym of student.
 
@@ -53,7 +53,6 @@ A **t-test** is an inferential statistic used to determine if there is a statist
 
 
 ---
-
 
 # When would you run a t-test?
 
@@ -94,7 +93,43 @@ Can you tell exactly which observation should be paired with which other observa
 ]
 
 ---
+# Degrees of Freedom (DF)
 
+- The number of observations that are free to vary when calculating a statistic.
+
+- Importance in Inferential Statistics:
+  - Similar to the mean and standard deviation in one-sample tests, degrees of freedom is **a critical value** used in calculating test statistics for inferential tests.
+  - Unlike the one-sample z-test, many inferential tests (such as the t-test) rely on degrees of freedom to **accurately determine the p-value**.
+
+
+---
+# Degrees of Freedom (DF)
+
+- Example:
+  - Imagine a classroom with 30 seats. The first 29 people who enter can choose any seat. However, the 30th person has no choice—they can only sit in the one empty seat left.
+
+  - In a similar way, when you calculate the average (mean) of a group of 30 numbers, the first 29 numbers can vary freely. The 30th number is fixed because it has to be whatever value is needed to reach the average you calculated.
+
+  - So, when estimating the mean from a sample of 30 numbers, the degrees of freedom is 29.
+
+---
+# Degrees of Freedom (DF)
+
+.pull-left[ 
+- Depending on the type of the analysis you run, degrees of freedom typically (but not always) relate the size of the sample. Because **higher degrees of freedom** generally mean **larger sample sizes**, a higher degree of freedom means more power to reject a false null hypothesis and find a significant result.
+]
+
+.pull-right[
+&lt;center&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+]
+
+
+---
+# Independent vs. Dependent groups
+
+
+---
 # Independent vs. Dependent groups
 
 .pull-left[
@@ -512,7 +547,7 @@ cohensD(depth_cm ~ waterbody, data=stream_data)
 &lt;span style="color:#00796B;"&gt;We tested to see if there was a significant difference in pool depth between Stream 1 and Stream 2, which are being considered for habitat restoration for native trout species.&lt;/span&gt; &lt;span style="color:#E65100;"&gt;Using a two-tailed independent t-test to compare depth measurements from 71 total samples,&lt;/span&gt; &lt;span style="color:#1E88E5;"&gt;we found a significant and meaningful difference between the streams ( `\(t_{(69)} = -12.92, \, p &lt; 2.2 \times 10^{-16}, ES=3.08)\)`.&lt;/span&gt;  &lt;span style="color:#424242;"&gt;This indicates that Stream 2, with deeper pools, may provide more suitable habitat for trout, offering better cover during winter and reducing the risk of scouring during severe rain events.&lt;/span&gt; 
 
 &lt;center&gt;
-![](Independent-t--test_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-18-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -615,7 +650,7 @@ wilcox.test(fish_in_stomach~population, data=squids,
 &lt;span style="color:#00796B;"&gt;We investigated whether there are significant differences in predatory preferences between two groups of squid by comparing the number of fish found in their stomachs. &lt;/span&gt; &lt;span style="color:#E65100;"&gt;Using a Wilcoxon rank-sum test on stomach content data from both populations, we analyzed a total of 71 samples. &lt;/span&gt; &lt;span style="color:#1E88E5;"&gt;The results indicated a significant difference between the two squid populations ( `\(W_{(69)} = 480.5, \, p = 1.048 \times 10^{-5})\)`, suggesting that the predatory preferences of these groups are not equal. &lt;/span&gt;  &lt;span style="color:#424242;"&gt; This finding may provide insights into the ecological roles and feeding strategies of these squid populations in their respective habitats.&lt;/span&gt; 
 
 &lt;center&gt;
-![](Independent-t--test_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-23-1.png)&lt;!-- --&gt;
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

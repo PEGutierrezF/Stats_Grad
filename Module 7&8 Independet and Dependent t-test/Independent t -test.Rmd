@@ -29,7 +29,7 @@ library(DiagrammeR)
 
 # t-test
 
-A **t-test** is an inferential statistic used to determine if there is a statistically significant difference between the means of two variables.
+- A **t-test** is an inferential statistic used to determine if there is a statistically significant difference between the means of two variables.
 
 - **Student t-test** is named after its inventor, William Gosset, who published under the pseudonym of student.
 
@@ -51,7 +51,6 @@ gghistogram(
 
 
 ---
-
 
 # When would you run a t-test?
 
@@ -92,7 +91,63 @@ Can you tell exactly which observation should be paired with which other observa
 ]
 
 ---
+# Degrees of Freedom (DF)
 
+- The number of observations that are free to vary when calculating a statistic.
+
+- Importance in Inferential Statistics:
+  - Similar to the mean and standard deviation in one-sample tests, degrees of freedom is **a critical value** used in calculating test statistics for inferential tests.
+  - Unlike the one-sample z-test, many inferential tests (such as the t-test) rely on degrees of freedom to **accurately determine the p-value**.
+
+
+---
+# Degrees of Freedom (DF)
+
+- Example:
+  - Imagine a classroom with 30 seats. The first 29 people who enter can choose any seat. However, the 30th person has no choice—they can only sit in the one empty seat left.
+
+  - In a similar way, when you calculate the average (mean) of a group of 30 numbers, the first 29 numbers can vary freely. The 30th number is fixed because it has to be whatever value is needed to reach the average you calculated.
+
+  - So, when estimating the mean from a sample of 30 numbers, the degrees of freedom is 29.
+
+---
+# Degrees of Freedom (DF)
+
+.pull-left[ 
+- Depending on the type of the analysis you run, degrees of freedom typically (but not always) relate the size of the sample. Because **higher degrees of freedom** generally mean **larger sample sizes**, a higher degree of freedom means more power to reject a false null hypothesis and find a significant result.
+]
+
+.pull-right[
+<center>
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=5, fig.height=5.5}
+# Create a sample size vector
+sample_size <- 1:30
+
+# Calculate degrees of freedom (n - 1)
+degrees_of_freedom <- sample_size - 1
+
+# Create a data frame
+df_data <- data.frame(sample_size, degrees_of_freedom)
+
+# Generate the plot
+ggplot(df_data, aes(x = sample_size, y = degrees_of_freedom)) +
+  geom_line(color = "#0073C2FF", size = 1) +
+  geom_point(color = "#D55E00", size = 3) +
+  labs(title = "Understanding Degrees of Freedom",
+       x = "Sample Size (n)",
+       y = "Degrees of Freedom (DF)") +
+  theme_minimal() +
+  geom_text(aes(label = degrees_of_freedom), vjust = -1, size = 3) +
+  annotate("text", x = 15, y = 25, label = "DF = n - 1", size = 4, color = "black")
+```
+]
+
+
+---
+# Independent vs. Dependent groups
+
+
+---
 # Independent vs. Dependent groups
 
 .pull-left[
