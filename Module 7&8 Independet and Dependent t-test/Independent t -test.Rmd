@@ -64,6 +64,44 @@ gghistogram(
 
 - If the groups are **related (paired)** = Dependent t-test (or matched pairs t-test).
 
+---
+## Flowcharts
+
+```{r figure_1, echo = FALSE, fig.align='center'}
+DiagrammeR::mermaid("
+    graph TD;
+
+        A[What type of data?] --> B[Continuous] 
+        A --> Z[Categorical]
+        
+        B --Research Question--> C[Comparing Differences] 
+        B --Research Question--> D[Examining Relationships]
+        
+        C --How many groups?--> E[1 group] 
+        C --How many groups?--> I[2 groups]
+        C --How many groups?--> Q[> 2 groups]
+        
+        E --> F[Normally distributed?] 
+        F --Yes--> G[One sample z-test] 
+        F --No--> H[Wilcoxon signed rank test]
+        
+        I --> J[Are Samples Independent?] 
+        J --Yes--> K[Normally distributed?] 
+        J --No--> L[Normally distributed?]
+        
+        K --Yes--> M[Independent t-test] 
+        K --No--> N[Wilcoxon rank sum test] 
+        
+        L --Yes--> O[Paired t-test] 
+        L --No--> P[Wilcoxon matched pair test]
+        
+        Q --> R[Use ANOVA] 
+        Q --> S[Non-parametric ANOVA]
+
+    ", height = '550px', width = '850px')
+
+```
+
 
 ---
 
@@ -93,11 +131,75 @@ Can you tell exactly which observation should be paired with which other observa
 ---
 # Degrees of Freedom (DF)
 
+
+---
+# Degrees of Freedom (DF)
+
 - The number of observations that are free to vary when calculating a statistic.
 
 - Importance in Inferential Statistics:
-  - Similar to the mean and standard deviation in one-sample tests, degrees of freedom is **a critical value** used in calculating test statistics for inferential tests.
+  - **Influences Critical Values**: Degrees of freedom are crucial for determining the **critical values** in statistical tests, which help assess the significance of results.
   - Unlike the one-sample z-test, many inferential tests (such as the t-test) rely on degrees of freedom to **accurately determine the p-value**.
+
+---
+# Degrees of Freedom (DF)
+
+.pull-left[ 
+For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)**, you would look up the critical value in the t-distribution table for df = 29. The critical value might be around **±2.045**, which indicates the cut-off points for determining significance.
+]
+
+.pull-right[ 
+<img src="fig/t-table_1.png" alt="Degrees of Freedom T-Table" width="600"/>
+]
+
+
+---
+# Degrees of Freedom (DF)
+
+.pull-left[ 
+For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)**, you would look up the critical value in the t-distribution table for df = 29. The critical value might be around **±2.045**, which indicates the cut-off points for determining significance.
+
+<center>
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4, fig.height=4}
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+
+# Set parameters for the t-test
+df <- 29
+alpha <- 0.05
+critical_value <- qt(1 - alpha / 2, df)  # for two-tailed test
+
+# Create a sequence of t-values
+t_values <- seq(-4, 4, length.out = 1000)
+# Calculate the density of the t-distribution
+t_density <- dt(t_values, df)
+
+# Create a data frame for plotting
+t_data <- data.frame(t_values, t_density)
+
+# Create the ggplot
+ggplot(t_data, aes(x = t_values, y = t_density)) +
+  geom_line(size = 1) +  # t-distribution line
+  geom_area(data = filter(t_data, t_values <= -critical_value), 
+            aes(y = t_density), fill = "red", alpha = 0.5) +  # left rejection area
+  geom_area(data = filter(t_data, t_values >= critical_value), 
+            aes(y = t_density), fill = "red", alpha = 0.5) +  # right rejection area
+  geom_vline(xintercept = c(-critical_value, critical_value), 
+             linetype = "dashed", color = "blue", size = 1) +  # critical value lines
+  labs(title = "T-Distribution with Rejection Areas",
+       x = "T-Value",
+       y = "Density") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+]
+
+.pull-right[ 
+<img src="fig/t-table_1.png" alt="Degrees of Freedom T-Table" width="600"/>
+]
+
 
 
 ---
@@ -496,7 +598,7 @@ var.test(depth_cm ~ waterbody, data=stream_data)
 
 # Conducting the t-test
 
-Based on the results of the Shapiro-Wilk normality test, which indicated that both Stream 1 and Stream 2 data are normally distributed, and the F-test for equal variance, which showed that the variances are equal, we proceeded to conduct a two-tailed independent t-test.
+Based on the results of the **Shapiro-Wilk normality test**, which indicated that both Stream 1 and Stream 2 data are **normally distributed**, and the F-test for equal variance, which showed that the **variances are equal**, we proceeded to conduct a two-tailed independent t-test.
 
 ---
 
