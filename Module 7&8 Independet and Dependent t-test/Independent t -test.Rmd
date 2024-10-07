@@ -1,7 +1,7 @@
 ---
 title: "t-tests"
 subtitle: "Tests between the means of different groups"
-author: "Pablo E. Gutierrez-Fonseca"
+author: "Pablo E. Guti\u00E9rrez-Fonseca"
 institute: ""
 date: "`r Sys.Date()`"
 output:
@@ -738,4 +738,6 @@ ggplot(squids, aes(x = population, y = fish_in_stomach, fill = population)) +
   scale_fill_manual(values = c("#00AFBB", "#E7B800")) +
   theme(legend.position = "none")
 ```
+
+---
 
