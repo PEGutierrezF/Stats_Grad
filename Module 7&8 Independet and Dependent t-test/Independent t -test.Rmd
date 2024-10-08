@@ -31,7 +31,7 @@ library(DiagrammeR)
 
 - A **t-test** is an inferential statistic used to determine if there is a statistically significant difference between the means of two variables.
 
-- **Student t-test** is named after its inventor, William Gosset, who published under the pseudonym of student.
+- **Student t-test** is named after its inventor, William Gosset (English statistician, chemist and brewer), who published under the pseudonym of student.
 
 <center>
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4.5, fig.height=5}
