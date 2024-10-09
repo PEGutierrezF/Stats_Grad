@@ -1,4 +1,10 @@
 
+remotes::install_github("mlverse/chattr", force = TRUE)
+
+library(chattr)
+chattr::chattr_app()
+
+
 ```{r xaringan-logo, echo=FALSE}
 xaringanExtra::use_logo(
   image_url = <fill in your path> )
