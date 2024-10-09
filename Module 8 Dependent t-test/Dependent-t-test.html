@@ -42,6 +42,22 @@ class: center, middle, inverse, title-slide
 
 - Useful to **control individual differences**.  Can result in more powerful test than independent samples t-test.
 
+---
+# Example 
+
+---
+# Example 
+
+- Background About the Experiment:
+
+- During the winters of 2015 and 2016, scientists simulated ice storms in the Hubbard Brook Experimental Forest in New Hampshire by spraying water onto the forest canopy, creating ice accretion that mimicked natural storm conditions. Some plots received ¼ inch, ½ inch, or ¾ inch of ice, while treatments were repeated in 2017 to study the effects of consecutive storms.
+Task:
+
+- Your first task will be to examine if there is a difference in live basal area (m²/ha) between ice-treated and control plots based on data collected one year after the initial treatment.
+
+- Additional Information: &lt;a href="https://hubbardbrook.org/story/the-ice-storm-experiment-at-hubbard-brook/"&gt;Link &lt;/a&gt;
+
+
 
 ---
 # Import your data
@@ -172,6 +188,10 @@ ggplot(ice_before_after_long, aes(x = Condition, y = Value, fill = Condition)) +
 
 Paired!
 
+&lt;center&gt;
+&lt;img src="fig/someone.png" alt="" width="300"/&gt;
+  
+  
 ---
 
 #8. Run the code for the appropriate test
@@ -179,7 +199,7 @@ Paired!
 
 ``` r
 t.test(ice_before_after$Control, ice_before_after$Ice,
-alternative = c("two.sided"),
+alternative = "two.sided",
 mu = 0, 
 paired = TRUE, 
 var.equal = TRUE,
