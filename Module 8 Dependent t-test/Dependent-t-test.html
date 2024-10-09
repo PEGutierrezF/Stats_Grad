@@ -43,6 +43,18 @@ class: center, middle, inverse, title-slide
 - Useful to **control individual differences**.  Can result in more powerful test than independent samples t-test.
 
 ---
+# Assumptions
+
+1. The dependent variable must be continuous.  
+
+2. The two groups are paired.  
+
+3. No significant outliers in the difference between the two related groups.
+
+4. The **difference** between the two related treatment groups should be **normally distributed**.
+
+
+---
 # Example 
 
 ---
@@ -51,9 +63,10 @@ class: center, middle, inverse, title-slide
 - Background About the Experiment:
 
 - During the winters of 2015 and 2016, scientists simulated ice storms in the Hubbard Brook Experimental Forest in New Hampshire by spraying water onto the forest canopy, creating ice accretion that mimicked natural storm conditions. Some plots received ¼ inch, ½ inch, or ¾ inch of ice, while treatments were repeated in 2017 to study the effects of consecutive storms.
+
 Task:
 
-- Your first task will be to examine if there is a difference in live basal area (m²/ha) between ice-treated and control plots based on data collected one year after the initial treatment.
+- Your task is to determine if live basal area (m²/ha) is significantly greater in control plots compared to ice-treated plots, using data collected one year after the initial treatment.
 
 - Additional Information: &lt;a href="https://hubbardbrook.org/story/the-ice-storm-experiment-at-hubbard-brook/"&gt;Link &lt;/a&gt;
 
@@ -199,7 +212,7 @@ Paired!
 
 ``` r
 t.test(ice_before_after$Control, ice_before_after$Ice,
-alternative = "two.sided",
+alternative = "greater",
 mu = 0, 
 paired = TRUE, 
 var.equal = TRUE,
@@ -211,15 +224,38 @@ conf.level = 0.95)
 ## 	Paired t-test
 ## 
 ## data:  ice_before_after$Control and ice_before_after$Ice
-*## t = 1.8109, df = 13, p-value = 0.09332
-## alternative hypothesis: true mean difference is not equal to 0
+*## t = 1.8109, df = 13, p-value = 0.04666
+## alternative hypothesis: true mean difference is greater than 0
 ## 95 percent confidence interval:
-##  -2.844123 32.316980
+##  0.3250056       Inf
 ## sample estimates:
 ## mean difference 
 ##        14.73643
 ```
 
+---
+# Simple plot of differences
+
+- A simple plot of differences between one sample and the other.  Points below the blue line indicate observations where Ice is greater than Control, that is where (Control – Ice) is negative. 
+
+.panelset[
+.panel[.panel-name[R Code]
+
+``` r
+Difference = ice_before_after$Control - ice_before_after$Ice
+
+plot(Difference,
+     pch = 16,
+     ylab="Difference (Control – Ice)")
+
+abline(0,0, col="blue", lwd=2)
+```
+]
+
+.panel[.panel-name[Plot]
+![](Dependent-t-test_files/figure-html/two-1.png)
+]
+]
 ---
 # Effect size 
 
