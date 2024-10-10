@@ -26,14 +26,14 @@ library(readr)
 library(lessR)
 library(ggplot2)
 library(tidyr)
-library(effectsize) # Cohen’s d for two-sample t-test
+library(effectsize) # Cohen's d for two-sample t-test
 xaringanExtra::use_panelset()
 ```
 
 
 # Dependent t-test
 
-- Used when we have dependent samples – matched, paired or tied somehow
+- Used when we have dependent samples - matched, paired or tied somehow:
   - Repeated measures
   - Brother & sister, husband & wife
   - Left hand, right hand, etc.
@@ -51,6 +51,58 @@ xaringanExtra::use_panelset()
 
 4. The **difference** between the two related treatment groups should be **normally distributed**.
 
+
+---
+# Function
+
+.pull-left[ 
+```{r, eval=F}
+t.test(x= , y = ,
+       `mu = 0`, 
+       paired = , 
+       var.equal =, 
+       alternative = c("two.sided", "less", "greater")
+       )
+```
+]
+
+
+.pull-right[ 
+
+- The **mu** argument indicate the true value of difference in means for a two sample test.
+
+]
+
+
+---
+# Function
+
+.pull-left[ 
+```{r, eval=F}
+t.test(x= , y = ,
+       `mu = 0`, 
+       paired = , 
+       var.equal =, 
+       alternative = c("two.sided", "less", "greater")
+       )
+```
+]
+
+
+.pull-right[ 
+
+- The **mu** argument indicate the true value of difference in means for a two sample test.
+
+
+- Hypotheses testing for mean difference $\mu_d$:
+
+  - $H_0: \mu_d = 0$
+
+  - $H_1: \mu_d \neq 0$ (two-tailed)
+  - $H_1: \mu_d > 0$ (upper-tailed)
+  - $H_1: \mu_d < 0$ (lower-tailed)
+
+]
 
 ---
 # Example 
@@ -96,7 +148,7 @@ shapiro.test(ice_before_after$Ice)
 ```
 
 ---
-# Test for equal variance
+# Test for equal variance (homogeneity in variances)
 
 
 ```{r, message=FALSE, warning=FALSE, highlight.output =5}
@@ -156,7 +208,7 @@ conf.level = 0.95)
 ---
 # Simple plot of differences
 
-- A simple plot of differences between one sample and the other.  Points below the blue line indicate observations where Ice is greater than Control, that is where (Control – Ice) is negative. 
+- A simple plot of differences between one sample and the other.  Points below the blue line indicate observations where Ice is greater than Control, that is where (Control - Ice) is negative. 
 
 .panelset[
 .panel[.panel-name[R Code]
@@ -165,7 +217,7 @@ Difference = ice_before_after$Control - ice_before_after$Ice
 
 plot(Difference,
      pch = 16,
-     ylab="Difference (Control – Ice)")
+     ylab="Difference (Control - Ice)")
 
 abline(0,0, col="blue", lwd=2)
 ```
