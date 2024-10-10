@@ -30,7 +30,6 @@ library(effectsize) # Cohen's d for two-sample t-test
 xaringanExtra::use_panelset()
 ```
 
-
 # Dependent t-test
 
 - Used when we have dependent samples - matched, paired or tied somehow:
