@@ -294,7 +294,7 @@ Paired!
 
 ``` r
 t.test(ice_before_after$Control, ice_before_after$Ice,
-alternative = "greater",
+alternative = c("greater"),
 mu = 0, 
 paired = TRUE, 
 var.equal = TRUE,
