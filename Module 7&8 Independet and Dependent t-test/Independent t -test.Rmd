@@ -408,10 +408,41 @@ graph TD;
     A -->|No| C[Set var.equal to FALSE];
 ")
 ```
-
-</center>
 ]
 
+
+---
+# Basic Steps for an Inferential t-Test
+
+.pull-left[
+- t-test
+```{r, eval=F}
+t.test(x= , y = ,
+       mu = 0, 
+       paired = , 
+       `var.equal= TRUE`, 
+       alternative = c("two.sided", "less", "greater")
+       )
+```
+
+- Welch t-test
+```{r, eval=F}
+t.test(x= , y = ,
+       mu = 0, 
+       paired = , 
+       `var.equal= FALSE`, 
+       alternative = c("two.sided", "less", "greater")
+       )
+```
+]
+
+.pull-right[ 
+- By default, the R `t.test()` function makes the assumption that the variances of the two groups of samples, being compared, **are different**. Therefore, **Welch t-test** is performed by default.
+
+<br>
+
+- **Welch t-test** is just an adaptation of t-test, and it is used when the two samples have possibly **unequal variances**.
+]
 
 ---
 

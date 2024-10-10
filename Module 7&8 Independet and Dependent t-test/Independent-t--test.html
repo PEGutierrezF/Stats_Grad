@@ -4,7 +4,7 @@
     <title>t-tests</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <meta name="date" content="2024-10-09" />
+    <meta name="date" content="2024-10-10" />
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
@@ -34,7 +34,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2024-10-09
+### 2024-10-10
 ]
 
 ---
@@ -286,10 +286,43 @@ t.test(x= , y = ,
 
 <div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f0a013cfdce91f9f849e" style="width:504px;height:504px;"></div>
 <script type="application/json" data-for="htmlwidget-f0a013cfdce91f9f849e">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
-
-&lt;/center&gt;
 ]
 
+
+---
+# Basic Steps for an Inferential t-Test
+
+.pull-left[
+- t-test
+
+``` r
+t.test(x= , y = ,
+       mu = 0, 
+       paired = , 
+       `var.equal= TRUE`, 
+       alternative = c("two.sided", "less", "greater")
+       )
+```
+
+- Welch t-test
+
+``` r
+t.test(x= , y = ,
+       mu = 0, 
+       paired = , 
+       `var.equal= FALSE`, 
+       alternative = c("two.sided", "less", "greater")
+       )
+```
+]
+
+.pull-right[ 
+- By default, the R `t.test()` function makes the assumption that the variances of the two groups of samples, being compared, **are different**. Therefore, **Welch t-test** is performed by default.
+
+&lt;br&gt;
+
+- **Welch t-test** is just an adaptation of t-test, and it is used when the two samples have possibly **unequal variances**.
+]
 
 ---
 
@@ -585,7 +618,7 @@ cohensD(depth_cm ~ waterbody, data=stream_data)
 &lt;span style="color:#00796B;"&gt;We tested to see if there was a significant difference in pool depth between Stream 1 and Stream 2, which are being considered for habitat restoration for native trout species.&lt;/span&gt; &lt;span style="color:#E65100;"&gt;Using a two-tailed independent t-test to compare depth measurements from 71 total samples,&lt;/span&gt; &lt;span style="color:#1E88E5;"&gt;we found a significant and meaningful difference between the streams ( `\(t_{(69)} = -12.92, \, p &lt; 2.2 \times 10^{-16}, ES=3.08)\)`.&lt;/span&gt;  &lt;span style="color:#424242;"&gt;This indicates that Stream 2, with deeper pools, may provide more suitable habitat for trout, offering better cover during winter and reducing the risk of scouring during severe rain events.&lt;/span&gt; 
 
 &lt;center&gt;
-![](Independent-t--test_files/figure-html/unnamed-chunk-19-1.png)&lt;!-- --&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -688,7 +721,7 @@ wilcox.test(fish_in_stomach~population, data=squids,
 &lt;span style="color:#00796B;"&gt;We investigated whether there are significant differences in predatory preferences between two groups of squid by comparing the number of fish found in their stomachs. &lt;/span&gt; &lt;span style="color:#E65100;"&gt;Using a Wilcoxon rank-sum test on stomach content data from both populations, we analyzed a total of 71 samples. &lt;/span&gt; &lt;span style="color:#1E88E5;"&gt;The results indicated a significant difference between the two squid populations ( `\(W_{(69)} = 480.5, \, p = 1.048 \times 10^{-5})\)`, suggesting that the predatory preferences of these groups are not equal. &lt;/span&gt;  &lt;span style="color:#424242;"&gt; This finding may provide insights into the ecological roles and feeding strategies of these squid populations in their respective habitats.&lt;/span&gt; 
 
 &lt;center&gt;
-![](Independent-t--test_files/figure-html/unnamed-chunk-24-1.png)&lt;!-- --&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-26-1.png)&lt;!-- --&gt;
 
 ---
 
