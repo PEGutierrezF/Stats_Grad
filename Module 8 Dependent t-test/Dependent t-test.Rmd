@@ -94,7 +94,7 @@ t.test(x= , y = ,
 - The **mu** argument indicate the true value of difference in means for a two sample test.
 
 
-- Hypotheses testing for mean difference $\mu_d$:
+- Hypotheses testing for mean difference ($\mu_d$):
 
   - $H_0: \mu_d = 0$
 
@@ -114,7 +114,7 @@ t.test(x= , y = ,
 
 - During the winters of 2015 and 2016, scientists simulated ice storms in the Hubbard Brook Experimental Forest in New Hampshire by spraying water onto the forest canopy, creating ice accretion that mimicked natural storm conditions. Some plots received ¼ inch, ½ inch, or ¾ inch of ice, while treatments were repeated in 2017 to study the effects of consecutive storms.
 
-Task:
+- Task:
 
 - Your task is to determine if live basal area (m²/ha) is significantly greater in control plots compared to ice-treated plots, using data collected one year after the initial treatment.
 
