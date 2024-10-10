@@ -350,6 +350,13 @@ t.test(x= , y = ,
 &lt;/center&gt;
 ]
 
+---
+# Flowcharts for t-test
+
+<div id="htmlwidget-9d0b8b30c615dcc75a12" style="width:850px;height:550px;" class="DiagrammeR html-widget "></div>
+<script type="application/json" data-for="htmlwidget-9d0b8b30c615dcc75a12">{"x":{"diagram":"\n    graph TD;\n\n        A[Are the data within either both samples or pairs normally distributed<br><center>and free from outliers?<\/center>] --Yes--> B\n        A --No--> C[Are this samples Indenpendent or dependent?]\n\n        B[Are the sample independent?]--Yes-->F\n        B[Are the sample independent?]--No-->G[Paired t-test]\n        \n        F[Is the variance of each sample equal?]--Yes--> H[Student's t-test]\n        F[Is the variance of each sample equal?]--No--> I[Welch's t-test]\n        \n                \n        C--Independent--> D[Mann-Whitney U test]\n        C--Dependent--> E[Wilcoxon signed-rank test]\n        \n        \n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n  style D fill:lightblue,stroke:#333,stroke-width:1px\n  style E fill:lightblue,stroke:#333,stroke-width:1px\n  style F fill:lightblue,stroke:#333,stroke-width:1px\n  style G fill:lightblue,stroke:#333,stroke-width:1px\n  style H fill:lightblue,stroke:#333,stroke-width:1px\n  style I fill:lightblue,stroke:#333,stroke-width:1px\n  \n  "},"evals":[],"jsHooks":[]}</script>
+
+
 
 ---
 

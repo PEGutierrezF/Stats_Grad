@@ -475,6 +475,42 @@ graph TD;
 </center>
 ]
 
+---
+# Flowcharts for t-test
+
+```{r figure_2, echo = FALSE, fig.align='center'}
+DiagrammeR::mermaid("
+    graph TD;
+
+        A[Are the data within either both samples or pairs normally distributed<br><center>and free from outliers?</center>] --Yes--> B
+        A --No--> C[Are this samples Indenpendent or dependent?]
+
+        B[Are the sample independent?]--Yes-->F
+        B[Are the sample independent?]--No-->G[Paired t-test]
+        
+        F[Is the variance of each sample equal?]--Yes--> H[Student's t-test]
+        F[Is the variance of each sample equal?]--No--> I[Welch's t-test]
+        
+                
+        C--Independent--> D[Mann-Whitney U test]
+        C--Dependent--> E[Wilcoxon signed-rank test]
+        
+        
+  style A fill:lightblue,stroke:#333,stroke-width:1px
+  style B fill:lightblue,stroke:#333,stroke-width:1px
+  style C fill:lightblue,stroke:#333,stroke-width:1px
+  style D fill:lightblue,stroke:#333,stroke-width:1px
+  style E fill:lightblue,stroke:#333,stroke-width:1px
+  style F fill:lightblue,stroke:#333,stroke-width:1px
+  style G fill:lightblue,stroke:#333,stroke-width:1px
+  style H fill:lightblue,stroke:#333,stroke-width:1px
+  style I fill:lightblue,stroke:#333,stroke-width:1px
+  
+  ", height = '550px', width = '850px')
+
+```
+
+
 
 ---
 
