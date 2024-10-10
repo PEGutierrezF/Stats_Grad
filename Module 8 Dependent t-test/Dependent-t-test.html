@@ -4,7 +4,7 @@
     <title>Dependent t-tests</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <meta name="date" content="2024-10-09" />
+    <meta name="date" content="2024-10-10" />
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
@@ -24,7 +24,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2024-10-09
+### 2024-10-10
 ]
 
 ---
@@ -71,7 +71,7 @@ t.test(x= , y = ,
 
 .pull-right[ 
 
-- The **mu** argument indicate the true value of difference in means for a two sample test.
+- The `mu` argument indicate the true value of difference in means for a two sample test.
 
 ]
 
@@ -94,10 +94,10 @@ t.test(x= , y = ,
 
 .pull-right[ 
 
-- The **mu** argument indicate the true value of difference in means for a two sample test.
+- The `mu` argument indicate the true value of difference in means for a two sample test.
 
 
-- Hypotheses testing for mean difference ($\mu_d$):
+- Hypotheses testing for mean difference ( `\(\mu_d\)` ):
 
   - `\(H_0: \mu_d = 0\)`
 
@@ -234,17 +234,46 @@ ice_before_after_long &lt;- ice_before_after %&gt;%
                values_to = "Value")
 ggplot(ice_before_after_long, aes(x = Condition, y = Value, fill = Condition)) +
   geom_boxplot() +
-  stat_summary(fun = mean, geom = "point", shape = 20, size = 4, color = "red", fill = "red") +
-  theme_minimal() +
+  stat_summary(fun = mean, geom = "point", shape = 20, size = 4, color = "red", fill = "red") + theme_minimal() +
   labs(title = "Comparison of Control and Ice Conditions",
-       x = "Condition",
-       y = "Value") +
+       x = "Condition", y = "Value") +
   scale_fill_manual(values = c("lightblue", "lightgreen"))
 ```
 ]
 
 .panel[.panel-name[Plot]
-![](Dependent-t-test_files/figure-html/oplot-1.png)
+![](Dependent-t-test_files/figure-html/plot1-1.png)
+]
+]
+
+
+---
+# Data visualization
+
+.panelset[
+.panel[.panel-name[R Code]
+
+``` r
+# Convert data to long format for ggplot
+ice_before_after_long &lt;- ice_before_after %&gt;%
+  pivot_longer(cols = c("Control", "Ice"), 
+               names_to = "Condition", 
+               values_to = "Value") %&gt;%
+  mutate(ID = rep(1:(n() / 2), each = 2))  # Adding a unique ID for each pair
+
+# Step 2: Create the paired boxplot with connected points
+ggpaired(ice_before_after_long, x = "Condition", y = "Value", 
+         id = "ID",                # Using 'ID' to connect paired points
+         order = c("Control", "Ice"), 
+         line.color = "gray",       # Line color for connections
+         line.size = 0.5,           # Line thickness
+         boxplot = TRUE) +          # Adding boxplot
+  labs(x = "Treatment", y = "live basal area (m²/ha)")
+```
+]
+
+.panel[.panel-name[Plot]
+![](Dependent-t-test_files/figure-html/plot2-1.png)
 ]
 ]
 
@@ -306,7 +335,7 @@ abline(0,0, col="blue", lwd=2)
 ]
 
 .panel[.panel-name[Plot]
-![](Dependent-t-test_files/figure-html/two-1.png)
+![](Dependent-t-test_files/figure-html/plot3-1.png)
 ]
 ]
 ---
@@ -314,8 +343,7 @@ abline(0,0, col="blue", lwd=2)
 
 
 ``` r
-library(effectsize)
-cohens_d(ice_before_after$Control, ice_before_after$Ice, data=Ice)
+effectsize::cohens_d(ice_before_after$Control, ice_before_after$Ice,data=ice_before_after)
 ```
 
 ```
@@ -325,7 +353,6 @@ cohens_d(ice_before_after$Control, ice_before_after$Ice, data=Ice)
 ## 
 ## - Estimated using pooled SD.
 ```
-
 ---
 
     </textarea>

@@ -25,7 +25,9 @@ xaringanExtra:
 library(readr)
 library(lessR)
 library(ggplot2)
+library(ggpubr)
 library(tidyr)
+library(tidyverse)
 library(effectsize) # Cohen's d for two-sample t-test
 xaringanExtra::use_panelset()
 ```
@@ -68,7 +70,7 @@ t.test(x= , y = ,
 
 .pull-right[ 
 
-- The **mu** argument indicate the true value of difference in means for a two sample test.
+- The `mu` argument indicate the true value of difference in means for a two sample test.
 
 ]
 
@@ -90,10 +92,10 @@ t.test(x= , y = ,
 
 .pull-right[ 
 
-- The **mu** argument indicate the true value of difference in means for a two sample test.
+- The `mu` argument indicate the true value of difference in means for a two sample test.
 
 
-- Hypotheses testing for mean difference ($\mu_d$):
+- Hypotheses testing for mean difference ( $\mu_d$ ):
 
   - $H_0: \mu_d = 0$
 
@@ -159,7 +161,7 @@ var.test(ice_before_after$Control, ice_before_after$Ice)
 
 .panelset[
 .panel[.panel-name[R Code]
-```{r oplot, fig.show='hide', fig.width=5.5, fig.height=5.5}
+```{r plot1, fig.show='hide', fig.width=5.5, fig.height=5.5}
 # Convert data to long format for ggplot
 ice_before_after_long <- ice_before_after %>%
   pivot_longer(cols = c("Control", "Ice"), 
@@ -167,17 +169,45 @@ ice_before_after_long <- ice_before_after %>%
                values_to = "Value")
 ggplot(ice_before_after_long, aes(x = Condition, y = Value, fill = Condition)) +
   geom_boxplot() +
-  stat_summary(fun = mean, geom = "point", shape = 20, size = 4, color = "red", fill = "red") +
-  theme_minimal() +
+  stat_summary(fun = mean, geom = "point", shape = 20, size = 4, color = "red", fill = "red") + theme_minimal() +
   labs(title = "Comparison of Control and Ice Conditions",
-       x = "Condition",
-       y = "Value") +
+       x = "Condition", y = "Value") +
   scale_fill_manual(values = c("lightblue", "lightgreen"))
 ```
 ]
 
 .panel[.panel-name[Plot]
-![](`r knitr::fig_chunk("oplot", ".png")`)
+![](`r knitr::fig_chunk("plot1", ".png")`)
+]
+]
+
+
+---
+# Data visualization
+
+.panelset[
+.panel[.panel-name[R Code]
+```{r plot2, fig.show='hide', fig.width=5.5, fig.height=5.5}
+# Convert data to long format for ggplot
+ice_before_after_long <- ice_before_after %>%
+  pivot_longer(cols = c("Control", "Ice"), 
+               names_to = "Condition", 
+               values_to = "Value") %>%
+  mutate(ID = rep(1:(n() / 2), each = 2))  # Adding a unique ID for each pair
+
+# Step 2: Create the paired boxplot with connected points
+ggpaired(ice_before_after_long, x = "Condition", y = "Value", 
+         id = "ID",                # Using 'ID' to connect paired points
+         order = c("Control", "Ice"), 
+         line.color = "gray",       # Line color for connections
+         line.size = 0.5,           # Line thickness
+         boxplot = TRUE) +          # Adding boxplot
+  labs(x = "Treatment", y = "live basal area (m²/ha)")
+```
+]
+
+.panel[.panel-name[Plot]
+![](`r knitr::fig_chunk("plot2", ".png")`)
 ]
 ]
 
@@ -211,7 +241,7 @@ conf.level = 0.95)
 
 .panelset[
 .panel[.panel-name[R Code]
-```{r two, fig.show='hide', fig.width=5, fig.height=5}
+```{r plot3, fig.show='hide', fig.width=5, fig.height=5}
 Difference = ice_before_after$Control - ice_before_after$Ice
 
 plot(Difference,
@@ -223,16 +253,14 @@ abline(0,0, col="blue", lwd=2)
 ]
 
 .panel[.panel-name[Plot]
-![](`r knitr::fig_chunk("two", ".png")`)
+![](`r knitr::fig_chunk("plot3", ".png")`)
 ]
 ]
 ---
 # Effect size 
 
 ```{r}
-library(effectsize)
-cohens_d(ice_before_after$Control, ice_before_after$Ice, data=Ice)
+effectsize::cohens_d(ice_before_after$Control, ice_before_after$Ice,data=ice_before_after)
 ```
-
 ---
 
