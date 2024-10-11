@@ -1,0 +1,207 @@
+---
+title: "Analysis of Variance"
+subtitle: "(ANOVA)"
+author: "Pablo E. Guti\u00E9rrez-Fonseca"
+institute: ""
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, "css/nhsr.css", "css/nhsr-fonts.css", "css/custom.css"]
+    nature:
+      highlightLanguage: r
+      highlightStyle: github
+      highlightLines: true
+      highlightSpans: true 
+      countIncrementalSlides: true
+      ratio: "16:9"
+    includes:
+      after_body: [css/insert-logo.html]
+xaringanExtra:
+    use_panelset: true
+---
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readr)
+library(lessR)
+library(ggplot2)
+xaringanExtra::use_panelset()
+```
+
+# What is ANOVA
+- Analysis of Variance (ANOVA) is a statistical technique, commonly used to studying differences between two or more group means. 
+
+- ANOVA test is centered on the different sources of variation in a typical variable.
+
+- This statistical method is an extension of the t-test. 
+
+- It is used in a situation where the factor variable has more than one group.
+
+---
+# Hypothesis in one-way ANOVA test
+.pull-left[
+$H_0$: The means between groups are identical.
+]
+
+.pull-right[ 
+$H_a$: At least, the mean of one group is different
+]
+
+<center>
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=5}
+# Simulate data for three groups
+set.seed(123)
+data <- data.frame(
+  Group = rep(c("Group 1", "Group 2", "Group 3"), each = 30),
+  Value = c(rnorm(30, mean = 50, sd = 5),  # Group 1
+            rnorm(30, mean = 50, sd = 5),  # Group 2 (same mean as Group 1)
+            rnorm(30, mean = 55, sd = 5))  # Group 3 (different mean)
+)
+
+# Calculate the means for each group
+group_means <- aggregate(Value ~ Group, data, mean)
+
+# Create the density plot with vertical lines at the means
+ggplot(data, aes(x = Value, fill = Group)) +
+  geom_density(alpha = 0.6) +
+  geom_vline(data = group_means, aes(xintercept = Value, color = Group),
+             linetype = "dashed", size = 1) +
+  theme_minimal() +
+  labs(title = "",
+       x = "Value", y = "Density") +
+  scale_fill_brewer(palette = "Set2") +
+  scale_color_brewer(palette = "Set2", guide = "none")
+```
+
+
+---
+# When would you run an ANOVA?
+
+- I have a continuous response variable.
+
+- I want to know the difference in that response between more than two groups.
+
+- I have one factor I am testing (One-Way ANOVA).
+
+---
+# Assumptions
+
+- All groups are Independent.
+
+- The data is normally distributed.
+
+- All groups have approximately equal variance.
+  - A good rule of thumb: ratio of largest to smallest group stdev must be less than 2:1
+  - The ANOVA is less sensitive to this requirement when samples are of equal size from each population.
+
+
+---
+
+# One-way ANOVA Summary Table
+
+| Source of<br/> Variation          |   Degrees of<br/> Freedom (DF)   |     Sum of Squares<br/> (SS)     |     Mean Square<br/> (MS)   |        F-value        |
+|----------------------------------|:----------------------------------:|:----------------------------------:|:---------------------------:|:---------------------:|
+| **Between<br/> Groups**          |          $c - 1$                  |             $SSB$                 |    $MSB = \frac{SSB}{c - 1}$  |       $\frac{MSB}{MSW}$  |
+| **Within<br/> Groups**           |          $n - c$                  |             $SSW$                 |    $MSW = \frac{SSW}{n - c}$  |                       |
+| **Total**                        |          $n - 1$                  |      $SST = SSB + SSW$            |                           |                       |
+
+- $c$ = number of groups.  
+- $n$ = number of observations.
+
+
+---
+# One-way ANOVA Formulas
+
+.pull-left[ 
+- The formula for the Sum of Squares Between (SSB) is given by:
+$$ SSB = \sum_{j=1}^{C} n_j (\bar{x}_j - \bar{x})^2 $$
+
+Where:
+- $C$ = number of groups
+- $n_j$ = sample size of group $j$
+- $\bar{x}_j$ = mean of group $j$
+- $\bar{x}$ = overall mean
+]
+
+.pull-right[ ]
+
+
+---
+# One-way ANOVA Formulas
+
+.pull-left[ 
+- The formula for the Sum of Squares Between (SSB) is given by:
+$$ SSB = \sum_{j=1}^{C} n_j (\bar{x}_j - \bar{x})^2 $$
+
+Where:
+- $C$ = number of groups
+- $n_j$ = sample size of group $j$
+- $\bar{x}_j$ = mean of group $j$
+- $\bar{x}$ = overall mean
+]
+
+.pull-right[
+- The formula for the Sum of Squares Within (SSW) is given by:  
+
+$$SSW = \sum_{j=1}^{C} \sum_{i=1}^{n_j} (\bar{x}_j - \bar{x})^2$$
+
+Where:
+- $C$ = number of groups
+- $n_j$ = sample size of group $j$
+- $\bar{x}_j$ = mean of group $j$
+- $\bar{x}$ = overall mean
+]
+
+
+
+---
+# One-way ANOVA Summary Table
+- Example: Sample Size 40, 6 groups
+
+---
+# One-way ANOVA Summary Table
+- Example: Sample Size 40, 6 groups
+
+| Source  of<br/> variation          |   Degrees of <br/>Freedom (DF)   |     Sum of Squares<br/> (SS)     |     Mean Square<br/> (MS)   |        F-value        |
+|-------------------|:----------------------------:|:----------------------------:|:-----------------------:|:---------------------:|
+| **Between<br/> Groups** |          c - 1              |             SSB              |    MSB =<br/> SSB / (c - 1) |       MSB / MSW       |
+| **Within<br/> Groups**  |          n - c              |             SSW              |    MSW =<br/> SSW / (n - c) |                       |
+| **Total**          |          n - 1              |      SST =<br/> SSB + SSW        |         
+
+
+---
+# One-way ANOVA Summary Table
+- Example: Sample Size 40, 6 groups
+
+| Source  of<br/> variation          |   Degrees of <br/>Freedom (DF)   |     Sum of Squares<br/> (SS)     |     Mean Square<br/> (MS)   |        F-value        |
+|-------------------|:----------------------------:|:----------------------------:|:-----------------------:|:---------------------:|
+| **Between<br/> Groups** |          5              |             SSB              |    MSB =<br/> SSB / (c - 1) |       MSB / MSW       |
+| **Within<br/> Groups**  |          n - c              |             SSW              |    MSW =<br/> SSW / (n - c) |                       |
+| **Total**          |          n - 1              |      SST =<br/> SSB + SSW        |         
+
+
+
+---
+# One-way ANOVA Summary Table
+- Example: Sample Size 40, 6 groups
+
+| Source  of<br/> variation          |   Degrees of <br/>Freedom (DF)   |     Sum of Squares<br/> (SS)     |     Mean Square<br/> (MS)   |        F-value        |
+|-------------------|:----------------------------:|:----------------------------:|:-----------------------:|:---------------------:|
+| **Between<br/> Groups** |          5              |             SSB              |    MSB =<br/> SSB / (c - 1) |       MSB / MSW       |
+| **Within<br/> Groups**  |          34              |             SSW              |    MSW =<br/> SSW / (n - c) |                       |
+| **Total**          |          n - 1              |      SST =<br/> SSB + SSW        |         
+
+
+---
+# Finding the critical value for an F-test
+
+.pull-left[ 
+- You will need the critical F table that matches your significance level.
+
+- And you will need to know the degrees of freedom for both the between and within variability.
+
+]
+
+.pull-right[ 
+<img src="fig/t-table_1.png" alt="Degrees of Freedom T-Table" width="600"/>
+]
+
