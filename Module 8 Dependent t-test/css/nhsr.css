@@ -184,6 +184,17 @@ blockquote {
   margin-top:          0px;    /* Ensures no extra margin on top of the author name */
 }
 
+
+.panelset {
+  --panel-tab-foreground: currentColor;
+  --panel-tab-active-foreground: #0051BA;
+  --panel-tab-hover-foreground: #d22;
+  --panel-tabs-border-bottom: #ddd;
+  --panel-tab-inactive-opacity: 0.5;
+  --panel-tab-font-family: Roboto, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;\
+}
+
+
 /*-- CUSTOM CLASSES FOR TEXT EMPHASIS --*/
 .blue       { color:   #005EB8 }
 .green      { color:   #009639 }

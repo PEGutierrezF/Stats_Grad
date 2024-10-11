@@ -4,7 +4,7 @@
     <title>Dependent t-tests</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <meta name="date" content="2024-10-10" />
+    <meta name="date" content="2024-10-11" />
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
@@ -24,7 +24,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2024-10-10
+### 2024-10-11
 ]
 
 ---
@@ -200,7 +200,8 @@ shapiro.test(ice_before_after$Ice)
 ---
 # Test for equal variance (homogeneity in variances)
 
-
+.panelset[
+.panel[.panel-name[Equal Variance]
 
 ``` r
 var.test(ice_before_after$Control, ice_before_after$Ice)
@@ -219,6 +220,18 @@ var.test(ice_before_after$Control, ice_before_after$Ice)
 ## ratio of variances 
 ##            2.01298
 ```
+]
+
+.panel[.panel-name[But]
+
+- But...
+
+- When you run a paired test with `x` and `y`, you're actually running a one-sample test on d=`x`-`y` (e.g., Control vs. Ice). 
+
+- This means that there is only one variable `d`, so it doesn't make sense to talk about var.equal with a paired test.
+]
+]
+
 
 ---
 # Data visualization
@@ -296,9 +309,7 @@ Paired!
 t.test(ice_before_after$Control, ice_before_after$Ice,
 alternative = c("greater"),
 mu = 0, 
-paired = TRUE, 
-var.equal = TRUE,
-conf.level = 0.95)
+paired = TRUE)
 ```
 
 ```
