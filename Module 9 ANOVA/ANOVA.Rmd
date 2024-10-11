@@ -155,40 +155,119 @@ Where:
 
 ---
 # One-way ANOVA Summary Table
-- Example: Sample Size 40, 6 groups
+- In a study on plant growth with a sample size of **40**, **six different fertilizer** types were tested.
 
 ---
 # One-way ANOVA Summary Table
-- Example: Sample Size 40, 6 groups
+- In a study on plant growth with a sample size of **40**, **six different fertilizer** types were tested..
 
-| Source  of<br/> variation          |   Degrees of <br/>Freedom (DF)   |     Sum of Squares<br/> (SS)     |     Mean Square<br/> (MS)   |        F-value        |
-|-------------------|:----------------------------:|:----------------------------:|:-----------------------:|:---------------------:|
-| **Between<br/> Groups** |          c - 1              |             SSB              |    MSB =<br/> SSB / (c - 1) |       MSB / MSW       |
-| **Within<br/> Groups**  |          n - c              |             SSW              |    MSW =<br/> SSW / (n - c) |                       |
-| **Total**          |          n - 1              |      SST =<br/> SSB + SSW        |         
+| Source of<br/> Variation          |   Degrees of<br/> Freedom (DF)   |     Sum of Squares<br/> (SS)     |     Mean Square<br/> (MS)   |        F-value        |
+|----------------------------------|:----------------------------------:|:----------------------------------:|:---------------------------:|:---------------------:|
+| **Between<br/> Groups**          |          $c - 1$                  |             2150                 |    $MSB = \frac{SSB}{c - 1}$  |       $\frac{MSB}{MSW}$  |
+| **Within<br/> Groups**           |          $n - c$                  |             5269                 |    $MSW = \frac{SSW}{n - c}$  |                       |
+| **Total**                        |          $n - 1$                  |      $SST = SSB + SSW$            |                           |                       |
 
-
----
-# One-way ANOVA Summary Table
-- Example: Sample Size 40, 6 groups
-
-| Source  of<br/> variation          |   Degrees of <br/>Freedom (DF)   |     Sum of Squares<br/> (SS)     |     Mean Square<br/> (MS)   |        F-value        |
-|-------------------|:----------------------------:|:----------------------------:|:-----------------------:|:---------------------:|
-| **Between<br/> Groups** |          5              |             SSB              |    MSB =<br/> SSB / (c - 1) |       MSB / MSW       |
-| **Within<br/> Groups**  |          n - c              |             SSW              |    MSW =<br/> SSW / (n - c) |                       |
-| **Total**          |          n - 1              |      SST =<br/> SSB + SSW        |         
-
+- $c$ = number of groups.  
+- $n$ = number of observations.
 
 
 ---
 # One-way ANOVA Summary Table
-- Example: Sample Size 40, 6 groups
+- In a study on plant growth with a sample size of **40**, **six different fertilizer** types were tested..
 
-| Source  of<br/> variation          |   Degrees of <br/>Freedom (DF)   |     Sum of Squares<br/> (SS)     |     Mean Square<br/> (MS)   |        F-value        |
-|-------------------|:----------------------------:|:----------------------------:|:-----------------------:|:---------------------:|
-| **Between<br/> Groups** |          5              |             SSB              |    MSB =<br/> SSB / (c - 1) |       MSB / MSW       |
-| **Within<br/> Groups**  |          34              |             SSW              |    MSW =<br/> SSW / (n - c) |                       |
-| **Total**          |          n - 1              |      SST =<br/> SSB + SSW        |         
+| Source of<br/> Variation          |   Degrees of<br/> Freedom (DF)   |     Sum of Squares<br/> (SS)     |     Mean Square<br/> (MS)   |        F-value        |
+|----------------------------------|:----------------------------------:|:----------------------------------:|:---------------------------:|:---------------------:|
+| **Between<br/> Groups**          |          5                  |             2150                 |    $MSB = \frac{SSB}{c - 1}$  |       $\frac{MSB}{MSW}$  |
+| **Within<br/> Groups**           |          $n - c$                  |             5269                 |    $MSW = \frac{SSW}{n - c}$  |                       |
+| **Total**                        |          $n - 1$                  |      $SST = SSB + SSW$            |                           |                       |
+
+- $c$ = number of groups.  
+- $n$ = number of observations.
+
+
+
+---
+# One-way ANOVA Summary Table
+- In a study on plant growth with a sample size of **40**, **six different fertilizer** types were tested..
+
+| Source of<br/> Variation          |   Degrees of<br/> Freedom (DF)   |     Sum of Squares<br/> (SS)     |     Mean Square<br/> (MS)   |        F-value        |
+|----------------------------------|:----------------------------------:|:----------------------------------:|:---------------------------:|:---------------------:|
+| **Between<br/> Groups**          |          5                  |             2150                 |    $MSB = \frac{SSB}{c - 1}$  |       $\frac{MSB}{MSW}$  |
+| **Within<br/> Groups**           |          34                  |             5269                 |    $MSW = \frac{SSW}{n - c}$  |                       |
+| **Total**                        |          $n - 1$                  |      $SST = SSB + SSW$            |                           |                       |
+
+- $c$ = number of groups.  
+- $n$ = number of observations.
+
+
+---
+# One-way ANOVA Summary Table
+- In a study on plant growth with a sample size of **40**, **six different fertilizer** types were tested..
+
+| Source of<br/> Variation          |   Degrees of<br/> Freedom (DF)   |     Sum of Squares<br/> (SS)     |     Mean Square<br/> (MS)   |        F-value        |
+|----------------------------------|:----------------------------------:|:----------------------------------:|:---------------------------:|:---------------------:|
+| **Between<br/> Groups**          |          5                  |             2150                 |    $MSB = \frac{SSB}{c - 1}$  |       $\frac{MSB}{MSW}$  |
+| **Within<br/> Groups**           |          34                  |             5269                 |    $MSW = \frac{SSW}{n - c}$  |                       |
+| **Total**                        |          39                  |      $SST = SSB + SSW$            |                           |                       |
+
+- $c$ = number of groups.  
+- $n$ = number of observations.
+
+
+---
+# One-way ANOVA Summary Table
+- In a study on plant growth with a sample size of **40**, **six different fertilizer** types were tested.
+
+| Source of<br/> Variation          |   Degrees of<br/> Freedom (DF)   |     Sum of Squares<br/> (SS)     |     Mean Square<br/> (MS)   |        F-value        |
+|----------------------------------|:----------------------------------:|:----------------------------------:|:---------------------------:|:---------------------:|
+| **Between<br/> Groups**          |          5                        |             2150                 |    $MSB = \frac{SSB}{c - 1}$  |       $\frac{MSB}{MSW}$  |
+| **Within<br/> Groups**           |          34                       |             5269                 |    $MSW = \frac{SSW}{n - c}$  |                       |
+| **Total**                        |          39                       |             7419                 |                           |                       |
+
+- $c$ = number of groups.  
+- $n$ = number of observations.
+
+---
+# One-way ANOVA Summary Table
+- In a study on plant growth with a sample size of **40**, **six different fertilizer** types were tested.
+
+| Source of<br/> Variation          |   Degrees of<br/> Freedom (DF)   |     Sum of Squares<br/> (SS)     |     Mean Square<br/> (MS)   |        F-value        |
+|----------------------------------|:----------------------------------:|:----------------------------------:|:---------------------------:|:---------------------:|
+| **Between<br/> Groups**          |          5                        |             2150                 |    430  |       $\frac{MSB}{MSW}$  |
+| **Within<br/> Groups**           |          34                       |             5269                 |    $MSW = \frac{SSW}{n - c}$  |                       |
+| **Total**                        |          39                       |             7419                 |                           |                       |
+
+- $c$ = number of groups.  
+- $n$ = number of observations.
+
+
+---
+# One-way ANOVA Summary Table
+- In a study on plant growth with a sample size of **40**, **six different fertilizer** types were tested.
+
+| Source of<br/> Variation          |   Degrees of<br/> Freedom (DF)   |     Sum of Squares<br/> (SS)     |     Mean Square<br/> (MS)   |        F-value        |
+|----------------------------------|:----------------------------------:|:----------------------------------:|:---------------------------:|:---------------------:|
+| **Between<br/> Groups**          |          5                        |             2150                 |    430  |       $\frac{MSB}{MSW}$  |
+| **Within<br/> Groups**           |          34                       |             5269                 |    155  |                       |
+| **Total**                        |          39                       |             7419                 |                           |                       |
+
+- $c$ = number of groups.  
+- $n$ = number of observations.
+
+
+---
+# One-way ANOVA Summary Table
+- In a study on plant growth with a sample size of **40**, **six different fertilizer** types were tested.
+
+| Source of<br/> Variation          |   Degrees of<br/> Freedom (DF)   |     Sum of Squares<br/> (SS)     |     Mean Square<br/> (MS)   |        F-value        |
+|----------------------------------|:----------------------------------:|:----------------------------------:|:---------------------------:|:---------------------:|
+| **Between<br/> Groups**          |          5                        |             2150                 |    430  |       2.77  |
+| **Within<br/> Groups**           |          34                       |             5269                 |    155  |                       |
+| **Total**                        |          39                       |             7419                 |                           |                       |
+
+- $c$ = number of groups.  
+- $n$ = number of observations.
+
 
 
 ---
