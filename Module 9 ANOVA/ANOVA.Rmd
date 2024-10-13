@@ -39,11 +39,15 @@ xaringanExtra::use_panelset()
 ---
 # Hypothesis in one-way ANOVA test
 .pull-left[
-$H_0$: The means between groups are identical.
+- $H_0$: All group means are equal.
+
+  - $H_0: \mu_1 = \mu_2 = \mu_3 = \dots = \mu_k$
 ]
 
 .pull-right[ 
-$H_a$: At least, the mean of one group is different
+- $H_a$: At least, the mean of one group is different
+
+  - $H_A: \mu_i \neq \mu_j \quad \text{for some } i, j$
 ]
 
 <center>
@@ -92,6 +96,16 @@ ggplot(data, aes(x = Value, fill = Group)) +
 - All groups have approximately equal variance.
   - A good rule of thumb: ratio of largest to smallest group stdev must be less than 2:1
   - The ANOVA is less sensitive to this requirement when samples are of equal size from each population.
+
+---
+# How ANOVA works 
+- The ANOVA obtained value (the **F-statistic**) is a ratio of the Between Group Variation divided by the Within Group Variation:      
+
+<center>
+F = $\frac{\text{Variation}_{\text{between}}}{\text{Variation}_{\text{within}}}$
+</center>
+
+- A large **F** is evidence against $H_0$, since it indicates that there is more difference between groups than within groups.
 
 
 ---
@@ -281,9 +295,28 @@ Where:
 
 - $c$ = number of groups.  
 - $n$ = number of observations.
-- `p_value <- 1 - pf(f_statistic, df_B, df_W)` = 0.03326991
+- `p_value <- 1 - pf(f_statistic, df_B, df_W)` = **0.03326991**
+
+---
+# Effect Size Measures
+- Significant **F ratios** indicate that there is a difference between the treatment groups that cannot be explained by chance alone.
+  
+- Effect size measures help determine how big or meaningful the effect of the treatment is.
 
 
+---
+# Effect Size Measures
+- One simple effect size measure:
+<center>
+$r^2 = \frac{\text{SSB}}{\text{SST}}$
+
+Where:
+  - **SSB** is the sum of squares between groups (variability due to group differences),
+  - **SST** is the total sum of squares (total variability in the dataset).
+
+- This measure shows how much of the total variability in the data can be explained by the different groupings.   
+- **What is meaningful?**  
+It depends on how much of the total variability you would expect this grouping to account for.
 
 ---
 # One-way ANOVA Summary Table
@@ -315,3 +348,8 @@ Where:
 <img src="fig/t-table_1.png" alt="Degrees of Freedom T-Table" width="600"/>
 ]
 
+---
+# How to summarize results
+
+<span style="color:#00796B;">State the original research question / hypothesis. </span> <span style="color:#E65100;">Briefly describe the methods including the type of test run:  One-way ANOVA, if significant type of Means Comparison (e.g. Tukey’s HSD Means Comparison). </span> <span style="color:#1E88E5;">Describe your results including: Shorthand ( $F_{(5, 34)} = 2.77, p < 0,003, r^2 = 29 )$, Results of any means comparison (which groups are larger than which other groups? Which are the same?
+. </span>  <span style="color:#424242;"> Interpret significance and effect size (r2), big picture: what does this mean in terms of your original research question?.</span> 
