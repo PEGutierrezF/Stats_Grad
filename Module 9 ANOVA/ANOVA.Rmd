@@ -109,6 +109,21 @@ F = $\frac{\text{Variation}_{\text{between}}}{\text{Variation}_{\text{within}}}$
 
 
 ---
+# Finding the critical value for an F-test
+
+.pull-left[ 
+- You will need the critical F table that matches your significance level.
+
+- And you will need to know the degrees of freedom for both the between and within variability.
+
+]
+
+.pull-right[ 
+<img src="fig/f-table.png" alt="Degrees of Freedom T-Table" width="600"/>
+]
+
+
+---
 
 # One-way ANOVA Summary Table
 
@@ -333,20 +348,6 @@ It depends on how much of the total variability you would expect this grouping t
 - `p_value <- 1 - pf(f_statistic, df_B, df_W)` = **0.03326991**
 -  $R^2 = \frac{SSB}{SST}  =  \frac{2150}{7419}$ = **0.2897**
 
-
----
-# Finding the critical value for an F-test
-
-.pull-left[ 
-- You will need the critical F table that matches your significance level.
-
-- And you will need to know the degrees of freedom for both the between and within variability.
-
-]
-
-.pull-right[ 
-<img src="fig/t-table_1.png" alt="Degrees of Freedom T-Table" width="600"/>
-]
 
 ---
 # How to summarize results
