@@ -98,6 +98,23 @@ ggplot(data, aes(x = Value, fill = Group)) +
   - The ANOVA is less sensitive to this requirement when samples are of equal size from each population.
 
 ---
+# Assumptions
+
+- A common misconception is that the **response variable** must be normally distributed when conducting an ANOVA. This is **incorrect** because the normality assumptions pertain to the **residuals**, not the response variable.
+
+- The key assumption of ANOVA is that the **residuals** **are independent** and come from a **normal distribution** with mean 0 and variance $\sigma^2$. Specifically:
+<center>
+$y_{ij} = \mu + \alpha_i + \epsilon_{ij}$
+</center>
+Where:
+- $y_{ij}$ This is the observed value of the response variable for the $j$-th observation in the $i$-th group
+- $\mu$ is the overall mean
+- $\alpha_i$ is the effect of the $i$-th group
+- $\epsilon_{ij} \sim \text{Normal}(0, \sigma^2)$, where $\epsilon_{ij}$ represents the residual error.
+
+- Thus, it is the **residuals** $\epsilon_{ij}$ that must be normally distributed, not the response variable $y_{ij}$.
+
+---
 # How ANOVA works 
 - The ANOVA obtained value (the **F-statistic**) is a ratio of the Between Group Variation divided by the Within Group Variation:      
 
@@ -346,11 +363,11 @@ It depends on how much of the total variability you would expect this grouping t
 - $c$ = number of groups.  
 - $n$ = number of observations.
 - `p_value <- 1 - pf(f_statistic, df_B, df_W)` = **0.03326991**
--  $R^2 = \frac{SSB}{SST}  =  \frac{2150}{7419}$ = **0.2897**
+-  $r^2 = \frac{SSB}{SST}  =  \frac{2150}{7419}$ = **0.2897**
 
 
 ---
 # How to summarize results
 
-<span style="color:#00796B;">State the original research question / hypothesis. </span> <span style="color:#E65100;">Briefly describe the methods including the type of test run:  One-way ANOVA, if significant type of Means Comparison (e.g. Tukey’s HSD Means Comparison). </span> <span style="color:#1E88E5;">Describe your results including: Shorthand ( $F_{(5, 34)} = 2.77, p < 0,003, r^2 = 29 )$, Results of any means comparison (which groups are larger than which other groups? Which are the same?
+<span style="color:#00796B;">State the original research question / hypothesis. </span> <span style="color:#E65100;">Briefly describe the methods including the type of test run:  One-way ANOVA, if significant type of Means Comparison (e.g. Tukey’s HSD Means Comparison). </span> <span style="color:#1E88E5;">Describe your results including: Shorthand ( $F_{(5, 34)} = 2.77, p < 0,003, r^2 = 0.29 )$, Results of any means comparison (which groups are larger than which other groups? Which are the same?
 . </span>  <span style="color:#424242;"> Interpret significance and effect size (r2), big picture: what does this mean in terms of your original research question?.</span> 
