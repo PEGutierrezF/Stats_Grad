@@ -444,36 +444,7 @@ t.test(x= , y = ,
 - **Welch t-test** is just an adaptation of t-test, and it is used when the two samples have possibly **unequal variances**.
 ]
 
----
 
-# Basic Steps for an Inferential t-Test
-
-
-.pull-left[ 
-```{r, eval=F}
-t.test(x= , y = ,
-       mu = 0, 
-       paired = , 
-       var.equal= , 
-       `alternative = c("two.sided", "less", "greater")`
-       )
-```
-]
-
-
-.pull-right[ 
-<center>
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
-mermaid("
-graph TD;
-    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];
-    A -->|Yes| C[Use alternative = 'greater'];
-    A -->|No| D[Use alternative = 'two.sided'];
-")
-```
-</center>
-]
 
 ---
 # Flowcharts for t-test
@@ -510,6 +481,37 @@ DiagrammeR::mermaid("
 
 ```
 
+
+---
+
+# Basic Steps for an Inferential t-Test
+
+
+.pull-left[ 
+```{r, eval=F}
+t.test(x= , y = ,
+       mu = 0, 
+       paired = , 
+       var.equal= , 
+       `alternative = c("two.sided", "less", "greater")`
+       )
+```
+]
+
+
+.pull-right[ 
+<center>
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+mermaid("
+graph TD;
+    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];
+    A -->|Yes| C[Use alternative = 'greater'];
+    A -->|No| D[Use alternative = 'two.sided'];
+")
+```
+</center>
+]
 
 
 ---

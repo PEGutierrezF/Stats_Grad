@@ -4,7 +4,7 @@
     <title>t-tests</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <meta name="date" content="2024-10-10" />
+    <meta name="date" content="2024-10-14" />
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
@@ -34,7 +34,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2024-10-10
+### 2024-10-14
 ]
 
 ---
@@ -324,6 +324,15 @@ t.test(x= , y = ,
 - **Welch t-test** is just an adaptation of t-test, and it is used when the two samples have possibly **unequal variances**.
 ]
 
+
+
+---
+# Flowcharts for t-test
+
+<div id="htmlwidget-aab856462fe0e136a77e" style="width:850px;height:550px;" class="DiagrammeR html-widget "></div>
+<script type="application/json" data-for="htmlwidget-aab856462fe0e136a77e">{"x":{"diagram":"\n    graph TD;\n\n        A[Are the data within either both samples or pairs normally distributed<br><center>and free from outliers?<\/center>] --Yes--> B\n        A --No--> C[Are this samples Indenpendent or dependent?]\n\n        B[Are the sample independent?]--Yes-->F\n        B[Are the sample independent?]--No-->G[Paired t-test]\n        \n        F[Is the variance of each sample equal?]--Yes--> H[Student's t-test]\n        F[Is the variance of each sample equal?]--No--> I[Welch's t-test]\n        \n                \n        C--Independent--> D[Mann-Whitney U test]\n        C--Dependent--> E[Wilcoxon signed-rank test]\n        \n        \n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n  style D fill:lightblue,stroke:#333,stroke-width:1px\n  style E fill:lightblue,stroke:#333,stroke-width:1px\n  style F fill:lightblue,stroke:#333,stroke-width:1px\n  style G fill:lightblue,stroke:#333,stroke-width:1px\n  style H fill:lightblue,stroke:#333,stroke-width:1px\n  style I fill:lightblue,stroke:#333,stroke-width:1px\n  \n  "},"evals":[],"jsHooks":[]}</script>
+
+
 ---
 
 # Basic Steps for an Inferential t-Test
@@ -345,17 +354,10 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-aab856462fe0e136a77e" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-aab856462fe0e136a77e">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9d0b8b30c615dcc75a12" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-9d0b8b30c615dcc75a12">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
 &lt;/center&gt;
 ]
-
----
-# Flowcharts for t-test
-
-<div id="htmlwidget-9d0b8b30c615dcc75a12" style="width:850px;height:550px;" class="DiagrammeR html-widget "></div>
-<script type="application/json" data-for="htmlwidget-9d0b8b30c615dcc75a12">{"x":{"diagram":"\n    graph TD;\n\n        A[Are the data within either both samples or pairs normally distributed<br><center>and free from outliers?<\/center>] --Yes--> B\n        A --No--> C[Are this samples Indenpendent or dependent?]\n\n        B[Are the sample independent?]--Yes-->F\n        B[Are the sample independent?]--No-->G[Paired t-test]\n        \n        F[Is the variance of each sample equal?]--Yes--> H[Student's t-test]\n        F[Is the variance of each sample equal?]--No--> I[Welch's t-test]\n        \n                \n        C--Independent--> D[Mann-Whitney U test]\n        C--Dependent--> E[Wilcoxon signed-rank test]\n        \n        \n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n  style D fill:lightblue,stroke:#333,stroke-width:1px\n  style E fill:lightblue,stroke:#333,stroke-width:1px\n  style F fill:lightblue,stroke:#333,stroke-width:1px\n  style G fill:lightblue,stroke:#333,stroke-width:1px\n  style H fill:lightblue,stroke:#333,stroke-width:1px\n  style I fill:lightblue,stroke:#333,stroke-width:1px\n  \n  "},"evals":[],"jsHooks":[]}</script>
-
 
 
 ---
