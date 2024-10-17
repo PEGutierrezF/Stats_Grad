@@ -449,13 +449,13 @@ head(crop)
 ---
 # Normality
 ```{r}
-byf.shapiro(yield ~ as.character(fertilizer), data=crop)
+byf.shapiro(yield ~ fertilizer, data=crop)
 ```
 
 ---
 # Variance
 ```{r}
-bartlett.test(yield ~ as.character(fertilizer), data=crop)
+bartlett.test(yield ~ fertilizer, data=crop)
 ```
 
 ---
@@ -465,9 +465,12 @@ bartlett.test(yield ~ as.character(fertilizer), data=crop)
 .panel[.panel-name[R Code]
 ```{r plot1, fig.show='hide', fig.width=5.5, fig.height=5.5}
 ggplot(crop) +
-  aes(x = as.character(fertilizer), y = yield, fill = fertilizer) +
+  aes(x = fertilizer, y = yield, fill = fertilizer) +
   geom_boxplot() +
-  theme(legend.position = "none")
+    geom_jitter(shape = 15,
+        color = "steelblue",
+        position = position_jitter(0.21)) +
+   theme_minimal()
 
 ```
 ]
@@ -478,8 +481,92 @@ ggplot(crop) +
 ]
 
 ---
+# Run the ANOVA in R
 ```{r}
-one.way <- aov(yield ~ fertilizer, data = crop)
+one.way <- aov(yield ~ fertilizer, 
+               data = crop, var.equal = TRUE )
+
 summary(one.way)
+```
+
+---
+# Check Assumptions 
+
+---
+# Check Assumptions 
+- Check normality assumption by analyzing the model residuals. QQ plot and Shapiro-Wilk test of normality are used. QQ plot draws the correlation between a given data and the normal distribution.
+
+.pull-left[
+```{r, fig.width=4.5, fig.height=4.5}
+plot(one.way, 1) 
+```
+]
+
+.pull-right[
+]
+
+
+---
+# Check Assumptions 
+- Check normality assumption by analyzing the model residuals. QQ plot and Shapiro-Wilk test of normality are used. QQ plot draws the correlation between a given data and the normal distribution.
+
+.pull-left[
+```{r, fig.width=4.5, fig.height=4.5}
+plot(one.way, 2) 
+```
+]
+
+.pull-right[
+- Compute Shapiro-Wilk test of normality
+```{r}
+shapiro.test(residuals(one.way))
+```
+]
+
+---
+# Check Assumptions 
+- In the QQ plot, as all the points fall approximately along the reference line, **we can assume normality**. ]
+
+.pull-right[
+- This conclusion is supported by the Shapiro-Wilk test. The p-value is not significant (p = 0.7594), so we can **assume normality**.
+]
+---
+# Check Assumptions
+- The residuals versus fits plot can be used to check the homogeneity of variances.
+
+.pull-left[
+```{r, fig.width=4.5, fig.height=4.5}
+plot(one.way, 1) 
+```
+]
+
+In the plot above, there is no evident relationships between residuals and fitted values (the mean of each groups), which is good. So, we can assume the homogeneity of variances.
+
+---
+# Post-hoc test
+
+---
+# Post-hoc test
+
+- In order to see which group(s) is(are) different from the others, we need to compare groups 2 by 2. 
+
+- In practice, since there are 3 species, we are going to compare species 2 by 2 as follows:
+
+  - One vs Two
+  - One vs. Three
+  - Three vs. Two
+  
+---
+# Post-hoc test
+
+```{r, highlight.output = 8:10}
+post_test <- TukeyHSD(one.way)
+post_test 
+```
+
+---
+# Post-hoc test
+```{r}
+plot(post_test)
 ```
 
