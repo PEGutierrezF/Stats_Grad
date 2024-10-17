@@ -86,6 +86,65 @@ ggplot(data, aes(x = Value, fill = Group)) +
 
 - I have one factor I am testing (One-Way ANOVA).
 
+
+---
+# Flowcharts
+
+```{r figure_1, echo = FALSE, fig.align='center'}
+DiagrammeR::mermaid("
+    graph TD;
+
+        A[What type of data?] --> B[Continuous] 
+        A --> Z[Categorical]
+        
+        B --Research Question--> C[Comparing Differences] 
+        B --Research Question--> D[Examining Relationships]
+        
+        C --How many groups?--> E[1 group] 
+        C --How many groups?--> I[2 groups]
+        C --How many groups?--> Q[> 2 groups]
+        
+        E --> F[Normally distributed?] 
+        F --Yes--> G[One sample z-test] 
+        F --No--> H[Wilcoxon signed rank test]
+        
+        I --> J[Are Samples Independent?] 
+        J --Yes--> K[Normally distributed?] 
+        J --No--> L[Normally distributed?]
+        
+        K --Yes--> M[Independent t-test] 
+        K --No--> N[Wilcoxon rank sum test] 
+        
+        L --Yes--> O[Paired t-test] 
+        L --No--> P[Wilcoxon matched pair test]
+        
+        Q --> R[Use ANOVA] 
+        Q --> S[Non-parametric ANOVA]
+
+  style A fill:lightblue,stroke:#333,stroke-width:1px
+  style B fill:lightblue,stroke:#333,stroke-width:1px
+  style C fill:lightblue,stroke:#333,stroke-width:1px
+  style D fill:lightblue,stroke:#333,stroke-width:1px
+  style E fill:lightblue,stroke:#333,stroke-width:1px
+  style F fill:lightblue,stroke:#333,stroke-width:1px
+  style G fill:lightblue,stroke:#333,stroke-width:1px
+  style H fill:lightblue,stroke:#333,stroke-width:1px
+  style I fill:lightblue,stroke:#333,stroke-width:1px
+  style J fill:lightblue,stroke:#333,stroke-width:1px
+  style K fill:lightblue,stroke:#333,stroke-width:1px
+  style L fill:lightblue,stroke:#333,stroke-width:1px
+  style M fill:lightblue,stroke:#333,stroke-width:1px
+  style N fill:lightblue,stroke:#333,stroke-width:1px
+  style O fill:lightblue,stroke:#333,stroke-width:1px
+  style P fill:lightblue,stroke:#333,stroke-width:1px
+  style Q fill:lightblue,stroke:#333,stroke-width:1px
+  style Z fill:lightblue,stroke:#333,stroke-width:1px
+
+  ", height = '550px', width = '850px')
+
+```
+
+
 ---
 # Assumptions
 
