@@ -482,7 +482,7 @@ ggplot(crop) +
 
 ---
 # Run the ANOVA in R
-```{r}
+```{r highlight.output = 2}
 one.way <- aov(yield ~ fertilizer, 
                data = crop, var.equal = TRUE )
 
@@ -498,7 +498,7 @@ summary(one.way)
 
 .pull-left[
 ```{r, fig.width=4.5, fig.height=4.5}
-plot(one.way, 1) 
+plot(one.way, 2) 
 ```
 ]
 
@@ -518,18 +518,18 @@ plot(one.way, 2)
 
 .pull-right[
 - Compute Shapiro-Wilk test of normality
-```{r}
+```{r highlight.output = 5}
 shapiro.test(residuals(one.way))
 ```
 ]
 
 ---
 # Check Assumptions 
-- In the QQ plot, as all the points fall approximately along the reference line, **we can assume normality**. ]
+- In the QQ plot, as all the points fall approximately along the reference line, **we can assume normality**.
 
-.pull-right[
 - This conclusion is supported by the Shapiro-Wilk test. The p-value is not significant (p = 0.7594), so we can **assume normality**.
-]
+
+
 ---
 # Check Assumptions
 - The residuals versus fits plot can be used to check the homogeneity of variances.
@@ -540,7 +540,9 @@ plot(one.way, 1)
 ```
 ]
 
-In the plot above, there is no evident relationships between residuals and fitted values (the mean of each groups), which is good. So, we can assume the homogeneity of variances.
+.pull-right[
+In the plot above, there is no evident relationships between residuals and fitted values (the mean of each groups), which is good. So, we can assume the **homogeneity of variances**.
+]
 
 ---
 # Post-hoc test
