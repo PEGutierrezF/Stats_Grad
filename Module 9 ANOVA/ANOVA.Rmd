@@ -459,14 +459,23 @@ bartlett.test(yield ~ as.character(fertilizer), data=crop)
 ```
 
 ---
-```{r}
+# Data visualization
+
+.panelset[
+.panel[.panel-name[R Code]
+```{r plot1, fig.show='hide', fig.width=5.5, fig.height=5.5}
 ggplot(crop) +
   aes(x = as.character(fertilizer), y = yield, fill = fertilizer) +
   geom_boxplot() +
   theme(legend.position = "none")
 
 ```
+]
 
+.panel[.panel-name[Plot]
+![](`r knitr::fig_chunk("plot1", ".png")`)
+]
+]
 
 ---
 ```{r}

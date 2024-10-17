@@ -429,6 +429,10 @@ bartlett.test(yield ~ as.character(fertilizer), data=crop)
 ```
 
 ---
+# Data visualization
+
+.panelset[
+.panel[.panel-name[R Code]
 
 ``` r
 ggplot(crop) +
@@ -436,9 +440,12 @@ ggplot(crop) +
   geom_boxplot() +
   theme(legend.position = "none")
 ```
+]
 
-![](ANOVA_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
-
+.panel[.panel-name[Plot]
+![](ANOVA_files/figure-html/plot1-1.png)
+]
+]
 
 ---
 
