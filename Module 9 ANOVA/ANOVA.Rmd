@@ -24,6 +24,8 @@ xaringanExtra:
 library(readr)
 library(lessR)
 library(ggplot2)
+library(palmerpenguins)
+library(RVAideMemoire) #shapiro.test
 xaringanExtra::use_panelset()
 ```
 
@@ -430,3 +432,22 @@ It depends on how much of the total variability you would expect this grouping t
 
 <span style="color:#00796B;">State the original research question / hypothesis. </span> <span style="color:#E65100;">Briefly describe the methods including the type of test run:  One-way ANOVA, if significant type of Means Comparison (e.g. Tukey’s HSD Means Comparison). </span> <span style="color:#1E88E5;">Describe your results including: Shorthand ( $F_{(5, 34)} = 2.77, p < 0,003, r^2 = 0.29 )$, Results of any means comparison (which groups are larger than which other groups? Which are the same?
 . </span>  <span style="color:#424242;"> Interpret significance and effect size (r2), big picture: what does this mean in terms of your original research question?.</span> 
+
+---
+# Example
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# https://www.scribbr.com/statistics/anova-in-r/
+```
+
+---
+Example
+
+```{r}
+crop <- read.csv('crop.data.csv')
+```
+
+---
+# Normality test
+```{r}
+byf.shapiro(yield ~ as.character(fertilizer), data=df)
+```
