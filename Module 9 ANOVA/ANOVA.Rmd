@@ -440,14 +440,37 @@ It depends on how much of the total variability you would expect this grouping t
 ```
 
 ---
-Example
-
+# Example
 ```{r}
-crop <- read.csv('crop.data.csv')
+crop <- read.csv('Lecturer Practice/crop.csv')
+head(crop)
 ```
 
 ---
-# Normality test
+# Normality
 ```{r}
-byf.shapiro(yield ~ as.character(fertilizer), data=df)
+byf.shapiro(yield ~ as.character(fertilizer), data=crop)
 ```
+
+---
+# Variance
+```{r}
+bartlett.test(yield ~ as.character(fertilizer), data=crop)
+```
+
+---
+```{r}
+ggplot(crop) +
+  aes(x = as.character(fertilizer), y = yield, fill = fertilizer) +
+  geom_boxplot() +
+  theme(legend.position = "none")
+
+```
+
+
+---
+```{r}
+one.way <- aov(yield ~ fertilizer, data = crop)
+summary(one.way)
+```
+

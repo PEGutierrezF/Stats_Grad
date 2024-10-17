@@ -375,6 +375,86 @@ It depends on how much of the total variability you would expect this grouping t
 ---
 # Example
 
+
+---
+# Example
+
+``` r
+crop &lt;- read.csv('Lecturer Practice/crop.csv')
+head(crop)
+```
+
+```
+##   density block fertilizer    yield
+## 1       1     1          1 177.2287
+## 2       2     2          1 177.5500
+## 3       1     3          1 176.4085
+## 4       2     4          1 177.7036
+## 5       1     1          1 177.1255
+## 6       2     2          1 176.7783
+```
+
+---
+# Normality
+
+``` r
+byf.shapiro(yield ~ as.character(fertilizer), data=crop)
+```
+
+```
+## 
+## 	Shapiro-Wilk normality tests
+## 
+## data:  yield by as.character(fertilizer) 
+## 
+##        W p-value
+## 1 0.9791  0.7743
+## 2 0.9833  0.8875
+## 3 0.9588  0.2542
+```
+
+---
+# Variance
+
+``` r
+bartlett.test(yield ~ as.character(fertilizer), data=crop)
+```
+
+```
+## 
+## 	Bartlett test of homogeneity of variances
+## 
+## data:  yield by as.character(fertilizer)
+## Bartlett's K-squared = 1.0622, df = 2, p-value = 0.5879
+```
+
+---
+
+``` r
+ggplot(crop) +
+  aes(x = as.character(fertilizer), y = yield, fill = fertilizer) +
+  geom_boxplot() +
+  theme(legend.position = "none")
+```
+
+![](ANOVA_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+
+
+---
+
+``` r
+one.way &lt;- aov(yield ~ fertilizer, data = crop)
+summary(one.way)
+```
+
+```
+##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## fertilizer   1   5.74   5.743   14.91 0.000207 ***
+## Residuals   94  36.21   0.385                     
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
