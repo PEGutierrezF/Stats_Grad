@@ -102,6 +102,11 @@ class: center, middle, inverse, title-slide
 
 - A common misconception is that the **response variable** must be normally distributed when conducting an ANOVA. This is **incorrect** because the normality assumptions pertain to the **residuals**, not the response variable.
 
+---
+# Assumptions
+
+- A common misconception is that the **response variable** must be normally distributed when conducting an ANOVA. This is **incorrect** because the normality assumptions pertain to the **residuals**, not the response variable.
+
 - The key assumption of ANOVA is that the **residuals** **are independent** and come from a **normal distribution** with mean 0 and variance `\(\sigma^2\)`. Specifically:
 &lt;center&gt;
 `\(y_{ij} = \mu + \alpha_i + \epsilon_{ij}\)`
@@ -119,8 +124,7 @@ Where:
 - The ANOVA obtained value (the **F-statistic**) is a ratio of the Between Group Variation divided by the Within Group Variation:      
 
 &lt;center&gt;
-F = `\(\frac{\text{Between group variance}}{\text{Within group variance}}\)`
-&lt;/center&gt;
+F = `\(\frac{\text{Between-group variance}}{\text{Within-group variance}}\)`
 
 - A large **F** is evidence against `\(H_0\)`, since it indicates that there is more difference between groups than within groups.
 
@@ -396,6 +400,7 @@ head(crop)
 
 ---
 # Normality
+- Test normality for each fertilizer group using the Shapiro-Wilk test: 
 
 ``` r
 byf.shapiro(yield ~ fertilizer, data=crop)
@@ -414,7 +419,8 @@ byf.shapiro(yield ~ fertilizer, data=crop)
 ```
 
 ---
-# Variance
+# Variance Homogeneity Test
+- Check for equal variances across groups using Bartlett's test:
 
 ``` r
 bartlett.test(yield ~ fertilizer, data=crop)
@@ -430,6 +436,7 @@ bartlett.test(yield ~ fertilizer, data=crop)
 
 ---
 # Data visualization
+- Visualize the data distribution using boxplots and jitter for individual points:
 
 .panelset[
 .panel[.panel-name[R Code]
@@ -451,7 +458,8 @@ ggplot(crop) +
 ]
 
 ---
-# Run the ANOVA in R
+# Running the ANOVA
+- Run one-way ANOVA to assess differences between fertilizer groups:
 
 ``` r
 one.way &lt;- aov(yield ~ fertilizer, 
@@ -469,11 +477,11 @@ summary(one.way)
 ```
 
 ---
-# Check Assumptions 
+# Checking Assumptions
 
 ---
-# Check Assumptions 
-- Check normality assumption by analyzing the model residuals. QQ plot and Shapiro-Wilk test of normality are used. QQ plot draws the correlation between a given data and the normal distribution.
+# Checking Assumptions: Normality
+- Check normality of residuals using a QQ plot and the Shapiro-Wilk test.
 
 .pull-left[
 
@@ -489,8 +497,8 @@ plot(one.way, 2)
 
 
 ---
-# Check Assumptions 
-- Check normality assumption by analyzing the model residuals. QQ plot and Shapiro-Wilk test of normality are used. QQ plot draws the correlation between a given data and the normal distribution.
+# Checking Assumptions: Normality
+- Check normality of residuals using a QQ plot and the Shapiro-Wilk test.
 
 .pull-left[
 
@@ -518,15 +526,15 @@ shapiro.test(residuals(one.way))
 ]
 
 ---
-# Check Assumptions 
-- In the QQ plot, as all the points fall approximately along the reference line, **we can assume normality**.
+# Assumption Check: Interpretation 
+- **QQ plot:** As the points fall approximately along the reference line, we **assume normality**.
 
-- This conclusion is supported by the Shapiro-Wilk test. The p-value is not significant (p = 0.7594), so we can **assume normality**.
+- **Shapiro-Wilk test:** The p-value (p = 0.7594) is not significant, supporting the **assumption of normality**.
 
 
 ---
-# Check Assumptions
-- The residuals versus fits plot can be used to check the homogeneity of variances.
+# Check Assumptions: Homogeneity of Variances
+- The Residuals vs. Fits plot helps check for homogeneity of variances.
 
 .pull-left[
 
@@ -538,7 +546,7 @@ plot(one.way, 1)
 ]
 
 .pull-right[
-In the plot above, there is no evident relationships between residuals and fitted values (the mean of each groups), which is good. So, we can assume the **homogeneity of variances**.
+In the plot above, there's no clear pattern between residuals and fitted values (the group means), which indicates **homogeneity of variances**.
 ]
 
 ---
@@ -547,16 +555,20 @@ In the plot above, there is no evident relationships between residuals and fitte
 ---
 # Post-hoc test
 
-- In order to see which group(s) is(are) different from the others, we need to compare groups 2 by 2. 
+- **Why Perform a Post-hoc Test?**
 
-- In practice, since there are 3 species, we are going to compare species 2 by 2 as follows:
+- After the ANOVA, we need to compare pairs of groups to determine which ones differ significantly.
 
-  - One vs Two
-  - One vs. Three
-  - Three vs. Two
+- Since there are 3 groups (fertilizers), we will make these pairwise comparisons:
+
+  - Group 1 vs. Group 2
+  - Group 1 vs. Group 3
+  - Group 2 vs. Group 3
   
 ---
-# Post-hoc test
+# Running the Post-hoc Test
+
+- We use the Tukey Honest Significant Difference (Tukey HSD) test to compare all possible pairs of groups: 
 
 
 ``` r
@@ -578,7 +590,10 @@ post_test
 ```
 
 ---
-# Post-hoc test
+# Visualizing the Post-hoc Test
+
+- The plot below visualizes the results of the Tukey HSD test:
+
 
 ``` r
 plot(post_test)
