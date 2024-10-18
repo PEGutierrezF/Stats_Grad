@@ -80,14 +80,14 @@ class: center, middle, inverse, title-slide
 
 
 ---
-# Decision Flowchart: How to Analyze My Data?
+# Decision Flowchart
 
 <div id="htmlwidget-fbfc52d82635d988c6e1" style="width:850px;height:550px;" class="DiagrammeR html-widget "></div>
 <script type="application/json" data-for="htmlwidget-fbfc52d82635d988c6e1">{"x":{"diagram":"\n    graph TD;\n\n        A[What type of data?] --> B[Continuous] \n        A --> Z[Categorical]\n        \n        B --Research Question--> C[Comparing Differences] \n        B --Research Question--> D[Examining Relationships]\n        \n        C --How many groups?--> E[1 group] \n        C --How many groups?--> I[2 groups]\n        C --How many groups?--> Q[> 2 groups]\n        \n        E --> F[Normally distributed?] \n        F --Yes--> G[One sample z-test] \n        F --No--> H[Wilcoxon signed rank test]\n        \n        I --> J[Are Samples Independent?] \n        J --Yes--> K[Normally distributed?] \n        J --No--> L[Normally distributed?]\n        \n        K --Yes--> M[Independent t-test] \n        K --No--> N[Wilcoxon rank sum test] \n        \n        L --Yes--> O[Paired t-test] \n        L --No--> P[Wilcoxon matched pair test]\n        \n        Q --> R[Use ANOVA] \n        Q --> S[Non-parametric ANOVA]\n\n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n  style D fill:lightblue,stroke:#333,stroke-width:1px\n  style E fill:lightblue,stroke:#333,stroke-width:1px\n  style F fill:lightblue,stroke:#333,stroke-width:1px\n  style G fill:lightblue,stroke:#333,stroke-width:1px\n  style H fill:lightblue,stroke:#333,stroke-width:1px\n  style I fill:lightblue,stroke:#333,stroke-width:1px\n  style J fill:lightblue,stroke:#333,stroke-width:1px\n  style K fill:lightblue,stroke:#333,stroke-width:1px\n  style L fill:lightblue,stroke:#333,stroke-width:1px\n  style M fill:lightblue,stroke:#333,stroke-width:1px\n  style N fill:lightblue,stroke:#333,stroke-width:1px\n  style O fill:lightblue,stroke:#333,stroke-width:1px\n  style P fill:lightblue,stroke:#333,stroke-width:1px\n  style Q fill:lightblue,stroke:#333,stroke-width:1px\n  style Z fill:lightblue,stroke:#333,stroke-width:1px\n\n  "},"evals":[],"jsHooks":[]}</script>
 
 
 ---
-# Independent Samples: Testing Process
+# # Decision Flowchart: Testing Process
 
 <div id="htmlwidget-2f4c52b7f36e26c300a7" style="width:600px;height:400px;" class="DiagrammeR html-widget "></div>
 <script type="application/json" data-for="htmlwidget-2f4c52b7f36e26c300a7">{"x":{"diagram":"\n    graph TD;\n\n        A[Independent Samples?] --> B[Test Normality of Residuals]\n\n        B --Normality Assumed--> C[Test Homogeneity of Variances]\n        B --Normality Not Assumed--> F[Kruskal-Wallis Test]\n        \n        C --Equal Variances--> D[ANOVA]\n        C --Unequal Variances--> E[Welch Test]\n\n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n  style D fill:lightblue,stroke:#333,stroke-width:1px\n  style E fill:lightblue,stroke:#333,stroke-width:1px\n  style F fill:lightblue,stroke:#333,stroke-width:1px\n  "},"evals":[],"jsHooks":[]}</script>
@@ -525,9 +525,33 @@ In the plot above, there's no clear pattern between residuals and fitted values 
 ---
 # Post-hoc test
 
-- **Why Perform a Post-hoc Test?**
+## Why Perform a Post-hoc Test?
 
-- After the ANOVA, we need to compare pairs of groups to determine which ones differ significantly.
+- When the **overall p-value** from the ANOVA is below the significance level (typically p &lt; 0.05), it suggests that **at least one group mean is different from the others**.
+
+- However, ANOVA does not specify which groups are different; it only tells us that **not all group means are equal**.
+
+- To pinpoint which groups differ, we need to conduct a **post-hoc test**. This test controls for the family-wise error rate, ensuring accurate comparisons between group means.
+
+---
+# Post-hoc test
+
+## Why Perform a Post-hoc Test?
+
+- Two of the most commonly used post-hoc tests include: 
+
+.pull-left[
+- **The Tukey Method:**  
+The Tukey post-hoc test should be used when you would like to make pairwise comparisons between group means when the sample sizes for each group are equal.]
+.pull-right[
+- **The Bonferroni Method:**  
+The Bonferroni post-hoc test should be used when you have a set of planned comparisons you would like to make beforehand.
+]
+
+
+
+---
+# Post-hoc test
 
 - Since there are 3 groups (fertilizers), we will make these pairwise comparisons:
 
@@ -570,6 +594,14 @@ plot(post_test)
 ```
 
 ![](ANOVA_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
+
+---
+# How to summarize results
+
+&lt;span style="color:#00796B;"&gt;- State the original research question / hypothesis.&lt;/span&gt;   
+&lt;span style="color:#E65100;"&gt;- Briefly describe the methods including the type of test run: One-way ANOVA, if significant type of Means Comparison (e.g. Tukey's HSD Means Comparison).&lt;/span&gt;  
+&lt;span style="color:#1E88E5;"&gt;- Describe your results including: Shorthand: `\(F_{(df_1, df_2)} = , p-value , r^2 =\)`. Results of any means comparison (which groups are larger than which other groups? Which are the same?).&lt;/span&gt;    
+&lt;span style="color:#424242;"&gt;- Interpret significance and effect size ( `\(r^2\)` ), big picture: what does this mean in terms of your original research question?&lt;/span&gt;
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
