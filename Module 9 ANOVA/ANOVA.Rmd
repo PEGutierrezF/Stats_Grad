@@ -90,7 +90,7 @@ ggplot(data, aes(x = Value, fill = Group)) +
 
 
 ---
-# Flowcharts
+# Decision Flowchart: How to Analyze My Data?
 
 ```{r figure_1, echo = FALSE, fig.align='center'}
 DiagrammeR::mermaid("
@@ -142,10 +142,35 @@ DiagrammeR::mermaid("
   style Q fill:lightblue,stroke:#333,stroke-width:1px
   style Z fill:lightblue,stroke:#333,stroke-width:1px
 
-  ", height = '550px', width = '850px')
-
+  ", height = '550px', width = '850px'
+  )
 ```
 
+
+---
+# Independent Samples: Testing Process
+
+```{r figure_2, echo = FALSE, fig.align='center'}
+DiagrammeR::mermaid("
+    graph TD;
+
+        A[Independent Samples?] --> B[Test Normality of Residuals]
+
+        B --Normality Assumed--> C[Test Homogeneity of Variances]
+        B --Normality Not Assumed--> F[Kruskal-Wallis Test]
+        
+        C --Equal Variances--> D[ANOVA]
+        C --Unequal Variances--> E[Welch Test]
+
+  style A fill:lightblue,stroke:#333,stroke-width:1px
+  style B fill:lightblue,stroke:#333,stroke-width:1px
+  style C fill:lightblue,stroke:#333,stroke-width:1px
+  style D fill:lightblue,stroke:#333,stroke-width:1px
+  style E fill:lightblue,stroke:#333,stroke-width:1px
+  style F fill:lightblue,stroke:#333,stroke-width:1px
+  ", height = '400px', width = '600px')
+
+```
 
 ---
 # Assumptions
@@ -448,20 +473,6 @@ It depends on how much of the total variability you would expect this grouping t
 ```{r}
 crop <- read.csv('Lecturer Practice/crop.csv')
 head(crop)
-```
-
----
-# Normality
-- Test normality for each fertilizer group using the Shapiro-Wilk test: 
-```{r}
-byf.shapiro(yield ~ fertilizer, data=crop)
-```
-
----
-# Variance Homogeneity Test
-- Check for equal variances across groups using Bartlett's test:
-```{r}
-bartlett.test(yield ~ fertilizer, data=crop)
 ```
 
 ---

@@ -80,11 +80,17 @@ class: center, middle, inverse, title-slide
 
 
 ---
-# Flowcharts
+# Decision Flowchart: How to Analyze My Data?
 
 <div id="htmlwidget-fbfc52d82635d988c6e1" style="width:850px;height:550px;" class="DiagrammeR html-widget "></div>
 <script type="application/json" data-for="htmlwidget-fbfc52d82635d988c6e1">{"x":{"diagram":"\n    graph TD;\n\n        A[What type of data?] --> B[Continuous] \n        A --> Z[Categorical]\n        \n        B --Research Question--> C[Comparing Differences] \n        B --Research Question--> D[Examining Relationships]\n        \n        C --How many groups?--> E[1 group] \n        C --How many groups?--> I[2 groups]\n        C --How many groups?--> Q[> 2 groups]\n        \n        E --> F[Normally distributed?] \n        F --Yes--> G[One sample z-test] \n        F --No--> H[Wilcoxon signed rank test]\n        \n        I --> J[Are Samples Independent?] \n        J --Yes--> K[Normally distributed?] \n        J --No--> L[Normally distributed?]\n        \n        K --Yes--> M[Independent t-test] \n        K --No--> N[Wilcoxon rank sum test] \n        \n        L --Yes--> O[Paired t-test] \n        L --No--> P[Wilcoxon matched pair test]\n        \n        Q --> R[Use ANOVA] \n        Q --> S[Non-parametric ANOVA]\n\n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n  style D fill:lightblue,stroke:#333,stroke-width:1px\n  style E fill:lightblue,stroke:#333,stroke-width:1px\n  style F fill:lightblue,stroke:#333,stroke-width:1px\n  style G fill:lightblue,stroke:#333,stroke-width:1px\n  style H fill:lightblue,stroke:#333,stroke-width:1px\n  style I fill:lightblue,stroke:#333,stroke-width:1px\n  style J fill:lightblue,stroke:#333,stroke-width:1px\n  style K fill:lightblue,stroke:#333,stroke-width:1px\n  style L fill:lightblue,stroke:#333,stroke-width:1px\n  style M fill:lightblue,stroke:#333,stroke-width:1px\n  style N fill:lightblue,stroke:#333,stroke-width:1px\n  style O fill:lightblue,stroke:#333,stroke-width:1px\n  style P fill:lightblue,stroke:#333,stroke-width:1px\n  style Q fill:lightblue,stroke:#333,stroke-width:1px\n  style Z fill:lightblue,stroke:#333,stroke-width:1px\n\n  "},"evals":[],"jsHooks":[]}</script>
 
+
+---
+# Independent Samples: Testing Process
+
+<div id="htmlwidget-2f4c52b7f36e26c300a7" style="width:600px;height:400px;" class="DiagrammeR html-widget "></div>
+<script type="application/json" data-for="htmlwidget-2f4c52b7f36e26c300a7">{"x":{"diagram":"\n    graph TD;\n\n        A[Independent Samples?] --> B[Test Normality of Residuals]\n\n        B --Normality Assumed--> C[Test Homogeneity of Variances]\n        B --Normality Not Assumed--> F[Kruskal-Wallis Test]\n        \n        C --Equal Variances--> D[ANOVA]\n        C --Unequal Variances--> E[Welch Test]\n\n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n  style D fill:lightblue,stroke:#333,stroke-width:1px\n  style E fill:lightblue,stroke:#333,stroke-width:1px\n  style F fill:lightblue,stroke:#333,stroke-width:1px\n  "},"evals":[],"jsHooks":[]}</script>
 
 ---
 # Assumptions
@@ -399,42 +405,6 @@ head(crop)
 ```
 
 ---
-# Normality
-- Test normality for each fertilizer group using the Shapiro-Wilk test: 
-
-``` r
-byf.shapiro(yield ~ fertilizer, data=crop)
-```
-
-```
-## 
-## 	Shapiro-Wilk normality tests
-## 
-## data:  yield by fertilizer 
-## 
-##            W p-value
-## ctrl  0.9791  0.7743
-## trt_1 0.9833  0.8875
-## trt_2 0.9588  0.2542
-```
-
----
-# Variance Homogeneity Test
-- Check for equal variances across groups using Bartlett's test:
-
-``` r
-bartlett.test(yield ~ fertilizer, data=crop)
-```
-
-```
-## 
-## 	Bartlett test of homogeneity of variances
-## 
-## data:  yield by fertilizer
-## Bartlett's K-squared = 1.0622, df = 2, p-value = 0.5879
-```
-
----
 # Data visualization
 - Visualize the data distribution using boxplots and jitter for individual points:
 
@@ -489,7 +459,7 @@ summary(one.way)
 plot(one.way, 2) 
 ```
 
-![](ANOVA_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+![](ANOVA_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
@@ -506,7 +476,7 @@ plot(one.way, 2)
 plot(one.way, 2) 
 ```
 
-![](ANOVA_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
+![](ANOVA_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
@@ -542,7 +512,7 @@ shapiro.test(residuals(one.way))
 plot(one.way, 1) 
 ```
 
-![](ANOVA_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
+![](ANOVA_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
@@ -599,7 +569,7 @@ post_test
 plot(post_test)
 ```
 
-![](ANOVA_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
+![](ANOVA_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
