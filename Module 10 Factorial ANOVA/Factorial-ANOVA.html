@@ -34,14 +34,110 @@ class: center, middle, inverse, title-slide
 
 
 
+# What is a Full Factorial Experiment?
+- A factorial experiment allows researchers to study the joint effect of two or more factors on a dependent variable.
+
+- Factorial designs are an extension of single factor ANOVA designs in which additional factors are added such that each level of one factor is applied to all levels of the other factor(s) and these combinations are replicated.
+
+---
+# Treatment Groups in Full Factorial Design
+- Factor A has two levels, factor B has three levels. Therefore, the full factorial design has 2 x 3 = 6 treatment groups.
+
+|         | B1            | B2            | B3            |
+|---------|---------------|---------------|---------------|
+| A1      | Group 1      | Group 2      | Group 3      |
+| A2      | Group 4      | Group 5      | Group 6      |
+
+---
+
+# One-way ANOVA Summary Table
+
+| Source of&lt;br/&gt; Variation          |   Degrees of&lt;br/&gt; Freedom (DF)   |     Sum of Squares&lt;br/&gt; (SS)     |     Mean Square&lt;br/&gt; (MS)   |        F-value        |
+|----------------------------------|:----------------------------------:|:----------------------------------:|:---------------------------:|:---------------------:|
+| **Between&lt;br/&gt; Groups**          |          `\(c - 1\)`                  |             `\(SSB\)`                 |    `\(MSB = \frac{SSB}{c - 1}\)`  |       `\(\frac{MSB}{MSW}\)`  |
+| **Within&lt;br/&gt; Groups**           |          `\(n - c\)`                  |             `\(SSW\)`                 |    `\(MSW = \frac{SSW}{n - c}\)`  |                       |
+| **Total**                        |          `\(n - 1\)`                  |      `\(SST = SSB + SSW\)`            |                           |                       |
+
+- `\(c\)` = number of groups.  
+- `\(n\)` = number of observations.
+
+---
+# Factorial ANOVA Summary Table
+
+| Source of&lt;br/&gt; Variation          |   Degrees of&lt;br/&gt; Freedom (DF)   |     Sum of Squares&lt;br/&gt; (SS)     |     Mean Square&lt;br/&gt; (MS)   |        F-value        |
+|----------------------------------|:----------------------------------:|:----------------------------------:|:---------------------------:|:---------------------:|
+| **Factor A**                     |          `\(a - 1\)`                  |             `\(SSA\)`                 |    `\(MSA = \frac{SSA}{a - 1}\)`  |       `\(\frac{MSA}{MSW}\)`  |
+| **Factor B**                     |          `\(b - 1\)`                  |             `\(SSB\)`                 |    `\(MSB = \frac{SSB}{b - 1}\)`  |       `\(\frac{MSB}{MSW}\)`  |
+| **Interaction (A × B)**         |          `\((a - 1)(b - 1)\)`         |             `\(SS_{AB}\)`             |    `\(MS_{AB} = \frac{SS_{AB}}{(a - 1)(b - 1)}\)` |   `\(\frac{MS_{AB}}{MSW}\)`  |
+| **Within&lt;br/&gt; Groups**           |          `\(N - ab\)`                 |             `\(SSW\)`                 |    `\(MSW = \frac{SSW}{N - ab}\)`  |                       |
+| **Total**                        |          `\(N - 1\)`                  |      `\(SST = SSA + SSB + SS_{AB} + SSW\)`            |                           |                       |
+
+- `\(a\)` = number of levels in Factor A.  
+- `\(b\)` = number of levels in Factor B.  
+- `\(N\)` = total number of observations.
+
 ---
 # When do you do a Factorial ANOVA
 - You have a continuous response variable.
-- You have two or more categorical treatment variables:  
-  - You want to simultaneously test for differences in on the response variable  OR
-  - You want to block for a source of known variability to better isolate the effect of the variable of interest    OR
-  - You suspect that there are interactions between variables that might hide the true nature of relationships
 
+- You have two or more categorical treatment variables (factors).
+
+  - You want to simultaneously test for differences in the response variable across these factors.
+
+  - You want to block for a source of known variability to better isolate the effect of the main variables of interest.
+
+  - You suspect there may be interactions between the factors that could influence the response, potentially hiding the true relationships.
+
+---
+# ANOVA Terminology
+
+- **One-Way ANOVA**: Used when you have one treatment variable. The non-parametric alternative is the **Kruskal-Wallis test**.
+
+- **Factorial ANOVA**: Applied when there are two or more treatment variables. The name reflects the number of groups and variables, e.g., a 2x3 Factorial ANOVA. The non-parametric alternative is Friedman’s k-way test.
+
+- **Full Factorial ANOVA**: Used when you are also considering interaction terms between variables. This analysis examines the main effects and interactions among factors.
+
+---
+# Factorial ANOVA ANOVA test hypotheses
+
+- Two-way ANOVA Test Hypotheses:
+
+  - `\(H_{0A}: \mu_{A1} = \mu_{A2} = \dots = \mu_{Ak}\)` 
+(There is no difference in the means of factor A).
+
+  - `\(H_{0B}: \mu_{B1} = \mu_{B2} = \dots = \mu_{Bk}\)` 
+(There is no difference in the means of factor B).
+
+  - `\(H_{0AB}\)`: There is no interaction between factors A and B.
+
+
+---
+# Factorial ANOVA ANOVA test hypotheses
+
+- Two-way ANOVA Test Hypotheses:
+
+  - `\(H_{0A}: \mu_{A1} = \mu_{A2} = \dots = \mu_{Ak}\)` 
+(There is no difference in the means of factor A).
+
+  - `\(H_{0B}: \mu_{B1} = \mu_{B2} = \dots = \mu_{Bk}\)` 
+(There is no difference in the means of factor B).
+
+  - `\(H_{0AB}\)`: There is no interaction between factors A and B.
+
+- Alternative Hypotheses:
+
+  - `\(H_{1A}\)`: The means for factor A are not equal.
+
+  - `\(H_{1B}\)`: The means for factor B are not equal.
+
+  - `\(H_{1AB}\)`: There is an interaction between factors A and B.
+
+---
+# Assumptions of two-way ANOVA test
+- Two-way ANOVA, like all ANOVA tests, makes the following assumptions:
+
+- The observations within each cell are normally distributed.
+- The variances across groups are equal (homogeneity of variances).
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
