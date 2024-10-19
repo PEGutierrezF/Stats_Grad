@@ -92,14 +92,15 @@ class: center, middle, inverse, title-slide
 
 ---
 # Assumptions
+- There are three key assumptions that you need to be aware of: 
 
-- All groups are Independent.
+  1. All groups are Independent.
 
-- The data is normally distributed.
+  2. The data is normally distributed.
 
-- All groups have approximately equal variance.
-  - A good rule of thumb: ratio of largest to smallest group stdev must be less than 2:1
-  - The ANOVA is less sensitive to this requirement when samples are of equal size from each population.
+  3. All groups have approximately equal variance.
+      * A good rule of thumb: ratio of largest to smallest group stdev must be less than 2:1
+      * The ANOVA is less sensitive to this requirement when samples are of equal size from each population.
 
 ---
 # Assumptions
@@ -121,7 +122,37 @@ Where:
 - `\(\alpha_i\)` is the effect of the `\(i\)`-th group
 - `\(\epsilon_{ij} \sim \text{Normal}(0, \sigma^2)\)`, where `\(\epsilon_{ij}\)` represents the residual error.
 
-- Thus, it is the **residuals** `\(\epsilon_{ij}\)` that must be normally distributed, not the response variable `\(y_{ij}\)`.
+
+
+---
+# Assumptions
+
+&lt;center&gt;
+`\(y_{ij} = \mu + \alpha_i + \epsilon_{ij}\)`
+
+`\(\epsilon_{ij} \sim \text{Normal}(0, \sigma^2)\)`
+&lt;/center&gt;
+- The three key assumptions of ANOVA (normality, homogeneity of variance, and independence) are specifically related to the **residuals** `\(\epsilon_{ij}\)`, not the response variable `\(y_{ij}\)`.
+
+
+---
+# Assumptions
+
+&lt;center&gt;
+`\(y_{ij} = \mu + \alpha_i + \epsilon_{ij}\)`
+
+`\(\epsilon_{ij} \sim \text{Normal}(0, \sigma^2)\)`
+&lt;/center&gt;
+- The three key assumptions of ANOVA (normality, homogeneity of variance, and independence) are specifically related to the **residuals** `\(\epsilon_{ij}\)`, not the response variable `\(y_{ij}\)`.
+
+  * The assumption of **normality** dictates that the residuals ( `\(\epsilon_{ij}\)` ) should follow a normal distribution.
+
+  * The **independence assumption** means that each residual is generated without influence from others, ensuring that knowing one residual provides no information about another.
+
+  * The **homogeneity of variance assumption** e (sometimes called homoscedasticity) states that the variance (i.e., `\(\sigma^2\)` ) among the groups should be approximately equal, meaning the spread of data points is similar across all groups.
+
+---
+# How ANOVA works 
 
 ---
 # How ANOVA works 
