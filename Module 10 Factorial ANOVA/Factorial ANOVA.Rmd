@@ -1,0 +1,40 @@
+---
+title: "Factorial ANOVA"
+subtitle: "(ANOVA)"
+author: "Pablo E. Guti\u00E9rrez-Fonseca"
+institute: ""
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, "css/nhsr.css", "css/nhsr-fonts.css", "css/custom.css"]
+    nature:
+      highlightLanguage: r
+      highlightStyle: github
+      highlightLines: true
+      highlightSpans: true 
+      countIncrementalSlides: true
+      ratio: "16:9"
+    includes:
+      after_body: [css/insert-logo.html]
+xaringanExtra:
+    use_panelset: true
+---
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readr)
+library(lessR)
+library(ggplot2)
+library(palmerpenguins)
+library(car)
+library(RVAideMemoire) #shapiro.test
+xaringanExtra::use_panelset()
+```
+
+---
+# When do you do a Factorial ANOVA
+- You have a continuous response variable.
+- You have two or more categorical treatment variables:  
+  - You want to simultaneously test for differences in on the response variable  OR
+  - You want to block for a source of known variability to better isolate the effect of the variable of interest    OR
+  - You suspect that there are interactions between variables that might hide the true nature of relationships
+
