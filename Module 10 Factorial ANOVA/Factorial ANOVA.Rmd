@@ -134,3 +134,68 @@ xaringanExtra::use_panelset()
 
 - The observations within each cell are normally distributed.
 - The variances across groups are equal (homogeneity of variances).
+
+
+---
+# Example
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# https://www.scribbr.com/statistics/anova-in-r/
+```
+
+---
+# Example
+```{r}
+crop <- read.csv('Lecturer Practice/crop.csv')
+head(crop)
+```
+
+---
+# Data visualization
+- Visualize the data distribution using boxplots and jitter for individual points:
+
+.panelset[
+.panel[.panel-name[R Code]
+```{r plot1, fig.show='hide', fig.width=5.5, fig.height=5.5}
+ggplot(crop) +
+  aes(x = fertilizer, y = yield, fill = fertilizer) +
+  geom_boxplot() +
+    geom_jitter(shape = 15,
+        color = "steelblue",
+        position = position_jitter(0.21)) +
+   theme_minimal()
+
+```
+]
+
+.panel[.panel-name[Plot]
+![](`r knitr::fig_chunk("plot1", ".png")`)
+]
+]
+
+
+---
+# Running the Full Favtorial ANOVA
+- Run one-way ANOVA to assess differences between fertilizer groups:
+```{r highlight.output = 2:4}
+interaction <- aov(yield ~ fertilizer*density, data = crop)
+
+summary(interaction)
+```
+
+---
+# Running the Post-hoc Test
+```{r, highlight.output = 8:10}
+tukey.two.way <- TukeyHSD(interaction)
+tukey.two.way
+```
+
+
+---
+# Visualizing the Post-hoc Test
+
+- The plot below visualizes the results of the Tukey HSD test:
+
+```{r fig.width=4.5, fig.height=4.5}
+tukey.plot.test <- TukeyHSD(interaction)
+plot(tukey.plot.test, las = 1)
+```

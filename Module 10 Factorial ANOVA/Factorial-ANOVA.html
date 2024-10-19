@@ -138,6 +138,130 @@ class: center, middle, inverse, title-slide
 
 - The observations within each cell are normally distributed.
 - The variances across groups are equal (homogeneity of variances).
+
+
+---
+# Example
+
+
+---
+# Example
+
+``` r
+crop &lt;- read.csv('Lecturer Practice/crop.csv')
+head(crop)
+```
+
+```
+##   density block fertilizer    yield
+## 1     low     1       ctrl 177.2287
+## 2    high     2       ctrl 177.5500
+## 3     low     3       ctrl 176.4085
+## 4    high     4       ctrl 177.7036
+## 5     low     1       ctrl 177.1255
+## 6    high     2       ctrl 176.7783
+```
+
+---
+# Data visualization
+- Visualize the data distribution using boxplots and jitter for individual points:
+
+.panelset[
+.panel[.panel-name[R Code]
+
+``` r
+ggplot(crop) +
+  aes(x = fertilizer, y = yield, fill = fertilizer) +
+  geom_boxplot() +
+    geom_jitter(shape = 15,
+        color = "steelblue",
+        position = position_jitter(0.21)) +
+   theme_minimal()
+```
+]
+
+.panel[.panel-name[Plot]
+![](Factorial-ANOVA_files/figure-html/plot1-1.png)
+]
+]
+
+
+---
+# Running the Full Favtorial ANOVA
+- Run one-way ANOVA to assess differences between fertilizer groups:
+
+``` r
+interaction &lt;- aov(yield ~ fertilizer*density, data = crop)
+
+summary(interaction)
+```
+
+```
+##                    Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+*## fertilizer          2  6.068   3.034   9.001 0.000273 ***
+*## density             1  5.122   5.122  15.195 0.000186 ***
+*## fertilizer:density  2  0.428   0.214   0.635 0.532500    
+## Residuals          90 30.337   0.337                     
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+---
+# Running the Post-hoc Test
+
+``` r
+tukey.two.way &lt;- TukeyHSD(interaction)
+tukey.two.way
+```
+
+```
+##   Tukey multiple comparisons of means
+##     95% family-wise confidence level
+## 
+## Fit: aov(formula = yield ~ fertilizer * density, data = crop)
+## 
+## $fertilizer
+##                  diff         lwr       upr     p adj
+*## trt_1-ctrl  0.1761687 -0.16972711 0.5220646 0.4482026
+*## trt_2-ctrl  0.5991256  0.25322974 0.9450214 0.0002393
+*## trt_2-trt_1 0.4229568  0.07706101 0.7688527 0.0123951
+## 
+## $density
+##               diff       lwr        upr     p adj
+## low-high -0.461956 -0.697398 -0.2265141 0.0001864
+## 
+## $`fertilizer:density`
+##                              diff         lwr         upr     p adj
+## trt_1:high-ctrl:high   0.01364751 -0.58409459  0.61138961 0.9999998
+## trt_2:high-ctrl:high   0.50224061 -0.09550149  1.09998271 0.1515870
+## ctrl:low-ctrl:high    -0.63489351 -1.23263561 -0.03715141 0.0306553
+## trt_1:low-ctrl:high   -0.29620356 -0.89394566  0.30153854 0.7007889
+## trt_2:low-ctrl:high    0.06111704 -0.53662506  0.65885914 0.9996758
+## trt_2:high-trt_1:high  0.48859310 -0.10914900  1.08633520 0.1742960
+## ctrl:low-trt_1:high   -0.64854101 -1.24628311 -0.05079891 0.0254221
+## trt_1:low-trt_1:high  -0.30985106 -0.90759316  0.28789104 0.6591096
+## trt_2:low-trt_1:high   0.04746953 -0.55027257  0.64521163 0.9999065
+## ctrl:low-trt_2:high   -1.13713411 -1.73487621 -0.53939201 0.0000044
+## trt_1:low-trt_2:high  -0.79844416 -1.39618626 -0.20070206 0.0025700
+## trt_2:low-trt_2:high  -0.44112357 -1.03886567  0.15661853 0.2721714
+## trt_1:low-ctrl:low     0.33868995 -0.25905215  0.93643205 0.5680611
+## trt_2:low-ctrl:low     0.69601054  0.09826844  1.29375264 0.0128711
+## trt_2:low-trt_1:low    0.35732059 -0.24042151  0.95506269 0.5089536
+```
+
+
+---
+# Visualizing the Post-hoc Test
+
+- The plot below visualizes the results of the Tukey HSD test:
+
+
+``` r
+tukey.plot.test &lt;- TukeyHSD(interaction)
+plot(tukey.plot.test, las = 1)
+```
+
+![](Factorial-ANOVA_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;![](Factorial-ANOVA_files/figure-html/unnamed-chunk-6-2.png)&lt;!-- --&gt;![](Factorial-ANOVA_files/figure-html/unnamed-chunk-6-3.png)&lt;!-- --&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
