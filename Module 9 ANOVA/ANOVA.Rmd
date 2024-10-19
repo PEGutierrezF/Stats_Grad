@@ -25,18 +25,17 @@ library(readr)
 library(lessR)
 library(ggplot2)
 library(palmerpenguins)
+library(car)
 library(RVAideMemoire) #shapiro.test
 xaringanExtra::use_panelset()
 ```
 
 # What is ANOVA
-- Analysis of Variance (ANOVA) is a statistical technique, commonly used to studying differences between two or more group means. 
+- Analysis of Variance (ANOVA) is a statistical technique, commonly used to studying **differences between two or more group means**. 
 
 - ANOVA test is centered on the different sources of variation in a typical variable.
 
-- This statistical method is an extension of the t-test. 
-
-- It is used in a situation where the factor variable has more than one group.
+- This statistical method is an extension of the independent samples t-test for comparing the means in a situation where **there are more than two groups**.
 
 ---
 # Hypothesis in one-way ANOVA test
@@ -148,7 +147,7 @@ DiagrammeR::mermaid("
 
 
 ---
-# # Decision Flowchart: Testing Process
+# Decision Flowchart: Testing Process
 
 ```{r figure_2, echo = FALSE, fig.align='center'}
 DiagrammeR::mermaid("
@@ -457,12 +456,6 @@ It depends on how much of the total variability you would expect this grouping t
 
 
 ---
-# How to summarize results
-
-<span style="color:#00796B;">State the original research question / hypothesis. </span> <span style="color:#E65100;">Briefly describe the methods including the type of test run:  One-way ANOVA, if significant type of Means Comparison (e.g. Tukey’s HSD Means Comparison). </span> <span style="color:#1E88E5;">Describe your results including: Shorthand ( $F_{(5, 34)} = 2.77, p < 0,003, r^2 = 0.29 )$, Results of any means comparison (which groups are larger than which other groups? Which are the same?
-. </span>  <span style="color:#424242;"> Interpret significance and effect size (r2), big picture: what does this mean in terms of your original research question?.</span> 
-
----
 # Example
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 # https://www.scribbr.com/statistics/anova-in-r/
@@ -512,6 +505,21 @@ summary(one.way)
 # Checking Assumptions
 
 ---
+# Checking Assumptions
+- ANOVA assumes that **residuals** are **normally distributed** and that the **variance across groups is homogeneous (equal variances)**.
+
+
+---
+# Checking Assumptions
+- ANOVA assumes that **residuals** are **normally distributed** and that the **variance across groups is homogeneous (equal variances)**.
+
+- The **normality of residuals** can be tested using the **Shapiro-Wilk test**.
+
+- The **homogeneity of variances** can be checked using **Bartlett's test** or **Levene's test**.
+
+- Additionally, diagnostic plots like **Q-Q plots (for normality)** and **Residuals vs. Fitted plots (for homogeneity)** can provide visual confirmation.
+
+---
 # Checking Assumptions: Normality
 - Check normality of residuals using a QQ plot and the Shapiro-Wilk test.
 
@@ -548,6 +556,8 @@ shapiro.test(residuals(one.way))
 
 - **Shapiro-Wilk test:** The p-value (p = 0.7594) is not significant, supporting the **assumption of normality**.
 
+---
+# Check Assumptions: Homogeneity of Variances
 
 ---
 # Check Assumptions: Homogeneity of Variances
@@ -562,6 +572,41 @@ plot(one.way, 1)
 .pull-right[
 In the plot above, there's no clear pattern between residuals and fitted values (the group means), which indicates **homogeneity of variances**.
 ]
+
+
+
+---
+# Check Assumptions: Homogeneity of Variances
+.pull-left[
+The homogeneity of variances can also be checked using **Bartlett's** or Levene's tests.
+]
+
+.pull-right[
+```{r highlight.output = 5}
+bartlett.test(yield ~ fertilizer, data=crop)
+```
+
+]
+
+
+---
+# Check Assumptions: Homogeneity of Variances
+.pull-left[
+The homogeneity of variances can also be checked using Bartlett's or **Levene's tests**.
+]
+
+.pull-right[
+```{r highlight.output = 3}
+leveneTest(yield ~ fertilizer, data=crop)
+```
+
+]
+
+---
+# Assumption Check: Interpretation 
+- The p-value is not less than the significance level of 0.05, as seen in the output above. This indicates that **there is no indication that the variance across groups is statistically significant**.
+
+- As a result, we can infer that the **variations in the different treatment groups are homogeneous**.
 
 ---
 # Post-hoc test

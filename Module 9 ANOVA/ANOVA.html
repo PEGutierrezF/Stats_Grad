@@ -4,7 +4,7 @@
     <title>Analysis of Variance</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <meta name="date" content="2024-10-17" />
+    <meta name="date" content="2024-10-19" />
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
@@ -35,7 +35,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2024-10-17
+### 2024-10-19
 ]
 
 ---
@@ -43,13 +43,11 @@ class: center, middle, inverse, title-slide
 
 
 # What is ANOVA
-- Analysis of Variance (ANOVA) is a statistical technique, commonly used to studying differences between two or more group means. 
+- Analysis of Variance (ANOVA) is a statistical technique, commonly used to studying **differences between two or more group means**. 
 
 - ANOVA test is centered on the different sources of variation in a typical variable.
 
-- This statistical method is an extension of the t-test. 
-
-- It is used in a situation where the factor variable has more than one group.
+- This statistical method is an extension of the independent samples t-test for comparing the means in a situation where **there are more than two groups**.
 
 ---
 # Hypothesis in one-way ANOVA test
@@ -87,7 +85,7 @@ class: center, middle, inverse, title-slide
 
 
 ---
-# # Decision Flowchart: Testing Process
+# Decision Flowchart: Testing Process
 
 <div id="htmlwidget-2f4c52b7f36e26c300a7" style="width:600px;height:400px;" class="DiagrammeR html-widget "></div>
 <script type="application/json" data-for="htmlwidget-2f4c52b7f36e26c300a7">{"x":{"diagram":"\n    graph TD;\n\n        A[Independent Samples?] --> B[Test Normality of Residuals]\n\n        B --Normality Assumed--> C[Test Homogeneity of Variances]\n        B --Normality Not Assumed--> F[Kruskal-Wallis Test]\n        \n        C --Equal Variances--> D[ANOVA]\n        C --Unequal Variances--> E[Welch Test]\n\n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n  style D fill:lightblue,stroke:#333,stroke-width:1px\n  style E fill:lightblue,stroke:#333,stroke-width:1px\n  style F fill:lightblue,stroke:#333,stroke-width:1px\n  "},"evals":[],"jsHooks":[]}</script>
@@ -377,12 +375,6 @@ It depends on how much of the total variability you would expect this grouping t
 
 
 ---
-# How to summarize results
-
-&lt;span style="color:#00796B;"&gt;State the original research question / hypothesis. &lt;/span&gt; &lt;span style="color:#E65100;"&gt;Briefly describe the methods including the type of test run:  One-way ANOVA, if significant type of Means Comparison (e.g. Tukey’s HSD Means Comparison). &lt;/span&gt; &lt;span style="color:#1E88E5;"&gt;Describe your results including: Shorthand ( `\(F_{(5, 34)} = 2.77, p &lt; 0,003, r^2 = 0.29 )\)`, Results of any means comparison (which groups are larger than which other groups? Which are the same?
-. &lt;/span&gt;  &lt;span style="color:#424242;"&gt; Interpret significance and effect size (r2), big picture: what does this mean in terms of your original research question?.&lt;/span&gt; 
-
----
 # Example
 
 
@@ -450,6 +442,21 @@ summary(one.way)
 # Checking Assumptions
 
 ---
+# Checking Assumptions
+- ANOVA assumes that **residuals** are **normally distributed** and that the **variance across groups is homogeneous (equal variances)**.
+
+
+---
+# Checking Assumptions
+- ANOVA assumes that **residuals** are **normally distributed** and that the **variance across groups is homogeneous (equal variances)**.
+
+- The **normality of residuals** can be tested using the **Shapiro-Wilk test**.
+
+- The **homogeneity of variances** can be checked using **Bartlett's test** or **Levene's test**.
+
+- Additionally, diagnostic plots like **Q-Q plots (for normality)** and **Residuals vs. Fitted plots (for homogeneity)** can provide visual confirmation.
+
+---
 # Checking Assumptions: Normality
 - Check normality of residuals using a QQ plot and the Shapiro-Wilk test.
 
@@ -501,6 +508,8 @@ shapiro.test(residuals(one.way))
 
 - **Shapiro-Wilk test:** The p-value (p = 0.7594) is not significant, supporting the **assumption of normality**.
 
+---
+# Check Assumptions: Homogeneity of Variances
 
 ---
 # Check Assumptions: Homogeneity of Variances
@@ -518,6 +527,58 @@ plot(one.way, 1)
 .pull-right[
 In the plot above, there's no clear pattern between residuals and fitted values (the group means), which indicates **homogeneity of variances**.
 ]
+
+
+
+---
+# Check Assumptions: Homogeneity of Variances
+.pull-left[
+The homogeneity of variances can also be checked using **Bartlett's** or Levene's tests.
+]
+
+.pull-right[
+
+``` r
+bartlett.test(yield ~ fertilizer, data=crop)
+```
+
+```
+## 
+## 	Bartlett test of homogeneity of variances
+## 
+## data:  yield by fertilizer
+*## Bartlett's K-squared = 1.0622, df = 2, p-value = 0.5879
+```
+
+]
+
+
+---
+# Check Assumptions: Homogeneity of Variances
+.pull-left[
+The homogeneity of variances can also be checked using Bartlett's or **Levene's tests**.
+]
+
+.pull-right[
+
+``` r
+leveneTest(yield ~ fertilizer, data=crop)
+```
+
+```
+## Levene's Test for Homogeneity of Variance (center = median)
+##       Df F value Pr(&gt;F)
+*## group  2  0.8472 0.4319
+##       93
+```
+
+]
+
+---
+# Assumption Check: Interpretation 
+- The p-value is not less than the significance level of 0.05, as seen in the output above. This indicates that **there is no indication that the variance across groups is statistically significant**.
+
+- As a result, we can infer that the **variations in the different treatment groups are homogeneous**.
 
 ---
 # Post-hoc test
@@ -593,7 +654,7 @@ post_test
 plot(post_test)
 ```
 
-![](ANOVA_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
+![](ANOVA_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
 
 ---
 # How to summarize results
