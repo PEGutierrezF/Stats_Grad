@@ -26,6 +26,7 @@ library(lessR)
 library(ggplot2)
 library(palmerpenguins)
 library(car)
+library(dplyr)
 library(RVAideMemoire) #shapiro.test
 xaringanExtra::use_panelset()
 ```
@@ -241,10 +242,78 @@ $\epsilon_{ij} \sim \text{Normal}(0, \sigma^2)$
 
 <center>
 F = $\frac{\text{Between-group variance}}{\text{Within-group variance}}$
+</center>
 
 - A large **F** is evidence against $H_0$, since it indicates that there is more difference between groups than within groups.
 
 
+---
+# How ANOVA works 
+
+```{r, echo=FALSE, fig.width=9, fig.height=5}
+par(mfrow=c(1,3))
+mu <- c(3,4,6)  
+k <- length(mu) 
+sigma <- .2  
+n <- 5 
+jitter <- seq(-n,n,length=n)/(3*n) 
+data <- NULL  
+plot(x=c(0.5, k+.5), y=c(min(mu)-3*sigma, max(mu)+3*sigma),       
+	type='n', axes=FALSE, ylab='LAI', xlab='Group',      
+	main='Sum of Squares - Within Groups') 
+axis(1, at=1:3); axis(2); box() 
+for(i in 1:k){      
+	temp <- data.frame(Species=i, LAI=rnorm(5, mean=mu[i], sd=sigma))
+	points(temp$Species+jitter, temp$LAI, col=i)   
+	data <- rbind(data, temp) 
+}  
+data.means <- data %>% group_by(Species) %>% summarise(Grp.Mean=mean(LAI))
+for(i in 1:k){   
+	lines(c(i-.5,i+.5), rep(data.means[i,'Grp.Mean'],2), col=i) 
+} 
+for(i in 1:k){   
+	for(j in 1:n){     
+		index <- (i-1)*n+j     
+		lines(rep(data[index,'Species']+jitter[j],2),
+           		c(data.means[i,'Grp.Mean'], data[index, 'LAI']),           
+			col=i)   
+	} 
+}
+plot(x=c(0.5, k+.5), y=c(min(mu)-3*sigma, max(mu)+3*sigma),
+    type='n', axes=FALSE, ylab='LAI', xlab='Group',      	
+	main='Sum of Squares - Between Groups') 
+axis(1, at=1:3); axis(2); box() 
+total.mean <- mean(data$LAI) 
+abline(h=total.mean, lwd=2) 
+for(i in 1:k){   
+	lines(c(i-.5,i+.5), rep(data.means[i,'Grp.Mean'],2), col=i) 
+} 
+for(i in 1:k){   
+	for(j in 1:n){     
+		index <- (i-1)*n+j     
+		lines(rep(data[index,'Species']+jitter[j],2),
+           		c(data.means[i,'Grp.Mean'], total.mean),           
+		col=i)   
+	} 
+}
+plot(x=c(0.5, k+.5), y=c(min(mu)-3*sigma, max(mu)+3*sigma),       
+	type='n', axes=FALSE, ylab='LAI', xlab='Group',      
+	main='Sum of Squares - Total') 
+axis(1, at=1:3); axis(2); box() 
+for(i in 1:k){   
+	index <- which(data$Species == i)   
+	points(data$Species[index]+jitter, data$LAI[index], col=i) 
+}  
+abline(h=total.mean, lwd=2) 
+for(i in 1:k){   
+	for(j in 1:n){     
+		index <- (i-1)*n+j     
+		lines(rep(data[index,'Species']+jitter[j],2),            
+			c(total.mean, data[index, 'LAI']),           
+			col=i)   
+	} 
+}
+```
 ---
 # Finding the critical value for an F-test
 

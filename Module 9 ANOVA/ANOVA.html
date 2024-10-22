@@ -4,7 +4,7 @@
     <title>Analysis of Variance</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <meta name="date" content="2024-10-19" />
+    <meta name="date" content="2024-10-21" />
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
@@ -35,7 +35,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2024-10-19
+### 2024-10-21
 ]
 
 ---
@@ -160,10 +160,15 @@ Where:
 
 &lt;center&gt;
 F = `\(\frac{\text{Between-group variance}}{\text{Within-group variance}}\)`
+&lt;/center&gt;
 
 - A large **F** is evidence against `\(H_0\)`, since it indicates that there is more difference between groups than within groups.
 
 
+---
+# How ANOVA works 
+
+![](ANOVA_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
 ---
 # Finding the critical value for an F-test
 
@@ -497,7 +502,7 @@ summary(one.way)
 plot(one.way, 2) 
 ```
 
-![](ANOVA_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+![](ANOVA_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
@@ -514,7 +519,7 @@ plot(one.way, 2)
 plot(one.way, 2) 
 ```
 
-![](ANOVA_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+![](ANOVA_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
@@ -552,7 +557,7 @@ shapiro.test(residuals(one.way))
 plot(one.way, 1) 
 ```
 
-![](ANOVA_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
+![](ANOVA_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
@@ -685,7 +690,7 @@ post_test
 plot(post_test)
 ```
 
-![](ANOVA_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
+![](ANOVA_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
 
 ---
 # How to summarize results
