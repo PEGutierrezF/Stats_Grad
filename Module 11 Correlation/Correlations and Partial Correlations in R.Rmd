@@ -1,0 +1,104 @@
+---
+title: "Correlations and Partial Correlations in R"
+subtitle: ""
+author: "Pablo E. Guti\u00E9rrez-Fonseca"
+institute: ""
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, "css/nhsr.css", "css/nhsr-fonts.css", "css/custom.css"]
+    nature:
+      highlightLanguage: r
+      highlightStyle: github
+      highlightLines: true
+      highlightSpans: true 
+      countIncrementalSlides: true
+      ratio: "16:9"
+    includes:
+      after_body: [css/insert-logo.html]
+xaringanExtra:
+    use_panelset: true
+---
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readr)
+library(lessR)
+library(ggplot2)
+library(palmerpenguins)
+library(car)
+library(RVAideMemoire) #shapiro.test
+xaringanExtra::use_panelset()
+```
+
+---
+```{r figure_1, echo = FALSE, fig.align='center'}
+
+DiagrammeR::mermaid("
+    graph TD;
+
+        A[What type of data?] --> B[Continuous] 
+        A --> Z[Categorical]
+        
+        B --Research Question--> C[Comparing Differences] 
+        B --Research Question--> D[Examining Relationships]
+        
+        C --How many groups?--> E[1 group] 
+        C --How many groups?--> I[2 groups]
+        C --How many groups?--> Q[> 2 groups]
+        
+        E --> F[Normally distributed?] 
+        F --Yes--> G[One sample z-test] 
+        F --No--> H[Wilcoxon signed rank test]
+        
+        I --> J[Are Samples Independent?] 
+        J --Yes--> K[Normally distributed?] 
+        J --No--> L[Normally distributed?]
+        
+        K --Yes--> M[Independent t-test] 
+        K --No--> N[Wilcoxon rank sum test] 
+        
+        L --Yes--> O[Paired t-test] 
+        L --No--> P[Wilcoxon matched pair test]
+        
+        Q --> R[Use ANOVA] 
+        Q --> S[Non-parametric ANOVA]
+        
+        D --Number of Variables--> T[Number of Treatment Variables]
+        
+        T --Two--> U[Normally Distributed?] 
+        U --Yes--> V[Pearson's Correlation] 
+        U --No--> W[Spearman's Rho]
+        
+        T --More Than Two--> X[Partial Correlation]
+
+    style A fill:lightblue,stroke:#333,stroke-width:1px
+    style B fill:lightblue,stroke:#333,stroke-width:1px
+    style C fill:lightblue,stroke:#333,stroke-width:1px
+    style D fill:lightblue,stroke:#333,stroke-width:1px
+    style E fill:lightblue,stroke:#333,stroke-width:1px
+    style F fill:lightblue,stroke:#333,stroke-width:1px
+    style G fill:lightblue,stroke:#333,stroke-width:1px
+    style H fill:lightblue,stroke:#333,stroke-width:1px
+    style I fill:lightblue,stroke:#333,stroke-width:1px
+    style J fill:lightblue,stroke:#333,stroke-width:1px
+    style K fill:lightblue,stroke:#333,stroke-width:1px
+    style L fill:lightblue,stroke:#333,stroke-width:1px
+    style M fill:lightblue,stroke:#333,stroke-width:1px
+    style N fill:lightblue,stroke:#333,stroke-width:1px
+    style O fill:lightblue,stroke:#333,stroke-width:1px
+    style P fill:lightblue,stroke:#333,stroke-width:1px
+    style Q fill:lightblue,stroke:#333,stroke-width:1px
+    style R fill:lightblue,stroke:#333,stroke-width:1px
+    style S fill:lightblue,stroke:#333,stroke-width:1px
+    style T fill:lightblue,stroke:#333,stroke-width:1px
+    style U fill:lightblue,stroke:#333,stroke-width:1px
+    style V fill:lightblue,stroke:#333,stroke-width:1px
+    style W fill:lightblue,stroke:#333,stroke-width:1px
+    style X fill:lightblue,stroke:#333,stroke-width:1px
+    style Z fill:lightblue,stroke:#333,stroke-width:1px
+
+", height = '550px', width = '850px')
+
+```
+
+---

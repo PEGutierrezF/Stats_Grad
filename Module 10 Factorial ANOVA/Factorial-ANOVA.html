@@ -9,6 +9,14 @@
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
     <script src="libs/panelset-0.3.0/panelset.js"></script>
+    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+    <script src="libs/d3-3.3.8/d3.min.js"></script>
+    <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+    <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+    <script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+    <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+    <script src="libs/chromatography-0.1/chromatography.js"></script>
+    <script src="libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
     <link rel="stylesheet" href="css/nhsr.css" type="text/css" />
     <link rel="stylesheet" href="css/nhsr-fonts.css" type="text/css" />
     <link rel="stylesheet" href="css/custom.css" type="text/css" />
@@ -46,7 +54,12 @@ class: center, middle, inverse, title-slide
 | A2      | Group 4      | Group 5      | Group 6      |
 
 ---
+# Decision Flowchart: Testing Process
 
+<div id="htmlwidget-568c26bb9b6b9f6aff5f" style="width:900px;height:600px;" class="DiagrammeR html-widget "></div>
+<script type="application/json" data-for="htmlwidget-568c26bb9b6b9f6aff5f">{"x":{"diagram":"\n    graph TD;\n\n        A[What type of data?] --> B[Continuous] \n        A --> Z[Categorical]\n        \n        B --Research Question--> C[Comparing Differences] \n        B --Research Question--> D[Examining Relationships]\n        \n        C --How many groups?--> E[1 group] \n        C --How many groups?--> I[2 groups]\n        C --How many groups?--> Q[> 2 groups]\n        \n        E --> F[Normally distributed?] \n        F --Yes--> G[One sample z-test] \n        F --No--> H[Wilcoxon signed rank test]\n        \n        I --> J[Are Samples Independent?] \n        J --Yes--> K[Normally distributed?] \n        J --No--> L[Normally distributed?]\n        \n        K --Yes--> M[Independent t-test] \n        K --No--> N[Wilcoxon rank sum test] \n        \n        L --Yes--> O[Paired t-test] \n        L --No--> P[Wilcoxon matched pair test]\n        \n        Q --> R[Number of Treatments?]\n        \n        R --One--> S[One-Way ANOVA]\n        R --More than One--> T[Normally Distributed?]\n        \n        T --Yes--> U[Factorial ANOVA]\n        T --No--> V[Friedman's Rank Test]\n\n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n  style D fill:lightblue,stroke:#333,stroke-width:1px\n  style E fill:lightblue,stroke:#333,stroke-width:1px\n  style F fill:lightblue,stroke:#333,stroke-width:1px\n  style G fill:lightblue,stroke:#333,stroke-width:1px\n  style H fill:lightblue,stroke:#333,stroke-width:1px\n  style I fill:lightblue,stroke:#333,stroke-width:1px\n  style J fill:lightblue,stroke:#333,stroke-width:1px\n  style K fill:lightblue,stroke:#333,stroke-width:1px\n  style L fill:lightblue,stroke:#333,stroke-width:1px\n  style M fill:lightblue,stroke:#333,stroke-width:1px\n  style N fill:lightblue,stroke:#333,stroke-width:1px\n  style O fill:lightblue,stroke:#333,stroke-width:1px\n  style P fill:lightblue,stroke:#333,stroke-width:1px\n  style Q fill:lightblue,stroke:#333,stroke-width:1px\n  style R fill:lightblue,stroke:#333,stroke-width:1px\n  style S fill:lightblue,stroke:#333,stroke-width:1px\n  style T fill:lightblue,stroke:#333,stroke-width:1px\n  style U fill:lightblue,stroke:#333,stroke-width:1px\n  style V fill:lightblue,stroke:#333,stroke-width:1px\n  style Z fill:lightblue,stroke:#333,stroke-width:1px\n\n  "},"evals":[],"jsHooks":[]}</script>
+
+---
 # One-way ANOVA Summary Table
 
 | Source of&lt;br/&gt; Variation          |   Degrees of&lt;br/&gt; Freedom (DF)   |     Sum of Squares&lt;br/&gt; (SS)     |     Mean Square&lt;br/&gt; (MS)   |        F-value        |

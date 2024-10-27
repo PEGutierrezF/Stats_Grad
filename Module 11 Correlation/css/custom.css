@@ -1,0 +1,22 @@
+/* I made this Pablo for Title Page ONLY, Oct 3 2024
+/* Title slide background and text color */
+.title-slide {
+  background-color: white;   /* Set background to white */
+}
+
+/* Title styles */
+.title-slide h1 {
+  color: #005EB8;            /* Set title text color to blue */
+}
+
+/* Subtitle styles (author, date, institute) */
+.title-slide h2, 
+.title-slide h3 {
+  color: #231F20;            /* Set subtitle text color to black */
+}
+
+/* Style the body text */
+.remark-slide-content {
+  color: #231F20; /* Default text color for body content */
+}
+
