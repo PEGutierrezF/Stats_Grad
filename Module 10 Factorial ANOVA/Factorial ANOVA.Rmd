@@ -212,6 +212,30 @@ ggplot(crop, aes(x = fertilizer, y = yield, color = density, group = density)) +
 ]
 ]
 
+---
+# Checking Assumptions: Normality
+```{r highlight.output = 5}
+# Extract residuals
+residuals <- residuals(interaction)
+# Perform the Shapiro-Wilk test for normality
+shapiro.test(residuals)
+```
+
+---
+# Check Assumptions: Homogeneity of Variances
+- Perform Levene's Test for homogeneity of variances.
+```{r highlight.output = 3}
+leveneTest(yield ~ fertilizer * density, data = crop)
+```
+
+---
+# Check Assumptions: Homogeneity of Variances
+- Alternatively, use Bartlett's Test if data are normally distributed.
+
+```{r highlight.output = 5}
+bartlett.test(yield ~ interaction(fertilizer, density), data = crop)
+```
+
 
 ---
 # Running the Post-hoc Test

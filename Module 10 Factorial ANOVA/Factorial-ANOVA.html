@@ -235,6 +235,56 @@ ggplot(crop, aes(x = fertilizer, y = yield, color = density, group = density)) +
 ]
 ]
 
+---
+# Checking Assumptions: Normality
+
+``` r
+# Extract residuals
+residuals &lt;- residuals(interaction)
+# Perform the Shapiro-Wilk test for normality
+shapiro.test(residuals)
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  residuals
+*## W = 0.98527, p-value = 0.3601
+```
+
+---
+# Check Assumptions: Homogeneity of Variances
+- Perform Levene's Test for homogeneity of variances.
+
+``` r
+leveneTest(yield ~ fertilizer * density, data = crop)
+```
+
+```
+## Levene's Test for Homogeneity of Variance (center = median)
+##       Df F value Pr(&gt;F)
+*## group  5  0.1589 0.9768
+##       90
+```
+
+---
+# Check Assumptions: Homogeneity of Variances
+- Alternatively, use Bartlett's Test if data are normally distributed.
+
+
+``` r
+bartlett.test(yield ~ interaction(fertilizer, density), data = crop)
+```
+
+```
+## 
+## 	Bartlett test of homogeneity of variances
+## 
+## data:  yield by interaction(fertilizer, density)
+*## Bartlett's K-squared = 0.99284, df = 5, p-value = 0.9631
+```
+
 
 ---
 # Running the Post-hoc Test
@@ -291,7 +341,7 @@ tukey.plot.test &lt;- TukeyHSD(interaction)
 plot(tukey.plot.test, las = 1)
 ```
 
-![](Factorial-ANOVA_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;![](Factorial-ANOVA_files/figure-html/unnamed-chunk-6-2.png)&lt;!-- --&gt;![](Factorial-ANOVA_files/figure-html/unnamed-chunk-6-3.png)&lt;!-- --&gt;
+![](Factorial-ANOVA_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;![](Factorial-ANOVA_files/figure-html/unnamed-chunk-9-2.png)&lt;!-- --&gt;![](Factorial-ANOVA_files/figure-html/unnamed-chunk-9-3.png)&lt;!-- --&gt;
 
 ---
 # How to summarize results
