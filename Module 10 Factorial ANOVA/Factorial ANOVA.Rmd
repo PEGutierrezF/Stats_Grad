@@ -77,11 +77,14 @@ DiagrammeR::mermaid("
         
         Q --> R[Number of Treatments?]
         
-        R --One--> S[One-Way ANOVA]
-        R --More than One--> T[Normally Distributed?]
+        R --One--> S[Normally Distributed?]
+        S --Yes--> T[One-Way ANOVA]
+        S --No--> U[Non-Parametric ANOVA]
         
-        T --Yes--> U[Factorial ANOVA]
-        T --No--> V[Friedman's Rank Test]
+        R --More than One--> V[Normally Distributed?]
+        
+        V --Yes--> W[Factorial ANOVA]
+        V --No--> X[Friedman's Rank Test]
 
   style A fill:lightblue,stroke:#333,stroke-width:1px
   style B fill:lightblue,stroke:#333,stroke-width:1px
@@ -105,6 +108,8 @@ DiagrammeR::mermaid("
   style T fill:lightblue,stroke:#333,stroke-width:1px
   style U fill:lightblue,stroke:#333,stroke-width:1px
   style V fill:lightblue,stroke:#333,stroke-width:1px
+  style W fill:lightblue,stroke:#333,stroke-width:1px
+  style X fill:lightblue,stroke:#333,stroke-width:1px
   style Z fill:lightblue,stroke:#333,stroke-width:1px
 
   ", height = '600px', width = '900px'
