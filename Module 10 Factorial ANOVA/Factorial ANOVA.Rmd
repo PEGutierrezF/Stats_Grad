@@ -157,13 +157,16 @@ head(crop)
 .panel[.panel-name[R Code]
 ```{r plot1, fig.show='hide', fig.width=5.5, fig.height=5.5}
 ggplot(crop) +
-  aes(x = fertilizer, y = yield, fill = fertilizer) +
-  geom_boxplot() +
-    geom_jitter(shape = 15,
-        color = "steelblue",
-        position = position_jitter(0.21)) +
-   theme_minimal()
-
+  aes(x = fertilizer, y = yield, fill = density) +
+  geom_boxplot(position = position_dodge(width = 0.75), alpha = 0.6, outlier.shape = NA) +
+  geom_jitter(aes(color = density), shape = 15, position = position_jitterdodge(jitter.width = 0.2, dodge.width = 0.75)) +
+  theme_minimal() +
+  labs(title = "Yield by Fertilizer and Density",
+       x = "Fertilizer",
+       y = "Yield") +
+  theme(legend.position = "right") +
+  scale_fill_manual(values = c("low" = "lightblue", "high" = "lightcoral")) +
+  scale_color_manual(values = c("low" = "blue", "high" = "red"))
 ```
 ]
 
