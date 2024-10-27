@@ -92,7 +92,7 @@ class: center, middle, inverse, title-slide
 
 - **Factorial ANOVA**: Applied when there are two or more treatment variables. The name reflects the number of groups and variables, e.g., a 2x3 Factorial ANOVA. The non-parametric alternative is Friedman’s k-way test.
 
-- **Full Factorial ANOVA**: Used when you are also considering interaction terms between variables. This analysis examines the main effects and interactions among factors.
+- **Full Factorial ANOVA**: Used when you are also considering interaction terms between variables. This analysis examines the **main effects** and **interactions** among factors.
 
 ---
 # Factorial ANOVA ANOVA test hypotheses
@@ -184,8 +184,8 @@ ggplot(crop) +
 
 
 ---
-# Running the Full Favtorial ANOVA
-- Run one-way ANOVA to assess differences between fertilizer groups:
+# Running the Full Factorial ANOVA
+- Run Full Factorial ANOVA to assess differences between fertilizer groups:
 
 ``` r
 interaction &lt;- aov(yield ~ fertilizer*density, data = crop)
@@ -259,6 +259,12 @@ plot(tukey.plot.test, las = 1)
 ```
 
 ![](Factorial-ANOVA_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;![](Factorial-ANOVA_files/figure-html/unnamed-chunk-6-2.png)&lt;!-- --&gt;![](Factorial-ANOVA_files/figure-html/unnamed-chunk-6-3.png)&lt;!-- --&gt;
+
+---
+# How to summarize results
+
+&lt;span style="color:#00796B;"&gt;In this analysis, we examined the effect of fertilizer type and planting density on crop yield&lt;/span&gt; &lt;span style="color:#E65100;"&gt; using a two-way ANOVA.&lt;/span&gt; 
+&lt;span style="color:#1E88E5;"&gt; Results showed that both fertilizer type and planting density significantly influenced yield, with fertilizer having an `\(F_{(2, 90)} =9.001, p&lt;0.001 , r^2 =\)` and density showing an even stronger effect with `\(F_{(1,90)} = 15.195, p&lt;0.001 , r^2 =\)`. However, the interaction between fertilizer and density was not significant `\(F_{(2,90)} =0.635 , p=0.532 , r^2 =\)`, indicating that the effect of fertilizer on yield does not depend on planting density. A post-hoc Tukey’s HSD test revealed specific differences between fertilizer treatments: crops receiving the second fertilizer type showed significantly higher yields than the control group `\((p&lt;0.001)\)`, and also had significantly higher yields than the first fertilizer treatment `\((p=0.012)\)`. Additionally, crops grown at lower planting densities had significantly higher yields than those grown at higher densities `\((p&lt;0.001)\)`. &lt;/span&gt;&lt;span style="color:#424242;"&gt; These results suggest that choosing an effective fertilizer and managing planting density are crucial for optimizing crop yield. However, the lack of a significant interaction indicates that adjustments in planting density do not change the relative effectiveness of the fertilizers tested.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
