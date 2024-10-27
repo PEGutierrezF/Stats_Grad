@@ -1,6 +1,6 @@
 ---
 title: "Factorial ANOVA"
-subtitle: "(ANOVA)"
+subtitle: ""
 author: "Pablo E. Guti\u00E9rrez-Fonseca"
 institute: ""
 date: "`r Sys.Date()`"
@@ -31,13 +31,13 @@ xaringanExtra::use_panelset()
 ```
 
 # What is a Full Factorial Experiment?
-- A factorial experiment allows researchers to study the joint effect of two or more factors on a dependent variable.
+- A factorial experiment allows researchers to study the joint **effect of two or more factors** on a **dependent variable**.
 
-- Factorial designs are an extension of single factor ANOVA designs in which additional factors are added such that each level of one factor is applied to all levels of the other factor(s) and these combinations are replicated.
+- Factorial designs are an **extension of single factor ANOVA** designs in which additional factors are added such that each level of one factor is applied to all levels of the other factor(s) and these combinations are replicated.
 
 ---
 # Treatment Groups in Full Factorial Design
-- Factor A has two levels, factor B has three levels. Therefore, the full factorial design has 2 x 3 = 6 treatment groups.
+- Factor A has two levels (i.e., A1 and A2), factor B has three levels (i.e., B1, B2 and B3). Therefore, the full factorial design has 2 x 3 = 6 treatment groups.
 
 |         | B1            | B2            | B3            |
 |---------|---------------|---------------|---------------|
