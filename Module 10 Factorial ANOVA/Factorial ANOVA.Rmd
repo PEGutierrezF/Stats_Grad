@@ -57,34 +57,32 @@ DiagrammeR::mermaid("
         B --Research Question--> C[Comparing Differences] 
         B --Research Question--> D[Examining Relationships]
         
-        C --How many groups?--> E[1 group] 
-        C --How many groups?--> I[2 groups]
-        C --How many groups?--> Q[> 2 groups]
-        
-        E --> F[Normally distributed?] 
-        F --Yes--> G[One sample z-test] 
+        C --> E[How many groups?] 
+      
+        E --1 group--> F[Normally distributed?] 
+        F --Yes--> G[One-sample z-test] 
         F --No--> H[Wilcoxon signed rank test]
         
-        I --> J[Are Samples Independent?] 
-        J --Yes--> K[Normally distributed?] 
-        J --No--> L[Normally distributed?]
+        E --2 groups--> I[Are Samples Independent?] 
+        I --Yes--> J[Normally distributed?]
+        I --No--> K[Normally distributed?]
         
-        K --Yes--> M[Independent t-test] 
-        K --No--> N[Wilcoxon rank sum test] 
+        J --Yes--> L[Independent t-test] 
+        J --No--> M[Wilcoxon rank sum test] 
         
-        L --Yes--> O[Paired t-test] 
-        L --No--> P[Wilcoxon matched pair test]
+        K --Yes--> N[Paired t-test] 
+        K --No--> O[Wilcoxon matched pair test]
         
-        Q --> R[Number of Treatments?]
+        E --More than 2 groups--> P[Number of Treatments?]
         
-        R --One--> S[Normally Distributed?]
-        S --Yes--> T[One-Way ANOVA]
-        S --No--> U[Non-Parametric ANOVA]
+        P --One--> Q[Normally Distributed?]
+        Q --Yes--> R[One-Way ANOVA]
+        Q --No--> S[Non-Parametric ANOVA]
         
-        R --More than One--> V[Normally Distributed?]
+        P --More than One--> T[Normally Distributed?]
         
-        V --Yes--> W[Factorial ANOVA]
-        V --No--> X[Friedman's Rank Test]
+        T --Yes--> U[Factorial ANOVA]
+        T --No--> V[Friedman's Rank Test]
 
   style A fill:lightblue,stroke:#333,stroke-width:1px
   style B fill:lightblue,stroke:#333,stroke-width:1px
@@ -108,12 +106,11 @@ DiagrammeR::mermaid("
   style T fill:lightblue,stroke:#333,stroke-width:1px
   style U fill:lightblue,stroke:#333,stroke-width:1px
   style V fill:lightblue,stroke:#333,stroke-width:1px
-  style W fill:lightblue,stroke:#333,stroke-width:1px
-  style X fill:lightblue,stroke:#333,stroke-width:1px
   style Z fill:lightblue,stroke:#333,stroke-width:1px
 
   ", height = '600px', width = '900px'
 )
+
 
 ```
 
