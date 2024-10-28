@@ -32,26 +32,23 @@ xaringanExtra::use_panelset()
 
 ---
 ```{r figure_1, echo = FALSE, fig.align='center'}
-
 DiagrammeR::mermaid("
     graph TD;
 
         A[What type of data?] --> B[Continuous] 
-        A --> Z[Categorical]
+        A --> C[Categorical]
         
-        B --Research Question--> C[Comparing Differences] 
-        B --Research Question--> D[Examining Relationships]
+        B --Research Question--> D[Comparing Differences] 
+        B --Research Question--> E[Examining Relationships]
         
-        C --How many groups?--> E[1 group] 
-        C --How many groups?--> I[2 groups]
-        C --How many groups?--> Q[> 2 groups]
+        D --> F[How many groups?] 
+      
+        F --1 group--> G[Normally distributed?] 
+        G --Yes--> H[One-sample z-test] 
+        G --No--> I[Wilcoxon signed rank test]
         
-        E --> F[Normally distributed?] 
-        F --Yes--> G[One sample z-test] 
-        F --No--> H[Wilcoxon signed rank test]
-        
-        I --> J[Are Samples Independent?] 
-        J --Yes--> K[Normally distributed?] 
+        F --2 groups--> J[Are Samples Independent?] 
+        J --Yes--> K[Normally distributed?]
         J --No--> L[Normally distributed?]
         
         K --Yes--> M[Independent t-test] 
@@ -60,44 +57,57 @@ DiagrammeR::mermaid("
         L --Yes--> O[Paired t-test] 
         L --No--> P[Wilcoxon matched pair test]
         
-        Q --> R[Use ANOVA] 
-        Q --> S[Non-parametric ANOVA]
+        F --More than 2 groups--> Q[Number of Treatments?]
         
-        D --Number of Variables--> T[Number of Treatment Variables]
+        Q --One--> R[Normally Distributed?]
+        R --Yes--> S[One-Way ANOVA]
+        R --No--> T[Non-Parametric ANOVA]
         
-        T --Two--> U[Normally Distributed?] 
-        U --Yes--> V[Pearson's Correlation] 
-        U --No--> W[Spearman's Rho]
+        Q --More than One--> U[Normally Distributed?]
         
-        T --More Than Two--> X[Partial Correlation]
+        U --Yes--> V[Factorial ANOVA]
+        U --No--> W[Friedman's Rank Test]
+        
+        E --> X[Number of Treatment Variables?]
+        
+        X --Two--> Y[Normally Distributed?]
+        Y --Yes--> Z[Pearson's Correlation]
+        Y --No--> AA[Spearman's Rho]
+        
+        X --More than Two--> AB[Partial Correlation]
 
-    style A fill:lightblue,stroke:#333,stroke-width:1px
-    style B fill:lightblue,stroke:#333,stroke-width:1px
-    style C fill:lightblue,stroke:#333,stroke-width:1px
-    style D fill:lightblue,stroke:#333,stroke-width:1px
-    style E fill:lightblue,stroke:#333,stroke-width:1px
-    style F fill:lightblue,stroke:#333,stroke-width:1px
-    style G fill:lightblue,stroke:#333,stroke-width:1px
-    style H fill:lightblue,stroke:#333,stroke-width:1px
-    style I fill:lightblue,stroke:#333,stroke-width:1px
-    style J fill:lightblue,stroke:#333,stroke-width:1px
-    style K fill:lightblue,stroke:#333,stroke-width:1px
-    style L fill:lightblue,stroke:#333,stroke-width:1px
-    style M fill:lightblue,stroke:#333,stroke-width:1px
-    style N fill:lightblue,stroke:#333,stroke-width:1px
-    style O fill:lightblue,stroke:#333,stroke-width:1px
-    style P fill:lightblue,stroke:#333,stroke-width:1px
-    style Q fill:lightblue,stroke:#333,stroke-width:1px
-    style R fill:lightblue,stroke:#333,stroke-width:1px
-    style S fill:lightblue,stroke:#333,stroke-width:1px
-    style T fill:lightblue,stroke:#333,stroke-width:1px
-    style U fill:lightblue,stroke:#333,stroke-width:1px
-    style V fill:lightblue,stroke:#333,stroke-width:1px
-    style W fill:lightblue,stroke:#333,stroke-width:1px
-    style X fill:lightblue,stroke:#333,stroke-width:1px
-    style Z fill:lightblue,stroke:#333,stroke-width:1px
+  style A fill:lightblue,stroke:#333,stroke-width:1px
+  style B fill:lightblue,stroke:#333,stroke-width:1px
+  style C fill:lightblue,stroke:#333,stroke-width:1px
+  style D fill:lightblue,stroke:#333,stroke-width:1px
+  style E fill:lightblue,stroke:#333,stroke-width:1px
+  style F fill:lightblue,stroke:#333,stroke-width:1px
+  style G fill:lightblue,stroke:#333,stroke-width:1px
+  style H fill:lightblue,stroke:#333,stroke-width:1px
+  style I fill:lightblue,stroke:#333,stroke-width:1px
+  style J fill:lightblue,stroke:#333,stroke-width:1px
+  style K fill:lightblue,stroke:#333,stroke-width:1px
+  style L fill:lightblue,stroke:#333,stroke-width:1px
+  style M fill:lightblue,stroke:#333,stroke-width:1px
+  style N fill:lightblue,stroke:#333,stroke-width:1px
+  style O fill:lightblue,stroke:#333,stroke-width:1px
+  style P fill:lightblue,stroke:#333,stroke-width:1px
+  style Q fill:lightblue,stroke:#333,stroke-width:1px
+  style R fill:lightblue,stroke:#333,stroke-width:1px
+  style S fill:lightblue,stroke:#333,stroke-width:1px
+  style T fill:lightblue,stroke:#333,stroke-width:1px
+  style U fill:lightblue,stroke:#333,stroke-width:1px
+  style V fill:lightblue,stroke:#333,stroke-width:1px
+  style W fill:lightblue,stroke:#333,stroke-width:1px
+  style X fill:lightblue,stroke:#333,stroke-width:1px
+  style Y fill:lightblue,stroke:#333,stroke-width:1px
+  style Z fill:lightblue,stroke:#333,stroke-width:1px
+  style AA fill:lightblue,stroke:#333,stroke-width:1px
+  style AB fill:lightblue,stroke:#333,stroke-width:1px
 
-", height = '550px', width = '850px')
+  ", height = '600px', width = '900px'
+)
+
 
 ```
 
