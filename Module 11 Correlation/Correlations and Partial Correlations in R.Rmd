@@ -144,3 +144,17 @@ DiagrammeR::mermaid("
 
 - Significance: Assesses if the correlation is meaningful.
     - Based on the p-value, which tells us if the observed relationship is likely due to chance.
+
+---
+# Hypothesis testing with Correlations
+- Null Hypothesis ( $H_0$ )
+- ** $H_0$ **: There is no correlation in the population.
+  - For a two-tailed test, this means there is **no linear relationship** between x and y.
+   $$ H_0: r = 0 $$
+   $$ p > 0.05 $$
+
+- Alternative Hypothesis ( $H_1$ )
+- ** $H_1$ **: There is a real, non-zero correlation in the population.
+  - The alternative hypothesis suggests a **significant linear relationship** between x and y.
+   $$ H_1: r \neq 0 $$
+   $$ p < 0.05 $$
