@@ -158,3 +158,135 @@ DiagrammeR::mermaid("
   - The alternative hypothesis suggests a **significant linear relationship** between x and y.
    $$ H_1: r \neq 0 $$
    $$ p < 0.05 $$
+
+---
+# Computing Simple Correlations
+- There are many kinds of correlation coefficients but the most commonly used measure of correlation is the **Pearson’s correlation (parametric statistic)**. 
+
+$$r_{XY} = \frac{n \sum XY - \left( \sum X \right) \left( \sum Y \right)}{\sqrt{\left[ n \sum X^2 - \left( \sum X \right)^2 \right] \left[ n \sum Y^2 - \left( \sum Y \right)^2 \right]}}$$
+
+
+---
+# Computing Simple Correlations
+- There are many kinds of correlation coefficients but the most commonly used measure of correlation is the **Pearson’s correlation (parametric statistic)**. 
+
+$$r_{XY} = \frac{n \sum XY - \left( \sum X \right) \left( \sum Y \right)}{\sqrt{\left[ n \sum X^2 - \left( \sum X \right)^2 \right] \left[ n \sum Y^2 - \left( \sum Y \right)^2 \right]}}$$
+
+Where:
+
+- $r$ = Pearson Correlation Coefficient
+- $N$ = Number of pairs of observations
+- $∑XY$ = Sum of the products of paired values
+- $∑X$ = Sum of the \(x\) scores
+- $∑Y$ = Sum of the \(y\) scores
+- $∑X^2$ = Sum of the squared \(x\) scores
+- $∑Y^2$ = Sum of the squared \(y\) scores
+
+---
+# Interpreting the Value of *_r_*
+.pull-left[ 
+- Perfect **Positive Correlation**: $r=+1$
+  - All points lie on an upward-sloping line.
+]
+
+.pull-right[
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=5}
+# Generate data for perfect positive correlation
+set.seed(0)
+n <- 50
+x <- seq(1, 10, length.out = n)
+y_positive <- x  # Perfect correlation: y = x
+
+# Create a data frame
+data_positive <- data.frame(x = x, y = y_positive)
+
+# Plot
+ggplot(data_positive, aes(x = x, y = y)) +
+  geom_point(color = "blue") +
+  geom_line(color = "blue") +
+  labs(title = "Perfect Positive Correlation (r = +1)", x = "X", y = "Y") +
+  theme_minimal()
+
+```
+]
+
+---
+# Interpreting the Value of *_r_*
+.pull-left[ 
+- Perfect Positive Correlation: $r=+1$
+  - All points lie on an upward-sloping line.
+  
+- **No Correlation**: $r=0$
+  - Points do not align along any line, or they form a horizontal line.
+
+]
+
+.pull-right[
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=5}
+# Generate data for no correlation
+set.seed(0)
+y_no_corr <- runif(n, 1, 10)  # Random y values, no correlation
+
+# Create a data frame
+data_no_corr <- data.frame(x = x, y = y_no_corr)
+
+# Plot
+ggplot(data_no_corr, aes(x = x, y = y)) +
+  geom_point(color = "blue") +
+  labs(title = "No Correlation (r = 0)", x = "X", y = "Y") +
+  theme_minimal()
+
+```
+]
+
+---
+# Interpreting the Value of *_r_*
+.pull-left[ 
+- Perfect Positive Correlation: $r=+1$
+  - All points lie on an upward-sloping line.
+  
+- No Correlation: $r=0$
+  - Points do not align along any line, or they form a horizontal line.
+  
+- Perfect **Negative Correlation**: $r=−1$
+  - All points lie on a downward-sloping line.
+
+
+]
+
+.pull-right[
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=5}
+# Generate data for perfect negative correlation
+y_negative <- -x  # Perfect correlation: y = -x
+
+# Create a data frame
+data_negative <- data.frame(x = x, y = y_negative)
+
+# Plot
+ggplot(data_negative, aes(x = x, y = y)) +
+  geom_point(color = "blue") +
+  geom_line(color = "blue") +
+  labs(title = "Perfect Negative Correlation (r = -1)", x = "X", y = "Y") +
+  theme_minimal()
+```
+]
+
+---
+
+
+- Note: When $∣r∣=1$, we have a perfect correlation, meaning all points fall precisely along a straight line.
+
+---
+# Strength of Correlation
+- Weak Correlation: 
+  - $0.0≤ ∣r∣ <0.3$
+
+- Moderate Correlation: 
+  - $0.3≤∣r∣<0.7$
+
+- Strong Correlation: 
+  - $0.7≤∣r∣<1.0$
+
+- Perfect Correlation: 
+  - $∣r∣=1.0$
+  
