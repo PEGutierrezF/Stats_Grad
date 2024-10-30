@@ -112,3 +112,35 @@ DiagrammeR::mermaid("
 ```
 
 ---
+# What is Correlation?
+- A correlation test quantifies how two variables change together.
+  - Are the variables closely related?
+  - To what extent does one variable predict the other?
+
+---
+# When to Use Correlation?
+
+- You have two continuous variables measured from the same observational unit.
+- You want to determine if the variables are related (vary in unison).
+
+---
+# Key Assumptions:
+- Independent, random samples.
+
+- Normality:
+  - Pearson correlation (parametric): Assumes both variables follow a normal distribution.
+  - Spearman correlation (nonparametric): Does not assume normality.
+
+- Linear relationship: Correlation looks for a linear association between the variables.
+
+---
+# Describing Correlations
+- Strength: Indicates how closely the variables are related.
+    - Categories: Weak, Moderate, Strong
+    
+- Nature: Shows the direction of the relationship.
+    - Direct (Positive): As one variable increases, so does the other.
+    - Indirect (Negative): As one variable increases, the other decreases.
+
+- Significance: Assesses if the correlation is meaningful.
+    - Based on the p-value, which tells us if the observed relationship is likely due to chance.
