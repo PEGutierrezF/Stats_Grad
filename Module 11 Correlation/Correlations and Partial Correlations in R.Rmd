@@ -346,3 +346,67 @@ plot_r1 <- ggplot(data_r1, aes(x, y)) +
 ]
 
 ---
+# Strength of Correlation: Examples
+.pull-left[
+
+- Weak Correlation: 
+  - $0.0≤ ∣r∣ <0.3$
+
+- Moderate Correlation: 
+  - $0.3≤∣r∣<0.7$
+
+- Strong Correlation: 
+  - $0.7≤∣r∣<1.0$
+
+- Perfect Correlation: 
+  - $∣r∣=1.0$
+]
+
+.pull-right[
+- Husband’s age / Wife’s age:
+    - r = .94 (strong positive correlation)
+
+- Husband’s height / Wife’s height:
+    - r = .36 (weak positive correlation)
+
+- Distance of golf putt / percent success:
+    - r = -.94 (strong negative correlation)
+]
+
+---
+# Coefficient of Determination ( $r^2$ )
+- $r^2$ quantifies the proportion of variability in one variable that can be explained by its relationship with the other variable.
+
+- It represents the shared variability between the two variables, indicating how much of the total variability they have in common.
+
+- When two variables are correlated, $r^2$ tells us how much variance in one variable can be accounted for by the other.
+
+- This concept is similar to the Effect Size we examined in ANOVA.
+
+---
+# Difference Between $r$ and $r^2$
+- $r$ (Pearson’s Correlation Coefficient):
+  - Measures how much two variables vary together.
+    - Ranges from -1 to 1:
+      - -1: Perfect negative correlation
+      - 0: No correlation
+      - 1: Perfect positive correlation
+    - Unitless and applicable across contexts.
+
+---
+# Difference Between $r$ and $r^2$
+- $r$ (Pearson’s Correlation Coefficient):
+  - Measures how much two variables vary together.
+    - Ranges from -1 to 1:
+      - -1: Perfect negative correlation
+      - 0: No correlation
+      - 1: Perfect positive correlation
+    - Unitless and applicable across contexts.
+
+- $r^2$ (Coefficient of Determination):
+  - Indicates the proportion of variability explained by the relationship.
+    - Ranges from 0 to 1:
+      - 0: No variability explained
+      - 1: All variability explained
+    - Interpreted as the percentage of variance explained.
+
