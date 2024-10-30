@@ -410,3 +410,107 @@ plot_r1 <- ggplot(data_r1, aes(x, y)) +
       - 1: All variability explained
     - Interpreted as the percentage of variance explained.
 
+---
+# Understanding Significant Correlations (p < 0.05)
+- **Significant correlations** indicate that fluctuations in the values are sufficiently regular, making it unlikely that the association occurred by chance.
+
+- However, significance does not imply meaningfulness:
+  - A significant correlation does not guarantee that the amount of variance accounted for is practically significant.
+
+- Use $r^2$ to assess the meaningfulness of your results:
+  - Interpret $r^2$ to understand the proportion of variance explained by the correlation and its practical implications.
+
+---
+# Writing Up Your Results
+.pull-left[
+Example:
+  - Correlation Results: $r_{(19)}=0.606, p=0.024, r^2=0.37$
+]
+
+---
+# Writing Up Your Results
+.pull-left[
+Example:
+  - Correlation Results: $r_{(19)}=0.606, p=0.024, r^2=0.37$
+
+Interpretation:
+- r: 
+  - Test Statistic: 0.606 (obtained value)
+  - Indicates a moderate positive correlation between the variables.
+
+Degrees of Freedom:
+  - 19 (calculated as $n−2$, where $n$ is the number of observations).
+]
+
+.pull-right[
+p-value:
+  - 0.024: Indicates a statistically significant correlation (p < 0.05), suggesting the correlation is unlikely to have arisen by chance.
+
+$r^2$:
+  - 0.37: Indicates that approximately 37% of the variance in one variable is explained by the other, providing a measure of the correlation's practical significance.
+]
+
+---
+# Complications and Limitations of Correlation
+.pull-left[
+- Sensitivity to Outliers:
+  - Correlations can be significantly affected by outliers, which may skew the results.
+
+- Influence of Outliers:
+  - A single outlier can have a disproportionate impact on the correlation coefficient, potentially leading to misleading conclusions.
+]
+
+.pull-right[
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=5, fig.height=7}
+# Generate example data
+set.seed(123) # For reproducibility
+n <- 30
+x <- rnorm(n) # Normally distributed data
+y <- 2 * x + rnorm(n, sd = 0.5) # Create a linear relationship with some noise
+
+# Introduce extreme outliers only in the y-values
+y_outliers <- c(y, 25, 30) # Adding two extreme outliers to y
+x_outliers <- c(x, 0, 0) # x-values remain the same for outliers
+
+# Create data frames
+df_normal <- data.frame(x = x, y = y)
+df_outliers <- data.frame(x = x_outliers, y = y_outliers)
+
+# Calculate correlations
+cor_normal <- cor(df_normal$x, df_normal$y)
+cor_outliers <- cor(df_outliers$x, df_outliers$y)
+
+# Plot without outliers
+p1 <- ggplot(df_normal, aes(x = x, y = y)) +
+  geom_point(color = "blue") +
+  geom_smooth(method = "lm", color = "blue", se = FALSE) +
+  labs(title = paste("Correlation Without Outliers: r =", round(cor_normal, 2)),
+       x = "X Variable",
+       y = "Y Variable") +
+  theme_minimal() +
+  xlim(-5, 5) + ylim(-5, 10) # Adjust limits for better visibility
+
+# Plot with extreme outliers in y
+p2 <- ggplot(df_outliers, aes(x = x, y = y)) +
+  geom_point(color = "red") +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +
+  labs(title = paste("Correlation With Extreme Outliers in Y: r =", round(cor_outliers, 2)),
+       x = "X Variable",
+       y = "Y Variable") +
+  theme_minimal() +
+  xlim(-5, 5) + ylim(-5, 35) # Adjust limits for better visibility
+
+# Combine plots using patchwork
+(p1 / p2) 
+```
+
+] 
+
+---
+# Complications and Limitations of Correlation
+- Spurious Correlations:
+  - A significant correlation may not indicate a direct relationship between the two variables.
+  - It can arise from an indirect correlation influenced by a third variable.
+  - For example, an observed correlation between ice cream sales and drowning incidents might be spurious, driven by a third factor like temperature.
+
+
