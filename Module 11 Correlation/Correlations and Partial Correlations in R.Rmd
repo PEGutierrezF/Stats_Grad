@@ -24,6 +24,7 @@ xaringanExtra:
 library(readr)
 library(lessR)
 library(ggplot2)
+library(patchwork)
 library(palmerpenguins)
 library(car)
 library(RVAideMemoire) #shapiro.test
@@ -31,6 +32,8 @@ xaringanExtra::use_panelset()
 ```
 
 ---
+# Decision Flowchart
+
 ```{r figure_1, echo = FALSE, fig.align='center'}
 DiagrammeR::mermaid("
     graph TD;
@@ -278,6 +281,9 @@ ggplot(data_negative, aes(x = x, y = y)) +
 
 ---
 # Strength of Correlation
+
+.pull-left[
+
 - Weak Correlation: 
   - $0.0≤ ∣r∣ <0.3$
 
@@ -289,4 +295,54 @@ ggplot(data_negative, aes(x = x, y = y)) +
 
 - Perfect Correlation: 
   - $∣r∣=1.0$
-  
+]
+
+.pull-right[
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=5}  
+
+set.seed(123)  # For reproducibility
+
+# Function to generate correlated data
+generate_data <- function(n, r) {
+  x <- rnorm(n)
+  y <- r * x + sqrt(1 - r^2) * rnorm(n)
+  data.frame(x = x, y = y)
+}
+
+# Generate datasets for each correlation strength
+data_r0 <- generate_data(100, 0)       # Correlation of 0
+data_r03 <- generate_data(100, 0.3)    # Correlation of 0.3
+data_r07 <- generate_data(100, 0.7)    # Correlation of 0.7
+data_r1 <- data.frame(x = rnorm(100))  # Correlation of 1
+data_r1$y <- data_r1$x
+
+# Create scatterplots for each correlation level
+plot_r0 <- ggplot(data_r0, aes(x, y)) +
+  geom_point() +
+  ggtitle("No Correlation (r = 0)") +
+  theme_minimal()
+
+plot_r03 <- ggplot(data_r03, aes(x, y)) +
+  geom_point() +
+  ggtitle("Weak Correlation (r ≈ 0.3)") +
+  theme_minimal()
+
+plot_r07 <- ggplot(data_r07, aes(x, y)) +
+  geom_point() +
+  ggtitle("Moderate Correlation (r ≈ 0.7)") +
+  theme_minimal()
+
+plot_r1 <- ggplot(data_r1, aes(x, y)) +
+  geom_point() +
+  ggtitle("Perfect Correlation (r = 1)") +
+  theme_minimal()
+
+# Arrange plots in a single plate using patchwork
+(plot_r0 | plot_r03) /
+  (plot_r07 | plot_r1)
+
+```
+
+]
+
+---
