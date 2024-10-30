@@ -508,9 +508,52 @@ p2 <- ggplot(df_outliers, aes(x = x, y = y)) +
 
 ---
 # Complications and Limitations of Correlation
-- Spurious Correlations:
+- **Spurious Correlations**:
   - A significant correlation may not indicate a direct relationship between the two variables.
   - It can arise from an indirect correlation influenced by a third variable.
   - For example, an observed correlation between ice cream sales and drowning incidents might be spurious, driven by a third factor like temperature.
 
+- **Causation vs. Correlation**:
+  - Correlation does not imply causation. Just because two variables are correlated does not mean one causes the other.
+
+- **Context Matters**:
+  - Always consider the context and underlying mechanisms that could affect the relationship between the variables.
+
+---
+# Multivariate Interpretation
+- What to Do?
+
+---
+# Multivariate Interpretation
+- What to Do?
+- Check out your Partial Correlations.
+
+  - Purpose: These correlations adjust each correlation to account for the influence of all other variables in the analysis.
+  - Benefit: They reveal the unique relationship between variables by removing the influence of others.
+  - When to use: Conduct this analysis only on variables that significantly correlate with your variable of interest.
+
+---
+# Partial Correlations
+- Keep in Mind:
+  - These new partial correlations have been adjusted for covariance with all other variables.
+  - The goal is to isolate the unique covariance between the two variables of interest.
+
+- Important Note:
+
+  - Expect these values to be lower than the original correlations!
+    - Why? Because we are accounting for the influence of other variables.
+  - Focus on relative strength rather than trying to meet an absolute threshold of strength.
+
+---
+# Other Complications
+- Quantifying Relationships: Pearson’s, Spearman’s non-parametric, and Partial Correlations are all designed to quantify linear relationships.
+
+  - They will not detect nonlinear relationships.
+
+- Misleading Data: Correlations using rates and averages (smoothed data) can be misleading.
+
+---
+# Things to Remember
+- Correlations only tell us about the strength of a linear relationship between two variables.
+- We cannot interpret causality from correlation alone.
 
