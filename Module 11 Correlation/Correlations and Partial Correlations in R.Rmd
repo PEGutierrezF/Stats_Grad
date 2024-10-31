@@ -80,37 +80,36 @@ DiagrammeR::mermaid("
         
         X --More than Two--> AB[Partial Correlation]
 
-  style A fill:lightblue,stroke:#333,stroke-width:1px
-  style B fill:lightblue,stroke:#333,stroke-width:1px
-  style C fill:lightblue,stroke:#333,stroke-width:1px
-  style D fill:lightblue,stroke:#333,stroke-width:1px
-  style E fill:lightblue,stroke:#333,stroke-width:1px
-  style F fill:lightblue,stroke:#333,stroke-width:1px
-  style G fill:lightblue,stroke:#333,stroke-width:1px
-  style H fill:lightblue,stroke:#333,stroke-width:1px
-  style I fill:lightblue,stroke:#333,stroke-width:1px
-  style J fill:lightblue,stroke:#333,stroke-width:1px
-  style K fill:lightblue,stroke:#333,stroke-width:1px
-  style L fill:lightblue,stroke:#333,stroke-width:1px
-  style M fill:lightblue,stroke:#333,stroke-width:1px
-  style N fill:lightblue,stroke:#333,stroke-width:1px
-  style O fill:lightblue,stroke:#333,stroke-width:1px
-  style P fill:lightblue,stroke:#333,stroke-width:1px
-  style Q fill:lightblue,stroke:#333,stroke-width:1px
-  style R fill:lightblue,stroke:#333,stroke-width:1px
-  style S fill:lightblue,stroke:#333,stroke-width:1px
-  style T fill:lightblue,stroke:#333,stroke-width:1px
-  style U fill:lightblue,stroke:#333,stroke-width:1px
-  style V fill:lightblue,stroke:#333,stroke-width:1px
-  style W fill:lightblue,stroke:#333,stroke-width:1px
-  style X fill:lightblue,stroke:#333,stroke-width:1px
-  style Y fill:lightblue,stroke:#333,stroke-width:1px
-  style Z fill:lightblue,stroke:#333,stroke-width:1px
-  style AA fill:lightblue,stroke:#333,stroke-width:1px
-  style AB fill:lightblue,stroke:#333,stroke-width:1px
+  style A fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style B fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style C fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style D fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style E fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style F fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style G fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style H fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style I fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style J fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style K fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style L fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style M fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style N fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style O fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style P fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style Q fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style R fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style S fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style T fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style U fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style V fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style W fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style X fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style Y fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style Z fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style AA fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
+  style AB fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
 
-  ", height = '400px', width = '900px'
-
+  ", height = '500px', width = '1000px'
 )
 
 
