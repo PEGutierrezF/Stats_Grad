@@ -20,6 +20,7 @@ output:
 xaringanExtra:
     use_panelset: true
 ---
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(readr)
 library(lessR)
@@ -31,7 +32,6 @@ library(RVAideMemoire) #shapiro.test
 xaringanExtra::use_panelset()
 ```
 
----
 # Decision Flowchart
 
 ```{r figure_1, echo = FALSE, fig.align='center'}
@@ -122,8 +122,10 @@ DiagrammeR::mermaid("
 
 ---
 # When to Use Correlation?
+- Correlation test is used to **evaluate** the **association between two or more variables**.
 
 - You have two continuous variables measured from the same observational unit.
+
 - You want to determine if the variables are related (vary in unison).
 
 ---
@@ -411,7 +413,27 @@ plot_r1 <- ggplot(data_r1, aes(x, y)) +
     - Interpreted as the percentage of variance explained.
 
 ---
-# Understanding Significant Correlations (p < 0.05)
+# p-value of the correlation 
+The p-value (significance level) of the correlation can be determined :
+
+  - by using the correlation coefficient table for the degrees of freedom : **df=n−2**, where **n is the number of observation in x and y variables**.
+
+
+---
+# p-value of the correlation 
+The p-value (significance level) of the correlation can be determined :
+
+  - by using the correlation coefficient table for the degrees of freedom : **df=n−2**, where **n is the number of observation in x and y variables**.
+
+  - or by calculating the t value as follow:
+$$
+t = \frac{r_1 - r_2}{\sqrt{\frac{1 - r^2}{n - 2}}}
+$$
+
+In the case 2) the corresponding p-value is determined using t distribution table for df=n−2
+
+---
+# Understanding significant correlations
 - **Significant correlations** indicate that fluctuations in the values are sufficiently regular, making it unlikely that the association occurred by chance.
 
 - However, significance does not imply meaningfulness:
@@ -557,3 +579,10 @@ p2 <- ggplot(df_outliers, aes(x = x, y = y)) +
 - Correlations only tell us about the strength of a linear relationship between two variables.
 - We cannot interpret causality from correlation alone.
 
+---
+# Spearman correlation formula
+The Spearman correlation method computes the correlation between the rank of $x$ and the rank of $y$ variables:
+
+$$\rho = \frac{\sum (x' - m_{x'}) (y' - m_{y'})}{\sqrt{\sum (x' - m_{x'})^2 \sum (y' - m_{y'})^2}}$$
+
+Where $x' = rank(x)$ and $y' = rank(y)$.
