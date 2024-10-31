@@ -35,6 +35,7 @@ xaringanExtra::use_panelset()
 # Decision Flowchart
 
 ```{r figure_1, echo = FALSE, fig.align='center'}
+
 DiagrammeR::mermaid("
     graph TD;
 
@@ -108,7 +109,8 @@ DiagrammeR::mermaid("
   style AA fill:lightblue,stroke:#333,stroke-width:1px
   style AB fill:lightblue,stroke:#333,stroke-width:1px
 
-  ", height = '600px', width = '900px'
+  ", height = '400px', width = '900px'
+
 )
 
 
