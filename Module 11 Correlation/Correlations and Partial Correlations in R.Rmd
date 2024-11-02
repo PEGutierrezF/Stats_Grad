@@ -116,6 +116,7 @@ DiagrammeR::mermaid("
 ```
 
 ---
+
 # What is Correlation?
 - A correlation test quantifies how two variables change together.
   - Are the variables closely related?
