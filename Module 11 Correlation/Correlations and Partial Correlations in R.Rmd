@@ -657,7 +657,7 @@ shapiro.test(global_T$Mona_Loa_co2)
 # Relationship between CO₂ and Temperature
 This code performs a **Spearman correlation** test to examine the relationship between global temperature and CO₂ concentration.
 
-```{r highlight.output = 5,7}
+```{r highlight.output = c(5,9)}
 #Test correlation (parametric)
 test <- cor.test(global_T$temperature,
          global_T$Mona_Loa_co2,
@@ -683,7 +683,7 @@ p_value <- test$p.value
 
 .panelset[
 .panel[.panel-name[R Code]
-```{r plot_1, fig.show='hide', fig.width=7, fig.height=5.5}
+```{r plot_1, message=FALSE, fig.show='hide', fig.width=7, fig.height=5.5}
 ggplot(global_T, aes(x = Mona_Loa_co2, y = temperature)) +
   geom_line() +
   geom_point() +
