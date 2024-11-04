@@ -4,7 +4,7 @@
     <title>Correlations and Partial Correlations in R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <meta name="date" content="2024-11-02" />
+    <meta name="date" content="2024-11-04" />
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
@@ -32,7 +32,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2024-11-02
+### 2024-11-04
 ]
 
 ---
@@ -42,8 +42,8 @@ class: center, middle, inverse, title-slide
 
 # Decision Flowchart
 
-<div id="htmlwidget-3bd4775dc8c817869944" style="width:1000px;height:500px;" class="DiagrammeR html-widget "></div>
-<script type="application/json" data-for="htmlwidget-3bd4775dc8c817869944">{"x":{"diagram":"\n    graph TD;\n\n        A[What type of data?] --> B[Continuous] \n        A --> C[Categorical]\n        \n        B --Research Question--> D[Comparing Differences] \n        B --Research Question--> E[Examining Relationships]\n        \n        D --> F[How many groups?] \n      \n        F --1 group--> G[Normally distributed?] \n        G --Yes--> H[One-sample z-test] \n        G --No--> I[Wilcoxon signed rank test]\n        \n        F --2 groups--> J[Are Samples Independent?] \n        J --Yes--> K[Normally distributed?]\n        J --No--> L[Normally distributed?]\n        \n        K --Yes--> M[Independent t-test] \n        K --No--> N[Wilcoxon rank sum test] \n        \n        L --Yes--> O[Paired t-test] \n        L --No--> P[Wilcoxon matched pair test]\n        \n        F --More than 2 groups--> Q[Number of Treatments?]\n        \n        Q --One--> R[Normally Distributed?]\n        R --Yes--> S[One-Way ANOVA]\n        R --No--> T[Non-Parametric ANOVA]\n        \n        Q --More than One--> U[Normally Distributed?]\n        \n        U --Yes--> V[Factorial ANOVA]\n        U --No--> W[Friedman's Rank Test]\n        \n        E --> X[Number of Treatment Variables?]\n        \n        X --Two--> Y[Normally Distributed?]\n        Y --Yes--> Z[Pearson's Correlation]\n        Y --No--> AA[Spearman's Rho]\n        \n        X --More than Two--> AB[Partial Correlation]\n\n  style A fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style B fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style C fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style D fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style E fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style F fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style G fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style H fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style I fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style J fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style K fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style L fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style M fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style N fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style O fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style P fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style Q fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style R fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style S fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style T fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style U fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style V fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style W fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style X fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style Y fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style Z fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style AA fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style AB fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n\n  "},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-442acc2b3235d8feee92" style="width:1000px;height:500px;" class="DiagrammeR html-widget "></div>
+<script type="application/json" data-for="htmlwidget-442acc2b3235d8feee92">{"x":{"diagram":"\n    graph TD;\n\n        A[What type of data?] --> B[Continuous] \n        A --> C[Categorical]\n        \n        B --Research Question--> D[Comparing Differences] \n        B --Research Question--> E[Examining Relationships]\n        \n        D --> F[How many groups?] \n      \n        F --1 group--> G[Normally distributed?] \n        G --Yes--> H[One-sample z-test] \n        G --No--> I[Wilcoxon signed rank test]\n        \n        F --2 groups--> J[Are Samples Independent?] \n        J --Yes--> K[Normally distributed?]\n        J --No--> L[Normally distributed?]\n        \n        K --Yes--> M[Independent t-test] \n        K --No--> N[Wilcoxon rank sum test] \n        \n        L --Yes--> O[Paired t-test] \n        L --No--> P[Wilcoxon matched pair test]\n        \n        F --More than 2 groups--> Q[Number of Treatments?]\n        \n        Q --One--> R[Normally Distributed?]\n        R --Yes--> S[One-Way ANOVA]\n        R --No--> T[Non-Parametric ANOVA]\n        \n        Q --More than One--> U[Normally Distributed?]\n        \n        U --Yes--> V[Factorial ANOVA]\n        U --No--> W[Friedman's Rank Test]\n        \n        E --> X[Number of Treatment Variables?]\n        \n        X --Two--> Y[Normally Distributed?]\n        Y --Yes--> Z[Pearson's Correlation]\n        Y --No--> AA[Spearman's Rho]\n        \n        X --More than Two--> AB[Partial Correlation]\n\n  style A fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style B fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style C fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style D fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style E fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style F fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style G fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style H fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style I fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style J fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style K fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style L fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style M fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style N fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style O fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style P fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style Q fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style R fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style S fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style T fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style U fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style V fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style W fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style X fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style Y fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style Z fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style AA fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style AB fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n\n  "},"evals":[],"jsHooks":[]}</script>
 
 ---
 
@@ -387,9 +387,225 @@ p-value:
 # Spearman correlation formula
 The Spearman correlation method computes the correlation between the rank of `\(x\)` and the rank of `\(y\)` variables:
 
-`$$\rho = \frac{\sum (x' - m_{x'}) (y' - m_{y'})}{\sqrt{\sum (x' - m_{x'})^2 \sum (y' - m_{y'})^2}}$$`
+`$$\rho = \frac{\sum (x' - \bar{X}) (y' - \bar{Y})}{\sqrt{\sum (x' - \bar{X})^2 \sum (y' - \bar{Y})^2}}$$`
 
 Where `\(x' = rank(x)\)` and `\(y' = rank(y)\)`.
+
+---
+# Example
+
+---
+# Examining the relationship between CO₂ and Global Temperature
+
+**Load Data**: Import the dataset containing global temperature and CO₂ concentration.
+
+
+``` r
+global_T &lt;- read_xlsx('Lecturer Practice/global mean T.xlsx')
+tail(global_T)
+```
+
+```
+## # A tibble: 6 × 3
+##    year temperature Mona_Loa_co2
+##   &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;
+## 1  2013        14.6         397.
+## 2  2014        14.7         399.
+## 3  2015        14.8         401.
+## 4  2016        14.9         404.
+## 5  2017        14.8         407.
+## 6  2018        14.7         409.
+```
+
+---
+# Relationship between CO₂ and Temperature
+
+**Test for Normality**: Use Shapiro-Wilk tests to check if temperature and Mona_Loa_co2 are normally distributed.
+
+
+``` r
+shapiro.test(global_T$temperature)
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  global_T$temperature
+*## W = 0.9314, p-value = 0.000002771
+```
+
+---
+# Relationship between CO₂ and Temperature
+
+**Test for Normality**: Use Shapiro-Wilk tests to check if temperature and Mona_Loa_co2 are normally distributed.
+
+
+``` r
+shapiro.test(global_T$Mona_Loa_co2)
+```
+
+```
+## 
+## 	Shapiro-Wilk normality test
+## 
+## data:  global_T$Mona_Loa_co2
+*## W = 0.94085, p-value = 0.005914
+```
+
+---
+# Relationship between CO₂ and Temperature
+This code performs a **Spearman correlation** test to examine the relationship between global temperature and CO₂ concentration.
+
+
+``` r
+#Test correlation (parametric)
+test &lt;- cor.test(global_T$temperature,
+         global_T$Mona_Loa_co2,
+         method = "spearman")
+test
+```
+
+```
+## 
+## 	Spearman's rank correlation rho
+## 
+## data:  global_T$temperature and global_T$Mona_Loa_co2
+## S = 2403.6, p-value &lt; 0.00000000000000022
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##       rho 
+## 0.9332148
+```
+
+---
+# Coefficient of Determination (R²) for Spearman Correlation
+Approximate the proportion of variance in temperature explained by CO₂ concentration.
+
+
+``` r
+rho &lt;- test$estimate  # Spearman correlation coefficient
+R_squared &lt;- rho^2
+R_squared
+```
+
+```
+##       rho 
+## 0.8708898
+```
+
+``` r
+# Extract correlation coefficient and p-value
+p_value &lt;- test$p.value
+```
+
+---
+# Data visualization
+
+.panelset[
+.panel[.panel-name[R Code]
+
+``` r
+ggplot(global_T, aes(x = Mona_Loa_co2, y = temperature)) +
+  geom_line() +
+  geom_point() +
+  geom_smooth() +
+#  ylim(14,14.75) +
+  labs(x = "CO2 (ppm)", y = "Temperature (C)", title = "") +
+  annotate("text", x = 350, y = 14.8, 
+           label = paste("Spearman's correlation =", round(rho, 2), "\n", 
+                         "p =", format.pval(p_value)),
+           hjust = 1, vjust = 0)
+```
+
+```
+## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+```
+]
+
+.panel[.panel-name[Plot]
+![](Correlations-and-Partial-Correlations-in-R_files/figure-html/plot_1-1.png)
+]
+]
+
+---
+# How to summarize results
+
+&lt;span style="color:#00796B;"&gt;We set out to examine the relationship between CO2 concentrations and global mean temperatures based on 60 years of observations at the Mona Loa Observatory. &lt;/span&gt; &lt;span style="color:#E65100;"&gt; A Spearman’s rho correlation&lt;/span&gt;&lt;span style="color:#1E88E5;"&gt; identified an extremely strong, significant direct correlation ( `\(rho_{(58)} =0.93, p&lt;0.001 , r^2 =0.87\)` ) &lt;/span&gt;&lt;span style="color:#424242;"&gt; This indicates that of all the myriad of factors that influence global mean temperatures, the concentration of ONE gas alone can account for 87% of the variability witnessed over the past six decades. This information strongly suggests that CO2 emissions have contributed to warming trends witnessed over the past half century.&lt;/span&gt;
+
+---
+# Example
+
+---
+# Example: Partial Correlation Analysis
+
+---
+# Partial Correlation Analysis
+- Explore the relationships between variables in the dataset while controlling for the influence of other variables.
+
+
+``` r
+df &lt;- data.frame( x= c(1,2,3,4,5,6,7,7,7,8),
+                           y= c(4,5,6,7,8,9,9,9,10,10),
+                           z= c(1,3,5,7,9,11,13,15,17,19))
+head(df)
+```
+
+```
+##   x y  z
+## 1 1 4  1
+## 2 2 5  3
+## 3 3 6  5
+## 4 4 7  7
+## 5 5 8  9
+## 6 6 9 11
+```
+
+---
+# Partial Correlation Analysis
+- Load library ppcor
+
+``` r
+library(ppcor)
+```
+
+---
+# Partial Correlation Analysis
+- Calculate Partial Correlation
+
+``` r
+pcor( df )
+```
+
+```
+## $estimate
+##           x          y          z
+## x 1.0000000 0.76314445 0.58810321
+## y 0.7631444 1.00000000 0.05552034
+## z 0.5881032 0.05552034 1.00000000
+## 
+## $p.value
+##            x          y          z
+## x 0.00000000 0.01673975 0.09578687
+## y 0.01673975 0.00000000 0.88718502
+## z 0.09578687 0.88718502 0.00000000
+## 
+## $statistic
+##          x         y         z
+## x 0.000000 3.1244245 1.9238403
+## y 3.124425 0.0000000 0.1471199
+## z 1.923840 0.1471199 0.0000000
+## 
+## $n
+## [1] 10
+## 
+## $gp
+## [1] 1
+## 
+## $method
+## [1] "pearson"
+```
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
