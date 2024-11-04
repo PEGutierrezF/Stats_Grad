@@ -17,6 +17,18 @@ class: center, middle
 .pull-right[ ]
 
 
+
+.pull-left[
+```{r upload dat, paged.print=FALSE, eval=FALSE}
+CODE
+  ```
+] 
+.pull-right[
+  ```{r upload dat-out, ref.label="upload dat", echo=FALSE, message=FALSE}
+  ```
+]
+
+
 `` hihglight yellow
 
 <center>

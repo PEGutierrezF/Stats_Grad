@@ -143,14 +143,14 @@ DiagrammeR::mermaid("
 
 ---
 # Describing Correlations
-- Strength: Indicates how closely the variables are related.
+- **Strength**: Indicates how closely the variables are related.
     - Categories: Weak, Moderate, Strong
     
-- Nature: Shows the direction of the relationship.
+- **Nature**: Shows the direction of the relationship.
     - Direct (Positive): As one variable increases, so does the other.
     - Indirect (Negative): As one variable increases, the other decreases.
 
-- Significance: Assesses if the correlation is meaningful.
+- **Significance**: Assesses if the correlation is meaningful.
     - Based on the p-value, which tells us if the observed relationship is likely due to chance.
 
 ---
@@ -191,7 +191,7 @@ Where:
 - $∑Y^2$ = Sum of the squared \(y\) scores
 
 ---
-# Interpreting the Value of *_r_*
+# Nature and Interpretation of $r$ Value
 .pull-left[ 
 - Perfect **Positive Correlation**: $r=+1$
   - All points lie on an upward-sloping line.
@@ -219,7 +219,7 @@ ggplot(data_positive, aes(x = x, y = y)) +
 ]
 
 ---
-# Interpreting the Value of *_r_*
+# Nature and Interpretation of $r$ Value
 .pull-left[ 
 - Perfect Positive Correlation: $r=+1$
   - All points lie on an upward-sloping line.
@@ -248,7 +248,7 @@ ggplot(data_no_corr, aes(x = x, y = y)) +
 ]
 
 ---
-# Interpreting the Value of *_r_*
+# Nature and Interpretation of $r$ Value
 .pull-left[ 
 - Perfect Positive Correlation: $r=+1$
   - All points lie on an upward-sloping line.
@@ -280,7 +280,36 @@ ggplot(data_negative, aes(x = x, y = y)) +
 ]
 
 ---
+# Nature and Interpretation of $r$ Value
+.pull-left[ 
+- Perfect **Positive Correlation**: $r=+1$
+  - All points lie on an upward-sloping line.
+  
+- No Correlation: $r=0$
+  - Points do not align along any line, or they form a horizontal line.
+  
+- Perfect **Negative Correlation**: $r=−1$
+  - All points lie on a downward-sloping line.
 
+
+]
+
+.pull-right[
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=5}
+# Generate data for perfect negative correlation
+y_negative <- -x  # Perfect correlation: y = -x
+
+# Create a data frame
+data_negative <- data.frame(x = x, y = y_negative)
+
+# Plot
+ggplot(data_negative, aes(x = x, y = y)) +
+  geom_point(color = "blue") +
+  geom_line(color = "blue") +
+  labs(title = "Perfect Negative Correlation (r = -1)", x = "X", y = "Y") +
+  theme_minimal()
+```
+]
 
 - Note: When $∣r∣=1$, we have a perfect correlation, meaning all points fall precisely along a straight line.
 
@@ -389,7 +418,7 @@ plot_r1 <- ggplot(data_r1, aes(x, y)) +
 - This concept is similar to the Effect Size we examined in ANOVA.
 
 ---
-# Difference Between $r$ and $r^2$
+# Difference between $r$ and $r^2$
 - $r$ (Pearson’s Correlation Coefficient):
   - Measures how much two variables vary together.
     - Ranges from -1 to 1:
@@ -399,7 +428,7 @@ plot_r1 <- ggplot(data_r1, aes(x, y)) +
     - Unitless and applicable across contexts.
 
 ---
-# Difference Between $r$ and $r^2$
+# Difference between $r$ and $r^2$
 - $r$ (Pearson’s Correlation Coefficient):
   - Measures how much two variables vary together.
     - Ranges from -1 to 1:
@@ -419,14 +448,14 @@ plot_r1 <- ggplot(data_r1, aes(x, y)) +
 # p-value of the correlation 
 The p-value (significance level) of the correlation can be determined :
 
-  - by using the correlation coefficient table for the degrees of freedom : **df=n−2**, where **n is the number of observation in x and y variables**.
+  - by using the correlation coefficient table for the degrees of freedom : **df= n−2**, where **n is the number of observation in x and y variables**.
 
 
 ---
 # p-value of the correlation 
 The p-value (significance level) of the correlation can be determined :
 
-  - by using the correlation coefficient table for the degrees of freedom : **df=n−2**, where **n is the number of observation in x and y variables**.
+  - by using the correlation coefficient table for the degrees of freedom : **df= n−2**, where **n is the number of observation in x and y variables**.
 
   - or by calculating the t value as follow:
 $$
@@ -442,7 +471,7 @@ In the case 2) the corresponding p-value is determined using t distribution tabl
 - However, significance does not imply meaningfulness:
   - A significant correlation does not guarantee that the amount of variance accounted for is practically significant.
 
-- Use $r^2$ to assess the meaningfulness of your results:
+- Use ** $r^2$ to assess the meaningfulness** of your results:
   - Interpret $r^2$ to understand the proportion of variance explained by the correlation and its practical implications.
 
 ---
@@ -476,7 +505,10 @@ $r^2$:
 ]
 
 ---
-# Complications and Limitations of Correlation
+# Complications and limitations of correlation
+
+---
+# Complications and limitations of correlation
 .pull-left[
 - Sensitivity to Outliers:
   - Correlations can be significantly affected by outliers, which may skew the results.
@@ -532,7 +564,7 @@ p2 <- ggplot(df_outliers, aes(x = x, y = y)) +
 ] 
 
 ---
-# Complications and Limitations of Correlation
+# Complications and limitations of correlation
 - **Spurious Correlations**:
   - A significant correlation may not indicate a direct relationship between the two variables.
   - It can arise from an indirect correlation influenced by a third variable.
@@ -545,11 +577,11 @@ p2 <- ggplot(df_outliers, aes(x = x, y = y)) +
   - Always consider the context and underlying mechanisms that could affect the relationship between the variables.
 
 ---
-# Multivariate Interpretation
+# Multivariate interpretation
 - What to Do?
 
 ---
-# Multivariate Interpretation
+# Multivariate interpretation
 - What to Do?
 - Check out your Partial Correlations.
 
@@ -570,7 +602,7 @@ p2 <- ggplot(df_outliers, aes(x = x, y = y)) +
   - Focus on relative strength rather than trying to meet an absolute threshold of strength.
 
 ---
-# Other Complications
+# Other complications
 - Quantifying Relationships: Pearson’s, Spearman’s non-parametric, and Partial Correlations are all designed to quantify linear relationships.
 
   - They will not detect nonlinear relationships.
@@ -578,7 +610,7 @@ p2 <- ggplot(df_outliers, aes(x = x, y = y)) +
 - Misleading Data: Correlations using rates and averages (smoothed data) can be misleading.
 
 ---
-# Things to Remember
+# Things to remember
 - Correlations only tell us about the strength of a linear relationship between two variables.
 - We cannot interpret causality from correlation alone.
 
@@ -625,7 +657,7 @@ shapiro.test(global_T$Mona_Loa_co2)
 # Relationship between CO₂ and Temperature
 This code performs a **Spearman correlation** test to examine the relationship between global temperature and CO₂ concentration.
 
-```{r}
+```{r highlight.output = 5,7}
 #Test correlation (parametric)
 test <- cor.test(global_T$temperature,
          global_T$Mona_Loa_co2,
@@ -701,8 +733,35 @@ library(ppcor)
 
 ---
 # Partial Correlation Analysis
+.pull-left[
 - Calculate Partial Correlation
-```{r message=FALSE, warning=FALSE}
+
+```{r upload dat, paged.print=FALSE, eval=FALSE}
 pcor( df )
 ```
+] 
 
+.pull-right[
+```{r upload dat-out, ref.label="upload dat", echo=FALSE, message=FALSE}
+```
+]
+
+---
+# Partial Correlation Analysis
+.pull-left[
+- Calculate Partial Correlation
+
+```{r upload dat #1, paged.print=FALSE, eval=FALSE}
+pcor( df )
+```
+- **$estimate**: The partial correlation value between x and y.
+
+- **$p.value**: The p-value for this partial correlation is 0.01673975.
+
+- **$statistic**: A matrix of the value of the test statistic.
+] 
+
+.pull-right[
+```{r upload dat-out, ref.label="upload dat", echo=FALSE, message=FALSE}
+```
+]
