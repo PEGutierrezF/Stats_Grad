@@ -631,6 +631,32 @@ p2 <- ggplot(df_outliers, aes(x = x, y = y)) +
 
 - Misleading Data: Correlations using rates and averages (smoothed data) can be misleading.
 
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=4}
+# Create a sample dataset with a non-linear (inverted U-shape) relationship
+set.seed(123)
+x <- seq(-10, 10, length.out = 100)
+y <- -(x^2) + rnorm(100, sd = 10) # Adding random noise for scatter
+
+data <- data.frame(x, y)
+
+# Create the scatterplot
+ggplot(data, aes(x, y)) +
+  geom_point(color = "blue", alpha = 0.6) +
+  geom_smooth(method = "loess", color = "red", linetype = "dashed", se = FALSE) +  # Non-linear fit
+  geom_smooth(method = "lm", color = "black", linetype = "solid", se = FALSE) +    # Linear fit
+  labs(
+    x = "X Variable",
+    y = "Y Variable"
+  ) +
+  theme_minimal() +
+  annotate(
+    "text", x = 0, y = 40,
+    label = "",
+    color = "darkred", size = 5, hjust = 0.5
+  )
+
+```
+
 ---
 # Things to remember
 - Correlations only tell us about the strength of a linear relationship between two variables.
