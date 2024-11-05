@@ -29,6 +29,7 @@ library(ggplot2)
 library(patchwork)
 library(palmerpenguins)
 library(car)
+library(ggforce) # for geom_circle
 library(RVAideMemoire) #shapiro.test
 xaringanExtra::use_panelset()
 ```
@@ -193,7 +194,8 @@ Where:
 ---
 # Nature and Interpretation of $r$ Value
 .pull-left[ 
-- Perfect **Positive Correlation**: $r=+1$
+- Perfect **Positive Correlation**: $r=+1$  
+
   - All points lie on an upward-sloping line.
 ]
 
@@ -409,7 +411,7 @@ plot_r1 <- ggplot(data_r1, aes(x, y)) +
 
 ---
 # Coefficient of Determination ( $r^2$ )
-- $r^2$ quantifies the proportion of variability in one variable that can be explained by its relationship with the other variable.
+- $r^2$ **quantifies the proportion of variability in one variable that can be explained by its relationship with the other variable**.
 
 - It represents the shared variability between the two variables, indicating how much of the total variability they have in common.
 
@@ -417,9 +419,29 @@ plot_r1 <- ggplot(data_r1, aes(x, y)) +
 
 - This concept is similar to the Effect Size we examined in ANOVA.
 
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=4}
+# Define the plot data for two overlapping circles
+circle_data <- data.frame(
+  x = c(0.75, 2.25),    # Center x-coordinates of the circles
+  y = c(1, 1),    # Center y-coordinates of the circles
+  r = c(1, 1)     # Radii of the circles
+)
+
+# Create the ggplot with overlapping circles
+ggplot(circle_data) +
+  geom_circle(aes(x0 = x, y0 = y, r = r), fill = "skyblue", alpha = 0.1) +
+  annotate("text", x = 0.6, y = 1.25, label = "Variable X", color = "blue", size = 5) +
+  annotate("text", x = 2.4, y = 1.25, label = "Variable Y", color = "darkorange", size = 5) +
+  annotate("text", x = 1.5, y = 1, label = expression(r^2), color = "purple", size = 6) +
+  coord_fixed() +
+  theme_void()
+
+```
+
 ---
 # Difference between $r$ and $r^2$
 - $r$ (Pearson’s Correlation Coefficient):
+
   - Measures how much two variables vary together.
     - Ranges from -1 to 1:
       - -1: Perfect negative correlation
