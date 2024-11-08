@@ -208,4 +208,234 @@ p +
 2. Linear relationship between variables
 3. Normally distributed residuals (after fitting the model)
 
+---
+# Building blocks of a linear regression model
+.pull-left[
+- Create a Predictive Equation: 
+    - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
+
+- Evaluate the Model: 
+    - Quantify how well the line fits the data (e.g., using metrics like R2R2 or residual analysis).
+    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data
+]
+
+
+
+---
+# Building blocks of a linear regression model
+
+.pull-left[
+- Create a Predictive Equation: 
+    - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
+
+- Evaluate the Model: 
+    - Quantify how well the line fits the data (e.g., using metrics like $R2$ or residual analysis).
+    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data
+]
+
+.pull-right[
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=6}
+# X represents the fraction of residents in each county having attained a
+# bachelor's degree or better
+x   <- c(0.19, 0.16, 0.40, 0.24, 0.31, 0.24, 0.28, 
+         0.31, 0.18, 0.23, 0.17, 0.31, 0.15, 0.25, 
+         0.19, 0.28)
+
+y <- c(23663, 20659, 32277, 21595, 27227, 
+       25023, 26504, 28741, 21735, 23366, 
+       20871, 28370, 21105, 22706, 19527, 
+       28321)
+
+# Let's combine Income and Education into a single dataframe
+dat <- data.frame(Income = y, Education = x)
+
+# We will add county names to each row
+row.names(dat) <- c("Androscoggin", "Aroostook", "Cumberland", "Franklin", "Hancock", "Kennebec", "Knox", "Lincoln", "Oxford", "Penobscot", "Piscataquis","Sagadahoc", "Somerset", "Waldo", "Washington", "York")
+
+plot( Income ~ Education , dat, pch = 16, ylab=NA, mgp=c(4,1,.5) , las=1, bty="n", xaxs="i", xpd = TRUE, xlab="Fraction having attained a Bachelor's degree")
+
+```
+]
+
+
+---
+# Building blocks of a linear regression model
+
+.pull-left[
+- Create a Predictive Equation: 
+    - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
+
+- Evaluate the Model: 
+    - Quantify how well the line fits the data (e.g., using metrics like $R2$ or residual analysis).
+    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data
+]
+
+.pull-right[
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=6}
+# X represents the fraction of residents in each county having attained a
+# bachelor's degree or better
+x   <- c(0.19, 0.16, 0.40, 0.24, 0.31, 0.24, 0.28, 
+         0.31, 0.18, 0.23, 0.17, 0.31, 0.15, 0.25, 
+         0.19, 0.28)
+
+y <- c(23663, 20659, 32277, 21595, 27227, 
+       25023, 26504, 28741, 21735, 23366, 
+       20871, 28370, 21105, 22706, 19527, 
+       28321)
+
+# Let's combine Income and Education into a single dataframe
+dat <- data.frame(Income = y, Education = x)
+
+# We will add county names to each row
+row.names(dat) <- c("Androscoggin", "Aroostook", "Cumberland", "Franklin", "Hancock", "Kennebec", "Knox", "Lincoln", "Oxford", "Penobscot", "Piscataquis","Sagadahoc", "Somerset", "Waldo", "Washington", "York")
+
+plot( Income ~ Education , dat, pch = 16, ylab=NA, mgp=c(4,1,.5) , las=1, bty="n", xaxs="i", xpd = TRUE, xlab="Fraction having attained a Bachelor's degree")
+
+text(0.30, 22500,  paste("Observed value")) 
+
+
+```
+]
+
+
+
+---
+# Building blocks of a linear regression model
+
+.pull-left[
+- Create a Predictive Equation: 
+    - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
+
+- Evaluate the Model: 
+    - Quantify how well the line fits the data (e.g., using metrics like $R2$ or residual analysis).
+    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data
+]
+
+.pull-right[
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=6}
+# X represents the fraction of residents in each county having attained a
+# bachelor's degree or better
+x   <- c(0.19, 0.16, 0.40, 0.24, 0.31, 0.24, 0.28, 
+         0.31, 0.18, 0.23, 0.17, 0.31, 0.15, 0.25, 
+         0.19, 0.28)
+
+y <- c(23663, 20659, 32277, 21595, 27227, 
+       25023, 26504, 28741, 21735, 23366, 
+       20871, 28370, 21105, 22706, 19527, 
+       28321)
+
+# Let's combine Income and Education into a single dataframe
+dat <- data.frame(Income = y, Education = x)
+
+# We will add county names to each row
+row.names(dat) <- c("Androscoggin", "Aroostook", "Cumberland", "Franklin", "Hancock", "Kennebec", "Knox", "Lincoln", "Oxford", "Penobscot", "Piscataquis","Sagadahoc", "Somerset", "Waldo", "Washington", "York")
+
+M <- lm( y ~ x, dat)
+
+plot( y ~ x , dat, pch = 16, ylab=NA, mgp=c(4,1,.5) , las=1, bty="n", xaxs="i", xpd = TRUE,
+      xlab="Fraction having attained a Bachelor's degree")
+abline(M, col="blue")
+
+text(0.30, 22500,  paste("Observed value")) 
+
+```
+]
+
+
+---
+# Building blocks of a linear regression model
+
+.pull-left[
+- Create a Predictive Equation: 
+    - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
+
+- Evaluate the Model: 
+    - Quantify how well the line fits the data (e.g., using metrics like $R2$ or residual analysis).
+    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data
+]
+
+.pull-right[
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=6}
+# X represents the fraction of residents in each county having attained a
+# bachelor's degree or better
+x   <- c(0.19, 0.16, 0.40, 0.24, 0.31, 0.24, 0.28, 
+         0.31, 0.18, 0.23, 0.17, 0.31, 0.15, 0.25, 
+         0.19, 0.28)
+
+y <- c(23663, 20659, 32277, 21595, 27227, 
+       25023, 26504, 28741, 21735, 23366, 
+       20871, 28370, 21105, 22706, 19527, 
+       28321)
+
+# Let's combine Income and Education into a single dataframe
+dat <- data.frame(Income = y, Education = x)
+
+# We will add county names to each row
+row.names(dat) <- c("Androscoggin", "Aroostook", "Cumberland", "Franklin", "Hancock", "Kennebec", "Knox", "Lincoln", "Oxford", "Penobscot", "Piscataquis","Sagadahoc", "Somerset", "Waldo", "Washington", "York")
+
+M <- lm( y ~ x, dat)
+
+plot( y ~ x , dat, pch = 16, ylab=NA, mgp=c(4,1,.5) , las=1, bty="n", xaxs="i", xpd = TRUE,
+      xlab="Fraction having attained a Bachelor's degree")
+abline(M, col="blue")
+
+text(0.30, 22500,  paste("Observed value")) 
+
+text(0.28, 30000,  paste("Predicted value of y")) 
+arrows(0.29,26900, 0.29,29500, lwd=1, arr.type="triangle")
+
+```
+]
+
+
+---
+# Building blocks of a linear regression model
+
+.pull-left[
+- Create a Predictive Equation: 
+    - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
+
+- Evaluate the Model: 
+    - Quantify how well the line fits the data (e.g., using metrics like $R2$ or residual analysis).
+    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data
+]
+
+.pull-right[
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=6}
+# X represents the fraction of residents in each county having attained a
+# bachelor's degree or better
+x   <- c(0.19, 0.16, 0.40, 0.24, 0.31, 0.24, 0.28, 
+         0.31, 0.18, 0.23, 0.17, 0.31, 0.15, 0.25, 
+         0.19, 0.28)
+
+y <- c(23663, 20659, 32277, 21595, 27227, 
+       25023, 26504, 28741, 21735, 23366, 
+       20871, 28370, 21105, 22706, 19527, 
+       28321)
+
+# Let's combine Income and Education into a single dataframe
+dat <- data.frame(Income = y, Education = x)
+
+# We will add county names to each row
+row.names(dat) <- c("Androscoggin", "Aroostook", "Cumberland", "Franklin", "Hancock", "Kennebec", "Knox", "Lincoln", "Oxford", "Penobscot", "Piscataquis","Sagadahoc", "Somerset", "Waldo", "Washington", "York")
+
+M <- lm( y ~ x, dat)
+
+plot( y ~ x , dat, pch = 16, ylab=NA, mgp=c(4,1,.5) , las=1, bty="n", xaxs="i", xpd = TRUE,
+      xlab="Fraction having attained a Bachelor's degree")
+abline(M, col="blue")
+
+text(0.30, 22500,  paste("Observed value")) 
+
+text(0.28, 30000,  paste("Predicted value of y")) 
+arrows(0.29,26900, 0.29,29500, lwd=1, arr.type="triangle")
+
+# Add the regression equation as symbols (B + B1*X)
+equation_text <- expression("Y = B + B1*X")
+# Position the equation text on the plot
+text(x = 0.3, y = 32000, labels = equation_text, pos = 4, col = "red", cex = 1.2)
+
+```
+]
+
 
