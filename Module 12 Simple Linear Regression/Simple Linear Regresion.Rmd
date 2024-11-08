@@ -38,10 +38,10 @@ xaringanExtra::use_panelset()
 # What is regression?
 - Regression analysis is a generic term for a group of different statistical techniques. 
 
-- The purpose of all these techniques is to examine the relationship between variables. 
-  - Regression aims to find the **best-fitting linear equation ( $Y = \beta_0 + \beta_1 X_1 + \epsilon$ )** that describes the relationship between the dependent variable (often denoted as $Y$ ) and independent variables (denoted as $X1, X2, ..., Xn$ ).
-
-- The most common type of linear regression is Type I regression, in which we attempt to determine the relationship between dependent and explanatory or independent variables.
+  1. The purpose of all these techniques is to examine the relationship between variables. 
+      - Regression aims to find the **best-fitting linear equation ( $Y = \beta_0 + \beta_1 X_1 + \epsilon$ )** that describes the relationship between the dependent variable (often denoted as $Y$ ) and independent variables (denoted as $X1, X2, ..., Xn$ ).  
+<br>
+  2. The most common type of linear regression is Type I regression, in which we attempt to determine the relationship between dependent and explanatory or independent variables.
 
 ---
 # What can we accomplish with linear regression?
@@ -61,15 +61,23 @@ x <- seq(0, 22, by = 2)
 y <- 0.3 * x + rnorm(length(x), mean = 0, sd = 0.5)  # Generate some example data with noise
 df <- data.frame(x = x, y = y)
 
-# Initial ggplot with linear model fit to data
+# Fit linear model
+model <- lm(y ~ x, data = df)
+intercept <- coef(model)[1]
+slope <- coef(model)[2]
+
+# Create ggplot with linear model fit to data and equation
 p <- ggplot(data = df, aes(x = x, y = y)) +
   geom_smooth(method = "lm", color = "black", se=F, linewidth=0.8) +
   geom_point(color = "red", size = 1.5) +
   theme_bw() +
   scale_y_continuous(limits = c(0, 10), name = "Dependent Variable (Y)") +
-  scale_x_continuous(limits = c(0, 30), name = "Independent Variable (X)")
+  scale_x_continuous(limits = c(0, 30), name = "Independent Variable (X)") +
+  annotate("text", x = 5, y = 8, label = paste0("Y = ", round(intercept, 2), " + ", round(slope, 2), "X"), 
+           color = "blue", size = 4)
 
 p
+
 ```
 ]
 
@@ -111,7 +119,7 @@ random_y <- predict(model, newdata = data.frame(x = random_x))
 
 p + geom_vline(xintercept = random_x, color = "red", linetype = "dashed") +  # Vertical red line
   geom_hline(yintercept = random_y, color = "red", linetype = "dashed") +  # Horizontal red line
-  annotate("text", x = random_x, y = random_y + 0.5, label = paste("Predicted y =", round(random_y, 2)), color = "red")
+  annotate("text", x = 10, y = random_y + 0.5, label = paste("Predicted y =", round(random_y, 2)), color = "red")
 
 ```
 ]
@@ -119,21 +127,19 @@ p + geom_vline(xintercept = random_x, color = "red", linetype = "dashed") +  # V
 
 ---
 # What can we accomplish with linear regression?
-
 .pull-left[
 - Describing the nature of the relationship between two variables.
 
 - Predicting the dependent variable within the range of observed values. Aim to forecast y-values within the range of observed x-values. Offers relatively more certainty due to reliance on known data.
 
 - Predicting the dependent variable beyond the range of observed values. 
-Represents an exploration beyond the limits of observed data.
-Naturally, this type of objective carries the greatest load of restrictions, assumptions, caveats, and risk of error.
+    - Represents an exploration beyond the limits of observed data.
+    - Naturally, this type of objective carries the greatest load of restrictions, assumptions, caveats, and risk of error.
 
 ]
 
 
 .pull-right[
-
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=5}
 # Sample data
 set.seed(14)
@@ -166,6 +172,40 @@ p +
 ```
 ]
 
+---
+# Difference Between Correlation and Linear Simple Regression
+1. Degree & Nature of Relationship:
+    - Correlation is a measure of degree of relationship between X & Y.
+    - Regression studies the nature of relationship between the variables so that one may be able to predict the value of one variable on the basis of another. 
 
 ---
+# Difference Between Correlation and Linear Simple Regression
+2. Cause & Effect Relationship:
+    - Correlation does **not imply a cause-and-effect relationship** between two variables.
+    - Regression models a **cause-and-effect relationship**, where:
+        - The independent variable is the cause.
+        - The dependent variable is the effect.
+ 
+
+---
+# Difference Between Correlation and Linear Simple Regression
+3. Independent and Dependent Relationship:
+    - In correlation, there is **no distinction** between independent and dependent variables.
+    - In regression, the model includes:
+        - Slope ( $\beta_1$ ): the change in the dependent variable per unit increase in the independent variable.
+        - Intercept ( $\beta_0$ ): the value of the dependent variable when the independent variable is zero.
+
+---
+# When to use a Simple Linear Regression
+- You have two continuous variables measured in the same unit.
+- You suspect the variables are related and vary in unison.
+- You aim to predict one variable based on the other.
+- You want to evaluate a trend (slope) over multiple measurements.
+
+---
+# Assumptions 
+1. Independent, random samples
+2. Linear relationship between variables
+3. Normally distributed residuals (after fitting the model)
+
 

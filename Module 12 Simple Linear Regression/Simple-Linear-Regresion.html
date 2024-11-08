@@ -4,7 +4,7 @@
     <title>Simple Linear Regresion</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <meta name="date" content="2024-11-07" />
+    <meta name="date" content="2024-11-08" />
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
@@ -24,7 +24,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2024-11-07
+### 2024-11-08
 ]
 
 ---
@@ -36,10 +36,10 @@ class: center, middle, inverse, title-slide
 # What is regression?
 - Regression analysis is a generic term for a group of different statistical techniques. 
 
-- The purpose of all these techniques is to examine the relationship between variables. 
-  - Regression aims to find the **best-fitting linear equation ( `\(Y = \beta_0 + \beta_1 X_1 + \epsilon\)` )** that describes the relationship between the dependent variable (often denoted as `\(Y\)` ) and independent variables (denoted as `\(X1, X2, ..., Xn\)` ).
-
-- The most common type of linear regression is Type I regression, in which we attempt to determine the relationship between dependent and explanatory or independent variables.
+  1. The purpose of all these techniques is to examine the relationship between variables. 
+      - Regression aims to find the **best-fitting linear equation ( `\(Y = \beta_0 + \beta_1 X_1 + \epsilon\)` )** that describes the relationship between the dependent variable (often denoted as `\(Y\)` ) and independent variables (denoted as `\(X1, X2, ..., Xn\)` ).  
+&lt;br&gt;
+  2. The most common type of linear regression is Type I regression, in which we attempt to determine the relationship between dependent and explanatory or independent variables.
 
 ---
 # What can we accomplish with linear regression?
@@ -75,26 +75,58 @@ class: center, middle, inverse, title-slide
 
 ---
 # What can we accomplish with linear regression?
-
 .pull-left[
 - Describing the nature of the relationship between two variables.
 
 - Predicting the dependent variable within the range of observed values. Aim to forecast y-values within the range of observed x-values. Offers relatively more certainty due to reliance on known data.
 
 - Predicting the dependent variable beyond the range of observed values. 
-Represents an exploration beyond the limits of observed data.
-Naturally, this type of objective carries the greatest load of restrictions, assumptions, caveats, and risk of error.
+    - Represents an exploration beyond the limits of observed data.
+    - Naturally, this type of objective carries the greatest load of restrictions, assumptions, caveats, and risk of error.
 
 ]
 
 
 .pull-right[
-
 ![](Simple-Linear-Regresion_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
 ]
 
+---
+# Difference Between Correlation and Linear Simple Regression
+1. Degree &amp; Nature of Relationship:
+    - Correlation is a measure of degree of relationship between X &amp; Y.
+    - Regression studies the nature of relationship between the variables so that one may be able to predict the value of one variable on the basis of another. 
 
 ---
+# Difference Between Correlation and Linear Simple Regression
+2. Cause &amp; Effect Relationship:
+    - Correlation does **not imply a cause-and-effect relationship** between two variables.
+    - Regression models a **cause-and-effect relationship**, where:
+        - The independent variable is the cause.
+        - The dependent variable is the effect.
+ 
+
+---
+# Difference Between Correlation and Linear Simple Regression
+3. Independent and Dependent Relationship:
+    - In correlation, there is **no distinction** between independent and dependent variables.
+    - In regression, the model includes:
+        - Slope ( `\(\beta_1\)` ): the change in the dependent variable per unit increase in the independent variable.
+        - Intercept ( `\(\beta_0\)` ): the value of the dependent variable when the independent variable is zero.
+
+---
+# When to use a Simple Linear Regression
+- You have two continuous variables measured in the same unit.
+- You suspect the variables are related and vary in unison.
+- You aim to predict one variable based on the other.
+- You want to evaluate a trend (slope) over multiple measurements.
+
+---
+# Assumptions 
+1. Independent, random samples
+2. Linear relationship between variables
+3. Normally distributed residuals (after fitting the model)
+
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
