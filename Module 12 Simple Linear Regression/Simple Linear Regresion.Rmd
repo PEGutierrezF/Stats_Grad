@@ -34,3 +34,138 @@ library(RVAideMemoire) #shapiro.test
 xaringanExtra::use_panelset()
 ```
 
+
+# What is regression?
+- Regression analysis is a generic term for a group of different statistical techniques. 
+
+- The purpose of all these techniques is to examine the relationship between variables. 
+  - Regression aims to find the **best-fitting linear equation ( $Y = \beta_0 + \beta_1 X_1 + \epsilon$ )** that describes the relationship between the dependent variable (often denoted as $Y$ ) and independent variables (denoted as $X1, X2, ..., Xn$ ).
+
+- The most common type of linear regression is Type I regression, in which we attempt to determine the relationship between dependent and explanatory or independent variables.
+
+---
+# What can we accomplish with linear regression?
+
+.pull-left[
+- Describing the nature of the relationship between two variables.
+
+]
+
+
+.pull-right[
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=5}
+# Sample data
+set.seed(14)
+x <- seq(0, 22, by = 2)
+y <- 0.3 * x + rnorm(length(x), mean = 0, sd = 0.5)  # Generate some example data with noise
+df <- data.frame(x = x, y = y)
+
+# Initial ggplot with linear model fit to data
+p <- ggplot(data = df, aes(x = x, y = y)) +
+  geom_smooth(method = "lm", color = "black", se=F, linewidth=0.8) +
+  geom_point(color = "red", size = 1.5) +
+  theme_bw() +
+  scale_y_continuous(limits = c(0, 10), name = "Dependent Variable (Y)") +
+  scale_x_continuous(limits = c(0, 30), name = "Independent Variable (X)")
+
+p
+```
+]
+
+
+---
+# What can we accomplish with linear regression?
+
+.pull-left[
+- Describing the nature of the relationship between two variables.
+
+- Predicting the dependent variable within the range of observed values. Aim to forecast y-values within the range of observed x-values. Offers relatively more certainty due to reliance on known data.
+
+]
+
+
+.pull-right[
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=5}
+# Sample data
+set.seed(14)
+x <- seq(0, 22, by = 2)
+y <- 0.3 * x + rnorm(length(x), mean = 0, sd = 0.5)  # Generate some example data with noise
+df <- data.frame(x = x, y = y)
+
+# Initial ggplot with linear model fit to data
+p <- ggplot(data = df, aes(x = x, y = y)) +
+  geom_smooth(method = "lm", color = "black", se=T, linewidth=0.8) +
+  geom_point(color = "red", size = 1.5) +
+  theme_bw() +
+  scale_y_continuous(limits = c(0, 10), name = "Dependent Variable (Y)") +
+  scale_x_continuous(limits = c(0, 30), name = "Independent Variable (X)")
+
+# Fit a linear model to the data
+model <- lm(y ~ x, data = df)
+
+# Choose a random x value within the extrapolated range (e.g., x = 25)
+random_x <- 15
+random_y <- predict(model, newdata = data.frame(x = random_x))
+
+p + geom_vline(xintercept = random_x, color = "red", linetype = "dashed") +  # Vertical red line
+  geom_hline(yintercept = random_y, color = "red", linetype = "dashed") +  # Horizontal red line
+  annotate("text", x = random_x, y = random_y + 0.5, label = paste("Predicted y =", round(random_y, 2)), color = "red")
+
+```
+]
+
+
+---
+# What can we accomplish with linear regression?
+
+.pull-left[
+- Describing the nature of the relationship between two variables.
+
+- Predicting the dependent variable within the range of observed values. Aim to forecast y-values within the range of observed x-values. Offers relatively more certainty due to reliance on known data.
+
+- Predicting the dependent variable beyond the range of observed values. 
+Represents an exploration beyond the limits of observed data.
+Naturally, this type of objective carries the greatest load of restrictions, assumptions, caveats, and risk of error.
+
+]
+
+
+.pull-right[
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=5}
+# Sample data
+set.seed(14)
+x <- seq(0, 22, by = 2)
+y <- 0.3 * x + rnorm(length(x), mean = 0, sd = 0.5)  # Generate some example data with noise
+df <- data.frame(x = x, y = y)
+
+# Initial ggplot with linear model fit to data
+p <- ggplot(data = df, aes(x = x, y = y)) +
+  geom_smooth(method = "lm", color = "black", se=T, linewidth=0.8) +
+  geom_point(color = "red", size = 1.5) +
+  theme_bw() +
+  scale_y_continuous(limits = c(0, 10), name = "Dependent Variable (Y)") +
+  scale_x_continuous(limits = c(0, 30), name = "Independent Variable (X)")
+
+# Fit a linear model to the data
+model <- lm(y ~ x, data = df)
+
+# Create new data frame for extrapolation from x = 22 to 30
+new_x <- data.frame(x = seq(22, 30, by = 1))
+predictions <- predict(model, newdata = new_x, interval = "confidence", level = 0.95)
+newdf <- cbind(new_x, predictions)
+
+# Add extrapolated line and confidence ribbon to the plot
+p + 
+ # geom_ribbon(data = newdf, aes(x = x, ymin = lwr, ymax = upr), fill = "grey90") +
+  geom_line(data = newdf, aes(x = x, y = fit), color = 'steelblue', lwd = 1.2, lty = 2) +
+  ggtitle("")
+
+```
+]
+
+
+---
+
