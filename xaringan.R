@@ -40,7 +40,10 @@ $\alpha+\beta$
   
 <span style="color:#00796B;">TEXT </span>
   $$\require{color}\displaystyle\colorbox{#FFD1DC}{$Y = \beta_0 + \beta_1 X_1 + \ldots + \beta_n X_n$}$$
-
+    This **.red[simple]** .white.bg-purple[demo] 
+    _.orange[shows]_ the colors .green[in action].
+    
+    
     
 href="https://hubbardbrook.org/story/the-ice-storm-experiment-at-hubbard-brook/">Link </a>
       

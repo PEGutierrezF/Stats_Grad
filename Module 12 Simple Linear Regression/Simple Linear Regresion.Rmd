@@ -210,27 +210,26 @@ p +
 
 ---
 # Building blocks of a linear regression model
+
+
+---
+# Building blocks of a linear regression model
 .pull-left[
-- Create a Predictive Equation: 
+- **Create a Predictive Equation**: 
     - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
 
-- Evaluate the Model: 
+- **Evaluate the Model**: 
     - Quantify how well the line fits the data (e.g., using metrics like R2R2 or residual analysis).
     - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data
 ]
-
 
 
 ---
 # Building blocks of a linear regression model
 
 .pull-left[
-- Create a Predictive Equation: 
+- **Create a Predictive Equation**:  
     - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
-
-- Evaluate the Model: 
-    - Quantify how well the line fits the data (e.g., using metrics like $R2$ or residual analysis).
-    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data
 ]
 
 .pull-right[
@@ -262,12 +261,8 @@ plot( Income ~ Education , dat, pch = 16, ylab=NA, mgp=c(4,1,.5) , las=1, bty="n
 # Building blocks of a linear regression model
 
 .pull-left[
-- Create a Predictive Equation: 
+- **Create a Predictive Equation**: 
     - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
-
-- Evaluate the Model: 
-    - Quantify how well the line fits the data (e.g., using metrics like $R2$ or residual analysis).
-    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data
 ]
 
 .pull-right[
@@ -303,12 +298,8 @@ text(0.30, 22500,  paste("Observed value"))
 # Building blocks of a linear regression model
 
 .pull-left[
-- Create a Predictive Equation: 
+- **Create a Predictive Equation**: 
     - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
-
-- Evaluate the Model: 
-    - Quantify how well the line fits the data (e.g., using metrics like $R2$ or residual analysis).
-    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data
 ]
 
 .pull-right[
@@ -346,12 +337,8 @@ text(0.30, 22500,  paste("Observed value"))
 # Building blocks of a linear regression model
 
 .pull-left[
-- Create a Predictive Equation: 
+- **Create a Predictive Equation**: 
     - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
-
-- Evaluate the Model: 
-    - Quantify how well the line fits the data (e.g., using metrics like $R2$ or residual analysis).
-    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data
 ]
 
 .pull-right[
@@ -392,12 +379,8 @@ arrows(0.29,26900, 0.29,29500, lwd=1, arr.type="triangle")
 # Building blocks of a linear regression model
 
 .pull-left[
-- Create a Predictive Equation: 
+- **Create a Predictive Equation**: 
     - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
-
-- Evaluate the Model: 
-    - Quantify how well the line fits the data (e.g., using metrics like $R2$ or residual analysis).
-    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data
 ]
 
 .pull-right[
@@ -439,18 +422,12 @@ text(x = 0.3, y = 32000, labels = equation_text, pos = 4, col = "red", cex = 1.2
 ]
 
 
-
-
 ---
 # Building blocks of a linear regression model
 
 .pull-left[
-- Create a Predictive Equation: 
+- **Create a Predictive Equation**: 
     - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
-
-- Evaluate the Model: 
-    - Quantify how well the line fits the data (e.g., using metrics like $R2$ or residual analysis).
-    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data
 ]
 
 .pull-right[
@@ -507,12 +484,8 @@ for (i in 1:length(residuals)) {
 # Building blocks of a linear regression model
 
 .pull-left[
-- Create a Predictive Equation: 
+- **Create a Predictive Equation**: 
     - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
-
-- Evaluate the Model: 
-    - Quantify how well the line fits the data (e.g., using metrics like $R2$ or residual analysis).
-    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data.
 ]
 
 .pull-right[
@@ -563,3 +536,191 @@ for (i in 1:length(residuals)) {
 
 ```
 ]
+
+---
+# Building blocks of a linear regression model
+- The sum of squared error in regression is:
+
+.pull-left[
+- $\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$
+]
+
+.pull-right[
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=6}
+# Sample data for illustration
+x <- c(0.19, 0.16, 0.40, 0.24, 0.31, 0.24, 0.28, 
+       0.31, 0.18, 0.23, 0.17, 0.31, 0.15, 0.25, 
+       0.19, 0.28)
+y <- c(23663, 20659, 32277, 21595, 27227, 
+       25023, 26504, 28741, 21735, 23366, 
+       20871, 28370, 21105, 22706, 19527, 
+       28321)
+dat <- data.frame(Education = x, Income = y)
+
+# Fit a linear model
+M <- lm(Income ~ Education, data = dat)
+
+# Plot all points and regression line
+plot(Income ~ Education, data = dat, pch = 16, ylab="", 
+     xlab="Fraction with Bachelor's Degree", las=1, bty="n", col="gray")
+abline(M, col="blue")
+
+# Pick a single point to highlight
+i <- 16  # Index of observation to highlight
+points(x[i], y[i], col="black", pch=16)  # Highlighted observed point
+```
+]
+
+---
+# Building blocks of a linear regression model
+- The sum of squared error in regression is:
+
+.pull-left[
+- $\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$
+]
+
+.pull-right[
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=6}
+# Sample data for illustration
+x <- c(0.19, 0.16, 0.40, 0.24, 0.31, 0.24, 0.28, 
+       0.31, 0.18, 0.23, 0.17, 0.31, 0.15, 0.25, 
+       0.19, 0.28)
+y <- c(23663, 20659, 32277, 21595, 27227, 
+       25023, 26504, 28741, 21735, 23366, 
+       20871, 28370, 21105, 22706, 19527, 
+       28321)
+dat <- data.frame(Education = x, Income = y)
+
+# Fit a linear model
+M <- lm(Income ~ Education, data = dat)
+
+# Plot all points and regression line
+plot(Income ~ Education, data = dat, pch = 16, ylab="", 
+     xlab="Fraction with Bachelor's Degree", las=1, bty="n", col="gray")
+abline(M, col="blue")
+
+# Pick a single point to highlight
+i <- 16  # Index of observation to highlight
+points(x[i], y[i], col="black", pch=16)  # Highlighted observed point
+
+text(x[i], y[i]+0.009, expression(y[i]), pos=4, col="black", cex=1.7)
+
+```
+]
+
+
+---
+# Building blocks of a linear regression model
+- The sum of squared error in regression is:
+
+.pull-left[
+- $\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$
+]
+
+.pull-right[
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=6}
+# Sample data for illustration
+x <- c(0.19, 0.16, 0.40, 0.24, 0.31, 0.24, 0.28, 
+       0.31, 0.18, 0.23, 0.17, 0.31, 0.15, 0.25, 
+       0.19, 0.28)
+y <- c(23663, 20659, 32277, 21595, 27227, 
+       25023, 26504, 28741, 21735, 23366, 
+       20871, 28370, 21105, 22706, 19527, 
+       28321)
+dat <- data.frame(Education = x, Income = y)
+
+# Fit a linear model
+M <- lm(Income ~ Education, data = dat)
+
+# Plot all points and regression line
+plot(Income ~ Education, data = dat, pch = 16, ylab="", 
+     xlab="Fraction with Bachelor's Degree", las=1, bty="n", col="gray")
+abline(M, col="blue")
+
+# Pick a single point to highlight
+i <- 16  # Index of observation to highlight
+points(x[i], y[i], col="black", pch=16)  # Highlighted observed point
+
+text(x[i], y[i]+0.009, expression(y[i]), pos=4, col="black", cex=1.7)
+
+# Predicted y-value for the selected x-value
+y_hat <- predict(M, newdata = data.frame(Education = x[i]))
+
+# Draw a line from observation to fitted line (residual)
+segments(x[i], y[i], x[i], y_hat, col="red", lwd=1.5)
+
+# Draw lines from the fitted point to both axes
+segments(x[i], y_hat, 0, y_hat, col="red", lty=2)  # Horizontal line to y-axis
+segments(x[i], 0, x[i], y_hat, col="red", lty=2)   # Vertical line to x-axis
+
+# Add labels to indicate observation and predicted value
+text(x[i], y_hat, expression(hat(y)[i]), pos=4, col="blue", cex=1.7)
+text(0.02, y_hat, expression(paste("Predicted ", hat(y)[i])), pos=4, col="red")
+
+# Annotate the plot with the regression equation
+# equation_text <- expression(Y == beta[0] + beta[1] * X)
+# text(0.30, 31200, equation_text, col="blue", cex=1.7)
+
+
+```
+]
+
+
+---
+# Building blocks of a linear regression model
+- The sum of squared error in regression is:
+
+.pull-left[
+- $\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$
+]
+
+.pull-right[
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=6}
+# Sample data for illustration
+x <- c(0.19, 0.16, 0.40, 0.24, 0.31, 0.24, 0.28, 
+       0.31, 0.18, 0.23, 0.17, 0.31, 0.15, 0.25, 
+       0.19, 0.28)
+y <- c(23663, 20659, 32277, 21595, 27227, 
+       25023, 26504, 28741, 21735, 23366, 
+       20871, 28370, 21105, 22706, 19527, 
+       28321)
+dat <- data.frame(Education = x, Income = y)
+
+# Fit a linear model
+M <- lm(Income ~ Education, data = dat)
+
+# Plot all points and regression line
+plot(Income ~ Education, data = dat, pch = 16, ylab="", 
+     xlab="Fraction with Bachelor's Degree", las=1, bty="n", col="gray")
+abline(M, col="blue")
+
+# Pick a single point to highlight
+i <- 16  # Index of observation to highlight
+points(x[i], y[i], col="black", pch=16)  # Highlighted observed point
+
+text(x[i], y[i]+0.009, expression(y[i]), pos=4, col="black", cex=1.7)
+
+# Predicted y-value for the selected x-value
+y_hat <- predict(M, newdata = data.frame(Education = x[i]))
+
+# Draw a line from observation to fitted line (residual)
+segments(x[i], y[i], x[i], y_hat, col="red", lwd=1.5)
+
+# Draw lines from the fitted point to both axes
+segments(x[i], y_hat, 0, y_hat, col="red", lty=2)  # Horizontal line to y-axis
+segments(x[i], 0, x[i], y_hat, col="red", lty=2)   # Vertical line to x-axis
+
+# Add labels to indicate observation and predicted value
+text(x[i], y_hat, expression(hat(y)[i]), pos=4, col="blue", cex=1.7)
+text(0.02, y_hat, expression(paste("Predicted ", hat(y)[i])), pos=4, col="red")
+
+# Annotate the error term e_i = y_i - y_hat with a bracket
+# Position the text near the middle of the residual line
+middle_y <- (y[i] + y_hat) / 2  # Midpoint of the y-coordinates for the residual
+text(x[i] + 0.02, middle_y, labels=expression(e[i] == y[i] - hat(y)[i]), col="blue", pos=4, cex=1.4)
+text(x[i] + 0.009, middle_y, "}", srt=0, col="red", cex=3.5)
+
+
+```
+]
+
