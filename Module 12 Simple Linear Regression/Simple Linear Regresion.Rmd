@@ -918,11 +918,108 @@ for (i in 1:length(residuals)) {
 - **Slopes**
 ]
 
+
 ---
 # Building blocks of a linear regression model
 
 .pull-left[
 - **Slopes** ( $\beta_1$, $\beta_2$, ., $\beta_n$ ): These coefficients represent the change in the dependent variable for a one-unit change in the corresponding independent variable, holding other variables constant.
+]
+
+.pull-right[
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='top', fig.width=5, fig.height=6}
+# X represents the fraction of residents in each county having attained a
+# bachelor's degree or better
+x   <- c(0.19, 0.16, 0.40, 0.24, 0.31, 0.24, 0.28, 
+         0.31, 0.18, 0.23, 0.17, 0.31, 0.15, 0.25, 
+         0.19, 0.28)
+
+y <- c(23663, 20659, 32277, 21595, 27227, 
+       25023, 26504, 28741, 21735, 23366, 
+       20871, 28370, 21105, 22706, 19527, 
+       28321)
+
+# Let's combine Income and Education into a single dataframe
+dat <- data.frame(Income = y, Education = x)
+
+# We will add county names to each row
+row.names(dat) <- c("Androscoggin", "Aroostook", "Cumberland", "Franklin", "Hancock", "Kennebec", "Knox", "Lincoln", "Oxford", "Penobscot", "Piscataquis","Sagadahoc", "Somerset", "Waldo", "Washington", "York")
+
+M <- lm( y ~ x, dat)
+
+plot( y ~ x , dat, pch = 16, ylab=NA, mgp=c(4,1,.5) , las=1, bty="n", xaxs="i", xpd = TRUE,
+      xlab="Fraction having attained a Bachelor's degree")
+abline(M, col="blue")
+
+
+text(0.28, 30000,  paste("Predicted value of y")) 
+arrows(0.29,26900, 0.29,29500, lwd=1, arr.type="triangle")
+
+# Add the regression equation as symbols (B + B1*X)
+equation_text <- expression(Y == beta[0] + beta[1]*X)
+# Position the equation text on the plot
+text(x = 0.3, y = 32000, labels = equation_text, pos = 4, col = "red", cex = 1.2)
+
+# Draw dashed lines for residuals
+residuals <- M$residuals
+fitted_values <- fitted(M)
+
+# Loop through the data points to draw dashed lines from each data point to the fitted line
+for (i in 1:length(residuals)) {
+  segments(dat$Education[i], dat$Income[i], dat$Education[i], fitted_values[i], col = "red", lty = 2)
+}
+
+
+# Draw the slope lines
+segments(0.37, 28500, 0.37, 30800, col = "purple", lty = 2)  # Horizontal line at slope_y1
+segments(0.37, 28500, 0.324, 28500, col = "purple", lty = 2)   # Vertical line to slope_y2
+
+# Annotate the lines
+text(0.366, 29800, 'Slope', col = "purple", pos = 4, cex = 1)
+text(0.369, 29000, expression(beta[1]), col = "purple", pos = 4, cex = 1.2)
+
+```
+]
+
+
+
+---
+# Building blocks of a linear regression model
+
+.pull-left[
+- **Slopes** ( $\beta_1$, $\beta_2$, ., $\beta_n$ ): These coefficients represent the change in the dependent variable for a one-unit change in the corresponding independent variable, holding other variables constant.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+# Sample data
+x <- c(0.19, 0.16, 0.40, 0.24, 0.31, 0.24, 0.28, 
+       0.31, 0.18, 0.23, 0.17, 0.31, 0.15, 0.25, 
+       0.19, 0.28)
+
+y <- c(23, 20, 32, 21, 27, 25, 26, 28, 21, 23, 
+       20, 28, 21, 22, 19, 28)
+
+# Data frame
+dat <- data.frame(y = y, x = x)
+
+# Fit linear model
+M <- lm(y ~ x, dat)
+
+# Plot data points and regression line
+plot(y ~ x, dat, pch = 16, ylab="Y", xlab="X", xlim = c(0, 0.45), ylim = c(15, 35))
+abline(M, col = "blue")
+
+# Add general linear equation as expression
+equation_text <- expression(Y == beta[0] + beta[1] * X)
+text(x = 0.3, y = 34, labels = equation_text, pos = 4, col = "blue", cex = 1.2)
+
+# Slope triangle
+segments(0.32, 23, 0.32, 27, col = "purple", lty = 2)  # Vertical line for "changes in y"
+segments(0.32, 23, 0.22, 23, col = "purple", lty = 2)  # Horizontal line for "1 unit of increase in x"
+
+# Annotations for slope triangle
+text(0.33, 25, "changes in Y", col = "purple", pos = 4, cex = 0.9)
+text(0.27, 22.5, "1 unit of increase in X", col = "purple", pos = 1, cex = 0.9)
+```
 ]
 
 .pull-right[
