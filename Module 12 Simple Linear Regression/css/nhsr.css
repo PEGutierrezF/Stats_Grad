@@ -194,19 +194,6 @@ blockquote {
   --panel-tab-font-family: Roboto, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;\
 }
 
-<style>
-
-.center2 {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-</style>
-
 
 /*-- CUSTOM CLASSES FOR TEXT EMPHASIS --*/
 .blue       { color:   #005EB8 }
