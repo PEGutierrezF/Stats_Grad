@@ -541,6 +541,80 @@ for (i in 1:length(residuals)) {
 # Building blocks of a linear regression model
 
 .pull-left[
+- Calculate the model parameters (**intercept** and **slope**) for the line that cuts through the observations with the **least amount of error (squared error)**.  
+  -   This is referred to as a **Least Squares Regression (LSR)**.
+
+- LSR does this by minimizing the sum of the squares of the differences between the observed dependent variable values and those predicted by the linear model. 
+    - These differences are called **residuals**.
+
+]
+
+.pull-right[
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=6}
+# X represents the fraction of residents in each county having attained a
+# bachelor's degree or better
+x   <- c(0.19, 0.16, 0.40, 0.24, 0.31, 0.24, 0.28, 
+         0.31, 0.18, 0.23, 0.17, 0.31, 0.15, 0.25, 
+         0.19, 0.28)
+
+y <- c(23663, 20659, 32277, 21595, 27227, 
+       25023, 26504, 28741, 21735, 23366, 
+       20871, 28370, 21105, 22706, 19527, 
+       28321)
+
+# Let's combine Income and Education into a single dataframe
+dat <- data.frame(Income = y, Education = x)
+
+# We will add county names to each row
+row.names(dat) <- c("Androscoggin", "Aroostook", "Cumberland", "Franklin", "Hancock", "Kennebec", "Knox", "Lincoln", "Oxford", "Penobscot", "Piscataquis","Sagadahoc", "Somerset", "Waldo", "Washington", "York")
+
+M <- lm( y ~ x, dat)
+
+plot( y ~ x , dat, pch = 16, ylab=NA, mgp=c(4,1,.5) , las=1, bty="n", xaxs="i", xpd = TRUE,
+      xlab="Fraction having attained a Bachelor's degree")
+abline(M, col="blue")
+
+text(0.30, 22500,  paste("Observed value")) 
+text(0.284, 23700,  paste("Residuals"), col='red') 
+
+text(0.28, 30000,  paste("Predicted value of y")) 
+arrows(0.29,26900, 0.29,29500, lwd=1, arr.type="triangle")
+
+# Add the regression equation as symbols (B + B1*X)
+equation_text <- expression(Y == beta[0] + beta[1]*X)
+# Position the equation text on the plot
+text(x = 0.3, y = 32000, labels = equation_text, pos = 4, col = "red", cex = 1.2)
+
+# Draw dashed lines for residuals
+residuals <- M$residuals
+fitted_values <- fitted(M)
+
+# Loop through the data points to draw dashed lines from each data point to the fitted line
+for (i in 1:length(residuals)) {
+  segments(dat$Education[i], dat$Income[i], dat$Education[i], fitted_values[i], col = "red", lty = 2)
+}
+
+
+```
+]
+
+---
+# Building blocks of a linear regression model
+
+.pull-left[
+- The sum of squared error in regression is:
+
+- $\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$
+
+]
+
+
+
+
+---
+# Building blocks of a linear regression model
+
+.pull-left[
 - The sum of squared error in regression is:
 
 - $\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$
@@ -607,6 +681,56 @@ points(x[i], y[i], col="black", pch=16)  # Highlighted observed point
 
 text(x[i], y[i]+0.009, expression(y[i]), pos=4, col="black", cex=1.7)
 
+```
+]
+
+
+---
+# Building blocks of a linear regression model
+
+.pull-left[
+- The sum of squared error in regression is:
+
+- $\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$
+]
+
+.pull-right[
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=6}
+# Sample data for illustration
+x <- c(0.19, 0.16, 0.40, 0.24, 0.31, 0.24, 0.28, 
+       0.31, 0.18, 0.23, 0.17, 0.31, 0.15, 0.25, 
+       0.19, 0.28)
+y <- c(23663, 20659, 32277, 21595, 27227, 
+       25023, 26504, 28741, 21735, 23366, 
+       20871, 28370, 21105, 22706, 19527, 
+       28321)
+dat <- data.frame(Education = x, Income = y)
+
+# Fit a linear model
+M <- lm(Income ~ Education, data = dat)
+
+# Plot all points and regression line
+plot(Income ~ Education, data = dat, pch = 16, ylab="", 
+     xlab="Fraction with Bachelor's Degree", las=1, bty="n", col="gray")
+abline(M, col="blue")
+
+# Pick a single point to highlight
+i <- 16  # Index of observation to highlight
+points(x[i], y[i], col="black", pch=16)  # Highlighted observed point
+
+text(x[i], y[i]+0.009, expression(y[i]), pos=4, col="black", cex=1.7)
+
+# Predicted y-value for the selected x-value
+y_hat <- predict(M, newdata = data.frame(Education = x[i]))
+
+
+# Add labels to indicate observation and predicted value
+text(x[i], y_hat, expression(hat(y)[i]), pos=4, col="blue", cex=1.7)
+text(0.02, y_hat, expression(paste("Predicted ", hat(y)[i])), pos=4, col="red")
+
+# Annotate the plot with the regression equation
+# equation_text <- expression(Y == beta[0] + beta[1] * X)
+# text(0.30, 31200, equation_text, col="blue", cex=1.7)
 ```
 ]
 
@@ -667,15 +791,16 @@ text(0.02, y_hat, expression(paste("Predicted ", hat(y)[i])), pos=4, col="red")
 ]
 
 
+
 ---
 # Building blocks of a linear regression model
-
 .pull-left[
 - The sum of squared error in regression is:
 
 - $\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$
 
 ]
+
 
 .pull-right[
 ```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=6}
@@ -725,3 +850,64 @@ text(x[i] + 0.009, middle_y, "}", srt=0, col="blue", cex=3)
 ```
 ]
 
+
+
+---
+# Building blocks of a linear regression model
+
+.pull-left[
+- **Best fit** in context of OLS (Ordinary Least Square, a type of Least Square) means that the sum of the squares of the residuals (or error SSE) us as **small as possible**.
+
+- Mathematically, it's about finding the values of slope ( $\beta_1$, $\beta_2$, ., $\beta_n$ ) that minimize this sum.
+]
+
+.center2[
+.pull-right[
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='top', fig.width=5, fig.height=6}
+# X represents the fraction of residents in each county having attained a
+# bachelor's degree or better
+x   <- c(0.19, 0.16, 0.40, 0.24, 0.31, 0.24, 0.28, 
+         0.31, 0.18, 0.23, 0.17, 0.31, 0.15, 0.25, 
+         0.19, 0.28)
+
+y <- c(23663, 20659, 32277, 21595, 27227, 
+       25023, 26504, 28741, 21735, 23366, 
+       20871, 28370, 21105, 22706, 19527, 
+       28321)
+
+# Let's combine Income and Education into a single dataframe
+dat <- data.frame(Income = y, Education = x)
+
+# We will add county names to each row
+row.names(dat) <- c("Androscoggin", "Aroostook", "Cumberland", "Franklin", "Hancock", "Kennebec", "Knox", "Lincoln", "Oxford", "Penobscot", "Piscataquis","Sagadahoc", "Somerset", "Waldo", "Washington", "York")
+
+M <- lm( y ~ x, dat)
+
+plot( y ~ x , dat, pch = 16, ylab=NA, mgp=c(4,1,.5) , las=1, bty="n", xaxs="i", xpd = TRUE,
+      xlab="Fraction having attained a Bachelor's degree")
+abline(M, col="blue")
+
+text(0.30, 22500,  paste("Observed value")) 
+text(0.284, 23700,  paste("Residuals"), col='red') 
+
+text(0.28, 30000,  paste("Predicted value of y")) 
+arrows(0.29,26900, 0.29,29500, lwd=1, arr.type="triangle")
+
+# Add the regression equation as symbols (B + B1*X)
+equation_text <- expression(Y == beta[0] + beta[1]*X)
+# Position the equation text on the plot
+text(x = 0.3, y = 32000, labels = equation_text, pos = 4, col = "red", cex = 1.2)
+
+# Draw dashed lines for residuals
+residuals <- M$residuals
+fitted_values <- fitted(M)
+
+# Loop through the data points to draw dashed lines from each data point to the fitted line
+for (i in 1:length(residuals)) {
+  segments(dat$Education[i], dat$Income[i], dat$Education[i], fitted_values[i], col = "red", lty = 2)
+}
+
+
+```
+]
+]

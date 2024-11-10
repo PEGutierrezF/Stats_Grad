@@ -239,9 +239,12 @@ class: center, middle, inverse, title-slide
 # Building blocks of a linear regression model
 
 .pull-left[
-- The sum of squared error in regression is:
+- Calculate the model parameters (**intercept** and **slope**) for the line that cuts through the observations with the **least amount of error (squared error)**.  
+  -   This is referred to as a **Least Squares Regression (LSR)**.
 
-- `\(\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2\)`
+- LSR does this by minimizing the sum of the squares of the differences between the observed dependent variable values and those predicted by the linear model. 
+    - These differences are called **residuals**.
+
 ]
 
 .pull-right[
@@ -255,12 +258,24 @@ class: center, middle, inverse, title-slide
 - The sum of squared error in regression is:
 
 - `\(\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2\)`
+
+]
+
+
+
+
+---
+# Building blocks of a linear regression model
+
+.pull-left[
+- The sum of squared error in regression is:
+
+- `\(\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2\)`
 ]
 
 .pull-right[
 &lt;img src="Simple-Linear-Regresion_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
 ]
-
 
 ---
 # Building blocks of a linear regression model
@@ -283,13 +298,58 @@ class: center, middle, inverse, title-slide
 - The sum of squared error in regression is:
 
 - `\(\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2\)`
-
 ]
 
 .pull-right[
 &lt;img src="Simple-Linear-Regresion_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
+
+---
+# Building blocks of a linear regression model
+
+.pull-left[
+- The sum of squared error in regression is:
+
+- `\(\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2\)`
+]
+
+.pull-right[
+&lt;img src="Simple-Linear-Regresion_files/figure-html/unnamed-chunk-16-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+
+
+---
+# Building blocks of a linear regression model
+.pull-left[
+- The sum of squared error in regression is:
+
+- `\(\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2\)`
+
+]
+
+
+.pull-right[
+&lt;img src="Simple-Linear-Regresion_files/figure-html/unnamed-chunk-17-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+
+
+---
+# Building blocks of a linear regression model
+
+.pull-left[
+- **Best fit** in context of OLS (Ordinary Least Square, a type of Least Square) means that the sum of the squares of the residuals (or error SSE) us as **small as possible**.
+
+- Mathematically, it's about finding the values of slope ( `\(\beta_1\)`, `\(\beta_2\)`, ., `\(\beta_n\)` ) that minimize this sum.
+]
+
+.center2[
+.pull-right[
+&lt;img src="Simple-Linear-Regresion_files/figure-html/unnamed-chunk-18-1.png"  /&gt;
+]
+]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
