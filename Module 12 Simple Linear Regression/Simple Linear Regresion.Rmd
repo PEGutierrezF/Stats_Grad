@@ -31,6 +31,7 @@ library(palmerpenguins)
 library(car)
 library(ggforce) # for geom_circle
 library(RVAideMemoire) #shapiro.test
+knitr::opts_chunk$set(dpi= 300)
 xaringanExtra::use_panelset()
 ```
 
@@ -70,11 +71,10 @@ slope <- coef(model)[2]
 p <- ggplot(data = df, aes(x = x, y = y)) +
   geom_smooth(method = "lm", color = "black", se=F, linewidth=0.8) +
   geom_point(color = "red", size = 1.5) +
-  theme_bw() +
   scale_y_continuous(limits = c(0, 10), name = "Dependent Variable (Y)") +
   scale_x_continuous(limits = c(0, 30), name = "Independent Variable (X)") +
-  annotate("text", x = 5, y = 8, label = paste0("Y = ", round(intercept, 2), " + ", round(slope, 2), "X"), 
-           color = "blue", size = 4)
+  annotate("text", x = 5, y = 8, label = paste0("Y = ", round(intercept, 2), " + ", round(slope, 2), "X"), color = "blue", size = 4) +
+  theme_bw()
 
 p
 
@@ -117,8 +117,8 @@ model <- lm(y ~ x, data = df)
 random_x <- 15
 random_y <- predict(model, newdata = data.frame(x = random_x))
 
-p + geom_vline(xintercept = random_x, color = "red", linetype = "dashed") +  # Vertical red line
-  geom_hline(yintercept = random_y, color = "red", linetype = "dashed") +  # Horizontal red line
+p + geom_segment(aes(x = random_x, xend = random_x, y = 0, yend = random_y), color = "red", linetype = "dashed") +  # Vertical line stopping at the fitted line
+  geom_segment(aes(x = 0, xend = random_x, y = random_y, yend = random_y), color = "red", linetype = "dashed") +  # Horizontal line stopping at the fitted line
   annotate("text", x = 10, y = random_y + 0.5, label = paste("Predicted y =", round(random_y, 2)), color = "red")
 
 ```
@@ -539,9 +539,10 @@ for (i in 1:length(residuals)) {
 
 ---
 # Building blocks of a linear regression model
-- The sum of squared error in regression is:
 
 .pull-left[
+- The sum of squared error in regression is:
+
 - $\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$
 ]
 
@@ -573,9 +574,10 @@ points(x[i], y[i], col="black", pch=16)  # Highlighted observed point
 
 ---
 # Building blocks of a linear regression model
-- The sum of squared error in regression is:
 
 .pull-left[
+- The sum of squared error in regression is:
+
 - $\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$
 ]
 
@@ -611,9 +613,10 @@ text(x[i], y[i]+0.009, expression(y[i]), pos=4, col="black", cex=1.7)
 
 ---
 # Building blocks of a linear regression model
-- The sum of squared error in regression is:
 
 .pull-left[
+- The sum of squared error in regression is:
+
 - $\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$
 ]
 
@@ -660,18 +663,18 @@ text(0.02, y_hat, expression(paste("Predicted ", hat(y)[i])), pos=4, col="red")
 # Annotate the plot with the regression equation
 # equation_text <- expression(Y == beta[0] + beta[1] * X)
 # text(0.30, 31200, equation_text, col="blue", cex=1.7)
-
-
 ```
 ]
 
 
 ---
 # Building blocks of a linear regression model
-- The sum of squared error in regression is:
 
 .pull-left[
+- The sum of squared error in regression is:
+
 - $\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$
+
 ]
 
 .pull-right[
@@ -704,7 +707,7 @@ text(x[i], y[i]+0.009, expression(y[i]), pos=4, col="black", cex=1.7)
 y_hat <- predict(M, newdata = data.frame(Education = x[i]))
 
 # Draw a line from observation to fitted line (residual)
-segments(x[i], y[i], x[i], y_hat, col="red", lwd=1.5)
+segments(x[i], y[i], x[i], y_hat, col="blue", lwd=1.5)
 
 # Draw lines from the fitted point to both axes
 segments(x[i], y_hat, 0, y_hat, col="red", lty=2)  # Horizontal line to y-axis
@@ -717,10 +720,8 @@ text(0.02, y_hat, expression(paste("Predicted ", hat(y)[i])), pos=4, col="red")
 # Annotate the error term e_i = y_i - y_hat with a bracket
 # Position the text near the middle of the residual line
 middle_y <- (y[i] + y_hat) / 2  # Midpoint of the y-coordinates for the residual
-text(x[i] + 0.02, middle_y, labels=expression(e[i] == y[i] - hat(y)[i]), col="blue", pos=4, cex=1.4)
-text(x[i] + 0.009, middle_y, "}", srt=0, col="red", cex=3.5)
-
-
+text(x[i] + 0.03, middle_y, labels=expression(e[i] == y[i] - hat(y)[i]), col="blue", pos=4, cex=1.4)
+text(x[i] + 0.009, middle_y, "}", srt=0, col="blue", cex=3)
 ```
 ]
 
