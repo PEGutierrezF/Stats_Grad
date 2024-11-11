@@ -1146,45 +1146,21 @@ text(0.369, 29000, expression(beta[1]), col = "purple", pos = 4, cex = 1.2)
 ]
 
 ---
----
-title: "Understanding the Linear Model"
-output: beamer_presentation
----
+# Explanation of Terms
 
-## Model Equation
-
-\[
-y_i = \underbrace{a}_{\text{Intercept}} + \underbrace{b}_{\text{Slope}} x_i + \underbrace{\epsilon_i}_{\text{Error}}
-\]
-
----
----
-title: "Understanding the Linear Model"
-output: beamer_presentation
----
-
-## Model Equation
-
-\[
-y_i = \underbrace{a}_{\text{Intercept}} + \underbrace{b}_{\text{Slope}} x_i + \underbrace{\epsilon_i}_{\text{Error}}
-\]
+$$y_i = \underbrace{\beta_0}_{\text{Intercept}} + \underbrace{\beta_1}_{\text{Slope}} x_i + \underbrace{\epsilon_i}_{\text{Error}}$$
 
 ---
 # Explanation of Terms
 
 $$y_i = \underbrace{\beta_0}_{\text{Intercept}} + \underbrace{\beta_1}_{\text{Slope}} x_i + \underbrace{\epsilon_i}_{\text{Error}}$$
 
-- **\( y_i \)**  
-  *Predicted Response Variable:* The estimated or predicted value of the response variable.
+- ** $y_i$ ** (Predicted Response Variable): The estimated or predicted value of the response variable.
 
-- **\( a \)**  
-  *Intercept:* Represents the value of \( y \) when \( x \) is zero, indicating the baseline level of \( y \).
+- ** $\beta_0$ ** (Intercept): Represents the value of $y$ when $x$ is zero, or where it crosses the y axis
 
-- **\( b \)**  
-  *Slope:* Represents the change in \( y \) for a one-unit increase in \( x \), showing the steepness and direction of the line.
+- ** $\beta_1$ **  (Slope): Represents the change in $y$ for a one-unit increase in $x$, showing the steepness and direction of the line.
 
-- **\( x_i \)**  
-  *Predictor Variable:* The measured value of the independent variable.
+- ** $x_i$ **  (Predictor Variable): The measured value of the independent variable.
 
-- **\( \epsilon_i \)**  
-  *Error Term:* Accounts for variability in \( y \) not explained by \( x \), reflecting factors not captured in the model.
+- ** $\epsilon_i$ ** (Error Term): Accounts for variability in $y$ not explained by $x$, reflecting factors not captured in the model.
