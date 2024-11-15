@@ -234,8 +234,7 @@ p +
 
 .pull-right[
 ```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=6}
-# X represents the fraction of residents in each county having attained a
-# bachelor's degree or better
+par(mar = c(2, 2, 0.5, 2))  # Adjust bottom, left, top, and right margins
 x   <- c(0.19, 0.16, 0.40, 0.24, 0.31, 0.24, 0.28, 
          0.31, 0.18, 0.23, 0.17, 0.31, 0.15, 0.25, 
          0.19, 0.28)
@@ -882,8 +881,7 @@ row.names(dat) <- c("Androscoggin", "Aroostook", "Cumberland", "Franklin", "Hanc
 
 M <- lm( y ~ x, dat)
 
-plot( y ~ x , dat, pch = 16, ylab=NA, mgp=c(4,1,.5) , las=1, bty="n", xaxs="i", xpd = TRUE,
-      xlab="Fraction having attained a Bachelor's degree")
+plot( y ~ x , dat, pch = 16, ylab=NA, mgp=c(4,1,.5) , las=1, bty="n", xaxs="i", xpd = TRUE, xlab="Fraction having attained a Bachelor's degree")
 abline(M, col="blue")
 
 text(0.30, 22500,  paste("Observed value")) 
@@ -990,26 +988,25 @@ text(0.369, 29000, expression(beta[1]), col = "purple", pos = 4, cex = 1.2)
 - **Slopes** ( $\beta_1$, $\beta_2$, ., $\beta_n$ ): These coefficients represent the change in the dependent variable for a one-unit change in the corresponding independent variable, holding other variables constant.
 
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='top', fig.width=3, fig.height=2}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.align='top', fig.width=2.5, fig.height=1.75}
 par(mar = c(2, 2, 0.5, 2))  # Adjust bottom, left, top, and right margins
 # Load the data:
 data(trees)
 names(trees) <- c("DBH_in","height_ft", "volume_ft3")
 mod <- lm(DBH_in ~ height_ft, data = trees)
-plot(DBH_in ~ height_ft, data = trees, pch=16)
-abline(mod)
+plot(DBH_in ~ height_ft, data = trees, pch=16, col="gray90", col.axis = "white")
+abline(mod, col='blue')
 
 # Add general linear equation as expression
 equation_text <- expression(Y == beta[0] + beta[1] * X)
-text(x = 0.1, y = 34, labels = equation_text, pos = 4, col = "blue", cex = 1)
+text(x = 72, y = 16.5, labels = equation_text, pos = 4, col = "blue", cex = 0.8)
 
 # Slope triangle
-segments(0.32, 23, 0.32, 27, col = "purple", lty = 2)  # Vertical line for "changes in y"
-segments(0.32, 23, 0.22, 23, col = "purple", lty = 2)  # Horizontal line for "1 unit of increase in x"
+segments(74.8, 12.75, 80, 12.75, col = "purple", lty = 2)  # Vertical line for "changes in y"
+segments(80, 12.75, 80, 14.4, col = "purple", lty = 2)  # Horizontal line for "1 unit of increase in x"
 
-# Annotations for slope triangle
-text(0.33, 25, "changes in Y", col = "purple", pos = 4, cex = 0.9)
-text(0.27, 22.5, "1 unit of increase in X", col = "purple", pos = 1, cex = 0.9)
+text(79, 13, "changes\n in Y", col = "purple", pos = 4, cex = 0.5)
+text(77, 13, "1 unit of\n increase in X", col = "purple", pos = 1, cex = 0.5)
 ```
 ]
 
@@ -1140,6 +1137,50 @@ text(0.369, 29000, expression(beta[1]), col = "purple", pos = 4, cex = 1.2)
 # Explanation of Terms
 
 $$y_i = \underbrace{\beta_0}_{\text{Intercept}} + \underbrace{\beta_1}_{\text{Slope}} x_i + \underbrace{\epsilon_i}_{\text{Error}}$$
+
+
+---
+# Explanation of Terms
+
+$$y_i = \underbrace{\beta_0}_{\text{Intercept}} + \underbrace{\beta_1}_{\text{Slope}} x_i + \underbrace{\epsilon_i}_{\text{Error}}$$
+
+- ** $y_i$ ** (Predicted Response Variable): The estimated or predicted value of the response variable.
+
+
+---
+# Explanation of Terms
+
+$$y_i = \underbrace{\beta_0}_{\text{Intercept}} + \underbrace{\beta_1}_{\text{Slope}} x_i + \underbrace{\epsilon_i}_{\text{Error}}$$
+
+- ** $y_i$ ** (Predicted Response Variable): The estimated or predicted value of the response variable.
+
+- ** $\beta_0$ ** (Intercept): Represents the value of $y$ when $x$ is zero, or where it crosses the y axis
+
+---
+# Explanation of Terms
+
+$$y_i = \underbrace{\beta_0}_{\text{Intercept}} + \underbrace{\beta_1}_{\text{Slope}} x_i + \underbrace{\epsilon_i}_{\text{Error}}$$
+
+- ** $y_i$ ** (Predicted Response Variable): The estimated or predicted value of the response variable.
+
+- ** $\beta_0$ ** (Intercept): Represents the value of $y$ when $x$ is zero, or where it crosses the y axis
+
+- ** $\beta_1$ **  (Slope): Represents the change in $y$ for a one-unit increase in $x$, showing the steepness and direction of the line.
+
+
+---
+# Explanation of Terms
+
+$$y_i = \underbrace{\beta_0}_{\text{Intercept}} + \underbrace{\beta_1}_{\text{Slope}} x_i + \underbrace{\epsilon_i}_{\text{Error}}$$
+
+- ** $y_i$ ** (Predicted Response Variable): The estimated or predicted value of the response variable.
+
+- ** $\beta_0$ ** (Intercept): Represents the value of $y$ when $x$ is zero, or where it crosses the y axis
+
+- ** $\beta_1$ **  (Slope): Represents the change in $y$ for a one-unit increase in $x$, showing the steepness and direction of the line.
+
+- ** $x_i$ **  (Predictor Variable): The measured value of the independent variable.
+
 
 ---
 # Explanation of Terms
