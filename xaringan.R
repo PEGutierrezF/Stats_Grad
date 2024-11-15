@@ -28,6 +28,7 @@ CODE
   ```
 ]
 
+par(mar = c(6.5, 4, 0, 2))  # Adjust bottom, left, top, and right margins
 
 `` hihglight yellow
 
