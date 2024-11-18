@@ -6,6 +6,8 @@ head(data)
 mod <- lm(heart.disease ~ biking + smoking, data = data)
 summary(mod)
 
+
+
 # Equation
 heart disease = 15 + (-0.2*biking) + (0.178*smoking) ± e
 
@@ -65,7 +67,9 @@ Calculate Variance Inflation Factor (VIF) using the car package.
 library(car)
 vif(mod)
 
-# install.packages("performance")
-# install.packages("see")
-library(performance)
-check_model(mod)
+#create vector of VIF values
+vif_values <- vif(mod)
+#create horizontal bar chart to display each VIF value
+barplot(vif_values, main = "VIF Values", horiz = TRUE, col = "steelblue")
+#add vertical line at 5
+abline(v = 5, lwd = 3, lty = 2)
