@@ -90,7 +90,6 @@ p
 1. Describing the nature of the relationship between two variables.
 
 2. Predicting the dependent variable within the range of observed values. Aim to forecast y-values within the range of observed x-values. Offers relatively more certainty due to reliance on known data.
-
 ]
 
 
@@ -179,43 +178,47 @@ p +
 ---
 # Difference Between Correlation and Linear Simple Regression
 .pull-left[
-- Degree & Nature of Relationship:
-    - Correlation is a measure of degree of relationship between X & Y.
-    - Regression studies the nature of relationship between the variables so that one may be able to predict the value of one variable on the basis of another. 
+- Degree & Nature of Relationship:   
+.small[ - Correlation is a measure of degree of relationship between X & Y.
+- Regression studies the nature of relationship between the variables so that one may be able to predict the value of one variable on the basis of another.] 
 ]
 
 ---
 # Difference Between Correlation and Linear Simple Regression
 .pull-left[
 - Degree & Nature of Relationship:
-    - Correlation is a measure of degree of relationship between X & Y.
-    - Regression studies the nature of relationship between the variables so that one may be able to predict the value of one variable on the basis of another.
+.small[ - Correlation is a measure of degree of relationship between X & Y.
+- Regression studies the nature of relationship between the variables so that one may be able to predict the value of one variable on the basis of another.]
     
 - Cause & Effect Relationship:
-    - Correlation does **not imply a cause-and-effect relationship** between two variables.
-    - Regression models a **cause-and-effect relationship**, where:
-        - The independent variable is the cause.
-        - The dependent variable is the effect.] 
+.small[ - Correlation does **not imply a cause-and-effect relationship** between two variables.
+- Regression models a **cause-and-effect relationship**, where:
+ - The independent variable is the cause.
+ - The dependent variable is the effect.]]
 
 ---
 # Difference Between Correlation and Linear Simple Regression
 .pull-left[
-- Degree & Nature of Relationship:
+1.  Degree & Nature of Relationship:
     - Correlation is a measure of degree of relationship between X & Y.
     - Regression studies the nature of relationship between the variables so that one may be able to predict the value of one variable on the basis of another.
     
-- Cause & Effect Relationship:
+2.  Cause & Effect Relationship:
     - Correlation does **not imply a cause-and-effect relationship** between two variables.
     - Regression models a **cause-and-effect relationship**, where:
         - The independent variable is the cause.
-        - The dependent variable is the effect.]
+        - The dependent variable is the effect.
+        
+]
 
 .pull-right[
-- Independent and Dependent Relationship:
-    - In correlation, there is **no distinction** between independent and dependent variables.
-    - In regression, the model includes:
-        - Slope ( $\beta_1$ ): the change in the dependent variable per unit increase in the independent variable.
-        - Intercept ( $\beta_0$ ): the value of the dependent variable when the independent variable is zero.]
+3.  Independent and Dependent Relationship:
+  - In correlation, there is **no distinction** between independent and dependent variables.
+  - In regression, the model includes:
+      - Slope ( $\beta_1$ ): the change in the dependent variable per unit increase in the independent variable.
+      - Intercept ( $\beta_0$ ): the value of the dependent variable when the independent variable is zero.
+]
+
 
 ---
 # When to use a Simple Linear Regression
@@ -229,6 +232,7 @@ p +
 1. Independent, random samples
 2. Linear relationship between variables
 3. Normally distributed residuals (after fitting the model)
+
 
 ---
 # Building blocks of a linear regression model

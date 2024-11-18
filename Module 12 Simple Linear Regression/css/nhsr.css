@@ -197,6 +197,7 @@ blockquote {
   --panel-tab-font-family: Roboto, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;\
 }
 
+/*-- Font size --*/
 .xlarge { 
      font-size: 150%
 }
