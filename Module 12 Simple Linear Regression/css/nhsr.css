@@ -197,6 +197,21 @@ blockquote {
   --panel-tab-font-family: Roboto, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;\
 }
 
+.xlarge { 
+     font-size: 150%
+}
+.large { 
+     font-size: 130% 
+}
+.medium {
+     font-size: 80%
+}
+.small { 
+     font-size: 70% 
+}
+.xsmall {
+     font-size: 50%
+}
 
 /*-- CUSTOM CLASSES FOR TEXT EMPHASIS --*/
 .blue       { color:   #005EB8 }

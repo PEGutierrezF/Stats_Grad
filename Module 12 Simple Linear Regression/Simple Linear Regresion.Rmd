@@ -48,14 +48,14 @@ xaringanExtra::use_panelset()
 # What can we accomplish with linear regression?
 
 .pull-left[
-- Describing the nature of the relationship between two variables.
+1. Describing the nature of the relationship between two variables.
 
 ]
 
 
 .pull-right[
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4.5, fig.height=5}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=6, fig.height=5}
 # Sample data
 set.seed(14)
 x <- seq(0, 22, by = 2)
@@ -71,11 +71,11 @@ slope <- coef(model)[2]
 p <- ggplot(data = df, aes(x = x, y = y)) +
   geom_smooth(method = "lm", color = "black", se=F, linewidth=0.8) +
   geom_point(color = "red", size = 1.5) +
+  theme_bw() +
   scale_y_continuous(limits = c(0, 10), name = "Dependent Variable (Y)") +
   scale_x_continuous(limits = c(0, 30), name = "Independent Variable (X)") +
   annotate("text", x = 5, y = 8, label = paste0("Y = ", round(intercept, 2), " + ", round(slope, 2), "X"), color = "blue", size = 4) +
-  theme(plot.margin = unit(c(0,0,0,0), "cm")) +
-  theme_classic()
+  theme(plot.margin = unit(c(0,0,0,0), "cm"))
 
 p
 
@@ -87,9 +87,9 @@ p
 # What can we accomplish with linear regression?
 
 .pull-left[
-- Describing the nature of the relationship between two variables.
+1. Describing the nature of the relationship between two variables.
 
-- Predicting the dependent variable within the range of observed values. Aim to forecast y-values within the range of observed x-values. Offers relatively more certainty due to reliance on known data.
+2. Predicting the dependent variable within the range of observed values. Aim to forecast y-values within the range of observed x-values. Offers relatively more certainty due to reliance on known data.
 
 ]
 
@@ -109,7 +109,8 @@ p <- ggplot(data = df, aes(x = x, y = y)) +
   geom_point(color = "red", size = 1.5) +
   theme_bw() +
   scale_y_continuous(limits = c(0, 10), name = "Dependent Variable (Y)") +
-  scale_x_continuous(limits = c(0, 30), name = "Independent Variable (X)")
+  scale_x_continuous(limits = c(0, 30), name = "Independent Variable (X)") +
+  theme(plot.margin = unit(c(0,0,0,0), "cm"))
 
 # Fit a linear model to the data
 model <- lm(y ~ x, data = df)
@@ -129,13 +130,14 @@ p + geom_segment(aes(x = random_x, xend = random_x, y = 0, yend = random_y), col
 ---
 # What can we accomplish with linear regression?
 .pull-left[
-- Describing the nature of the relationship between two variables.
+1. Describing the nature of the relationship between two variables.
 
-- Predicting the dependent variable within the range of observed values. Aim to forecast y-values within the range of observed x-values. Offers relatively more certainty due to reliance on known data.
+2. Predicting the dependent variable within the range of observed values. Aim to forecast y-values within the range of observed x-values. Offers relatively more certainty due to reliance on known data.
 
-- Predicting the dependent variable beyond the range of observed values. 
-    - Represents an exploration beyond the limits of observed data.
-    - Naturally, this type of objective carries the greatest load of restrictions, assumptions, caveats, and risk of error.
+3. Predicting the dependent variable beyond the range of observed values. 
+.small[   - Represents an exploration beyond the limits of observed data.
+- Naturally, this type of objective carries the greatest load of restrictions, assumptions, caveats, and risk of error.
+]
 
 ]
 
@@ -154,7 +156,8 @@ p <- ggplot(data = df, aes(x = x, y = y)) +
   geom_point(color = "red", size = 1.5) +
   theme_bw() +
   scale_y_continuous(limits = c(0, 10), name = "Dependent Variable (Y)") +
-  scale_x_continuous(limits = c(0, 30), name = "Independent Variable (X)")
+  scale_x_continuous(limits = c(0, 30), name = "Independent Variable (X)") +
+  theme(plot.margin = unit(c(0,0,0,0), "cm"))
 
 # Fit a linear model to the data
 model <- lm(y ~ x, data = df)
