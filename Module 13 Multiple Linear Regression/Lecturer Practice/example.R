@@ -9,6 +9,13 @@ summary(mod)
 # Equation
 heart disease = 15 + (-0.2*biking) + (0.178*smoking) ± e
 
+install.packages('equatiomatic')
+library(equatiomatic)
+extract_eq(mod,
+           use_coefs = TRUE, # display coefficients
+           wrap = TRUE, # multiple lines
+           terms_per_line = 2
+)
 
 # Data visualization
 par(mfrow = c(1, 2))  
@@ -26,6 +33,10 @@ plot(data$smoking, data$heart.disease,
      main = "Heart Disease vs. Smoking")
 abline(lm(heart.disease ~ smoking, data = data), col = "red", lwd = 2)
 
+
+library(visreg)
+par(mfrow = c(1, 2)) 
+visreg(mod)
 
 # Assumptions -------------------------------------------------------------
 # 1. Normality of Residuals
@@ -51,5 +62,10 @@ abline(h = 0, col = "red", lwd = 2)
 # 3. Multicollinearity
 Predictors should not be too highly correlated with each other.
 Calculate Variance Inflation Factor (VIF) using the car package.
-
+library(car)
 vif(mod)
+
+# install.packages("performance")
+# install.packages("see")
+library(performance)
+check_model(mod)
