@@ -197,7 +197,8 @@ blockquote {
   --panel-tab-font-family: Roboto, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;\
 }
 
-/*-- Font size --*/
+
+/*-- Nov 20, 2024; Pablo Gutierrez-Fonseca; Font size --*/
 .xlarge { 
      font-size: 150%
 }

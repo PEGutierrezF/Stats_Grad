@@ -9,7 +9,7 @@ summary(mod)
 
 
 # Equation
-heart disease = 15 + (-0.2*biking) + (0.178*smoking) ± e
+heart disease = 14.98 + (-0.2*biking) + (0.178*smoking) ± e
 
 install.packages('equatiomatic')
 library(equatiomatic)
@@ -72,4 +72,5 @@ vif_values <- vif(mod)
 #create horizontal bar chart to display each VIF value
 barplot(vif_values, main = "VIF Values", horiz = TRUE, col = "steelblue")
 #add vertical line at 5
-abline(v = 5, lwd = 3, lty = 2)
+abline(v = 0.5, lwd = 3, lty = 2)
+
