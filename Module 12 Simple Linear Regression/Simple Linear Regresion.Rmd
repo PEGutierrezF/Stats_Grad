@@ -39,10 +39,10 @@ xaringanExtra::use_panelset()
 # What is regression?
 - Regression analysis is a generic term for a group of different statistical techniques. 
 
-  1. The purpose of all these techniques is to examine the relationship between variables. 
+1. The purpose of all these techniques is to examine the relationship between variables. 
       - Regression aims to find the **best-fitting linear equation ( $Y = \beta_0 + \beta_1 X_1 + \epsilon$ )** that describes the relationship between the dependent variable (often denoted as $Y$ ) and independent variables (denoted as $X1, X2, ..., Xn$ ).  
 <br>
-  2. The most common type of linear regression is Type I regression, in which we attempt to determine the relationship between dependent and explanatory or independent variables.
+2. The most common type of linear regression is Type I regression, in which we attempt to determine the relationship between dependent and explanatory or independent variables.
 
 ---
 # What can we accomplish with linear regression?
@@ -178,11 +178,11 @@ p +
 ---
 # Difference Between Correlation and Linear Simple Regression
 .left-column[
-### Degree & Nature of Relationship:
+.blue[ 1. Degree & Nature of Relationship:]
 
-Cause & Effect Relationship
+2. Cause & Effect Relationship
 
-Independent and Dependent Relationship]
+3. Independent and Dependent Relationship]
 
 .right-column[
 - Correlation is a measure of degree of relationship between X & Y.
@@ -192,11 +192,11 @@ Independent and Dependent Relationship]
 ---
 # Difference Between Correlation and Linear Simple Regression
 .left-column[
-Degree & Nature of Relationship
+1- Degree & Nature of Relationship
 
-### Cause & Effect Relationship:
+.blue[ 2- Cause & Effect Relationship:]
 
-Independent and Dependent Relationship]
+3- Independent and Dependent Relationship]
 
 .right-column[
 - Correlation does **not imply a cause-and-effect relationship** between two variables.
