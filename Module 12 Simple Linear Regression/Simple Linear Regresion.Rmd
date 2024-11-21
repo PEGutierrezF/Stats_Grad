@@ -1208,3 +1208,141 @@ $$y_i = \underbrace{\beta_0}_{\text{Intercept}} + \underbrace{\beta_1}_{\text{Sl
 --
 
 - ** $\epsilon_i$ ** (Error Term): Accounts for variability in $y$ not explained by $x$, reflecting factors not captured in the model.
+
+
+---
+# Explanation of Terms: Example
+.pull-left[$$y_i = {\beta_0} + {\beta_1} x_i + {\epsilon_i}$$ 
+
+<br>
+<br>
+<br>
+<br>
+
+$\beta_1 = \frac{n \sum(xy) - \left( \sum x \right) \left( \sum y \right)}{n \sum(x^2) - \left( \sum x \right)^2}$
+
+<br>
+<br>
+
+$\beta_0 = \frac{\sum y}{n} - \beta_1 \frac{\sum x}{n}$
+
+]
+
+.pull-right[
+|  x   |     y     |
+|------|-----------|
+|  1   |   3      |
+|  2   |   5      |
+|  3   |   9      |
+|  4   |  13      |
+|  5   |  12      |
+|  6   |  15      |
+|  7   |  21      |
+|  8   |  22      |
+|  9   |  22      |
+| 10   |  26      |
+]
+
+---
+# Explanation of Terms: Example
+.pull-left[$$y_i = {\beta_0} + {\beta_1} x_i + {\epsilon_i}$$ 
+
+<br>
+$\sum x = 55, \sum y = 127, \sum (xy) = 1008, \sum x^2 = 3025$
+
+<br>
+
+$\beta_1 = \frac{n \sum(xy) - \left( \sum x \right) \left( \sum y \right)}{n \sum(x^2) - \left( \sum x \right)^2} \Rightarrow$
+
+<br>
+<br>
+
+$\beta_0 = \frac{\sum y}{n} - \beta_1 \frac{\sum x}{n} \Rightarrow$
+]
+
+.pull-right[
+|  x   |     y     |   X*Y    |
+|------|-----------|----------|
+|  1   |   3      |   3      |
+|  2   |   5      |   9      |
+|  3   |   9      |   26     |
+|  4   |  13      |   52     |
+|  5   |  12      |   60     |
+|  6   |  15      |   87     |
+|  7   |  21      |   145    |
+|  8   |  22      |   172    |
+|  9   |  22      |   194    |
+| 10   |  26      |   261    |
+| **55** | **127**  | **1008** |
+
+]
+
+
+---
+# Explanation of Terms: Example
+.pull-left[$$y_i = {\beta_0} + {\beta_1} x_i + {\epsilon_i}$$ 
+
+<br>
+$\sum x = 55, \sum y = 127, \sum (xy) = 1008, \sum x^2 = 3025$
+
+<br>
+
+$\beta_1 = \frac{n \sum(xy) - \left( \sum x \right) \left( \sum y \right)}{n \sum(x^2) - \left( \sum x \right)^2} \Rightarrow \beta_1 = \frac{10 \times 1008 - 55 \times 127}{10 \times 3025 - 55^2}= 0.11$
+
+<br>
+<br>
+
+$\beta_0 = \frac{\sum y}{n} - \beta_1 \frac{\sum x}{n} \Rightarrow$
+]
+
+.pull-right[
+|  x   |     y     |   X*Y    |
+|------|-----------|----------|
+|  1   |   3      |   3      |
+|  2   |   5      |   9      |
+|  3   |   9      |   26     |
+|  4   |  13      |   52     |
+|  5   |  12      |   60     |
+|  6   |  15      |   87     |
+|  7   |  21      |   145    |
+|  8   |  22      |   172    |
+|  9   |  22      |   194    |
+| 10   |  26      |   261    |
+| **55** | **127**  | **1008** |
+
+]
+
+
+---
+# Explanation of Terms: Example
+.pull-left[$$y_i = {\beta_0} + {\beta_1} x_i + {\epsilon_i}$$ 
+
+<br>
+$\sum x = 55, \sum y = 127, \sum (xy) = 1008, \sum x^2 = 3025$
+
+<br>
+
+$\beta_1 = \frac{n \sum(xy) - \left( \sum x \right) \left( \sum y \right)}{n \sum(x^2) - \left( \sum x \right)^2} \Rightarrow \beta_1 = \frac{10 \times 1008 - 55 \times 127}{10 \times 3025 - 55^2}= 0.11$
+
+<br>
+<br>
+
+$\beta_0 = \frac{\sum y}{n} - \beta_1 \frac{\sum x}{n} \Rightarrow \beta_0 = \frac{127}{10} - 0.11 \times \frac{55}{10} = 12.1$
+
+]
+
+.pull-right[
+|  x   |     y     |   X*Y    |
+|------|-----------|----------|
+|  1   |   3      |   3      |
+|  2   |   5      |   9      |
+|  3   |   9      |   26     |
+|  4   |  13      |   52     |
+|  5   |  12      |   60     |
+|  6   |  15      |   87     |
+|  7   |  21      |   145    |
+|  8   |  22      |   172    |
+|  9   |  22      |   194    |
+| 10   |  26      |   261    |
+| **55** | **127**  | **1008** |
+]
