@@ -1346,3 +1346,114 @@ $\beta_0 = \frac{\sum y}{n} - \beta_1 \frac{\sum x}{n} \Rightarrow \beta_0 = \fr
 | 10   |  26      |   261    |
 | **55** | **127**  | **1008** |
 ]
+
+
+
+---
+# Explanation of Terms: Example
+.pull-left[$$y_i = {\beta_0} + {\beta_1} x_i + {\epsilon_i}$$ 
+
+<br>
+$\sum x = 55, \sum y = 127, \sum (xy) = 1008, \sum x^2 = 3025$
+
+<br>
+
+$\beta_1 = \frac{n \sum(xy) - \left( \sum x \right) \left( \sum y \right)}{n \sum(x^2) - \left( \sum x \right)^2} \Rightarrow \beta_1 = \frac{10 \times 1008 - 55 \times 127}{10 \times 3025 - 55^2}= 0.11$
+
+<br>
+<br>
+
+$\beta_0 = \frac{\sum y}{n} - \beta_1 \frac{\sum x}{n} \Rightarrow$
+]
+
+.pull-right[
+|  x   |     y     |   X*Y    |
+|------|-----------|----------|
+|  1   |   3      |   3      |
+|  2   |   5      |   9      |
+|  3   |   9      |   26     |
+|  4   |  13      |   52     |
+|  5   |  12      |   60     |
+|  6   |  15      |   87     |
+|  7   |  21      |   145    |
+|  8   |  22      |   172    |
+|  9   |  22      |   194    |
+| 10   |  26      |   261    |
+| **55** | **127**  | **1008** |
+
+]
+
+
+---
+# Explanation of Terms: Example
+.pull-left[$$y_i = {\beta_0} + {\beta_1} x_i + {\epsilon_i}$$ 
+
+<br>
+$\sum x = 55, \sum y = 127, \sum (xy) = 1008, \sum x^2 = 3025$
+
+<br>
+
+$\beta_1 = \frac{n \sum(xy) - \left( \sum x \right) \left( \sum y \right)}{n \sum(x^2) - \left( \sum x \right)^2} \Rightarrow \beta_1 = \frac{10 \times 1008 - 55 \times 127}{10 \times 3025 - 55^2}= 0.11$
+
+<br>
+<br>
+
+$\beta_0 = \frac{\sum y}{n} - \beta_1 \frac{\sum x}{n} \Rightarrow \beta_0 = \frac{127}{10} - 0.11 \times \frac{55}{10} = 12.1$
+
+]
+
+
+.pull-right[
+```{r , echo=FALSE, message=FALSE, warning=FALSE, fig.align='center', fig.width=5, fig.height=6}
+# X represents the fraction of residents in each county having attained a
+# bachelor's degree or better
+par(mar = c(6.5, 4, 0, 2))  # Adjust bottom, left, top, and right margins
+dat <- data.frame(
+  x = 1:10,
+  y = c(3, 5, 9, 13, 12, 15, 21, 22, 22, 26)
+)
+
+# Fit the linear model
+M <- lm(y ~ x, data = dat)
+
+# Extract coefficients
+intercept <- coef(M)[1]
+slope <- coef(M)[2]
+
+# Create the plot
+plot(dat$x, dat$y, pch = 16, col = "blue",
+  xlab = "X (Predictor)", ylab = "Y (Response)", 
+  main = "",las = 1, bty = "n")
+abline(M, col = "blue")
+
+# Highlight and annotate the intercept
+points(0, intercept, pch = 16, col = "red", cex = 1.5)
+text(0.5, intercept, paste("Intercept =", round(intercept, 1)), pos = 4, col = "red")
+
+# Highlight and annotate the slope
+slope_x1 <- 3
+slope_y1 <- intercept + slope * slope_x1
+segments(slope_x1, intercept, slope_x1, slope_y1, col = "purple", lty = 2)  # Vertical line
+segments(slope_x1, slope_y1, 0, slope_y1, col = "purple", lty = 2)          # Horizontal line
+text(slope_x1 + 0.5, slope_y1, paste("Slope =", round(slope, 2)), pos = 4, col = "purple")
+
+# Add the regression equation as symbols
+equation_text <- bquote(Y == .(round(intercept, 1)) + .(round(slope, 2)) * X)
+text(max(dat$x) - 3, max(dat$y) - 2, equation_text, col = "red", cex = 1.2)
+
+# Add residual lines
+fitted_values <- fitted(M)
+segments(
+  x0 = dat$x, y0 = dat$y,
+  x1 = dat$x, y1 = fitted_values,
+  col = "red", lty = 2
+)
+
+# Annotate predicted value example
+predicted_x <- 8
+predicted_y <- intercept + slope * predicted_x
+text(predicted_x, predicted_y + 2, "Predicted Value", col = "blue", pos = 4)
+arrows(predicted_x, predicted_y + 2, predicted_x, predicted_y + 0.5, length = 0.1, col = "blue")
+
+```
+]
