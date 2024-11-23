@@ -1228,7 +1228,7 @@ $\beta_0 = \frac{\sum y}{n} - \beta_1 \frac{\sum x}{n}$
 
 ]
 
-.pull-right[
+.pull-right[.pull-right[
 |  x   |     y     |
 |------|-----------|
 |  1   |   3      |
@@ -1241,7 +1241,7 @@ $\beta_0 = \frac{\sum y}{n} - \beta_1 \frac{\sum x}{n}$
 |  8   |  22      |
 |  9   |  22      |
 | 10   |  26      |
-]
+]]
 
 ---
 # Explanation of Terms: Example
@@ -1260,7 +1260,7 @@ $\beta_1 = \frac{n \sum(xy) - \left( \sum x \right) \left( \sum y \right)}{n \su
 $\beta_0 = \frac{\sum y}{n} - \beta_1 \frac{\sum x}{n} \Rightarrow$
 ]
 
-.pull-right[
+.pull-right[.pull-right[
 |  x   |     y     |   X*Y    |
 |------|-----------|----------|
 |  1   |   3      |   3      |
@@ -1274,8 +1274,7 @@ $\beta_0 = \frac{\sum y}{n} - \beta_1 \frac{\sum x}{n} \Rightarrow$
 |  9   |  22      |   194    |
 | 10   |  26      |   261    |
 | **55** | **127**  | **1008** |
-
-]
+]]
 
 
 ---
@@ -1295,7 +1294,7 @@ $\beta_1 = \frac{n \sum(xy) - \left( \sum x \right) \left( \sum y \right)}{n \su
 $\beta_0 = \frac{\sum y}{n} - \beta_1 \frac{\sum x}{n} \Rightarrow$
 ]
 
-.pull-right[
+.pull-right[.pull-right[
 |  x   |     y     |   X*Y    |
 |------|-----------|----------|
 |  1   |   3      |   3      |
@@ -1309,8 +1308,7 @@ $\beta_0 = \frac{\sum y}{n} - \beta_1 \frac{\sum x}{n} \Rightarrow$
 |  9   |  22      |   194    |
 | 10   |  26      |   261    |
 | **55** | **127**  | **1008** |
-
-]
+]]
 
 
 ---
@@ -1331,7 +1329,7 @@ $\beta_0 = \frac{\sum y}{n} - \beta_1 \frac{\sum x}{n} \Rightarrow \beta_0 = \fr
 
 ]
 
-.pull-right[
+.pull-right[.pull-right[
 |  x   |     y     |   X*Y    |
 |------|-----------|----------|
 |  1   |   3      |   3      |
@@ -1345,7 +1343,7 @@ $\beta_0 = \frac{\sum y}{n} - \beta_1 \frac{\sum x}{n} \Rightarrow \beta_0 = \fr
 |  9   |  22      |   194    |
 | 10   |  26      |   261    |
 | **55** | **127**  | **1008** |
-]
+]]
 
 
 
