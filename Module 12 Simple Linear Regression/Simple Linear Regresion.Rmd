@@ -16,7 +16,7 @@ output:
       countIncrementalSlides: true
       ratio: "16:9"
     includes:
-      after_body: [css/insert-logo.html]
+      after_body: [css/insert-logo.html] #this is for logos in all slides
 xaringanExtra:
     use_panelset: true
 ---
