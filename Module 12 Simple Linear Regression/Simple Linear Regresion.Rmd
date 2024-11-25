@@ -35,20 +35,6 @@ knitr::opts_chunk$set(dpi= 300)
 xaringanExtra::use_panelset()
 ```
 
-
-The holy passion of Friendship is of so sweet and steady
-and loyal and enduring a nature that it will last through
-a whole lifetime...
-
-???
-
-_if not asked to lend money_.
-
-Mark Twain
-
----
-
-
 # What is regression?
 - Regression analysis is a generic term for a group of different statistical techniques. 
 
@@ -1208,7 +1194,6 @@ $$y_i = \underbrace{\beta_0}_{\text{Intercept}} + \underbrace{\beta_1}_{\text{Sl
 --
 
 - ** $\epsilon_i$ ** (Error Term): Accounts for variability in $y$ not explained by $x$, reflecting factors not captured in the model.
-
 
 ---
 # Explanation of Terms: Example
