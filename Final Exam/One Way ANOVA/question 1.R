@@ -23,13 +23,15 @@ library(PMCMRplus)
 data <- read_excel('fecal_coliforms.xlsx')
 head(data)
 
+data$fecal_coliform_log <- log(data$fecal_coliform)
+
 #variance
-bartlett.test(fecal_coliform ~ season, data)
+bartlett.test(fecal_coliform_log ~ season, data)
 
 #normality
-byf.shapiro(fecal_coliform ~ season, data)
+byf.shapiro(fecal_coliform_log ~ season, data)
 
-mod <- aov(fecal_coliform ~ season, data)
+mod <- aov(fecal_coliform_log ~ season, data)
 summary(mod)
 
 
