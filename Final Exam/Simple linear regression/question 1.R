@@ -69,3 +69,8 @@ plot(area.ha ~ dams.n, data,
 #make line width thicker
 abline(mod, lwd=2)
 
+
+References:
+  
+https://bookdown.org/kroppheather/IntEnvData/introduction-to-linear-regression.html
+https://github.com/kroppheather/Intro_Enviro_Data/blob/main/IntroEnvData/data/tutorial_5/beaver_dam.csv
