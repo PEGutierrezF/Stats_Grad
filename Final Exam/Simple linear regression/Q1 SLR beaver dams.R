@@ -23,7 +23,7 @@ library(PMCMRplus)
 In recent decades, beavers have expanded beyond their typical habitats and begun colonizing 
 the Arctic tundra. Jones et al. collected data on surface water area and surveyed beaver 
 dams to investigate how beaver activity influences hydrology in this region. Beaver dams 
-create localized flooding around water bodies, potentially impacting the Arctic's hydrology 
+create localized flooding around water bodies, potentially impacting the Arctic\s hydrology 
 and carbon cycling.
 
 Using data from the Baldwin Peninsula in Alaska, Jones and colleagues analyzed surface 
@@ -70,7 +70,3 @@ plot(area.ha ~ dams.n, data,
 abline(mod, lwd=2)
 
 
-References:
-  
-https://bookdown.org/kroppheather/IntEnvData/introduction-to-linear-regression.html
-https://github.com/kroppheather/Intro_Enviro_Data/blob/main/IntroEnvData/data/tutorial_5/beaver_dam.csv
