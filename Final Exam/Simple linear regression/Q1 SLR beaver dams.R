@@ -50,7 +50,6 @@ dam.res <- rstandard(mod)
 shapiro.test(dam.res)
 
 #the Breusch-Pagan test to assess homoscedasticity
-library(car)
 ncvTest(mod)
 
 

@@ -1,0 +1,83 @@
+---
+title: 'Q2 SLR: station_precipitation'
+output: pdf_document
+date: "2024-12-06"
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(lessR)
+library(readxl)
+library(RVAideMemoire)
+library(car)
+library(DescTools)
+library(rstatix)
+library(PMCMRplus)
+```
+
+# Question 2
+
+Exam Question:
+
+In regional precipitation-frequency analysis, predicting the mean annual maximum precipitation at study sites using seasonal total precipitation as a predictor is a common approach. This allows researchers to estimate mean annual maximum precipitation in locations where seasonal total precipitation can be estimated.
+
+PRISM climate normals provide spatially continuous maps of long-term averages for meteorological variables such as temperature and precipitation. Using PRISM as the basis for regression analysis enables predictions to be made almost anywhere. For this exercise, you will work with two variables from the dataset: seasonal total precipitation (predictor) and mean annual maximum precipitation (response).
+
+- Perform a linear regression to evaluate whether seasonal total precipitation is a significant predictor of mean annual maximum precipitation.
+- Evaluate the model’s assumptions, including normality of residuals and homoscedasticity. If any assumptions appear to be violated, explore possible reasons for the violations and suggest ways to address them.
+- Investigate whether any influential observations might be affecting the model fit by calculating and interpreting diagnostic metrics (e.g., Cook’s Distance). Use these findings to propose or implement improvements to the model.
+- Summarize your analysis in a clear, concise paragraph, including your regression results, assumption checks, and any modifications made to the model.
+    
+```{r cars}
+data <- read.csv('Q2-SLR-station precipitation.csv')
+head(data)
+```
+
+## Set up regression
+```{r pressure, echo=TRUE}
+mod1 <- lm(l_1 ~ pm_wnt_ppt, data)
+summary(mod1)
+```
+
+
+# Get standardized residuals
+```{r}
+mod1.res <- rstandard(mod1)
+shapiro.test(mod1.res)
+```
+
+# The Breusch-Pagan test to assess homoscedasticity
+```{r}
+ncvTest(mod1)
+```
+
+#Cooks D
+```{r}
+ggplot(as_tibble(cooks.distance(mod1)), aes(value)) + geom_boxplot()
+plot(mod1,which=4)
+```
+
+# Make plot of beaver dams and surface water
+```{r}
+plot(l_1 ~ pm_wnt_ppt, data, 
+     pch = 19, 
+     col = "royalblue4",
+     ylab = "Surface water area (ha)",
+     xlab =  "Number of beaver dams")
+#add regression line
+#make line width thicker
+abline(mod1, lwd=2)
+```
+
+# 
+The linear regression model indicates that seasonal total precipitation (pm_wnt_ppt) is a highly significant predictor of mean annual maximum precipitation (p < 0.001), with an adjusted R2R2 of 0.9061, suggesting the model explains a large portion of the variability in the response. However, diagnostic checks reveal violations of assumptions:
+
+- Residual Normality: The Shapiro-Wilk test is significant (W=0.916,p<0.001W=0.916,p<0.001), indicating non-normal residuals.
+- Heteroscedasticity: The non-constant variance test is significant (χ2=47.58,p<0.001χ2=47.58,p<0.001), showing heteroscedasticity.
+- Influential Points: Cook’s Distance analysis suggests potential influence from observations 143, 258, and 290, which warrant further investigation.
+
+These issues suggest the need for model improvements, such as addressing outliers or transforming variables.
+
+# References:
+
+
