@@ -48,7 +48,6 @@ abline(h = 4/sample_size, col="red")  # add cutoff line
 text(x=1:length(cooksD)+1, y=cooksD, labels=ifelse(cooksD>4/sample_size, names(cooksD),""), col="red")  # add labels
 
 
-
 # Removing Outliers
 # influential row numbers
 influential <- as.numeric(names(cooksD)[(cooksD > (4/sample_size))])
