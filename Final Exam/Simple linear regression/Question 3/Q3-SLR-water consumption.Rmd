@@ -23,7 +23,19 @@ library(rstatix)
 library(PMCMRplus)
 ```
 
+# Question 3
 
+Exam Question:
+
+Understanding water consumption patterns is essential for managing resources effectively, particularly in growing urban areas. One common approach is to model water consumption as a function of population size, which allows researchers to estimate water demand based on demographic data.
+
+In this question, you will work with data from Tang and Ang (2007), which examines water consumption (WC) as a response variable and population size (POP) as a predictor.
+
+- Perform a linear regression to determine whether population size is a significant predictor of water consumption.
+- Evaluate the model’s assumptions, including normality of residuals and homoscedasticity. 
+- Summarize your analysis in a concise paragraph, including your regression results, assumption checks, and any changes made to refine the model.
+    
+    
 ```{r cars}
 wc_data <- read.csv('Q3-SLR-water consumption.csv')
 head(wc_data)
@@ -59,3 +71,7 @@ plot(WC ~ POP, wc_data,
 #make line width thicker
 abline(mod3, lwd=3)
 ```
+
+
+# References:
+- http://avinashu.com/tutorial/indexLR.html
