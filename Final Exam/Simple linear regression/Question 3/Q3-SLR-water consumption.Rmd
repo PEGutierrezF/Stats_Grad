@@ -1,0 +1,61 @@
+---
+title: "Q3-SLR-water consumption"
+author: "Pablo E. Gutiérrez-Fonseca"
+date: "2024-12-08"
+output: pdf_document
+---
+
+
+
+
+
+
+
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(lessR)
+library(readxl)
+library(RVAideMemoire)
+library(car)
+library(DescTools)
+library(rstatix)
+library(PMCMRplus)
+```
+
+
+```{r cars}
+wc_data <- read.csv('Q3-SLR-water consumption.csv')
+head(wc_data)
+```
+
+## Set up regression
+```{r pressure, echo=TRUE}
+mod3 <- lm(WC ~ POP, wc_data)
+summary(mod3)
+```
+
+
+# Get standardized residuals
+```{r}
+mod3.res <- rstandard(mod3)
+shapiro.test(mod3.res)
+```
+
+# The Breusch-Pagan test to assess homoscedasticity
+```{r}
+ncvTest(mod3)
+```
+
+
+# Make plot of Water Consumption and Population
+```{r}
+plot(WC ~ POP, wc_data, 
+     pch = 19, 
+     col = "royalblue4",
+     ylab = "Water Consumption",
+     xlab =  "Population")
+#add regression line
+#make line width thicker
+abline(mod3, lwd=3)
+```
