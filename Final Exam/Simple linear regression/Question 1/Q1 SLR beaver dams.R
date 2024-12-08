@@ -37,7 +37,7 @@ your results and conclusions, ensuring you clearly interpret the regression coef
 and significance.
 
 
-data <- read.csv('beaver_dam.csv')
+data <- read.csv('Q1-SLR-beaver-dams.csv')
 head(data)
 
 
