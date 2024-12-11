@@ -63,5 +63,7 @@ byf.shapiro(Richness  ~ urbanName, data)
 mod <- aov(Richness  ~ urbanName, data)
 summary(mod)
 
+EtaSq(mod, type=1, anova=TRUE)
+
 tukeyT <- TukeyHSD(mod)
 tukeyT

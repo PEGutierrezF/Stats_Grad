@@ -83,3 +83,22 @@ tukeyT <- TukeyHSD(mod)
 tukeyT
 ```
 
+<br>
+<br>
+
+
+# Response Key:
+
+Hypothesis (2pt): We tested to see if there is a difference between insect richness across four level of urbanization
+
+Test (considering assumptions) (6 pts): ANOVA, normally distributed, equal variance, Tukey post hoc&nbsp;
+
+Shorthand format and correct values (5 pts): F(3,236) = 4.898, p = 0.00254, r2 = 0.05861809.
+
+Significance (1 pt): Yes
+
+Meaningful (1 pt): some discussion of the r2 as a proportion of total variability accounted for by species.&nbsp;
+
+Post hoc tests significance and description (3 pts): spring is higher than winter (all others are equal)&nbsp;
+
+Interpretation/Conclusions (2 pts): some link back to the original question. Furbearers expand their range in the spring to support new litters, but range less in the winter when energy is conserved.
