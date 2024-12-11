@@ -23,7 +23,7 @@ library(PMCMRplus)
 
 
 
-data <- read.csv('Question 3/Q3-SLR-water consumption.csv')
+data <- read.csv('Q3-SLR-water consumption.csv')
 head(data)
 
 

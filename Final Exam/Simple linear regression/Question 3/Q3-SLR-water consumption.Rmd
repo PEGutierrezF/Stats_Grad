@@ -32,7 +32,7 @@ Understanding water consumption patterns is essential for managing resources eff
 In this question, you will work with data from Tang and Ang (2007), which examines water consumption (WC) as a response variable and population size (POP) as a predictor.
 
 - Perform a linear regression to determine whether population size is a significant predictor of water consumption.
-- Evaluate the model’s assumptions, including normality of residuals and homoscedasticity. 
+- Evaluate the model's assumptions, including normality of residuals and homoscedasticity. 
 - Summarize your analysis in a concise paragraph, including your regression results, assumption checks, and any changes made to refine the model.
     
     
@@ -75,3 +75,19 @@ abline(mod3, lwd=3)
 
 # References:
 - http://avinashu.com/tutorial/indexLR.html
+
+# Response Key
+
+Hypothesis (3 pts):
+We tested whether population size is a significant predictor of water consumption.
+
+Test (considering assumptions) (8 pts):
+We performed a linear regression to model water consumption as a function of population size. Assumptions of normality (Shapiro-Wilk test, p=0.298p=0.298) and homoscedasticity (Non-constant Variance Test, p=0.337p=0.337) were satisfied.
+
+Correct values (5 pts): Slope = 0.000071, p=0.0000029, 3R2=0.943
+
+Description (2 pts):
+The relationship between population size and water consumption is statistically significant and positive. For each additional unit increase in population size, water consumption increases by 0.000071 units on average.
+
+Interpretation/Conclusions (2 pts):
+The results indicate that population size is a strong predictor of water consumption, as evidenced by the high R2R2 value. The model assumptions were met, supporting the reliability of these findings. This relationship highlights the importance of population data in forecasting water demand in urban areas.

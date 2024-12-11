@@ -80,3 +80,16 @@ abline(mod, lwd=2)
   
 https://bookdown.org/kroppheather/IntEnvData/introduction-to-linear-regression.html
 https://github.com/kroppheather/Intro_Enviro_Data/blob/main/IntroEnvData/data/tutorial_5/beaver_dam.csv
+
+
+Response Key:&nbsp;
+
+Hypothesis (3 pts): We tested whether the presence of beaver dams is significantly associated with an increase in surface water area in the Arctic tundra.
+
+Test (considering assumptions) (8 pts): We used a linear regression to assess the relationship between the number of beaver dams and surface water area. Assumptions for linear regression, including linearity and homoscedasticity, were considered reasonable based on visual inspection of residuals.
+
+correct values (5 pts): slope = slope = 0.318, p= 0.0027, r2 = 0.610
+
+Description (2 pts): The relationship between beaver dams and surface water area is statistically significant and positive. For each additional beaver dam, surface water area increases by approximately 0.318 hectares on average.
+
+Interpretation/Conclusions (2 pts): The findings suggest that beaver activity, indicated by the number of dams, contributes to an increase in surface water area in the Arctic tundra. This supports the hypothesis that beaver dams influence hydrology in this region, potentially affecting broader ecological processes such as carbon cycling.
