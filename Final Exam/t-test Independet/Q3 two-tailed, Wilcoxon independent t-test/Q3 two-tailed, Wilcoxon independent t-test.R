@@ -52,18 +52,10 @@ var.test(Malaria_cases~Forest_type, malaria)
 
 #8. Run the code for the appropriate test
 
-wilcox.test(Malaria_cases~Forest_type, malaria,
-            alternative = c("two.sided"),
-            mu = 0,
-            paired = FALSE, 
-            var.equal = FALSE,
-            conf.level = 0.95)
-
-
 t.test(Malaria_cases~Forest_type, malaria,
             alternative = c("two.sided"),
             mu = 0,
             paired = FALSE, 
-            var.equal = TRUE,
+            var.equal = FALSE,
             conf.level = 0.95)
 
