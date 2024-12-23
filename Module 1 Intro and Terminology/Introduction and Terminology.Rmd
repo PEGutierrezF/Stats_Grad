@@ -33,6 +33,8 @@ library(ggforce) # for geom_circle
 library(RVAideMemoire) #shapiro.test
 knitr::opts_chunk$set(dpi= 300)
 xaringanExtra::use_panelset()
+xaringanExtra::use_scribble()
+xaringanExtra::use_search(show_icon = TRUE)
 ```
 
 # Statistics: What it is?
@@ -76,7 +78,7 @@ information.
 --
 
 - **Sample:**
-    - A subset of measurements taken from a population, denoted as nn.
+    - A subset of measurements taken from a population, denoted as n.
     - Random Sample: A sample drawn in such a way that all observations have an equal chance of being selected.
       - Important: Ensure your sample represents the full range of characteristics present in your population.
 

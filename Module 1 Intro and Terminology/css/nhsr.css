@@ -33,6 +33,7 @@ a:hover {
   line-height:        1.2em;
 }
 
+
 /*-- HORIZONTAL BARS --*/
 hr {
   content:            none;
@@ -134,6 +135,12 @@ blockquote {
   color:              #FFFFFF;
 }
 
+
+
+
+
+
+
 /*-- Horizontal bars (inverse) --*/
 .inverse hr {
   background-color:   #FFFFFF;
@@ -149,7 +156,9 @@ blockquote {
   border-bottom: none;
 }
 
+
 /*-- CUSTOM CLASS FOR THE TITLE SLIDE --*/
+/*-- Pablo, only TITLE SLIDE --*/
 
 /*-- NHS organisation logo --*/
 .title-slide {
