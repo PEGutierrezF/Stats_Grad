@@ -35,6 +35,7 @@ knitr::opts_chunk$set(dpi= 300)
 xaringanExtra::use_panelset()
 xaringanExtra::use_scribble()
 xaringanExtra::use_search(show_icon = TRUE)
+xaringanExtra::use_progress_bar(color = "blue", location = "bottom")
 ```
 
 # Statistics: What it is?
@@ -90,10 +91,23 @@ information.
 ---
 # Thinking like a statistician
 
-- **Observation**
+- **Observation:**
     - A recording of specific information from a sample unit, denoted as _X_.
     - Observations may also be referred to as:
         - Samples
         - Measurements
         - Values
         - Or simply n.
+
+---
+# Thinking like a statistician
+
+- **Independence:** selection of any one sample unit (observations) does not affect the chances of any other unit being selected.
+  - Variables can also be independent (co-vary in an unrelated pattern).
+
+--
+
+- **Replicate:** If measurements are in some way related, they must be treated as replicates and “nested” within the analysis such that sample size reflects the number of independent observations.
+  - One simple way to work with replicates is to simply average them for each unit of observation.
+
+
