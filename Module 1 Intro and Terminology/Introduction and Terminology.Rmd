@@ -110,4 +110,10 @@ information.
 - **Replicate:** If measurements are in some way related, they must be treated as replicates and “nested” within the analysis such that sample size reflects the number of independent observations.
   - One simple way to work with replicates is to simply average them for each unit of observation.
 
+---
+# Thinking like a statistician
+- Each **tank** is a replicate, but within each tank each trout is not independent. 
+    - A replicate is **the smallest experimental unit to which a treatment is independently applied.**
+  - Most models for statistical inference require true replication.
+    - True replication permits the estimation of variability within a treatment.
 
