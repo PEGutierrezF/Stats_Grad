@@ -1,0 +1,97 @@
+---
+title: "Introduction and Terminology"
+subtitle: ""
+author: "Pablo E. Guti\u00E9rrez-Fonseca"
+institute: ""
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, "css/nhsr.css", "css/nhsr-fonts.css", "css/custom.css"]
+    nature:
+      highlightLanguage: r
+      highlightStyle: github
+      highlightLines: true
+      highlightSpans: true 
+      countIncrementalSlides: true
+      ratio: "16:9"
+    includes:
+      after_body: [css/insert-logo.html] #this is for logos in all slides
+xaringanExtra:
+    use_panelset: true
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readxl)
+library(readr)
+library(lessR)
+library(ggplot2)
+library(patchwork)
+library(palmerpenguins)
+library(car)
+library(ggforce) # for geom_circle
+library(RVAideMemoire) #shapiro.test
+knitr::opts_chunk$set(dpi= 300)
+xaringanExtra::use_panelset()
+```
+
+# Statistics: What it is?
+
+- **Statistics** describes a set of tools and techniques that are used for describing, organizing, and interpreting data.
+
+
+- Without the use of statistics, we muddle through life making choices based on incomplete 
+information.
+
+---
+# Why study statistics?
+
+- Data are everywhere. 
+
+- No matter what your career, you will make professional decisions that involve data. An understanding of statistical methods will help you make these decisions efectively.
+
+---
+# What is statistics used for?
+
+- At a basic level, statistical techniques allow us to aggregate and summarize data in order for researchers to draw conclusions from their study
+
+- Data, or observations, are collected in a very systematic manner, and conclusions are drawn based on the data.
+
+---
+# Thinking like a statistician
+
+---
+# Thinking like a statistician
+
+- Becoming Bilingual:
+    - To think like a statistician, you need to understand key terms that will help us communicate effectively throughout the semester. 
+    
+---
+# Thinking like a statistician
+
+- **Population:**
+  - The collection of all elements or items of interest in a particular study.
+  - It’s the entire group about which we wish to draw conclusions.
+
+--
+
+- **Sample:**
+    - A subset of measurements taken from a population, denoted as nn.
+    - Random Sample: A sample drawn in such a way that all observations have an equal chance of being selected.
+      - Important: Ensure your sample represents the full range of characteristics present in your population.
+
+--
+
+- **Data Is Created, Not Found!**
+  - Data doesn’t simply exist—we generate it systematically through observations and measurements.
+
+---
+# Thinking like a statistician
+
+- **Observation**
+    - A recording of specific information from a sample unit, denoted as _X_.
+    - Observations may also be referred to as:
+        - Samples
+        - Measurements
+        - Values
+        - Or simply n.
