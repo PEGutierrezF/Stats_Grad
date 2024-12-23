@@ -48,3 +48,8 @@ $\alpha+\beta$
     
 href="https://hubbardbrook.org/story/the-ice-storm-experiment-at-hubbard-brook/">Link </a>
       
+Avoid space between nested bullets.
+Level 1
+- subbullets (four spaces)
+Level 2 
+- sub bullets (four spaces)
