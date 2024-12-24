@@ -31,6 +31,7 @@ library(palmerpenguins)
 library(car)
 library(ggforce) # for geom_circle
 library(RVAideMemoire) #shapiro.test
+library(DiagrammeR)
 knitr::opts_chunk$set(dpi= 300)
 xaringanExtra::use_panelset()
 xaringanExtra::use_scribble()
@@ -125,11 +126,56 @@ information.
     - True replication permits the estimation of variability within a treatment.
 
 ---
+# Thinking like a statistician
 
-```{r}
-x <- 1+1 #<<
+.pull-left[
 
-y <- 2+20
+1. The simplest and most common type of pseudo-replication occurs when there is only one replicate per treatment. 
 
+2. Sacrificial pseudo-replication occurs when data from true replicates are combined before analysis, removing their independence and potentially leading to inaccurate results.
+
+3. Temporal pseudo-replication is also common in ecological experiments in which a time series of data are accumulated.
+
+] 
+.pull-right[
+
+.center[
+<img src="fig/psedureplication.png" alt="Degrees of Freedom T-Table" width="350"/>
+]
+]
+
+
+---
+# Thinking like a statistician
+
+- **Variable:** a quantity counted or measured the characteristic that is being observed. 
+
+  1. Quantitative Variables
+  2. Qualitative Variables
+
+---
+# Thinking like a statistician
+
+.pull-left[
+- **Quantitative Variables:** a measurable “amount”.
+    1. **Continuous variable:**  may assume any imaginable value within a certain range. Can (theoretically) have an infinite number of values.
+      - Weights, Heights…
+
+    2. **Discrete Variables:**  countable as integers (whole numbers). No values between two adjacent values are permissible.
+      - Number of bicycles sold in a day.
+
+] 
+.pull-right[
+
+.center[
+```{r, echo=FALSE}
+mermaid("graph TB
+    A[Quantitative data] --> |measuring| Continuous
+    A[Quantitative data] --> |counting| Discrete",
+
+height = '100%', width = '100%')
 ```
+]
+]
+
 

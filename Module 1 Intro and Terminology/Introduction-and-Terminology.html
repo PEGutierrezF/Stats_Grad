@@ -23,11 +23,19 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xbbbce6daed14750aff446a090deaf2d","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xb6e6a6974574f88b944653912baf6df","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
     <script src="libs/editable-0.2.6/editable.js"></script>
+    <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+    <script src="libs/d3-3.3.8/d3.min.js"></script>
+    <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+    <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+    <script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+    <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+    <script src="libs/chromatography-0.1/chromatography.js"></script>
+    <script src="libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
     <link rel="stylesheet" href="css/nhsr.css" type="text/css" />
     <link rel="stylesheet" href="css/nhsr-fonts.css" type="text/css" />
     <link rel="stylesheet" href="css/custom.css" type="text/css" />
@@ -150,13 +158,53 @@ information.
     - True replication permits the estimation of variability within a treatment.
 
 ---
+# Thinking like a statistician
+
+.pull-left[
+
+1. The simplest and most common type of pseudo-replication occurs when there is only one replicate per treatment. 
+
+2. Sacrificial pseudo-replication occurs when data from true replicates are combined before analysis, removing their independence and potentially leading to inaccurate results.
+
+3. Temporal pseudo-replication is also common in ecological experiments in which a time series of data are accumulated.
+
+] 
+.pull-right[
+
+.center[
+&lt;img src="fig/psedureplication.png" alt="Degrees of Freedom T-Table" width="350"/&gt;
+]
+]
 
 
-``` r
-*x &lt;- 1+1
+---
+# Thinking like a statistician
 
-y &lt;- 2+20
-```
+- **Variable:** a quantity counted or measured the characteristic that is being observed. 
+
+  1. Quantitative Variables
+  2. Qualitative Variables
+
+---
+# Thinking like a statistician
+
+.pull-left[
+- **Quantitative Variables:** a measurable “amount”.
+    1. **Continuous variable:**  may assume any imaginable value within a certain range. Can (theoretically) have an infinite number of values.
+      - Weights, Heights…
+
+    2. **Discrete Variables:**  countable as integers (whole numbers). No values between two adjacent values are permissible.
+      - Number of bicycles sold in a day.
+
+] 
+.pull-right[
+
+.center[
+<div id="htmlwidget-713fbf08c48ee2af984f" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-713fbf08c48ee2af984f">{"x":{"diagram":"graph TB\n    A[Quantitative data] --> |measuring| Continuous\n    A[Quantitative data] --> |counting| Discrete"},"evals":[],"jsHooks":[]}</script>
+]
+]
+
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
