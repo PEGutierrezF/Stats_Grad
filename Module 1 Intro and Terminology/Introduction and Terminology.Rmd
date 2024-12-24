@@ -35,7 +35,13 @@ knitr::opts_chunk$set(dpi= 300)
 xaringanExtra::use_panelset()
 xaringanExtra::use_scribble()
 xaringanExtra::use_search(show_icon = TRUE)
-xaringanExtra::use_progress_bar(color = "blue", location = "bottom")
+xaringanExtra::use_progress_bar(color = "#0051BA", location = "bottom", 
+                                height = "4px")
+xaringanExtra::use_clipboard() # Copy Code 
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
 ```
 
 # Statistics: What it is?
@@ -116,4 +122,13 @@ information.
     - A replicate is **the smallest experimental unit to which a treatment is independently applied.**
   - Most models for statistical inference require true replication.
     - True replication permits the estimation of variability within a treatment.
+
+---
+
+```{r}
+x <- 1+1 #<<
+
+y <- 2+20
+
+```
 
