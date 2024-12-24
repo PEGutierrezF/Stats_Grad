@@ -178,4 +178,57 @@ height = '100%', width = '100%')
 ]
 ]
 
+---
+# Thinking like a statistician
+
+- **Qualitative Variables:** descriptive characteristic assignable to a category.
+    1. **Nominal Variables**: measurements fall into a particular class or category with no order implied.
+        - sex (male or female), color (red, blue, green).
+
+    2. **Ordinal Variables:** a ranking scale where order between categories is implied.
+        - Likert scale (strongly agree, agree, neutral, disagree, strongly disagree).  
+
+    3. **Interval (ratio) Variables:** use a quantitative measurement to assign a specific qualitative category (these are still ordinal).
+        - Temperature (cold, warm, hot), age (young, middle-aged, old).
+
+---
+# Thinking like a statistician
+
+- **Independent:**  measurable variables whose value is not dependent upon other measured variables: aka **input variables**.   
+
+- **Dependent:**  variable you want to predict.  The outcome of interest: aka **the response variable**
+    - We hypothesize that its value is dependent on the value of the other measured variables.
+
+---
+# Thinking like a statistician
+
+- You will find that there are other terms commonly used to refer to variables:
+    - Independent Variables can be called:
+        - Factor
+        - Treatment 
+        - Level
+        - X 
+        - Input
+
+    - Dependent Variables can be called: 
+        - Response
+        - Y
+        - Outcome
+
+---
+# Different types of statistics 
+
+.center[
+```{r, echo=FALSE}
+mermaid("graph TB
+    A[Statistics] --> B[Descriptive Statistics]
+    A --> C[Inferential Statistics]
+    B --> D[Summarizing Data]
+    B --> E[Visualization of Data]
+    C --> F[Hypothesis Testing]
+    C --> G[Estimation]
+", height = '100%', width = '100%')
+```
+]
+
 

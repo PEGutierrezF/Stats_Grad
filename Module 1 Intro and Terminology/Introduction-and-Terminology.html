@@ -23,7 +23,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xb6e6a6974574f88b944653912baf6df","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"ec205165981f4fdca73ea0247123f4ed","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -200,9 +200,54 @@ information.
 .pull-right[
 
 .center[
-<div id="htmlwidget-713fbf08c48ee2af984f" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-713fbf08c48ee2af984f">{"x":{"diagram":"graph TB\n    A[Quantitative data] --> |measuring| Continuous\n    A[Quantitative data] --> |counting| Discrete"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-2e48d7799b2f678249bf" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2e48d7799b2f678249bf">{"x":{"diagram":"graph TB\n    A[Quantitative data] --> |measuring| Continuous\n    A[Quantitative data] --> |counting| Discrete"},"evals":[],"jsHooks":[]}</script>
 ]
+]
+
+---
+# Thinking like a statistician
+
+- **Qualitative Variables:** descriptive characteristic assignable to a category.
+    1. **Nominal Variables**: measurements fall into a particular class or category with no order implied.
+        - sex (male or female), color (red, blue, green).
+
+    2. **Ordinal Variables:** a ranking scale where order between categories is implied.
+        - Likert scale (strongly agree, agree, neutral, disagree, strongly disagree).  
+
+    3. **Interval (ratio) Variables:** use a quantitative measurement to assign a specific qualitative category (these are still ordinal).
+        - Temperature (cold, warm, hot), age (young, middle-aged, old).
+
+---
+# Thinking like a statistician
+
+- **Independent:**  measurable variables whose value is not dependent upon other measured variables: aka **input variables**.   
+
+- **Dependent:**  variable you want to predict.  The outcome of interest: aka **the response variable**
+    - We hypothesize that its value is dependent on the value of the other measured variables.
+
+---
+# Thinking like a statistician
+
+- You will find that there are other terms commonly used to refer to variables:
+    - Independent Variables can be called:
+        - Factor
+        - Treatment 
+        - Level
+        - X 
+        - Input
+
+    - Dependent Variables can be called: 
+        - Response
+        - Y
+        - Outcome
+
+---
+# Different types of statistics 
+
+.center[
+<div id="htmlwidget-907e349dea5c8fda0a8e" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-907e349dea5c8fda0a8e">{"x":{"diagram":"graph TB\n    A[Statistics] --> B[Descriptive Statistics]\n    A --> C[Inferential Statistics]\n    B --> D[Summarizing Data]\n    B --> E[Visualization of Data]\n    C --> F[Hypothesis Testing]\n    C --> G[Estimation]\n"},"evals":[],"jsHooks":[]}</script>
 ]
 
 
