@@ -331,3 +331,65 @@ Inferential  -  Correlation
 ]
 
 
+
+---
+# Terminology in action
+
+.pull-left[
+The Vermont DEC is monitoring 12 “sentinel” streams in Vermont. These reference streams are widely variable in terms of development and agricultural density.  Scientists are using species richness of sensitive macroinvertebrates at three drift net locations along each stream as an indicator of overall water quality to see if the density of agriculture and development (categorized as minimal, mixed or moderate) within watersheds significantly impairs water quality.
+.center[
+<img src="fig/drift.jpg" alt="" width="240"/>
+]
+]
+
+.pull-right[ 
+
+- **Research Question:**
+<div style="height: 45px; display: block;"></div>
+- **Population:**
+<div style="height: 45px; display: block;"></div>
+- **Sample:**
+<div style="height: 45px; display: block;"></div>
+- **Observation:**
+<div style="height: 45px; display: block;"></div>
+- **Name and Describe the variables:** 
+<div style="height: 45px; display: block;"></div>
+- **Analysis Type:**
+]
+
+
+
+
+---
+# Terminology in action
+
+.pull-left[
+The Vermont DEC is monitoring 12 “sentinel” streams in Vermont. These reference streams are widely variable in terms of development and agricultural density.  Scientists are using species richness of sensitive macroinvertebrates at three drift net locations along each stream as an indicator of overall water quality to see if the density of agriculture and development (categorized as minimal, mixed or moderate) within watersheds significantly impairs water quality.
+.center[
+<img src="fig/drift.jpg" alt="" width="240"/>
+]
+]
+
+.pull-right[ 
+
+- **Research Question:**
+Does the density of agriculture and development impact macroinvertebrate species richness?
+
+- **Population:**
+All streams in VT
+
+- **Sample:**
+12 Sentinel streams in VT
+
+- **Observation:**
+A stream (drift net replicates at each stream)
+
+- **Name and Describe the variables:** 
+Dependent: species richness (continuous)
+Independent: Ag density (ordinal), Dev density (ordinal)
+
+- **Analysis Type:**
+Inferential:  Factorial ANOVA
+]
+
+

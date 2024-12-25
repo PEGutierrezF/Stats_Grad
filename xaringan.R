@@ -1,5 +1,7 @@
 
 remotes::install_github("mlverse/chattr", force = TRUE)
+install.packages('learnr')
+library(learnr)
 
 library(chattr)
 chattr::chattr_app()
