@@ -168,6 +168,7 @@ information.
 .pull-right[
 
 .center[
+
 ```{r, echo=FALSE}
 mermaid("graph TB
     A[Quantitative data] --> |measuring| Continuous
@@ -267,3 +268,66 @@ mermaid("graph TB
 
 - We measured the length of each fish in Shelburne Pond and then announced that we are 95% confident that the average length of all fish in the lake is between 14.5 and 15.5 inches.
 ]
+
+---
+# Terminology in action
+
+.pull-left[
+Moose herds across the Northeast are increasingly under stress from climate change. Specifically, wildlife biologists are concerned that warmer falls and early springs are increasing winter tick numbers that can have detrimental effects on moose.  They have tranquilized and sampled 59 moose from across the state of VT to see if the density (mean per sq. inch from 5 patches) of winter ticks is impacting moose vitality (measured as weight).
+
+.center[
+<img src="fig/moose.png" alt="Degrees of Freedom T-Table" width="350"/>
+]
+]
+
+.pull-right[ 
+
+- **Research Question:**
+
+- **Population:**
+
+- **Sample:**
+
+- **Observation:**
+
+- **Name and Describe the variables:** 
+
+- **Analysis Type:**
+]
+
+
+---
+# Terminology in action
+
+.pull-left[
+Moose herds across the Northeast are increasingly under stress from climate change. Specifically, wildlife biologists are concerned that warmer falls and early springs are increasing winter tick numbers that can have detrimental effects on moose.  They have tranquilized and sampled 59 moose from across the state of VT to see if the density (mean per sq. inch from 5 patches) of winter ticks is impacting moose vitality (measured as weight).
+
+.center[
+<img src="fig/moose.png" alt="Degrees of Freedom T-Table" width="350"/>
+]
+]
+
+.pull-right[ 
+
+- **Research Question:**
+Is winter tick density related to moose weight?
+
+- **Population:**
+All moose in VT
+
+- **Sample:**
+The 59 moose they were able to catch
+
+- **Observation:**
+A moose (the 5 patches on each moose are replicates)
+
+- **Name and Describe the variables:** 
+Dependent = Moose Weight (continuous)
+Independent = Tick density (continuous)
+
+- **Analysis Type:**
+Inferential  -  Correlation
+
+]
+
+
