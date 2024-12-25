@@ -283,15 +283,15 @@ Moose herds across the Northeast are increasingly under stress from climate chan
 .pull-right[ 
 
 - **Research Question:**
-
+<div style="height: 45px; display: block;"></div>
 - **Population:**
-
+<div style="height: 45px; display: block;"></div>
 - **Sample:**
-
+<div style="height: 45px; display: block;"></div>
 - **Observation:**
-
+<div style="height: 45px; display: block;"></div>
 - **Name and Describe the variables:** 
-
+<div style="height: 45px; display: block;"></div>
 - **Analysis Type:**
 ]
 

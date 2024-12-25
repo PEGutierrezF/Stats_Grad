@@ -44,10 +44,18 @@ $\alpha+\beta$
     This **.red[simple]** .white.bg-purple[demo] 
     _.orange[shows]_ the colors .green[in action].
     
-    
-    
-href="https://hubbardbrook.org/story/the-ice-storm-experiment-at-hubbard-brook/">Link </a>
+
+# Space -------------------------------------------------------------------
+<div style="height: 45px; display: block;"></div>
+
+
       
+# Links -------------------------------------------------------------------
+href="https://hubbardbrook.org/story/the-ice-storm-experiment-at-hubbard-brook/">Link </a>
+
+      
+
+# Align bullets points ----------------------------------------------------
 Avoid space between nested bullets.
 Level 1
 - subbullets (four spaces)
