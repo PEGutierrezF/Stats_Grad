@@ -231,4 +231,39 @@ mermaid("graph TB
 ```
 ]
 
+---
+# Descriptive Statistics
+- **Descriptive statistics** are statistics that quantitatively describe or summarize the data. 
+    - The aim of descriptive statistics is to summarize a sample, rather than use the data to learn about the population.
+    - Usually, information is displayed visually in tables or figures.
 
+
+---
+# Inferential Statistics
+- Mathematical methods that use probability theory to infer the properties of a population from the analysis of a sample drawn from it. 
+
+- Inferential statistics aim to make generalizations and predictions from the sample to the population.
+    - Example: Quantifying the typical stocking levels for forests across Vermont based on FIA inventory data.
+    - Allows us to test hypotheses.
+
+---
+# Why do we need inferential statistics?
+- Large populations make investigating each member impractical and expensive.
+
+- Easier and cheaper to take a sample and make estimates about the population from the sample.
+
+---
+# One big happy family
+- Descriptive and inferential statistics are not mutually exclusive.
+
+.pull-left[
+- **Descriptive Statistics:**
+
+- We measured the length of each fish in Shelburne Pond and found that the mean length was 15 inches, the standard deviation was 2 inches, the minimum length was 10 inches, and the maximum length was 20 inches.
+
+]
+.pull-right[ 
+- **Inferential Statistics:**
+
+- We measured the length of each fish in Shelburne Pond and then announced that we are 95% confident that the average length of all fish in the lake is between 14.5 and 15.5 inches.
+]
