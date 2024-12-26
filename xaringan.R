@@ -3,6 +3,9 @@ remotes::install_github("mlverse/chattr", force = TRUE)
 install.packages('learnr')
 library(learnr)
 
+remotes::install_github('yihui/xaringan', upgrade = TRUE)
+xaringan::inf_mr()
+
 library(chattr)
 chattr::chattr_app()
 
