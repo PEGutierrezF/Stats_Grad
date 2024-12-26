@@ -336,7 +336,7 @@ Inferential  -  Correlation
 # Terminology in action
 
 .pull-left[
-The Vermont DEC is monitoring 12 “sentinel” streams in Vermont. These reference streams are widely variable in terms of development and agricultural density.  Scientists are using species richness of sensitive macroinvertebrates at three drift net locations along each stream as an indicator of overall water quality to see if the density of agriculture and development (categorized as minimal, mixed or moderate) within watersheds significantly impairs water quality.
+The Vermont DEC is monitoring 12 sentinel streams in Vermont. These reference streams are widely variable in terms of development and agricultural density.  Scientists are using species richness of sensitive macroinvertebrates at three drift net locations along each stream as an indicator of overall water quality to see if the density of agriculture and development (categorized as minimal, mixed or moderate) within watersheds significantly impairs water quality.
 .center[
 <img src="fig/drift.jpg" alt="" width="240"/>
 ]

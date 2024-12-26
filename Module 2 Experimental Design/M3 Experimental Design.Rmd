@@ -1,0 +1,132 @@
+---
+title: "Experimental Design"
+subtitle: ""
+author: "Pablo E. Guti\u00E9rrez-Fonseca"
+institute: ""
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, "css/nhsr.css", "css/nhsr-fonts.css", "css/custom.css"]
+    nature:
+      highlightLanguage: r
+      highlightStyle: github
+      highlightLines: true
+      highlightSpans: true 
+      countIncrementalSlides: true
+      ratio: "16:9"
+    includes:
+      after_body: [css/insert-logo.html] #this is for logos in all slides
+xaringanExtra:
+    use_panelset: true
+---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readxl)
+library(readr)
+library(lessR)
+library(ggplot2)
+library(patchwork)
+library(palmerpenguins)
+library(car)
+library(ggforce) # for geom_circle
+library(RVAideMemoire) #shapiro.test
+library(DiagrammeR)
+knitr::opts_chunk$set(dpi= 300)
+xaringanExtra::use_panelset()
+xaringanExtra::use_scribble()
+xaringanExtra::use_search(show_icon = FALSE, position= "bottom-left") # Search
+xaringanExtra::use_progress_bar(color = "#0051BA", location = "bottom", 
+                                height = "4px")
+xaringanExtra::use_clipboard() # Copy Code 
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+xaringanExtra::use_editable(expires = 1) # Add textboxes to edit during presentation
+```
+
+# What is Experimental Design?
+
+- An experimental design is the laying out of a detailed experimental plan in advance of doing the experiment. 
+
+- Why it is important?
+    - Well chosen experimental design maximize the amount of information that can be obtained for a given amount of experimental effort. 
+    - Without proper design, inferential statistics is something not even possible. 
+
+---
+# Why should you care?
+- Without proper design it is often impossible to get the information you want from data collected.
+
+- It will save you and time and money.
+
+- Employers know this.. And know they need people who can do it.
+
+---
+# Key Information for Experimental Design
+1. Define the research question: Hypothesis or study objectives.
+
+2. State variables of interest: Independent and dependent variables, controls, covariates.
+
+3. Construct a sampling design:
+    - Define the population of interest.
+    - Determine the sampling unit: What is an observation?
+    - Appropriate sampling unit size and shape.
+    - How many observations are needed?
+    - Selected and position of observations: consider control and pairing.
+
+4. Develop your **method**: how, where, when to sample?
+
+- This information will help you to choose the appropriate statistical analysis.
+     - We'll cover this throughout the course.
+
+---
+# Define the problem: Hypothesis or study objective
+- Hypothesis: statement of the expected outcome of an experiment.
+
+- Characteristics of a good Hypothesis:
+    - Clear, concise statement of expected results.
+    - Based on scientific theory or observation
+    - Is testable
+    - Identifies the key variables included 
+    - Specifies the nature of the relationship or differences expected
+    - Define the population of interest.
+
+---
+# Hypothesis or study objective
+
+.pull-left[ 
+- Clear and Concise: Clearly states the expected outcome.
+
+.medium[
+    - **Example:** Higher soil moisture will increase tree growth rates in Vermont forests.]
+
+- Based on Theory or Observation: Grounded in prior knowledge or observations.
+
+.medium[
+    - **Example:** Based on the understanding that moisture availability influences tree growth.]
+
+- Testable: Can be evaluated with data collection.
+    
+.medium[
+    - **Example:** Measure tree growth in areas with varying soil moisture levels.]
+
+]
+.pull-right[
+- Identifies Key Variables: Specifies independent and dependent variables.
+
+.medium[
+    - **Example:** Soil moisture (independent) and tree growth rate (dependent).]
+
+- Specifies Relationship: Defines the expected interaction between variables.
+
+.medium[
+    - **Example:** Increased soil moisture is expected to enhance tree growth.]
+
+--
+
+- Defines Population: Specifies the study context or target population.
+
+.medium[
+    - **Example:** Mature deciduous trees in Vermont forests.]
+]
