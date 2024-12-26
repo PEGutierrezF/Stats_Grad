@@ -82,7 +82,7 @@ information.
 
 - **Population:**
     - The collection of all elements or items of interest in a particular study.
-    - It’s the entire group about which we wish to draw conclusions.
+    - It's the entire group about which we wish to draw conclusions.
 
 --
 
@@ -94,7 +94,7 @@ information.
 --
 
 - **Data Is Created, Not Found!**
-    - Data doesn’t simply exist—we generate it systematically through observations and measurements.
+    - Data doesn't simply exist, we generate it systematically through observations and measurements.
 
 ---
 # Thinking like a statistician
@@ -115,7 +115,7 @@ information.
 
 --
 
-- **Replicate:** If measurements are in some way related, they must be treated as replicates and “nested” within the analysis such that sample size reflects the number of independent observations.
+- **Replicate:** If measurements are in some way related, they must be treated as replicates and nested within the analysis such that sample size reflects the number of independent observations.
   - One simple way to work with replicates is to simply average them for each unit of observation.
 
 ---
@@ -157,9 +157,9 @@ information.
 # Thinking like a statistician
 
 .pull-left[
-- **Quantitative Variables:** a measurable “amount”.
+- **Quantitative Variables:** a measurable **amount**.
     1. **Continuous variable:**  may assume any imaginable value within a certain range. Can (theoretically) have an infinite number of values.
-      - Weights, Heights…
+      - Weights, Heights
 
     2. **Discrete Variables:**  countable as integers (whole numbers). No values between two adjacent values are permissible.
       - Number of bicycles sold in a day.
@@ -364,7 +364,7 @@ The Vermont DEC is monitoring 12 “sentinel” streams in Vermont. These refere
 # Terminology in action
 
 .pull-left[
-The Vermont DEC is monitoring 12 “sentinel” streams in Vermont. These reference streams are widely variable in terms of development and agricultural density.  Scientists are using species richness of sensitive macroinvertebrates at three drift net locations along each stream as an indicator of overall water quality to see if the density of agriculture and development (categorized as minimal, mixed or moderate) within watersheds significantly impairs water quality.
+The Vermont DEC is monitoring 12 sentinel streams in Vermont. These reference streams are widely variable in terms of development and agricultural density.  Scientists are using species richness of sensitive macroinvertebrates at three drift net locations along each stream as an indicator of overall water quality to see if the density of agriculture and development (categorized as minimal, mixed or moderate) within watersheds significantly impairs water quality.
 .center[
 <img src="fig/drift.jpg" alt="" width="240"/>
 ]
@@ -389,7 +389,7 @@ Dependent: species richness (continuous)
 Independent: Ag density (ordinal), Dev density (ordinal)
 
 - **Analysis Type:**
-Inferential:  Factorial ANOVA
-]
+Inferential: Factorial ANOVA
 
+]
 
