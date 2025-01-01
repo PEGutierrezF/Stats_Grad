@@ -23,7 +23,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xa64ad253d9c4550be6e6a5724b711a0","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x6d95f3082e04a59b567fbefff31cdd4","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -273,8 +273,120 @@ For most studies, a power greater than 0.8 is considered adequate, indicating an
 ---
 # Sampling design
 
-<div id="htmlwidget-1dd19ca04caaf926aa82" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1dd19ca04caaf926aa82">{"x":{"diagram":"\ngraph TB\n    A[Sampling techniques]\n    A --> B[Non-Probability sampling<br>Chosen based on subjective judgment]\n    A --> C[Probability sampling<br>Random selection<br>Equal opportunity]\n"},"evals":[],"jsHooks":[]}</script>
+.center[
+
+<div id="htmlwidget-58f2d532432447d8ed22" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-58f2d532432447d8ed22">{"x":{"diagram":"\ngraph TB\n    A[Sampling techniques]\n    A --> B[Non-Probability sampling<br>Chosen based on subjective judgment]\n    A --> C[Probability sampling, is a technique in which the members of the sample<br> are chosen randomly from the population.<br> Every member has an equal opportunity to be a part of a sample of this type. ]\n"},"evals":[],"jsHooks":[]}</script>
+
+]
+
+---
+# Simple Random Sampling
+
+.center[
+
+<div id="htmlwidget-c3808196e172c4293000" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c3808196e172c4293000">{"x":{"diagram":"\ngraph TB\n    A[Sampling techniques]\n    A --> B[Non-Probability sampling<br> 1. Judgmental]\n    A --> C[Probability sampling<br> 1. Simple random sampling<br> 2. Systematic and Grid sampling<br> 3. Stratified sampling<br> 4. Adaptive Cluster samplingNbr> 5. Ranked Set Sampling]\n"},"evals":[],"jsHooks":[]}</script>
+
+]
+
+---
+# Judgmental Sampling
+
+- **Definition:** Selection of sampling units (number, location, timing) based on the researcher's judgment rather than random or systematic methods.
+
+- **Limitations:** Conclusions are limited by the accuracy and validity of the researcher's judgment. Probabilistic statements about parameters are not possible.
+
+- **Appropriate Use:**
+  - Descriptive Studies: To explore or describe phenomena where random sampling is impractical.
+  - Pilot Studies: To test methods or gather initial insights.
+Emergency Response: For immediate data collection when quick decisions are needed.
+
+---
+# Judgmental Sampling
+- You are monitoring the wolf population in Yellowstone and need to quickly estimate breeding success to determine if further monitoring is necessary. You have time to assess 3 of your packs.
+
+- Random Sampling: Of the 10 packs in the park, you randomly select 3 to visit.
+Judgmental Sampling (Vulnerable Packs): You visit the dens of the most vulnerable packs within the park's borders to assess litter size.
+
+- Judgmental Sampling (Least Impacted Packs): You visit the dens of the packs that you know are least impacted by your intrusion to assess litter size.
+
+---
+# Judgmental Sampling
+
+- You are monitoring water quality in Lake Champlain but have time to collect only 10 samples at regular intervals.
+
+- Random Sampling: Use GPS to randomly select 10 points around the Lake Champlain waterfront.
+
+- Judgmental Sampling: Collect samples from 10 key locations where pollution loads are highest (e.g., near sewage plants, stormwater drains, or areas with agricultural runoff).
+
+---
+# Simple Random Sampling
+
+.center[
+
+<div id="htmlwidget-21ce9b2a92eba485fe6f" style="width:100%;height:100%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-21ce9b2a92eba485fe6f">{"x":{"diagram":"\ngraph TB\n    A[Sampling techniques]\n    A --> B[Non-Probability sampling<br> 1. Judgmental]\n    A --> C[Probability sampling<br> 1. Simple random sampling<br> 2. Systematic and Grid sampling<br> 3. Stratified sampling<br> 4. Adaptive Cluster samplingNbr> 5. Ranked Set Sampling]\n"},"evals":[],"jsHooks":[]}</script>
+
+]
+
+---
+# Simple Random Sampling
+- **Definition:** Applies sampling theory with random selection, giving each member of the population an equal chance of being selected.
+
+- **Benefits:**
+  - Provides statistically unbiased estimates of the mean and variability of the larger population.
+  - Enables probabilistic statements about parameters, supporting conclusions with confidence levels.
+  - Allows for statistical inference.
+
+- **Applications:** Ideal for comparative, experimental, and modeling studies.
+
+---
+# Simple Random Sampling
+- Key Assumption of Probability-Based Design: 
+    - The sample must be representative of the entire population.
+
+- To achieve this: 
+    - Use random, unbiased sampling methods.
+    - Collect enough samples to ensure accurate representation.
+    - Distribute sampling units well across the population.
+    - Ensure sampling units are independent (no spatial correlation).
+    
+
+---
+# Simple Random Sampling
+- Simple Random Sampling: Sampling units are selected randomly, with each having an equal chance of being chosen.
+
+- Best Use: Ideal when the population is relatively homogeneous, with no major patterns or hotspots expected.
+
+
+---
+# Stratified Random Sampling
+- **Stratified Random Sampling:** The target population is divided into non-overlapping strata or subpopulations that are more homogeneous.
+
+- **Best Use:** 
+Effective when the population is heterogeneous and can be subdivided by specific characteristics. It enhances precision in estimating means and variances and provides reliable estimates for subgroups of special interest.
+
+---
+# Systematic and Grid Sampling
+- **Systematic and Grid Sampling:** An initial location or time is chosen at random, followed by sampling at regular intervals across space or time.
+
+- **Best Use:** Useful for identifying hotspots, estimating spatial patterns, and detecting trends over time. Ensures uniform coverage of the study area.
+
+---
+# Adaptive Cluster Sampling
+- **Adaptive Cluster Sampling:** Starts with simple random sampling, then additional samples are taken where measurements meet specific criteria, with potential for several rounds of sampling and analysis.
+
+- **Best Use:** Ideal for estimating or detecting rare characteristics and is suited for inexpensive, rapid measurements.  It helps delineate hotspot boundaries while providing unbiased estimates of the population mean using appropriate weighting of all collected data.
+
+---
+# Ranked Set Sampling
+
+- **Ranked Set Sampling:** Uses a two-phase design where inexpensive measurements rank multiple locations within a set, then selects one location from each set for more detailed sampling.
+
+- **Best Use:** Cost-efficient and incorporates professional judgment into a random design. It typically provides more representative samples and more precise estimates of the population mean compared to simple random sampling.
+
+
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
