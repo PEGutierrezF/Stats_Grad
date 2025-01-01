@@ -149,7 +149,7 @@ Clearly identify the main variables that will be measured or observed in the stu
     - Specify the specific population or system that the study will focus on.]
 
 ---
-- Variables of interest
+# Variables of interest
 
 - Independent Variable (Manipulated Variable):
     - This is the variable that is deliberately changed or manipulated in the study. It is the primary focus of the experiment to see how it affects the dependent variable.
@@ -160,5 +160,94 @@ Clearly identify the main variables that will be measured or observed in the stu
     - Example: The growth rate of trees, which responds to changes in soil moisture.
     
 ---
+# Variables of interest
 
+- **Control:**
+ - Controls are factors that are kept constant throughout the experiment to ensure that the results are due to the manipulation of the independent variable, not other factors. Controls help establish a standard of comparison.
+ - Example: Using the same tree species, consistent light exposure, and the same soil type across all test groups.
+
+- **Covariate:**  
+- Covariates are factors that could influence the dependent variable but cannot be fully controlled. Including them helps to account for their potential impact in statistical analysis, ensuring more accurate results.
+- Example: In a tree growth study, covariates might include temperature, nutrient availability, or pest pressure-factors that can influence growth but are difficult to control completely.
+
+---
+# Sample, replicate and pseudo replicate 
+- **Sample:**
+- A statistical sample is a subset of items which is used to represent the population from which they are drawn.
+
+- It has two connotations (Sokal & Rohlf 2009):
+1. **Individual observations**, which are taken in small units.
+These smaller sampling units are often, but not necessarily, individuals in the biological sense.
+
+If we take the weight of 100 fish, then the weight of each fish is an individual observation.
+
+---
+# Sample, replicate and pseudo replicate 
+- **Sample:**
+- A statistical sample is a subset of items which is used to represent the population from which they are drawn.
+
+- It has two connotations (Sokal & Rohlf 2009):
+2. **A set of individuals** that are examined to estimate the average value.
+Each set of individuals are considered as basic sampling units.
+
+- If we wish to measure temperature in a study of ant colonies, where each colony is a basic sampling unit, each temperature reading for one colony is an individual observation, and the sample of observations is the temperature for all the colonies considered.
+
+
+---
+# Sample, replicate and pseudo replicate 
+
+- **Replication:** 
+- Replication means having observations replicated at a spatial and temporal scale that coincides with the application of the experimental treatments.
+- In statistics, replicates mean different samples that capture random variations of the system.
+- Replicas are essential because biological systems are inherently variable, and this is particularly true for ecological systems.
+
+---
+# Sample, replicate and pseudo replicate
+
+- **Pseudoreplication:**
+Hurlbert (1984) to refer to **the use of inferential statistics to test for treatment effects with data from experiments where either treatments are not replicated (though samples may be) or replicates are not statistically independent.**
+
+Heffner et al (1996) distinguish a pseudoreplicate from a true replicate, which they characterize as **the smallest experimental unit to which a treatment is independently applied**.
+
+---
+# Sampling design
+
+
+---
+# Sampling design
+
+- Sampling design proposed method of selecting a subset of the population for measurements.
+
+- Observation (or Sampling Unit):
+  - Individual Plants or Animals: Measure specific organisms.
+  - Plant or Animal Parts: Sample parts (e.g., leaves, scales).
+  - Quadrants: Define and sample areas (e.g., 1m^2).
+  - Lines (Transects): Sample along a line across the study area.
+  - Points: Collect samples at specific points.
+  
+---
+# Understanding Statistical Power
+- **Statistical Power** is the probability that a statistical test will correctly reject a null hypothesis (which states that there is no relationship between the variables of interest) when it is false, meaning that a true effect or relationship exists. 
+It reflects the ability of the test to detect a significant result if there is one.
+
+- Power Value: A power of 0.9 means there is a 90% chance of detecting a significant difference if it truly exists, and a 10% chance of missing it (Type II error).
+For most studies, a power greater than 0.8 is considered adequate, indicating an 80% chance of detecting a significant result if there is a true effect.
+
+- Statistical power is intricately linked to the number of observations.
+
+---
+# Understanding Statistical Power
+
+---
+# Sampling design
+
+```{r, echo=FALSE}
+mermaid("
+graph TB
+    A[Sampling techniques]
+    A --> B[Non-Probability sampling<br>Chosen based on subjective judgment]
+    A --> C[Probability sampling<br>Random selection<br>Equal opportunity]
+",
+height = '100%', width = '100%')
+```
 
