@@ -123,10 +123,42 @@ xaringanExtra::use_editable(expires = 1) # Add textboxes to edit during presenta
 .medium[
     - **Example:** Increased soil moisture is expected to enhance tree growth.]
 
---
-
 - Defines Population: Specifies the study context or target population.
 
 .medium[
     - **Example:** Mature deciduous trees in Vermont forests.]
 ]
+
+---
+# Hypothesis or **study objective**
+
+- A study objective outlines the purpose of research when there is no specific hypothesis to test statistically. Instead, it focuses on describing, monitoring, or understanding a system. Here are the key characteristics:
+
+1. Clear and Concise Statement of the Goal or Knowledge to Be Gained:  
+The objective should clearly articulate what the study aims to achieve or learn.
+.medium[
+    - **Example:** To assess the effects of varying soil moisture on tree growth in Vermont forests.]
+
+2. Identified Key Variables:  
+Clearly identify the main variables that will be measured or observed in the study.
+.medium[
+    - **Example:** Soil moisture levels and tree growth rates.]
+
+3. Defines the Population of Interest:  
+.medium[
+    - Specify the specific population or system that the study will focus on.]
+
+---
+- Variables of interest
+
+- Independent Variable (Manipulated Variable):
+    - This is the variable that is deliberately changed or manipulated in the study. It is the primary focus of the experiment to see how it affects the dependent variable.
+    - Example: In a study on tree growth, the independent variable could be soil moisture levels.
+
+- Dependent Variable (Responding Variable):
+    - This variable changes in response to the manipulation of the independent variable. It is what you measure to assess the effect of the independent variable.
+    - Example: The growth rate of trees, which responds to changes in soil moisture.
+    
+---
+
+
