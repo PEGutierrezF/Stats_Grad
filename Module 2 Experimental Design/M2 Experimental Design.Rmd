@@ -376,4 +376,37 @@ Effective when the population is heterogeneous and can be subdivided by specific
 - **Best Use:** Cost-efficient and incorporates professional judgment into a random design. It typically provides more representative samples and more precise estimates of the population mean compared to simple random sampling.
 
 
+---
+# Key Information for Experimental Design
 
+- Since 2004 the number of taps in Vermont has gone from a reported 2,100,000 to 4,490,000 and production has gone from 500,000 gallons to 1,390,000 gallons the value of this production has risen from approximately 14 million dollars in 2004 to 44.5 million in 2014 (National Agricultural Statistics Service, 2006 and 2015). 
+
+---
+# Key Information for Experimental Design
+
+1. Define the problem:  Hypothesis or study objective: 
+    - Does industrial scale sugaring impact the health of sugar maple stands.
+
+--
+
+2. Identify the population of interest (what are we trying to represent)
+    - Sugar maple stands in Vermont.
+
+--
+
+3. State Variables of interest (independent, dependent, controls, covariates)
+    - Dependent:  Mean Crown Vigor (0-4, healthy to dead)
+  - Independent:  Sugaring intensity (none, low, high)
+  - Confounding factors:  Soil type, elevation, drainage, stand density, disturbance (0/1)
+  
+---
+# Key Information for Experimental Design
+- Construct a Sampling Design
+- Determine the Sampling unit (what is an observation) 
+- Appropriate sampling unit size and shape?
+
+- Let's follow best practices and use the FIA (Forest Inventory Analysis) inventory and assessment plot design.
+Each plot consists of 4 sub-plots.
+
+Sampling Unit = plot
+Sub-plots = replicates
