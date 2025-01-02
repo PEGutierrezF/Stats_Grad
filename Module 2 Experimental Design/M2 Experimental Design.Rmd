@@ -312,7 +312,7 @@ mermaid("
 graph TB
     A[Sampling techniques]
     A --> B[Non-Probability sampling<br> 1. Judgmental]
-    A --> C[Probability sampling<br> 1. Simple random sampling<br> 2. Systematic and Grid sampling<br> 3. Stratified sampling<br> 4. Adaptive Cluster samplingNbr> 5. Ranked Set Sampling]
+    A --> C[Probability sampling<br> 1. Simple random sampling<br> 2. Systematic and Grid sampling<br> 3. Stratified sampling<br> 4. Adaptive Cluster sampling<br> 5. Ranked Set Sampling]
 ",
 height = '100%', width = '100%')
 ```
@@ -402,11 +402,70 @@ Effective when the population is heterogeneous and can be subdivided by specific
 ---
 # Key Information for Experimental Design
 - Construct a Sampling Design
-- Determine the Sampling unit (what is an observation) 
-- Appropriate sampling unit size and shape?
+    - Determine the Sampling unit (what is an observation) 
+    - Appropriate sampling unit size and shape?
 
 - Let's follow best practices and use the FIA (Forest Inventory Analysis) inventory and assessment plot design.
-Each plot consists of 4 sub-plots.
+    - Each plot consists of 4 sub-plots.
 
-Sampling Unit = plot
-Sub-plots = replicates
+    - Sampling Unit = plot
+    - Sub-plots = replicates
+    
+---
+# Sampling Design
+
+- You can assess canopy condition at up to 30 plots across the state.
+
+- Each of these plots is made up of 4 sub-plots
+    - A plot is a sampling unit
+    - A subplot is a replicate within each plot
+    - But how do I pick where to put these 30 plots?
+
+---
+# Sampling Design
+
+.pull-left[ 
+- **Simple Random Sampling:** 
+    - Randomly select 30 plots across the state.
+    - Each plot consists of 4 sub-plots.
+    - Best for homogeneous populations with no expected patterns.
+    
+]
+.pull-right[
+]
+
+---
+# Sampling Design
+- **Stratified Random Sampling:** 
+    - Divide the state into regions based on Sugaring operations.
+    - Randomly select 10 plots from each stratum.
+    - Each plot consists of 4 sub-plots.
+    - Best for heterogeneous populations with distinct subgroups.
+
+---
+# Sampling Design
+- **Systematic and Grid Sampling:** 
+    - Create a grid across the state.
+    - Randomly select 30 grid points.
+    - Each plot consists of 4 sub-plots.
+    - Best for identifying hotspots or trends across space.
+    
+---
+# Sampling Design
+- **Adaptive Cluster Sampling:** 
+    - Randomly select 30 plots across the state.
+    - Assess canopy condition.
+    - Select additional plots based on canopy condition.
+    - Each plot consists of 4 sub-plots.
+    - Best for identifying rare characteristics or hotspots.
+    
+---
+# Sampling Design
+- **Judgmental Sampling:** 
+    - Select 30 plots based on expert knowledge.
+    - Each plot consists of 4 sub-plots.
+    - Best for exploratory studies or when quick decisions are needed.
+    
+    
+
+
