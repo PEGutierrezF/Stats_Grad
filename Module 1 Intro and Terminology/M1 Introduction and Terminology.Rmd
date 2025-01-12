@@ -125,6 +125,10 @@ information.
   - Most models for statistical inference require true replication.
     - True replication permits the estimation of variability within a treatment.
 
+<br>
+
+.center[<img src="fig/tanks.jpg" width="800"/>]
+
 ---
 # Thinking like a statistician
 
