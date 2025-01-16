@@ -3,7 +3,7 @@ title: "Experimental Design"
 subtitle: ""
 author: "Pablo E. Guti\u00E9rrez-Fonseca"
 institute: ""
-date: "`r Sys.Date()`"
+date: "2025-01-15 (updated: `r Sys.Date()`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -97,9 +97,7 @@ xaringanExtra::use_editable(expires = 1) # Add textboxes to edit during presenta
 
 .pull-left[ 
 - Clear and Concise: Clearly states the expected outcome.
-
-.medium[
-    - **Example:** Higher soil moisture will increase tree growth rates in Vermont forests.]
+    - **Example:** Higher soil moisture will increase tree growth rates in Vermont forests.
 
 - Based on Theory or Observation: Grounded in prior knowledge or observations.
 
@@ -110,8 +108,8 @@ xaringanExtra::use_editable(expires = 1) # Add textboxes to edit during presenta
     
 .medium[
     - **Example:** Measure tree growth in areas with varying soil moisture levels.]
-
 ]
+
 .pull-right[
 - Identifies Key Variables: Specifies independent and dependent variables.
 
