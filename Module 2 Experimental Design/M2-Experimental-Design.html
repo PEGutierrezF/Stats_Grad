@@ -22,7 +22,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xeaef397db52416da1d0be92c7f23da0","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x9e71c1d17514dc09299818b3fb5616f","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -50,7 +50,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2025-01-15 (updated: 2025-01-16)
+### 2025-01-15 (updated: 2025-01-22)
 ]
 
 ---
@@ -161,7 +161,7 @@ class: center, middle, inverse, title-slide
 ---
 # Hypothesis or **study objective**
 
-- A study objective outlines the purpose of research when there is no specific hypothesis to test statistically. Instead, it focuses on describing, monitoring, or understanding a system. Here are the key characteristics:
+- A **study objective** outlines the purpose of research when there is no specific hypothesis to test statistically. Instead, it focuses on describing, monitoring, or understanding a system. Here are the key characteristics:
 
 1. Clear and Concise Statement of the Goal or Knowledge to Be Gained:  
 The objective should clearly articulate what the study aims to achieve or learn.
@@ -181,54 +181,57 @@ Clearly identify the main variables that will be measured or observed in the stu
 # Variables of interest
 
 - Independent Variable (Manipulated Variable):
-    - This is the variable that is deliberately changed or manipulated in the study. It is the primary focus of the experiment to see how it affects the dependent variable.
+    - This is the variable that is **deliberately changed or manipulated** in the study. It is the primary focus of the experiment to see how it affects the dependent variable.
     - Example: In a study on tree growth, the independent variable could be soil moisture levels.
 
 - Dependent Variable (Responding Variable):
-    - This variable changes in response to the manipulation of the independent variable. It is what you measure to assess the effect of the independent variable.
+    - This variable changes in **response to the manipulation** of the independent variable. It is what you measure to assess the effect of the independent variable.
     - Example: The growth rate of trees, which responds to changes in soil moisture.
     
 ---
 # Variables of interest
 
 - **Control:**
- - Controls are factors that are kept constant throughout the experiment to ensure that the results are due to the manipulation of the independent variable, not other factors. Controls help establish a standard of comparison.
+ - Controls are factors that are **kept constant** throughout the experiment to ensure that the results are due to the manipulation of the independent variable, not other factors. Controls **help establish a standard of comparison**.
  - Example: Using the same tree species, consistent light exposure, and the same soil type across all test groups.
 
 - **Covariate:**  
-- Covariates are factors that could influence the dependent variable but cannot be fully controlled. Including them helps to account for their potential impact in statistical analysis, ensuring more accurate results.
-- Example: In a tree growth study, covariates might include temperature, nutrient availability, or pest pressure-factors that can influence growth but are difficult to control completely.
+  - Covariates are factors that **could influence the dependent variable** but cannot be fully controlled. Including them helps to account for their potential impact in statistical analysis, ensuring more accurate results.
+  - Example: In a tree growth study, covariates might include temperature, nutrient availability, or pest pressure-factors that can influence growth but are difficult to control completely.
 
 ---
 # Sample, replicate and pseudo replicate 
 - **Sample:**
-- A statistical sample is a subset of items which is used to represent the population from which they are drawn.
+  - A statistical sample is a subset of items which is used to represent the population from which they are drawn.
+  - It has two connotations (Sokal &amp; Rohlf 2009):
 
-- It has two connotations (Sokal &amp; Rohlf 2009):
-1. **Individual observations**, which are taken in small units.
+&lt;br&gt; 
+
+  1. **Individual observations**, which are taken in small units.  
 These smaller sampling units are often, but not necessarily, individuals in the biological sense.
-
-If we take the weight of 100 fish, then the weight of each fish is an individual observation.
+    
+    - If we take the weight of 100 fish, then the weight of each fish is an individual observation.
 
 ---
 # Sample, replicate and pseudo replicate 
 - **Sample:**
-- A statistical sample is a subset of items which is used to represent the population from which they are drawn.
+  - A statistical sample is a subset of items which is used to represent the population from which they are drawn.
+  - It has two connotations (Sokal &amp; Rohlf 2009):
 
-- It has two connotations (Sokal &amp; Rohlf 2009):
-2. **A set of individuals** that are examined to estimate the average value.
-Each set of individuals are considered as basic sampling units.
+&lt;br&gt;
 
-- If we wish to measure temperature in a study of ant colonies, where each colony is a basic sampling unit, each temperature reading for one colony is an individual observation, and the sample of observations is the temperature for all the colonies considered.
+  2. **A set of individuals** that are examined to estimate the average value.  
+  Each set of individuals are considered as basic sampling units.
+
+    - If we wish to measure temperature in a study of ant colonies, where each colony is a basic sampling unit, each temperature reading for one colony is an individual observation, and the sample of observations is the temperature for all the colonies considered.
 
 
 ---
 # Sample, replicate and pseudo replicate 
-
 - **Replication:** 
-- Replication means having observations replicated at a spatial and temporal scale that coincides with the application of the experimental treatments.
-- In statistics, replicates mean different samples that capture random variations of the system.
-- Replicas are essential because biological systems are inherently variable, and this is particularly true for ecological systems.
+  - Replication means having observations replicated at a spatial and temporal scale that coincides with the application of the experimental treatments.
+  - In statistics, replicates mean different samples that capture random variations of the system.
+  - Replicas are essential because biological systems are inherently variable, and this is particularly true for ecological systems.
 
 ---
 # Sample, replicate and pseudo replicate
@@ -236,7 +239,7 @@ Each set of individuals are considered as basic sampling units.
 - **Pseudoreplication:**
 Hurlbert (1984) to refer to **the use of inferential statistics to test for treatment effects with data from experiments where either treatments are not replicated (though samples may be) or replicates are not statistically independent.**
 
-Heffner et al (1996) distinguish a pseudoreplicate from a true replicate, which they characterize as **the smallest experimental unit to which a treatment is independently applied**.
+- Heffner et al. (1996) distinguish a pseudoreplicate from a true replicate, which they characterize as **the smallest experimental unit to which a treatment is independently applied**.
 
 ---
 # Sampling design
@@ -259,8 +262,8 @@ Heffner et al (1996) distinguish a pseudoreplicate from a true replicate, which 
 - **Statistical Power** is the probability that a statistical test will correctly reject a null hypothesis (which states that there is no relationship between the variables of interest) when it is false, meaning that a true effect or relationship exists. 
 It reflects the ability of the test to detect a significant result if there is one.
 
-- Power Value: A power of 0.9 means there is a 90% chance of detecting a significant difference if it truly exists, and a 10% chance of missing it (Type II error).
-For most studies, a power greater than 0.8 is considered adequate, indicating an 80% chance of detecting a significant result if there is a true effect.
+  - Power Value: A power of 0.9 means there is a 90% chance of detecting a significant difference if it truly exists, and a 10% chance of missing it (Type II error).
+  - For most studies, a power greater than 0.8 is considered adequate, indicating an 80% chance of detecting a significant result if there is a true effect.
 
 - Statistical power is intricately linked to the number of observations.
 
@@ -272,8 +275,8 @@ For most studies, a power greater than 0.8 is considered adequate, indicating an
 
 .center[
 
-<div id="htmlwidget-e25b89c9104bba8352b2" style="width:100%;height:100%;" class="DiagrammeR html-widget "></div>
-<script type="application/json" data-for="htmlwidget-e25b89c9104bba8352b2">{"x":{"diagram":"\ngraph TB\n    A[Sampling techniques]\n    A --> B[Non-Probability sampling<br>Chosen based on subjective judgment]\n    A --> C[Probability sampling, is a technique in which the members of the sample<br> are chosen randomly from the population.<br> Every member has an equal opportunity to be a part of a sample of this type. ]\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-bd5d6de836ef2e9f3fa4" style="width:100%;height:100%;" class="DiagrammeR html-widget "></div>
+<script type="application/json" data-for="htmlwidget-bd5d6de836ef2e9f3fa4">{"x":{"diagram":"\ngraph TB\n    A[Sampling techniques]\n    A --> B[Non-Probability sampling<br>Chosen based on subjective judgment]\n    A --> C[Probability sampling, is a technique in which the members of the sample<br> are chosen randomly from the population.<br> Every member has an equal opportunity to be a part of a sample of this type. ]\n"},"evals":[],"jsHooks":[]}</script>
 
 ]
 
@@ -282,8 +285,8 @@ For most studies, a power greater than 0.8 is considered adequate, indicating an
 
 .center[
 
-<div id="htmlwidget-b600a4974e1770466fd9" style="width:100%;height:100%;" class="DiagrammeR html-widget "></div>
-<script type="application/json" data-for="htmlwidget-b600a4974e1770466fd9">{"x":{"diagram":"\ngraph TB\n    A[Sampling techniques]\n    A --> B[Non-Probability sampling<br> 1. Judgmental]\n    A --> C[Probability sampling<br> 1. Simple random sampling<br> 2. Systematic and Grid sampling<br> 3. Stratified sampling<br> 4. Adaptive Cluster samplingNbr> 5. Ranked Set Sampling]\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d0ce1eba81a81a331b25" style="width:100%;height:100%;" class="DiagrammeR html-widget "></div>
+<script type="application/json" data-for="htmlwidget-d0ce1eba81a81a331b25">{"x":{"diagram":"\ngraph TB\n    A[Sampling techniques]\n    A --> B[Non-Probability sampling<br> 1. Judgmental]\n    A --> C[Probability sampling<br> 1. Simple random sampling<br> 2. Systematic and Grid sampling<br> 3. Stratified sampling<br> 4. Adaptive Cluster samplingNbr> 5. Ranked Set Sampling]\n"},"evals":[],"jsHooks":[]}</script>
 
 ]
 
@@ -322,8 +325,8 @@ Judgmental Sampling (Vulnerable Packs): You visit the dens of the most vulnerabl
 
 .center[
 
-<div id="htmlwidget-acdc9e4800601e09c9fb" style="width:100%;height:100%;" class="DiagrammeR html-widget "></div>
-<script type="application/json" data-for="htmlwidget-acdc9e4800601e09c9fb">{"x":{"diagram":"\ngraph TB\n    A[Sampling techniques]\n    A --> B[Non-Probability sampling<br> 1. Judgmental]\n    A --> C[Probability sampling<br> 1. Simple random sampling<br> 2. Systematic and Grid sampling<br> 3. Stratified sampling<br> 4. Adaptive Cluster sampling<br> 5. Ranked Set Sampling]\n"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-3873c97f190cb83e3f25" style="width:100%;height:100%;" class="DiagrammeR html-widget "></div>
+<script type="application/json" data-for="htmlwidget-3873c97f190cb83e3f25">{"x":{"diagram":"\ngraph TB\n    A[Sampling techniques]\n    A --> B[Non-Probability sampling<br> 1. Judgmental]\n    A --> C[Probability sampling<br> 1. Simple random sampling<br> 2. Systematic and Grid sampling<br> 3. Stratified sampling<br> 4. Adaptive Cluster sampling<br> 5. Ranked Set Sampling]\n"},"evals":[],"jsHooks":[]}</script>
 
 ]
 
