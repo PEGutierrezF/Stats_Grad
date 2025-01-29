@@ -158,7 +158,7 @@
 
 \title{R Programming Basics and Data management in R}
 \author{Pablo E. Gutierrez-Fonseca}
-\date{Fall 2024}
+\date{Spring 2025}
 
 \begin{document}
 \frame{\titlepage}
@@ -855,9 +855,22 @@
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'ggplot2' was built under R version 4.3.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(palmerpenguins)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'palmerpenguins' was built under R version 4.3.2
+\end{verbatim}
 \end{frame}
 
 \begin{frame}[fragile]{An Introduction to ggplot2}
@@ -889,40 +902,6 @@
                    \AttributeTok{shape =} \SpecialCharTok{\textless{}}\NormalTok{shape variable}\SpecialCharTok{\textgreater{}}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
-\end{frame}
-
-\begin{frame}{\#\# Hypothesis Testing Summary}
-\phantomsection\label{hypothesis-testing-summary}
-\begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1587}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4127}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4286}}@{}}
-\toprule\noalign{}
-\begin{minipage}[b]{\linewidth}\raggedright
-Scenario
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Null Hypothesis is True
-\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Null Hypothesis is False
-\end{minipage} \\
-\midrule\noalign{}
-\endhead
-\textbf{Reject Null Hypothesis} & \textbf{Type I Error}: Incorrectly
-rejecting the null hypothesis when it is true. & \textbf{Correct
-Decision}: Correctly rejecting the null hypothesis when it is false. \\
-\textbf{Fail to Reject Null Hypothesis} & \textbf{Correct Decision}:
-Correctly not rejecting the null hypothesis when it is true. &
-\textbf{Type II Error}: Incorrectly failing to reject the null
-hypothesis when it is false. \\
-\bottomrule\noalign{}
-\end{longtable}
-
-\textbf{Explanation}: - \textbf{Type I Error}: False positive. We
-conclude there is an effect or difference when there is none. -
-\textbf{Type II Error}: False negative. We fail to detect an effect or
-difference when one exists. - \textbf{Correct Decisions}: Accurately
-concluding the presence or absence of an effect or difference based on
-the truth of the null hypothesis.
 \end{frame}
 
 \end{document}
