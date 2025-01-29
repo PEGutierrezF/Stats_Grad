@@ -22,7 +22,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xe0e9353a4294e86b8457bc0e3fded86","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"f5fa1bddb95e4f7ba8044fc7e9f30218","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -332,6 +332,121 @@ my_matrix
 
 &lt;img src="fig/table.png" width="100%" /&gt;
 
+---
+# Reading data
+
+---
+# Reading data
+- **CSV File**
+ - Usage: Reads comma-separated values, often used for structured data.
+
+``` r
+data &lt;- read.csv("file.csv")
+```
+
+--
+- **Text File**  
+ - Usage: Reads tabular data from a text file; sep can be adjusted for different delimiters.
+
+``` r
+data &lt;- read.table("file.txt", header = TRUE, sep = "\t")
+```
+
+--
+- **Excel File**
+ - Usage: Reads data from Excel files; you can specify the sheet number or name.
+
+``` r
+library(readxl)
+data &lt;- read_excel("file.xlsx", sheet = 1)
+```
+
+---
+# Reading data
+- Print the current working directory
+
+``` r
+getwd()
+```
+
+--
+
+- Change to my directory
+
+``` r
+setwd(mydirectory)
+setwd("c:/docs/mydir") 
+```
+
+---
+# Reading data
+- Subscripts are given inside square brackets after the object's name:
+- df[,1]
+  - Gets the **first column** from the object dat
+
+- df[1,]
+  - Gets the **first row** from the object dat
+
+- df[1,1]
+  - Gets the **first row** and it's **first column** from the object dat
+
+---
+# Assigning Values in R
+- In R, you can assign values to objects using the syntax object &lt;- value
+- An arrow (&lt;-) formed by a smaller than character and a hyphen without a space!
+- The equal character (=).
+
+---
+# R Warning!
+- Naming objects:
+    - R is a case sensitive language. 
+    - FOO, Foo, and foo are three different objects 
+    - Object names can't start with a number
+    - Never use special characters, such as Ã¥, Ã¤, or Ã¶ in object names.
+
+---
+# Using Functions in R
+- R is a function based language where a ***function*** takes in some input and produces some output.
+  - Vegas rules: what happens in a function, stays in a function.
+
+---
+# Data Visualization in R
+- Most powerful approach to statistical graphs, based on the **Grammar of Graphics**.
+
+- A graphics language, composed of layers, **geoms** (points, lines, regions), each with graphical **aesthetics** (color, size, shape)
+
+``` r
+library(ggplot2)
+library(palmerpenguins)
+```
+
+---
+# An Introduction to ggplot2
+.panelset[
+.panel[.panel-name[R Code]
+
+``` r
+ggplot(data = penguins, aes(x = flipper_length_mm, 
+                          y = body_mass_g)) +
+    geom_point(aes(color = species, shape = species))
+```
+]
+
+.panel[.panel-name[Plot]
+![](R-basic-and-Introduction_files/figure-html/plot_1-1.png)
+]
+]
+
+---
+# An Introduction to ggplot2
+
+``` r
+ggplot(data = &lt;your data set&gt;, aes(x = &lt;x axis variable&gt;, 
+                                   y = &lt;y axis variable&gt;)) +
+    geom_point(aes(size = &lt;size variable&gt;, 
+                   color = &lt;color variable&gt;, 
+                   shape = &lt;shape variable&gt;))
+```
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
