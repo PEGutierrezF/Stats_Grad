@@ -22,7 +22,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"b9b1c73da1eb47bcaff4428ea45e8c80","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xe0e9353a4294e86b8457bc0e3fded86","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -102,6 +102,235 @@ was created by John Chambers at Bell Laboratories.
 -Steep learning curve.  
 -Slow for large datasets. 
 
+---
+# Why R?
+- **Computing power**: R can handle much larger datasets than traditional programs, which is especially important for long-term ecological data, community science data, and public health data.
+
+--
+
+- **Flexibility &amp; convenience**: Traditionally, scientists would need separate programs for data cleaning, statistical procedures, and data visualization.  
+Learning R means you can do everything in a single program, and
+customize to fit the goals of your project.
+
+--
+
+- **Reproducibility**: Saving your code as an R script makes it easy for other scientists to see what you did, and repeat your methods.
+
+---
+# R Overview
+
+---
+# How to download?
+- Google it using R or CRAN (Comprehensive R Archive Network)  
+  - http://www.r-project.org
+
+---
+# How to download?
+- Having installed R, the next thing we will want to do is install **RStudio**, a popular and useful interface for writing scripts and using R.
+
+- If you google **RStudio** you will get to this window:  
+https://www.rstudio.com/products/rstudio/download/ 
+
+- Rstudio is an ***integrated development environment (IDE)*** for R that allows users to interact more easily with R by integrating different aspects of scripting, from code completion to debugging.
+
+---
+# Typical Rstudio session
+
+.pull-left[
+- **Code Editor**: Contains code to tell R what to do.  
+- Save scripts for future use.
+]
+
+.pull-right[
+&lt;img src="fig/Rstudio.png" width="100%" /&gt;
+]
+
+---
+# Typical Rstudio session
+
+.pull-left[
+- **Console**: output &amp; temporary input - usually unsaved.
+]
+
+.pull-right[
+&lt;img src="fig/Rstudio.png" width="100%" /&gt;
+]
+
+---
+# Typical Rstudio session
+
+.pull-left[
+- **Workspace**: Stores objects created during the session.  Save with save.image().
+- **History**: Records commands used.  Save with savehistory().
+]
+
+.pull-right[
+&lt;img src="fig/Rstudio.png" width="100%" /&gt;
+]
+
+---
+# Typical Rstudio session
+
+.pull-left[
+- **Plots**: Displays graphs.  Save plots with ggsave().
+- **Files**: Shows files in the working directory.
+]
+
+.pull-right[
+&lt;img src="fig/Rstudio.png" width="100%" /&gt;
+]
+
+---
+# Data structures
+
+---
+# Data structures
+- R is an object oriented programming language where an **object** is a generic term to describe something in R.
+
+--
+
+- There are many types of R-objects.  
+  1. Vectors  
+  2. Factors  
+  3. Lists  
+  4. Matrices  
+  5. Data Frames  
+
+---
+# Vectors in R
+- Vector is a sequence of elements of the same type (numeric, character, logical).
+
+``` r
+a &lt;- c(1,2,3,4,5)
+b &lt;- c(6,7,8,9,10)
+```
+- Command *c* creates a vector that is assigned to object a and b
+
+---
+# Vectors in R
+- Two vectors of the same lenght can be addedd (a+a), multiply (a*a)
+
+``` r
+c &lt;- (a+b)
+c
+```
+
+```
+## [1]  7  9 11 13 15
+```
+
+``` r
+d &lt;- (a*b)
+d
+```
+
+```
+## [1]  6 14 24 36 50
+```
+
+---
+# Vectors in R
+- Element in a vector can be sorter (*sort()*)
+
+``` r
+e &lt;- c(3,2,20,25,5)
+sort(e)
+```
+
+```
+## [1]  2  3  5 20 25
+```
+
+---
+# Factors in R
+- Categorical data structure with predefined levels.
+
+``` r
+f &lt;- factor(c("low", 'medium', "high", 'very high'))
+```
+
+---
+# Data
+- R has three general classes for data:  
+
+  1. **list**: collection of objects of different lengths or classes 
+  2. **matrix**: vectors of the same length and same class
+  3. **data.frame**: vectors of the same length and different classes
+
+---
+# Lists 
+- A list is an R-object which can contain many different types of elements inside it like vectors, functions and even another list inside it.
+
+``` r
+# Creating a list in R with various types of elements
+my_list &lt;- list(
+  # A numeric vector
+  Numbers = c(1, 2, 3, 4, 5),
+  # A character vector
+  Words = c("apple", "banana", "cherry"))
+```
+
+--
+
+
+``` r
+my_list
+```
+
+```
+## $Numbers
+## [1] 1 2 3 4 5
+## 
+## $Words
+## [1] "apple"  "banana" "cherry"
+```
+
+
+
+---
+# Matrices 
+- A matrix is a two-dimensional rectangular data set. 
+- It can be created using a vector input to the matrix function. 
+
+``` r
+# Create a 3x3 matrix in R
+my_matrix &lt;- matrix(
+  data = 1:9,       # Data to fill the matrix
+  nrow = 3,         # Number of rows
+  ncol = 3,         # Number of columns
+  byrow = TRUE)      # Fill the matrix by rows
+my_matrix
+```
+
+```
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+```
+
+
+---
+# Data Frames 
+- Data frames are tabular data objects. 
+- **Unlike a matrix in data frame each column can contain different modes of data.** 
+
+--
+
+- The first column can be numeric while the second column can be character and third column - Can be logical. 
+
+--
+
+- It is a list of vectors of equal length. 
+
+--
+
+- Data Frames are created using the `data.frame()` function. 
+
+---
+# Summary
+
+&lt;img src="fig/table.png" width="100%" /&gt;
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
