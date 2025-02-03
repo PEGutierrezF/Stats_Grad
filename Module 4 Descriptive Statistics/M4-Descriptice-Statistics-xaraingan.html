@@ -4,7 +4,7 @@
     <title>Descriptive Statistics</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
     <script src="libs/panelset-0.3.0/panelset.js"></script>
@@ -22,7 +22,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x06ca4b7ef0f4f42a8334e2240e35cfd","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"b996a932eb62449e9074e9e7ecafc502","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -72,19 +72,15 @@ class: center, middle, inverse, title-slide
 # Why describe data?
 - Determine if our sample reflects the population of interest.  
 
---
 
 - Identify outliers.  
 
---
 
 - Obtain metrics necessary for inferential tests.  
 
---
 
 - Understand the distribution of our data values (i.e., test for normality).  
 
---
 
 - Identify the type of statistical test to run.  
 
@@ -126,7 +122,7 @@ class: center, middle, inverse, title-slide
 # Metrics to Describe data distribution.
 - Data and their associated distributions can be described in four primary way:
   - Central Tendency (mean, median, mode)
-  - Variability (standard deviation, variance, quantiles)
+  - Variability (standard deviation, variance, quantiles, range)
   - Skew
   - Kurtosis (Peakedness)
 
@@ -141,26 +137,27 @@ class: center, middle, inverse, title-slide
 ---
 # Central tendency
 - **Mean `\(\frac{\sum X}{n}\)` **:
-    - Most often used measure of central tendency.
-    - Works well with normal and relatively normal curves.
+  - Most often used measure of central tendency.
+  - Works well with normal and relatively normal curves.
 
 --
 
 - **Median (50th Percentile)**:
-    - No formula.  Rank order observations then find the middle.
-    - The second most used measure of central tendency.
-    - Works best with highly skewed populations.
+  - No formula.  Rank order observations then find the middle.
+  - The second most used measure of central tendency.
+  - Works best with highly skewed populations.
   
 --
   
 - **Mode (Most Frequent Score)**:
-    - Least used measure of central tendency.
-    - Works best for highly irregular and multimodal distributions. 
+  - Least used measure of central tendency.
+  - Works best for highly irregular and multimodal distributions. 
     
 ---
 # Central tendency: Mean
 $$ \bar{X} = \frac{\sum X}{n} $$
-  - where ** `\(\bar{X}\)` ** represents individual data points and ** `\(n\)` ** is the number of observations.
+- where:
+  - ** `\(\bar{X}\)` ** represents individual data points and ** `\(n\)` ** is the number of observations.
   
 --
 
@@ -206,7 +203,7 @@ $$ \bar{X} = \frac{\sum X}{n} $$
 
 ] 
 .pull-right[
-.center[
+.middle[
 &lt;img src="fig/CnetralTendency.jpg" width="60%" /&gt;
 ]]
 
@@ -290,9 +287,6 @@ $$ \bar{X} = \frac{\sum X}{n} $$
   - Q1 - (1.5 * the inter-quartile range)
   - Q3 + (1.5 * the inter-quartile range)
 
---
-
-- Others identify outliers as any values below the 0.5th or above the 99.5th percentile. 
 
 ---
 # When to use What
@@ -358,8 +352,8 @@ distribution curve is.
 ---
 # Calculating Skew
 - Negative value = Negative Skew.
-- Positive value = Positive Skew
-- Zero = Normal distribution
+- Positive value = Positive Skew.
+- Zero = Normal distribution.
 
 `$$\text{Skewness} = \frac{3(\bar{X} - \text{Median})}{\text{SD}}$$`
 
@@ -473,11 +467,12 @@ $$
 \bar{X}_n \sim N\left(\mu, \frac{\sigma}{\sqrt{n}}\right)
 $$
 
-  - The sample mean `\(\bar{X}_n\)` will follow a normal distribution with mean `\(\mu\)`  and standard deviation `\(\frac{\sigma}{\sqrt{n}}\)`. As the sample size \( n \) increases, the standard deviation `\(\frac{\sigma}{\sqrt{n}}\)` decreases, making the sample mean a more accurate estimate of the population mean `\(\mu\)`.
+  - The sample mean `\(\bar{X}_n\)` will follow a normal distribution with mean `\(\mu\)`  and standard deviation of `\(\frac{\sigma}{\sqrt{n}}\)`. 
+    - As the sample size `\(n\)` increases, the standard deviation (here: `\(\frac{\sigma}{\sqrt{n}}\)`) decreases, improving the accuracy of the sample mean as an estimate of the population mean `\(\mu\)`.
 
 ---
 # Why do we care if our data is normal?
-- The math "under the hood" of many analyses **expects that data is normally distributed** - if it isn't, you'll still get an answer, but it won't actually be saying what you think it is saying. 
+- The mathematical foundations of many statistical analyses **assume that data follows a normal distribution**. If this assumption is violated, the results may still produce an answer, but the interpretation could be misleading or inaccurate.
 
 
 ---
@@ -485,12 +480,12 @@ $$
 - Because many statistical analyses assume a normal distribution of the data, testing for normality must always be a precursor to any analysis. 
 
 .pull-left[
-- Normally Distributed Data is:  
-  - Unimodal (one mode)  
-  - Symmetrical (no SKEW)  
-  - Bell Shaped (no KURTOSIS)  
-  - Mean, Mode and Median are all centered  
-  - Asymptotic (tails never reach 0)  
+- Normally distributed data is:  
+  1. Unimodal (one mode)  
+  2. Symmetrical (no SKEW)  
+  3. Bell Shaped (no KURTOSIS)  
+  4. Mean, Mode and Median are all centered  
+  5. Asymptotic (tails never reach 0)  
 ] 
 
 .pull-right[
@@ -548,7 +543,7 @@ shapiro.test(data)
 ] 
 
 .pull-right[
-- Interpretate shapiro.tets:
+- Interpretate `shapiro.tets()`:
   - Null hypothesis `\(H_0\)`: The data is normally distributed  
   - Alternative hypothesis `\(H_1\)`: The data is not normally distributed.  
 ]
@@ -577,7 +572,7 @@ shapiro.test(data)
 ] 
 
 .pull-right[
-- Interpretate shapiro.tets:
+- Interpretate `shapiro.tets()`:
   - Null hypothesis `\(H_0\)`: The data is normally distributed  
   - Alternative hypothesis `\(H_1\)`: The data is not normally distributed. 
 
@@ -631,7 +626,7 @@ shapiro.test(data)
 # Square root Transformation
 - **Square-root transformation**: This consists of taking the square root of each observation. 
 
-- In R use: **sqrt(X)**
+- In R use: `sqrt(X)`.
 
 ``` r
 data &lt;- c(1, 4, 9, 16, 25, 36, 49, 64, 81, 100)
@@ -659,7 +654,7 @@ shapiro.test(sqrt_data)
 # Log Transformation
 - Many variables in biology have log-normal distributions.
 
-- In R use: **log(X)**
+- In R use: `log(X)` or `log10(X)`.
 
 ``` r
 # Sample data (e.g., positive values)
@@ -687,7 +682,7 @@ shapiro.test(log_data)
 ---
 # Inverse transformation
 - **Inverse transformation**: This consists of taking the inverse \( X^{-1} \) of a number.
-- In R use: `1/x$` or `x^-1`
+- In R use: `1/x` or `x^-1`
 
 ``` r
 # Sample data (e.g., positive values)
@@ -702,7 +697,7 @@ inverse_data &lt;- 1 / data
 # Reflecting Transformations
 - Each of these transformations can be adjusted for negative skew by taking the reflection.
 
-- To reflect a value, multiply  data by -1, and then add a constant to bring the minimum value back above 1.0.
+- To reflect a value, **multiply  data by -1**, and then add a constant to bring the minimum value back above 1.0.
 
 - For example:
   - sqrt(x) for positively skewed data,
@@ -722,8 +717,6 @@ inverse_data &lt;- 1 / data
 - Transformations work by altering the relative distances between data points. 
 - If done correctly, all data points remain in the same relative order as prior to transformation. 
 - However, this might be undesirable if the original variables were meant to be substantively interpretable.
-
-- Therefore... 
 
 ---
 # Transformation Rules to Live By
