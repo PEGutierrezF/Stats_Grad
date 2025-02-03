@@ -22,7 +22,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x4cb10a3de894aeab20f74e83ed3010d","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"e89fc293124a4145917cc11b411084da","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -42,7 +42,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2025-01-15 (updated: 2025-01-31)
+### 2025-01-15 (updated: 2025-02-03)
 ]
 
 ---
@@ -87,6 +87,153 @@ class: center, middle, inverse, title-slide
 --
 
 - Identify the type of statistical test to run.  
+
+---
+
+# Data description and visualization
+- We can examine our data and run statistical tests to see if the distribution approximates a normal curve.  
+- Typically, we start by visualizing our data.    
+
+
+![](M4-Descriptice-Statistics-xaraingan_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+
+---
+# Histogram basic
+- Continuous data are most commonly visualized using Histograms. 
+
+- Histograms display the distribution of data by grouping values into intervals or bins, allowing for an understanding of the frequency and spread of the data.
+
+&lt;img src="fig/Histogram.jpg" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+# Box and Whisker Basics
+- Box plots are used to visualize the distribution of continuous data, showing the **median**, **interquartile range (IQR)**, and **potential outliers**.
+
+- The **box** represents the middle 50% of the data (from the first quartile \( Q1 \) to the third quartile \( Q3 \)).
+
+- The **line inside the box** shows the median (50th percentile).
+
+- **Whiskers** extend from the box to the smallest and largest values within 1.5 times the IQR from \( Q1 \) and \( Q3 \).
+- **Data points outside the whiskers** are considered potential **outliers**.
+
+&lt;img src="fig/box.jpg" width="50%" style="display: block; margin: auto;" /&gt;
+
+---
+# Metrics to Describe data distribution.
+
+---
+# Metrics to Describe data distribution.
+- Data and their associated distributions can be described in four primary way:
+  - Central Tendency (mean, median, mode)
+  - Variability (standard deviation, variance, quantiles)
+  - Skew
+  - Kurtosis (Peakedness)
+
+---
+# Metrics to Describe data distribution.
+- Data and their associated distributions can be described in four primary way:
+  - **Central Tendency (mean, median, mode)**
+  - Variability (standard deviation, variance, quantiles)
+  - Skew
+  - Kurtosis (Peakedness)
+
+---
+# Central tendency
+- **Mean `\(\frac{\sum X}{n}\)` **:
+    - Most often used measure of central tendency.
+    - Works well with normal and relatively normal curves.
+
+--
+
+- **Median (50th Percentile)**:
+    - No formula.  Rank order observations then find the middle.
+    - The second most used measure of central tendency.
+    - Works best with highly skewed populations.
+  
+--
+  
+- **Mode (Most Frequent Score)**:
+    - Least used measure of central tendency.
+    - Works best for highly irregular and multimodal distributions. 
+    
+---
+# Central tendency: Mean
+$$ \bar{X} = \frac{\sum X}{n} $$
+  - where ** `\(\bar{X}\)` ** represents individual data points and ** `\(n\)` ** is the number of observations.
+  
+--
+
+- Sample mean is the measure of central tendency that best represents the population mean.
+
+--
+
+- Mean is **very** sensitive to extreme scores that can "skew" or distort findings.
+
+---
+# Central tendency: Median
+- Percentiles are used to define the percent of cases equal to and below a certain point on a distribution.
+  - The median **is the 50th percentile**, meaning *half of all observations fall at or below this value*.
+  
+- But lots of other percentiles are also important.
+
+---
+# A little about Percentiles
+
+.pull-left[
+- Quartiles (i.e., divide data into four equal parts: 25%, 50%, 75%) are a common percentile used to represent the value below  which. 
+  - 25% (Q1 or first quartile)  
+  - 75% (Q3 or third quartile)  
+
+] 
+.pull-right[
+&lt;img src="fig/quartiles.jpg" width="100%" /&gt;
+]         
+
+---
+# When to use What
+.pull-left[
+
+- Use the **Mode** when the data are categorical:
+  - **Mode**: is the value that occurs most frequently in your data.  
+  - This is because having the same value occur for measurements with many significant digits is highly unlikely.
+
+
+- Use the **Median** when you have extreme scores:  
+  - **Median**: is simply the value that falls in the middle of all your data. 
+
+- Use the **Mean** the rest of the time. 
+
+] 
+.pull-right[
+&lt;img src="fig/CnetralTendency.jpg" width="60%" /&gt;
+]
+
+---
+# Metrics to Describe data distribution.
+- Data and their associated distributions can be described in four primary way:
+  - Central Tendency (mean, median, mode)
+  - **Variability (standard deviation, variance, quantiles)**
+  - Skew
+  - Kurtosis (Peakedness)
+  
+---
+# Variability
+.center[
+&lt;img src="fig/variability.png" width="80%" /&gt;
+]
+
+---
+# Variability: Standard Deviation
+- **Standard Deviation** measures how spread out the numbers in a dataset are around the mean.
+
+- The sample standard deviation \( s \) is calculated as:
+`$$s = \sqrt{\frac{\sum (x_i - \bar{x})^2}{n - 1}}$$`
+
+  - \( s \): The **sample standard deviation**, which measures the spread or variability of the data points around the sample mean \( \bar{x} \).
+  - \( n \): The **sample size**, or the number of observations in the dataset.
+  - \( x_i \): Each individual data point in the sample.
+  - \( \bar{x} \): The **sample mean**, or the average of the sample data.
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
