@@ -71,9 +71,8 @@ xaringanExtra::use_editable(expires = 1) # Add textboxes to edit during presenta
 - We can examine our data and run statistical tests to see if the distribution approximates a normal curve.  
 - Typically, we start by visualizing our data.    
 
-
-```{r echo=FALSE,warning=FALSE, fig.width=2.5, fig.height=1.5}
-# Set parameters for the normal distribution
+.center[
+```{r echo=FALSE,warning=FALSE, fig.width=2.0, fig.height=1.2}
 mean <- 0
 sd <- 1
 n <- 1000
@@ -81,15 +80,22 @@ n <- 1000
 # Generate data
 data <- data.frame(x = rnorm(n, mean, sd))
 
+# Calculate median and mode
+median_value <- median(data$x)
+mode_value <- mean  # For a normal distribution, the mode is the same as the mean
+
 # Create the plot
 ggplot(data, aes(x = x)) +
   geom_density(fill = "lightblue", alpha = 0.5) +
-  stat_function(fun = dnorm,
-    args = list(mean = mean, sd = sd),
-    color = "red",
-    size = 1) + xlab("Value") + ylab("") +
-  theme_minimal()
+  stat_function(fun = dnorm, args = list(mean = mean, sd = sd),
+    color = "red", size = 1 ) +
+  geom_vline(aes(xintercept = mean), color = "blue", linetype = "dashed", size = 1, label = "Mean") +
+  geom_vline(aes(xintercept = median_value), color = "green", linetype = "dashed", size = 1, label = "Median") +
+  geom_vline(aes(xintercept = mode_value), color = "purple", linetype = "dashed", size = 1, label = "Mode") +
+  xlab("Value") + ylab("") +
+  theme_minimal() 
 ```
+]
 
 ---
 # Histogram basic
@@ -112,7 +118,7 @@ knitr::include_graphics("fig/Histogram.jpg")
 - **Whiskers** extend from the box to the smallest and largest values within 1.5 times the IQR from \( Q1 \) and \( Q3 \).
 - **Data points outside the whiskers** are considered potential **outliers**.
 
-```{r, echo=FALSE, fig.cap="", out.width = '50%', fig.align='center'}
+```{r, echo=FALSE, fig.cap="", out.width = '40%', fig.align='center'}
 knitr::include_graphics("fig/box.jpg")
 ```
 
@@ -205,10 +211,11 @@ knitr::include_graphics("fig/quartiles.jpg")
 
 ] 
 .pull-right[
+.center[
 ```{r, echo=FALSE, fig.cap="", out.width = '60%'}
 knitr::include_graphics("fig/CnetralTendency.jpg")
 ```
-]
+]]
 
 ---
 # Metrics to Describe data distribution.
@@ -243,7 +250,7 @@ cat("$$s = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}}$$")
   - $\bar{x}$: The **sample mean**, or the average of the sample data.
 
 ---
-# Variability
+# Variability: Variance
 - **Variance** measures the average of the squared differences from the mean, indicating how spread out the data points are.
 
 - The variance $\sigma^2$ is calculated as:
@@ -380,7 +387,7 @@ knitr::include_graphics("fig/skewness.png")
 - Zero = Normal distribution
 
 ```{r echo=FALSE, results='asis'}
-cat("$$\\text{Skewness} = \\frac{3(\\bar{x} - \\text{Median})}{\\text{SD}}$$")
+cat("$$\\text{Skewness} = \\frac{3(\\bar{X} - \\text{Median})}{\\text{SD}}$$")
 ```
 
 - where:
@@ -399,7 +406,7 @@ cat("$$\\text{Skewness} = \\frac{3(\\bar{x} - \\text{Median})}{\\text{SD}}$$")
 cat("
 $$
 \\begin{array}{cc}
-ses = \\sqrt{\\frac{6}{n}} & \\hspace{1cm} \\text{Skewness} = \\frac{3(\\bar{x} - \\text{Median})}{\\text{SD}}
+ses = \\sqrt{\\frac{6}{n}} & \\hspace{1cm} \\text{Skewness} = \\frac{3(\\bar{X} - \\text{Median})}{\\text{SD}}
 \\end{array}
 $$
 ")
@@ -420,7 +427,7 @@ $$
 - Any deviation from a bell shape, with the peak either too flat (platykurtic) or too peaked (leptokurtic), suggests that your data are not normally distributed.
 
 .center[  
-```{r, echo=FALSE, fig.cap="", out.width = '60%'}
+```{r, echo=FALSE, fig.cap="", out.width = '50%'}
 knitr::include_graphics("fig/kurtosis.png")
 ```
 ]  
@@ -434,7 +441,7 @@ knitr::include_graphics("fig/kurtosis.png")
 ```{r echo=FALSE, results='asis'}
 cat("
 $$
-\\text{Kurtosis} = \\frac{\\sum(\\left( \\frac{x_i - \\bar{x}}{\\text{SD}} \\right)^4 - 3)}{n}
+\\text{Kurtosis} = \\frac{\\sum(\\left( \\frac{x_i - \\bar{X}}{\\text{SD}} \\right)^4 - 3)}{n}
 $$
 ")
 ```
@@ -456,7 +463,7 @@ $$
 cat("
 $$
 \\begin{array}{cc}
-sek = \\sqrt{\\frac{24}{n}} & \\hspace{2cm} \\text{Kurtosis} = \\frac{\\sum \\left( \\frac{x_i - \\bar{x}}{\\text{SD}} \\right)^4 - 3}{n}
+sek = \\sqrt{\\frac{24}{n}} & \\hspace{2cm} \\text{Kurtosis} = \\frac{\\sum \\left( \\frac{x_i - \\bar{X}}{\\text{SD}} \\right)^4 - 3}{n}
 \\end{array}
 $$
 ")
@@ -631,9 +638,9 @@ shapiro.test(data)
 # Outliers?
 - How to find outliers:
 	- Outlier box plots (visual) use the IQR * 1.5 threshold.
-    - **IQR**: \( Q_3 - Q_1 \)
-    - **Lower Threshold**: \( Q_1 - (1.5 * \text{IQR}) \)
-    - **Upper Threshold**: \( Q_3 + (1.5 * \text{IQR}) \)
+    - **IQR**: $Q_3 - Q_1$
+    - **Lower Threshold**: $Q_1 - (1.5 * \text{IQR})$
+    - **Upper Threshold**: $Q_3 + (1.5 * \text{IQR})$
 
 - These can help identify potential outliers but **do not justify their removal**.
 
@@ -653,13 +660,9 @@ shapiro.test(data)
 
 .pull-left[
 - Common transformations in our field:  
-  - square-root:  
-    - for moderate skew.  
-  - log:  
-    - for positively skewed data.  
-  - Inverse:  
-    - for severe skew.  
-  - Rank  
+  - square-root: for moderate skew.  
+  - log:  for positively skewed data.  
+  - Inverse: for severe skew.  
 ] 
 
 .pull-right[
@@ -710,7 +713,7 @@ shapiro.test(log_data)
 ---
 # Inverse transformation
 - **Inverse transformation**: This consists of taking the inverse \( X^{-1} \) of a number.
-- In R use: `1/X` or `X^-1`
+- In R use: `1/x$` or `x^-1`
 ```{r}
 # Sample data (e.g., positive values)
 data <- c(1, 2, 4, 8, 16, 32, 64)
