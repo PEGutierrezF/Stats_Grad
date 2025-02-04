@@ -4,7 +4,7 @@
     <title>Descriptive Statistics</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
     <script src="libs/panelset-0.3.0/panelset.js"></script>
@@ -22,7 +22,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"b996a932eb62449e9074e9e7ecafc502","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"a4e02d82014247d7b8099cc0db8dcad6","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -42,7 +42,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2025-01-15 (updated: 2025-02-03)
+### 2025-01-15 (updated: 2025-02-04)
 ]
 
 ---
@@ -137,28 +137,28 @@ class: center, middle, inverse, title-slide
 ---
 # Central tendency
 - **Mean `\(\frac{\sum X}{n}\)` **:
-  - Most often used measure of central tendency.
-  - Works well with normal and relatively normal curves.
+    - Most often used measure of central tendency.
+    - Works well with normal and relatively normal curves.
 
 --
 
 - **Median (50th Percentile)**:
-  - No formula.  Rank order observations then find the middle.
-  - The second most used measure of central tendency.
-  - Works best with highly skewed populations.
-  
+    - No formula.  Rank order observations then find the middle.
+    - The second most used measure of central tendency.
+    - Works best with highly skewed populations.
+
 --
-  
+
 - **Mode (Most Frequent Score)**:
-  - Least used measure of central tendency.
-  - Works best for highly irregular and multimodal distributions. 
+    - Least used measure of central tendency.
+    - Works best for highly irregular and multimodal distributions. 
     
 ---
 # Central tendency: Mean
 $$ \bar{X} = \frac{\sum X}{n} $$
 - where:
-  - ** `\(\bar{X}\)` ** represents individual data points and ** `\(n\)` ** is the number of observations.
-  
+    - ** `\({X}\)` ** represents individual data points and ** `\(n\)` ** is the number of observations.
+
 --
 
 - Sample mean is the measure of central tendency that best represents the population mean.
@@ -297,13 +297,12 @@ $$ \bar{X} = \frac{\sum X}{n} $$
 --
 
 - Use **range (R)** when describing predictive models. 
-  - R is simply the maximum minus the minimum value in your data set
-  - R is important when modeling or making predictions, since your algorithms are valid only over the range of values used to calibrate your predictive model
+    - R is simply the maximum minus the minimum value in your data set.
+    - R is important when modeling or making predictions, since your algorithms are valid only over the range of values used to calibrate your predictive model.
 
 --
 
 - Use the **IQR** to identify and test potential outliers in your data.
-
 
 ---
 # Metrics to Describe data distribution.
@@ -339,10 +338,10 @@ distribution curve is.
 ]
 ---
 # Skewness
-- **Positive Skew**: the "slide" takes you in a positive direction.  
-  - The mean is bigger than the median (which is why the slide is being pulled to higher values).  
-
-- **Negative Skew**: the "slide" takes you in a negative direction.  
+- **Positive Skew**: the "slide" takes you in a positive direction.
+  - The mean is bigger than the median (which is why the slide is being pulled to higher values).
+  
+- **Negative Skew**: the "slide" takes you in a negative direction.
   - The mean is smaller than the median (which is why the slide is being pulled to lower values).
 
 .center[  
@@ -362,7 +361,6 @@ distribution curve is.
   - **Median** is the middle value in a dataset when sorted in ascending or descending order.
   - **SD** (Standard Deviation) measures the spread of the data points around the mean.
 
-  
 ---
 # Skewness: Significant?
 - To determine if this deviation from zero in the skew statistic is likely a significant departure from normality, compare it to the **standard error of skew (ses)**.
@@ -390,9 +388,9 @@ $$
 
 - Any deviation from a bell shape, with the peak either too flat (platykurtic) or too peaked (leptokurtic), suggests that your data are not normally distributed.
 
-.center[  
+.center[
 &lt;img src="fig/kurtosis.png" width="50%" /&gt;
-]  
+]
 
 ---
 # Kurtosis
@@ -544,8 +542,8 @@ shapiro.test(data)
 
 .pull-right[
 - Interpretate `shapiro.tets()`:
-  - Null hypothesis `\(H_0\)`: The data is normally distributed  
-  - Alternative hypothesis `\(H_1\)`: The data is not normally distributed.  
+    - Null hypothesis `\(H_0\)`: The data is normally distributed.
+    - Alternative hypothesis `\(H_1\)`: The data is not normally distributed.  
 ]
 
 ---
@@ -573,10 +571,12 @@ shapiro.test(data)
 
 .pull-right[
 - Interpretate `shapiro.tets()`:
-  - Null hypothesis `\(H_0\)`: The data is normally distributed  
-  - Alternative hypothesis `\(H_1\)`: The data is not normally distributed. 
+    - Null hypothesis `\(H_0\)`: The data is normally distributed.
+    - Alternative hypothesis `\(H_1\)`: The data is not normally distributed.
 
-- **Larger p-value (p &gt; 0.05)**: Fail to reject the null hypothesis; the data is likely **normally distributed**.  
+
+
+- **Larger p-value (p &gt; 0.05)**: Fail to reject the null hypothesis; the data is likely **normally distributed**.
 - **Smaller p-value (p &lt; 0.05)**: Reject the null hypothesis; the data **is not normally distributed**.
 ]
 
