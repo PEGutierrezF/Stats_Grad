@@ -208,7 +208,7 @@ knitr::include_graphics("fig/quartiles.jpg")
 
 ] 
 .pull-right[
-.middle[
+.center[
 ```{r, echo=FALSE, fig.cap="", out.width = '60%'}
 knitr::include_graphics("fig/CnetralTendency.jpg")
 ```
