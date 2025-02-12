@@ -26,6 +26,7 @@ library(readxl)
 library(readr)
 library(lessR)
 library(ggplot2)
+library(cowplot)
 library(patchwork)
 library(palmerpenguins)
 library(car)
@@ -87,3 +88,50 @@ ggplot(data, aes(x = x, y = y)) +
 .center[
 $x$ $\sim$ N( $\mu$, $\sigma$ )
 ]]
+
+---
+# Converting to Standard Normal Distribution
+
+- To simplify comparisons between different normal distributions, we often convert values to the **standard normal distribution**.
+
+- The standard normal distribution has a $\mu$ = $0$ and a $\sigma$ = $1$.
+
+- Any normal distribution can be converted into the standard normal distribution by using the **z-score** formula: $z = \frac{x - \mu}{\sigma}$
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2, fig.height=1}
+mu <- 2
+sd <- 1
+x_vals <- seq(mu - 4 * sd, mu + 4 * sd, length.out = 100)
+dist1 <- dnorm(x_vals, mean = mu, sd = sd)
+data1 <- data.frame(x = x_vals, y = dist1)
+
+x_vals2 <- seq(-4 * sd, 4 * sd, length.out = 100)
+dist2 <- dnorm(x_vals2, mean = 0, sd = sd)
+data2 <- data.frame(x = x_vals2, y = dist2)
+
+# First plot: Normal distribution with mean mu
+plot1 <- ggplot(data1, aes(x = x, y = y)) +
+  geom_line(color = "blue", size = 1) +             # Plot the line
+  geom_ribbon(data = subset(data1, x >= mu & x <= mu + sd), aes(ymin = 0, ymax = y), fill = "lightblue", alpha = 0.3) + # Fill light blue from mu to 1 SD
+  labs(x = "", y = "") +
+  scale_x_continuous(breaks = c(mu, mu + sd), labels = c(expression(mu), "x")) + # Label x-axis with mu and x at mu + 1 SD
+  theme_minimal() +
+  theme(axis.title.x = element_text(size = 14),axis.title.y = element_text(size = 14)
+  )
+
+# Second plot: Normal distribution with mean 0
+plot2 <- ggplot(data2, aes(x = x, y = y)) +
+  geom_line(color = "red", size = 1) +              # Plot the line
+  geom_ribbon(data = subset(data2, x >= 0 & x <= 0 + sd), aes(ymin = 0, ymax = y), fill = "lightblue", alpha = 0.3) + # Fill light blue from 0 to 1 SD
+  labs(x = "", y = "") +
+  scale_x_continuous(breaks = c(0, 0 + sd), labels = c("0", "z")) + # Label x-axis with 0 and z at 1 SD
+theme_minimal() +
+  theme(axis.title.x = element_text(size = 16),
+        axis.title.y = element_text(size = 16),
+        axis.text = element_text(size = 14))
+combined_plot <- plot_grid(plot1, plot2, labels = c("A", "B"),  label_size = 12)
+
+print(combined_plot)
+
+```
+

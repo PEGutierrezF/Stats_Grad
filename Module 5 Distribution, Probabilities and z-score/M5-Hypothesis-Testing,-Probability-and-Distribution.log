@@ -1,15 +1,15 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.12.6)  12 FEB 2025 09:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.12)  12 FEB 2025 10:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **M5-Hypothesis-Testing,-Probability-and-Distribution.tex
 (./M5-Hypothesis-Testing,-Probability-and-Distribution.tex
-LaTeX2e <2024-11-01> patch level 1
-L3 programming layer <2024-11-02>
+LaTeX2e <2024-11-01> patch level 2
+L3 programming layer <2025-01-18>
 (c:/Users/pgutierr/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamer.cls
-Document Class: beamer 2024/01/06 v3.71 A class for typesetting presentations
+Document Class: beamer 2025/02/04 v3.72 A class for typesetting presentations
 (c:/Users/pgutierr/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasemodes.sty (c:/Users/pgutierr/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+Package: etoolbox 2025/02/11 v2.5l e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count196
 )
 \beamer@tempbox=\box52
@@ -23,7 +23,7 @@ Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
 \beamer@commentbox=\box54
 \beamer@modecount=\count267
 ) (c:/Users/pgutierr/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
+Package: iftex 2024/12/12 v1.0g TeX engine tests
 )
 \headdp=\dimen141
 \footheight=\dimen142
@@ -687,11 +687,11 @@ Type  H <return>  for immediate help.
 l.147 \newcommand{\theHtable}{\thetable}
                                          
 Here is how much of TeX's memory you used:
- 22677 strings out of 475289
- 437641 string characters out of 5766972
- 805672 words of memory out of 5000000
- 45148 multiletter control sequences out of 15000+600000
- 559447 words of font info for 39 fonts, out of 8000000 for 9000
+ 22692 strings out of 475171
+ 437963 string characters out of 5764021
+ 807935 words of memory out of 5000000
+ 45281 multiletter control sequences out of 15000+600000
+ 560215 words of font info for 39 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  101i,0n,107p,447b,446s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
