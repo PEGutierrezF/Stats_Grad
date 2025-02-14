@@ -22,7 +22,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xd541cda80f14ff882ef09a1469b2008","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x151ec7bf7da44af9a7411a7f5a67a66","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -45,7 +45,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2025-Feb-13 (updated: 2025-Feb-13)
+### 2025-Feb-13 (updated: 2025-Feb-14)
 ]
 
 ---
@@ -71,6 +71,210 @@ class: center, middle, inverse, title-slide
   0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
   100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
 }</style>
+
+# Expanding on Hypothesis Testing
+
+- **Tails in hypothesis testing** represent the critical regions where **extreme values** of the test statistic indicate significant differences. If the test statistic falls in one of the tails, we reject the null hypothesis in favor of the alternative hypothesis.
+
+
+$$
+H_0: \mu = \mu_0 \quad \text{vs.} \quad 
+H_1: \mu \neq \mu_0 \quad \text{or} \quad 
+H_1: \mu &lt; \mu_0 \quad \text{or} \quad 
+H_1: \mu &gt; \mu_0
+$$
+
+   - where:
+    - `\(μ\)` = True population mean (unknown, what we're testing)
+    - `\(μ_0\)` = Hypothesized population mean (the reference value in `\(H_0\)`)
+
+--
+
+- To test this hypothesis, we define both rejection and acceptance regions. These regions are determined by our chosen significance level, typically set at **0.05**.
+
+---
+# Types of Hypothesis Tests:
+
+.pull-left[
+1. Left-tailed test:
+
+2. Right-tailed test:
+
+3. Two-tailed test: 
+]
+.pull-right[]
+
+---
+# Types of Hypothesis Tests
+
+.pull-left[
+- **Left-tailed test**: Tests if the sample mean is significantly **less than** the population mean.
+    - Decrease
+    - Cooler
+    - Smaller
+    - Lower
+
+]
+.pull-right[
+.center[
+![](Inferential-Stat-and-one-sample-Z-test_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
+]]
+
+---
+# Types of Hypothesis Tests
+
+.pull-left[
+- **Right-tailed test**: Tests if the sample mean is significantly **greater than** the population mean.
+    - Increase
+    - Warmer
+    - Higher
+    - Expand
+
+]
+.pull-right[
+.center[
+![](Inferential-Stat-and-one-sample-Z-test_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+]]
+
+---
+# Types of Hypothesis Tests
+
+- If your obtained test statistic falls beyond the critical value (in the light blue region) for your given significance level ( `\(\alpha\)` ), the result is significant, and you **reject the null hypothesis**.
+
+
+.pull-left[
+- **Left-tailed test**
+![](Inferential-Stat-and-one-sample-Z-test_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+]
+.pull-right[
+- **Right-tailed test** 
+![](Inferential-Stat-and-one-sample-Z-test_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+]
+
+---
+
+## Expanding on Hypothesis Testing 
+- 2-tailed tests: 
+  - Have **no expected directionality** hypothesized. 
+  - Splits the 5% of the area under the curve that would be considered significant between both tails of the normal distribution curve.
+  - Are therefore less powerful tests (more likely to find a significant result).
+
+.center[
+![](Inferential-Stat-and-one-sample-Z-test_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+]
+
+---
+# Significant or Not?
+
+.pull-left[
+- **Not Significant**:  
+  - Fail to reject the null hypothesis. 
+  
+  - There is **no** sufficient evidence to suggest a difference between the sample and population mean.
+  - Obtained test statistic **&lt;** critical value threshold.
+
+  - p-value **&gt;** alpha threshold (usually 0.05).  
+]
+
+.pull-right[
+- **Significant**:  
+  - Reject the null hypothesis.
+
+  - There **is** sufficient evidence to suggest a difference between the sample and population mean.  
+
+  - Obtained test statistic **&gt;** critical value threshold.  
+
+  - p-value **&lt;** alpha threshold (usually 0.05).  
+]
+---
+# Basic steps for an **Inferential Test**
+.pull-left[
+- A statement of null hypothesis:
+    - Know the research Hypothesis.
+
+- Choose the appropriate test:
+    - Including if a 1 or 2-tailed test. 
+
+- Set the level of Type I error risk ( `\(\alpha\)` ):
+    - Usually &lt; 0.05.
+
+- Analyze data distribution:
+    Do you meet assumptions like normality and independence?  
+]
+.pull-right[
+
+- Compute the test statistic (obtained) value:
+    - Calculated from formula.
+
+- Assess significance:
+    - Determine the critical value needed to  reject the null hypothesis and compare it to your:
+        - |calculated| &gt; critical value = significant.
+
+    - Determine the p-value associated with your calculated test statistic.
+        - P-value &lt; alpha threshold = significant
+
+- Summarize:
+    - Clear, succinct paragraph with all pertinent information and interpretation.
+]
+
+---
+# Basic steps for an **Inferential Test**
+
+- We can select an appropriate test simply by answering some questions.
+
+1. What type of data do we have?
+  
+2. What type of research question are we considering?
+
+---
+# Basic steps for an **Inferential Test**
+
+- We can select an appropriate test simply by answering some questions.
+
+1. What type of data do we have?
+    - If we have frequency data, we select a test from the Chi-square family.
+    - If we have continuous and categorical variables, the appropriate test depends on the research question:
+  
+2. What type of research question are we considering?
+    - If we are comparing one sample mean to a population mean, we use a **z-test**.
+    - If the focus is on differences between groups or treatments, we select a test from the **t-test or ANOVA** family.
+    - If we are interested in relationships between variables, we use **correlation tests**.
+    - If the goal is to predict outcomes, we use the **regression family**.
+
+---
+# Statistical shorthand **z-test** example
+
+---
+# Statistical shorthand **z-test** example
+
+`$$z_{(100)} = 1.4, \quad p = 0.16$$`
+
+---
+# Statistical shorthand **z-test** example
+
+`$$z_{(100)} = 1.4, \quad p = 0.16$$`
+
+`$${\huge \downarrow}$$`
+
+`$$\underbrace{z_{\underbrace{(100)}_{\text{Sample size}}}}_{\text{Test statistic}} = \underbrace{1.4}_{\text{z-value}}, \quad \underbrace{p = 0.16}_{\text{p-value}}$$`
+
+--
+- Every statistical test has a letter designating the type of test.
+- Because power is so closely tied to sample size, we report sample size.
+- For clarity (and to confirm the correct-tailed test is used to assess the p-value), include the calculated test statistic value.
+- Always report the p-value.
+- Some tests will also include a secondary metric to assess how meaningful results are (if significant).
+
+---
+# How to summarize your analysis: Key Components of a Statistical Summary
+
+.green[Before installing a new air quality monitoring instrument, we tested to see if a sample of measurements taken at the testing lab differed significantly different from the long-term mean for the larger network population.]
+
+.red[Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).]
+
+.blue[While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference `\(z_{(100)}\)` = 1.4, `\(p\)` = 0.16.]    
+
+.black[Based on these results we approve the installation of this instrument at the new site. However, we would suggest statistical comparisons of the current and new unit side-by-side, prior to decommissioning the current instrument.]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

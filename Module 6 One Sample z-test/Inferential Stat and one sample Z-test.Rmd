@@ -45,3 +45,312 @@ xaringanExtra::use_extra_styles(
 )
 xaringanExtra::use_editable(expires = 1) # Add textboxes to edit during presentation
 ```
+
+# Expanding on Hypothesis Testing
+
+- **Tails in hypothesis testing** represent the critical regions where **extreme values** of the test statistic indicate significant differences. If the test statistic falls in one of the tails, we reject the null hypothesis in favor of the alternative hypothesis.
+
+
+$$
+H_0: \mu = \mu_0 \quad \text{vs.} \quad 
+H_1: \mu \neq \mu_0 \quad \text{or} \quad 
+H_1: \mu < \mu_0 \quad \text{or} \quad 
+H_1: \mu > \mu_0
+$$
+
+   - where:
+    - $μ$ = True population mean (unknown, what we're testing)
+    - $μ_0$ = Hypothesized population mean (the reference value in $H_0$)
+
+--
+
+- To test this hypothesis, we define both rejection and acceptance regions. These regions are determined by our chosen significance level, typically set at **0.05**.
+
+---
+# Types of Hypothesis Tests:
+
+.pull-left[
+1. Left-tailed test:
+
+2. Right-tailed test:
+
+3. Two-tailed test: 
+]
+.pull-right[]
+
+---
+# Types of Hypothesis Tests
+
+.pull-left[
+- **Left-tailed test**: Tests if the sample mean is significantly **less than** the population mean.
+    - Decrease
+    - Cooler
+    - Smaller
+    - Lower
+
+]
+.pull-right[
+.center[
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2, fig.height=2}
+library(ggplot2)
+# Set the significance level
+p <- 0.05
+
+# Create a sequence for the lower tail (left tail of the normal distribution)
+tail_low <- seq(-4, qnorm(p), 0.01)
+df_tl <- data.frame(x = c(tail_low, qnorm(p)), y = c(dnorm(tail_low), 0))
+
+# Plot the normal distribution
+ggplot(data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm) +  # Plot the normal distribution
+  geom_polygon(data = df_tl, aes(x, y), fill = "#99CCFF") +  # Fill the lower tail (P(X < x))
+  geom_vline(xintercept = qnorm(p), lty = "dashed", lwd = 0.3) +  # Vertical line at the critical value for left tail
+
+  annotate(geom = "text", x = -2.7, y = 0.3, label = 'P<x') +  # Annotate the critical value
+  
+  theme_classic() +  # Clean theme
+  labs(x = "", y = "")  # Remove axis labels
+
+```
+]]
+
+---
+# Types of Hypothesis Tests
+
+.pull-left[
+- **Right-tailed test**: Tests if the sample mean is significantly **greater than** the population mean.
+    - Increase
+    - Warmer
+    - Higher
+    - Expand
+
+]
+.pull-right[
+.center[
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2, fig.height=2}
+# Set the significance level
+p <- 0.05
+
+# Create a sequence for the upper tail (one-tailed test)
+tail_high <- seq(qnorm(1-p), 4, 0.01)
+df_th <- data.frame(x = c(qnorm(1-p), tail_high), y = c(0, dnorm(tail_high)))
+
+# Plot the normal distribution
+ggplot(data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm) +  # Plot the normal distribution
+  geom_polygon(data = df_th, aes(x, y), fill = "#99CCFF") +  # Fill the upper tail
+  geom_vline(xintercept = qnorm(1-p), lty = "dashed", lwd = 0.3) +  # Vertical line at the critical value
+  annotate(geom = "text", x = 2.7, y = 0.3, label = 'P>x') +  # Annotate the critical value
+  
+  theme_classic() +  # Clean theme
+  labs(x = "", y = "")  # Remove axis labels
+```
+]]
+
+---
+# Types of Hypothesis Tests
+
+- If your obtained test statistic falls beyond the critical value (in the light blue region) for your given significance level ( $\alpha$ ), the result is significant, and you **reject the null hypothesis**.
+
+
+.pull-left[
+- **Left-tailed test**
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2, fig.height=2}
+library(ggplot2)
+# Set the significance level
+p <- 0.05
+
+# Create a sequence for the lower tail (left tail of the normal distribution)
+tail_low <- seq(-4, qnorm(p), 0.01)
+df_tl <- data.frame(x = c(tail_low, qnorm(p)), y = c(dnorm(tail_low), 0))
+
+# Plot the normal distribution
+ggplot(data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm) +  # Plot the normal distribution
+  geom_polygon(data = df_tl, aes(x, y), fill = "#99CCFF") +  # Fill the lower tail (P(X < x))
+  geom_vline(xintercept = qnorm(p), lty = "dashed", lwd = 0.3) +  
+    annotate("text", x = -2.95, y = 0.3, label = "Critical value", color = "red", angle = 90, size=3) +
+  
+  annotate(geom = "text", x = -2.9, y = 0.15, label = sprintf("%.2f", qnorm(p)), size=3) +
+  annotate(geom = "text", x = -3.3, y = 0.05, label = "0.05", size=3) +  
+  theme_classic() +  # Clean theme
+  labs(x = "", y = "")  # Remove axis labels
+
+```
+]
+.pull-right[
+- **Right-tailed test** 
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2, fig.height=2}
+# Set the significance level
+p <- 0.05
+
+# Create a sequence for the upper tail (one-tailed test)
+tail_high <- seq(qnorm(1-p), 4, 0.01)
+df_th <- data.frame(x = c(qnorm(1-p), tail_high), y = c(0, dnorm(tail_high)))
+
+# Plot the normal distribution
+ggplot(data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm) +  # Plot the normal distribution
+  geom_polygon(data = df_th, aes(x, y), fill = "#99CCFF") +  # Fill the upper tail
+  geom_vline(xintercept = qnorm(1-p), lty = "dashed", lwd = 0.3) +  # Vertical line at the critical value
+  annotate("text", x = 2.75, y = 0.3, label = "Critical value", color = "red", angle = 90, size=3) +
+
+  annotate(geom = "text", x = 2.7, y = 0.15, label = sprintf("%.2f", qnorm(1-p)), size=3) +  
+  annotate(geom = "text", x = 3, y = 0.05, label = "0.05", size=3) +  
+  
+  
+  theme_classic() +  # Clean theme
+  labs(x = "", y = "")  # Remove axis labels
+
+```
+]
+
+---
+
+## Expanding on Hypothesis Testing 
+- 2-tailed tests: 
+  - Have **no expected directionality** hypothesized. 
+  - Splits the 5% of the area under the curve that would be considered significant between both tails of the normal distribution curve.
+  - Are therefore less powerful tests (more likely to find a significant result).
+
+.center[
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=1.9, fig.height=1.5}
+p <- 0.025
+tail_low <- seq(-4, qnorm(p), 0.01)
+df_tl <- data.frame(x=c(tail_low,qnorm(p)), y =c(dnorm(tail_low),0))
+tail_high <- seq(qnorm(1-p), 4, 0.01)
+df_th <- data.frame(x=c(qnorm(1-p),tail_high), y=c(0,dnorm(tail_high)))
+
+ggplot(data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm) +
+  geom_polygon(data = df_tl, aes(x,y), fill = "#99CCFF") +
+  geom_polygon(data = df_th, aes(x,y), fill = "#99CCFF") +
+  geom_vline(xintercept = qnorm(p), lty = "dashed", lwd = 0.3) +
+  geom_vline(xintercept = qnorm(1-p), lty = "dashed", lwd = 0.3) +
+  annotate(geom = "text", -2.9, 0.15, label = "-1.96", size=2.5) +
+  annotate(geom = "text", 2.7, 0.15, label = "1.96", size=2.5) +
+  
+  annotate(geom = "text", -3.3, 0.05, label = "0.025", size=2.5) +
+  annotate(geom = "text",  3.2, 0.05, label = "0.025", size=2.5) +
+  
+  theme_classic() +
+  labs(x="", y="") +
+  theme(
+    axis.text.x = element_text(size = 6),  # Adjust x-axis text size
+    axis.text.y = element_text(size = 6)   # Adjust y-axis text size
+  )
+```
+]
+
+---
+# Significant or Not?
+
+.pull-left[
+- **Not Significant**:  
+  - Fail to reject the null hypothesis. 
+  
+  - There is **no** sufficient evidence to suggest a difference between the sample and population mean.
+  - Obtained test statistic **<** critical value threshold.
+
+  - p-value **>** alpha threshold (usually 0.05).  
+]
+
+.pull-right[
+- **Significant**:  
+  - Reject the null hypothesis.
+
+  - There **is** sufficient evidence to suggest a difference between the sample and population mean.  
+
+  - Obtained test statistic **>** critical value threshold.  
+
+  - p-value **<** alpha threshold (usually 0.05).  
+]
+---
+# Basic steps for an **Inferential Test**
+.pull-left[
+- A statement of null hypothesis:
+    - Know the research Hypothesis.
+
+- Choose the appropriate test:
+    - Including if a 1 or 2-tailed test. 
+
+- Set the level of Type I error risk ( $\alpha$ ):
+    - Usually < 0.05.
+
+- Analyze data distribution:
+    Do you meet assumptions like normality and independence?  
+]
+.pull-right[
+
+- Compute the test statistic (obtained) value:
+    - Calculated from formula.
+
+- Assess significance:
+    - Determine the critical value needed to  reject the null hypothesis and compare it to your:
+        - |calculated| > critical value = significant.
+
+    - Determine the p-value associated with your calculated test statistic.
+        - P-value < alpha threshold = significant
+
+- Summarize:
+    - Clear, succinct paragraph with all pertinent information and interpretation.
+]
+
+---
+# Basic steps for an **Inferential Test**
+
+- We can select an appropriate test simply by answering some questions.
+
+1. What type of data do we have?
+  
+2. What type of research question are we considering?
+
+---
+# Basic steps for an **Inferential Test**
+
+- We can select an appropriate test simply by answering some questions.
+
+1. What type of data do we have?
+    - If we have frequency data, we select a test from the Chi-square family.
+    - If we have continuous and categorical variables, the appropriate test depends on the research question:
+  
+2. What type of research question are we considering?
+    - If we are comparing one sample mean to a population mean, we use a **z-test**.
+    - If the focus is on differences between groups or treatments, we select a test from the **t-test or ANOVA** family.
+    - If we are interested in relationships between variables, we use **correlation tests**.
+    - If the goal is to predict outcomes, we use the **regression family**.
+
+---
+# Statistical shorthand **z-test** example
+
+---
+# Statistical shorthand **z-test** example
+
+$$z_{(100)} = 1.4, \quad p = 0.16$$
+
+---
+# Statistical shorthand **z-test** example
+
+$$z_{(100)} = 1.4, \quad p = 0.16$$
+
+$${\huge \downarrow}$$
+
+$$\underbrace{z_{\underbrace{(100)}_{\text{Sample size}}}}_{\text{Test statistic}} = \underbrace{1.4}_{\text{z-value}}, \quad \underbrace{p = 0.16}_{\text{p-value}}$$
+
+--
+- Every statistical test has a letter designating the type of test.
+- Because power is so closely tied to sample size, we report sample size.
+- For clarity (and to confirm the correct-tailed test is used to assess the p-value), include the calculated test statistic value.
+- Always report the p-value.
+- Some tests will also include a secondary metric to assess how meaningful results are (if significant).
+
+---
+# How to summarize your analysis: Key Components of a Statistical Summary
+
+.green[Before installing a new air quality monitoring instrument, we tested to see if a sample of measurements taken at the testing lab differed significantly different from the long-term mean for the larger network population.]
+
+.red[Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).]
+
+.blue[While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference $z_{(100)}$ = 1.4, $p$ = 0.16.]    
+
+.black[Based on these results we approve the installation of this instrument at the new site. However, we would suggest statistical comparisons of the current and new unit side-by-side, prior to decommissioning the current instrument.]
