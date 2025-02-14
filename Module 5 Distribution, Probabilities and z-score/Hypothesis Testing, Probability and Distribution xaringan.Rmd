@@ -3,7 +3,7 @@ title: "Hypothesis Testing, Probability and Distribution xaringan"
 subtitle: ""
 author: "Pablo E. Guti\u00E9rrez-Fonseca"
 institute: ""
-date: "2025-02-12 (updated: `r Sys.Date()`)"
+date: "2025-Feb-12 (updated: `r format(Sys.Date(), '%Y-%b-%d')`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs

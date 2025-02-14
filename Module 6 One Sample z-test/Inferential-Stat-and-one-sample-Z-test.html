@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Hypothesis Testing, Probability and Distribution xaringan</title>
+    <title>Inferential Statistics</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
     <script src="libs/panelset-0.3.0/panelset.js"></script>
@@ -22,7 +22,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xbcb87f9efad4f229cd85edebc3032d1","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xd541cda80f14ff882ef09a1469b2008","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -36,13 +36,16 @@
 class: center, middle, inverse, title-slide
 
 .title[
-# Hypothesis Testing, Probability and Distribution xaringan
+# Inferential Statistics
+]
+.subtitle[
+## One sample z-test
 ]
 .author[
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2025-Feb-12 (updated: 2025-Feb-12)
+### 2025-Feb-13 (updated: 2025-Feb-13)
 ]
 
 ---
@@ -68,42 +71,6 @@ class: center, middle, inverse, title-slide
   0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
   100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
 }</style>
-
-
-# Normal distribution: Introduction
-- Why did we focus on normality?
-
-  - The **normal distribution** is a key tool for determining the probability of a given value occurring in a population that follows this distribution.
-
-  - It allows us to make inferences about a population by calculating how likely it is for data to fall within certain ranges.
-
-  - Many statistical tests assume data follows a **normal distribution**, which helps in determining **significance** and making reliable conclusions.
-
----
-## Normal distribution: Introduction
-- The normal distribution has two parameters: the mean ( `\(\mu\)`) and the standard deviation ( `\(\sigma\)` ).
-
-- If a **variable x** follows a normal distribution with a specific mean ( `\(\mu\)` ) and standard deviation ( `\(\sigma\)` ), we write this as:
-
-.pull-left[
-![](Hypothesis-Testing,-Probability-and-Distribution-xaringan_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
-] 
-.pull-right[
-.center[
-`\(x\)` `\(\sim\)` N( `\(\mu\)`, `\(\sigma\)` )
-]]
-
----
-# Converting to Standard Normal Distribution
-
-- To simplify comparisons between different normal distributions, we often convert values to the **standard normal distribution**.
-
-- The standard normal distribution has a `\(\mu\)` = `\(0\)` and a `\(\sigma\)` = `\(1\)`.
-
-- Any normal distribution can be converted into the standard normal distribution by using the **z-score** formula: `\(z = \frac{x - \mu}{\sigma}\)`
-
-![](Hypothesis-Testing,-Probability-and-Distribution-xaringan_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
-
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
