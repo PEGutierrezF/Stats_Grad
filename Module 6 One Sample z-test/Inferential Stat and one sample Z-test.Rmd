@@ -354,3 +354,312 @@ $$\underbrace{z_{\underbrace{(100)}_{\text{Sample size}}}}_{\text{Test statistic
 .blue[While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference $z_{(100)}$ = 1.4, $p$ = 0.16.]    
 
 .black[Based on these results we approve the installation of this instrument at the new site. However, we would suggest statistical comparisons of the current and new unit side-by-side, prior to decommissioning the current instrument.]
+
+---
+# When would you run a one-sample z-test?
+- Use the One Sample z-test when:
+  - You want to test for a **difference** between one **sample mean** and a larger **population mean**.
+  - There is only **one group (sample)** being tested against the larger **population**.
+  - You know (or can estimate) the mean and standard deviation of the population.
+  - Data is normally distributed.
+
+--
+
+$$z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}$$
+
+- where:  
+    - $\bar{X}$: Sample mean.  
+    - $\mu$: Population mean.  
+    - $\sigma$: Population standard deviation.
+    - $n$: Sample size.
+
+---
+# When would you run a one-sample z-test?
+
+- Use the One Sample z-test when:
+  - You want to test for a **difference** between one **sample mean** and a larger **population mean**.
+  - There is only **one group (sample)** being tested against the larger **population**.
+  - You know (or can estimate) the mean and standard deviation of the population.
+    - \textcolor{orange}{Expert Information.}
+    - \textcolor{orange}{Scientific Literature.}
+    - \textcolor{orange}{Data archives.}
+    - \textcolor{orange}{Meaningful (hypothesized value).}
+  - Data is normally distributed.
+
+---
+
+## Flowcharts: 
+
+```{r, echo=FALSE, fig.cap="", out.width = '60%', fig.align='center'}
+knitr::include_graphics("fig/parametric.jpg")
+```
+
+
+---
+# Flowcharts
+
+```{r, echo=FALSE, fig.cap="", out.width = '100%', fig.align='center'}
+knitr::include_graphics("fig/which_test_flowchart.png")
+```
+
+
+
+---
+# Flowcharts
+
+```{r figure_1, echo = FALSE, fig.align='center'}
+DiagrammeR::mermaid("
+    graph TD;
+
+        A[What type of data?]--> B[Continuous];
+        B--Research Question--> C[Differences];
+        B--Research Question--> D[Relationships];
+        
+        C --Num. samples to compare--> E[1 group]
+        
+        E --> F[Normally distribute?];
+        F --Yes--> G[One sample z-test];
+        
+        F --No--> H[Wilcoxon signed rank z-test]
+
+    ", height = '80%', width = '100%')
+
+```
+
+---
+# One sample z-test
+
+- Assume you have a sample of **20 observations**. The mean of this **sample is 150**, and you want to determine whether there is a **difference between the sample mean and the larger population mean**. Since you are not specifying a direction for this difference, you will conduct a two-tailed test.
+
+- The **population mean is 164**, and the **population standard deviation is 33**.
+
+--
+
+- Next, calculate the obtained value for this **one-sample z-test.**
+
+.pull-left[$$z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}$$
+]
+
+.pull-right[
+$$z = \frac{150 - 164}{\frac{33}{\sqrt{20}}} = -1.897$$
+]
+
+---
+# One sample z-test
+
+- Assume you have a sample of **20 observations**. The mean of this **sample is 150**, and you want to determine whether there is a **difference between the sample mean and the larger population mean**. Since you are not specifying a direction for this difference, you will conduct a two-tailed test.
+
+- The **population mean is 164**, and the **population standard deviation is 33**.
+
+- Next, calculate the obtained value for this **one-sample z-test.**
+.pull-left[
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2.2, fig.height=1.7}
+p <- 0.025
+tail_low <- seq(-4, qnorm(p), 0.01)
+df_tl <- data.frame(x=c(tail_low,qnorm(p)), y =c(dnorm(tail_low),0))
+tail_high <- seq(qnorm(1-p), 4, 0.01)
+df_th <- data.frame(x=c(qnorm(1-p),tail_high), y=c(0,dnorm(tail_high)))
+
+ggplot(data.frame(x = c(-4, 4)), aes(x)) +
+  stat_function(fun = dnorm) +
+  geom_polygon(data = df_tl, aes(x,y), fill = "#99CCFF") +
+  geom_polygon(data = df_th, aes(x,y), fill = "#99CCFF") +
+  geom_vline(xintercept = qnorm(p), lty = "dashed", lwd = 0.3) +
+  geom_vline(xintercept = qnorm(1-p), lty = "dashed", lwd = 0.3) +
+  annotate(geom = "text", -3, 0.15, label = "Reject\n Null", size=3) +
+  annotate(geom = "text", 3, 0.15, label = "Reject\n Null", size=3) +
+  
+  annotate(geom = "text", -3.3, 0.05, label = "0.025", size=3) +
+  annotate(geom = "text",  3, 0.05, label = "0.025", size=3) +
+  
+  theme_classic() +
+  labs(x="", y="")
+```
+]
+
+.pull-right[
+$$z = \frac{150 - 164}{\frac{33}{\sqrt{20}}} = -1.897$$
+]
+
+---
+# Critical Value Approach
+
+- In the critical value approach, we compare the calculated **test statistic** to the **critical value** from the standard normal distribution. 
+
+- For a **two-tailed test** at the $\alpha$ = 0.05 significance level, the critical values are approximately ±1.96, which corresponds to the **0.025** in each tail.
+
+--
+
+- Decision Rule
+
+- If \( | \text{calculated test statistic} | > \text{critical value} \) = **Significant**
+- If \( | \text{calculated test statistic} | \leq \text{critical value} \) = **Not Significant**
+
+---
+# Critical Value Approach
+
+- In this case:
+
+$$|-1.897| < 1.96$$
+
+- Thus, we fail to reject the null hypothesis, indicating that there is **no significant** difference between the sample mean and the population mean.
+
+---
+# Finding the p-value
+
+- Now we need to determine the probability (p-value) associated with the calculated test statistic. You have several options to achieve this:
+
+```{r highlight.output = 1}
+z_value <- -1.897
+p_value <- 2 * pnorm(z_value)  # Two-tailed p-value
+p_value  # This will give the result
+```
+
+--
+
+- Since this p-value (0.0578) is greater than the alpha threshold of 0.05, we conclude that the result is **not significant**.
+
+---
+# Example: Car rental
+
+
+---
+# Example: Car rental
+
+- A rental car company claims the mean time to rent a car on their **website is 60 seconds with a standard deviation of 30 seconds**. A random sample **36 customers** attempted to rent a car on the website. The **mean time to rent was 75 seconds**. Is this enough evidence to contradict the company's claim?
+
+
+--
+
+- Step 1: Set up the hypotheses
+
+.pull-left[
+- **Null hypothesis ( $H_0$ )**: The mean rental time is 60 seconds.
+$$H_0: \mu = 60$$
+]
+
+.pull-right[
+- **Alternative hypothesis ( $H_1$ )**: The mean rental time is greater than 60 seconds.
+$$H_1: \mu > 60$$
+]
+
+---
+# Example: Car rental
+
+- A rental car company claims the mean time to rent a car on their **website is 60 seconds with a standard deviation of 30 seconds**. A random sample **36 customers** attempted to rent a car on the website. The **mean time to rent was 75 seconds**. Is this enough evidence to contradict the company's claim?
+
+--
+
+- Step 2: Test statistic formula
+
+.pull-left[
+$$z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}$$
+]
+
+.pulls-right[
+$$z = \frac{75 - 60}{\frac{30}{\sqrt{36}}} = \frac{15}{5} = 3$$
+]
+
+
+---
+# Example: Car rental
+
+- A rental car company claims the mean time to rent a car on their **website is 60 seconds with a standard deviation of 30 seconds**. A random sample **36 customers** attempted to rent a car on the website. The **mean time to rent was 75 seconds**. Is this enough evidence to contradict the company's claim?
+
+--
+
+- Step 2: Test statistic formula
+
+.pull-left[
+$$|3| > 1.645$$
+]
+
+.pulls-right[
+$$z = \frac{75 - 60}{\frac{30}{\sqrt{36}}} = \frac{15}{5} = 3$$
+]
+
+---
+# Example: Car rental
+
+- A rental car company claims the mean time to rent a car on their **website is 60 seconds with a standard deviation of 30 seconds**. A random sample **36 customers** attempted to rent a car on the website. The **mean time to rent was 75 seconds**. Is this enough evidence to contradict the company's claim?
+\vspace{0.5cm}
+
+- Step 3: Set up the hypotheses
+
+.pull-left[
+For a **one-tailed test** at a significance level of $\alpha$ = 0.05, the critical z-value is approximately **1.645** (since we are only looking at one tail).
+]
+
+.pulls-right[
+```{r highlight.output = 1}
+# Given z-value
+z_value <- 3
+# Calculate the one-tailed p-value
+p_value <- 1 - pnorm(z_value)
+p_value # Print the p-value
+```
+]
+
+---
+# Example: Car rental
+
+\textcolor{teal}{We tested a rental car company's claim that reservations could be made online in 60 seconds on average.} \textcolor{orange}{ Using a random sample of 36 online rentals in a one-tailed, one-sample z-test} \textcolor{blue}{ we found that mean reservation time is actually significantly higher than the company claims (\( z_{(36)}=3, \, p=0.001 \)).} \textcolor{darkgray}{  This result indicates that it is highly unlikely customers can rent a car in 60 seconds as claimed.  We suggest that the rental company adjust its claim to match the 75 second mean encountered for our test sample to avoid misleading potential customers.}
+
+
+---
+# Example: Another example
+
+---
+# Example: Another example
+
+A water quality regulation specifies that the lead level in drinking water should be no more than **15 ppb** ( $\mu$ ) with a standard deviation ( $\sigma$ = 0.25. A random sample of three lead measurements yielded values of 15.84, 15.33, and 15.58. Perform a one-sided z-test to determine if the mean lead level exceeds 15 ppb. 
+
+.pull-left[
+$$H_0: \mu = 15$$
+]
+
+.pull-right[
+$$H_1: \mu > 15$$
+]  
+
+
+---
+# Example: Another example
+
+```{r eval=FALSE}
+library(BSDA)  # Load the BSDA package
+
+z.test(x, 
+       alternative = "greater",  # Specify alternative hypothesis: "greater", "less", or "two.sided"
+       mu = ,  # Population mean (to test against)
+       sigma.x = )  # Population standard deviation
+```
+
+--
+
+- where:
+    - x: Sample data values.
+    - alternative: Specifies the alternative hypothesis. Options:
+      - "greater": Tests if the sample mean is significantly greater than mu.
+      - "less": Tests if the sample mean is significantly smaller than mu.
+      - "two.sided": Tests for any significant difference from mu.
+    - mu: The hypothesized population mean.
+    - sigma.x: The known population standard deviation.
+
+---
+# Example: Another example
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, highlight.output = 5}
+library(BSDA)
+water_sample = c(15.84, 15.33, 15.58)
+z.test(water_sample, mu=15,  sigma.x = 0.25, alternative="greater")
+```
+
+- The test statistic for the one-sample **z-test is 4.0415** and the corresponding **p-value** is $p = 2.66 \times 10^{-5}$ .
+
+---
+# Example: Another example
+
+.teal[We tested a water sample to determine whether the mean lead level exceeds the regulatory limit of 15 ppb.] .orange[Using a random sample of three lead measurements in a one-tailed, one-sample z-test,] <span style="color:#005EB8;">we found that the mean lead level is significantly greater than the regulatory limit ( $z_{(3)} = 4.04, \ p = 2.66 \times 10^{-5}$ ).</span> .darkgray[This result indicates that it is highly unlikely that the true mean lead level is 15 ppb or lower. We suggest further investigation and corrective actions to reduce the lead concentration, as the sample mean was 15.58 ppb.]  
+
+
