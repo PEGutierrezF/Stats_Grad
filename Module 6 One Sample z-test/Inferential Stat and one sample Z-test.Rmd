@@ -209,12 +209,12 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 
 ## Expanding on Hypothesis Testing 
 - 2-tailed tests: 
-  - Have **no expected directionality** hypothesized. 
-  - Splits the 5% of the area under the curve that would be considered significant between both tails of the normal distribution curve.
-  - Are therefore less powerful tests (more likely to find a significant result).
+    - Have **no expected directionality hypothesized**.
+    - Split the 5% significance level (α = 0.05) between both tails of the normal distribution curve (i.e., 2.5% in each tail).
+    - Are therefore more conservative and less powerful than one-tailed tests, meaning they require stronger evidence to reject the null hypothesis.
 
 .center[
-```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=1.9, fig.height=1.5}
+```{r, echo=FALSE, message=FALSE, fig.cap="", fig.width=1.8, fig.height=1.4}
 p <- 0.025
 tail_low <- seq(-4, qnorm(p), 0.01)
 df_tl <- data.frame(x=c(tail_low,qnorm(p)), y =c(dnorm(tail_low),0))
@@ -351,7 +351,7 @@ $$\underbrace{z_{\underbrace{(100)}_{\text{Sample size}}}}_{\text{Test statistic
 
 .red[Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).]
 
-.blue[While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference $z_{(100)}$ = 1.4, $p$ = 0.16.]    
+<span style="color:#005EB8;"> While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference $z_{(100)}$ = 1.4, $p$ = 0.16.</span>
 
 .black[Based on these results we approve the installation of this instrument at the new site. However, we would suggest statistical comparisons of the current and new unit side-by-side, prior to decommissioning the current instrument.]
 

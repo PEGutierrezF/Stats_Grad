@@ -22,7 +22,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"b3530a77b5ef4099961c64e89e6b1d1f","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x7b99dbf734e4f8797bf227d28eead7e","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -53,7 +53,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2025-Feb-13 (updated: 2025-Feb-15)
+### 2025-Feb-13 (updated: 2025-Feb-16)
 ]
 
 ---
@@ -163,9 +163,9 @@ $$
 
 ## Expanding on Hypothesis Testing 
 - 2-tailed tests: 
-  - Have **no expected directionality** hypothesized. 
-  - Splits the 5% of the area under the curve that would be considered significant between both tails of the normal distribution curve.
-  - Are therefore less powerful tests (more likely to find a significant result).
+    - Have **no expected directionality hypothesized**.
+    - Split the 5% significance level (α = 0.05) between both tails of the normal distribution curve (i.e., 2.5% in each tail).
+    - Are therefore more conservative and less powerful than one-tailed tests, meaning they require stronger evidence to reject the null hypothesis.
 
 .center[
 ![](Inferential-Stat-and-one-sample-Z-test_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
@@ -280,7 +280,7 @@ $$
 
 .red[Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).]
 
-.blue[While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference `\(z_{(100)}\)` = 1.4, `\(p\)` = 0.16.]    
+&lt;span style="color:#005EB8;"&gt; While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference `\(z_{(100)}\)` = 1.4, `\(p\)` = 0.16.&lt;/span&gt;
 
 .black[Based on these results we approve the installation of this instrument at the new site. However, we would suggest statistical comparisons of the current and new unit side-by-side, prior to decommissioning the current instrument.]
 
@@ -332,8 +332,8 @@ $$
 ---
 # Flowcharts
 
-<div id="htmlwidget-c305bd629a4271113c9e" style="width:100%;height:80%;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c305bd629a4271113c9e">{"x":{"diagram":"\n    graph TD;\n\n        A[What type of data?]--> B[Continuous];\n        B--Research Question--> C[Differences];\n        B--Research Question--> D[Relationships];\n        \n        C --Num. samples to compare--> E[1 group]\n        \n        E --> F[Normally distribute?];\n        F --Yes--> G[One sample z-test];\n        \n        F --No--> H[Wilcoxon signed rank z-test]\n\n    "},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-504fd67a095bbb2ad56e" style="width:100%;height:80%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-504fd67a095bbb2ad56e">{"x":{"diagram":"\n    graph TD;\n\n        A[What type of data?]--> B[Continuous];\n        B--Research Question--> C[Differences];\n        B--Research Question--> D[Relationships];\n        \n        C --Num. samples to compare--> E[1 group]\n        \n        E --> F[Normally distribute?];\n        F --Yes--> G[One sample z-test];\n        \n        F --No--> H[Wilcoxon signed rank z-test]\n\n    "},"evals":[],"jsHooks":[]}</script>
 
 ---
 # One sample z-test
