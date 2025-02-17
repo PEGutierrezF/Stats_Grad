@@ -270,30 +270,24 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 .pull-left[
 - A statement of null hypothesis:
     - Know the research Hypothesis.
-
 - Choose the appropriate test:
-    - Including if a 1 or 2-tailed test. 
-
+    - Including if a 1 or 2-tailed test.
 - Set the level of Type I error risk ( $\alpha$ ):
     - Usually < 0.05.
-
 - Analyze data distribution:
-    Do you meet assumptions like normality and independence?  
-]
-.pull-right[
-
+    - Do you meet assumptions like normality and independence?
 - Compute the test statistic (obtained) value:
     - Calculated from formula.
 
+]
+.pull-right[
 - Assess significance:
     - Determine the critical value needed to  reject the null hypothesis and compare it to your:
-        - |calculated| > critical value = significant.
-
-    - Determine the p-value associated with your calculated test statistic.
-        - P-value < alpha threshold = significant
-
+      - |calculated| > critical value = significant.
+- Determine the p-value associated with your calculated test statistic.
+      - P-value < alpha threshold = significant
 - Summarize:
-    - Clear, succinct paragraph with all pertinent information and interpretation.
+    f- Clear, succinct paragraph with all pertinent information and interpretation.
 ]
 
 ---
@@ -319,7 +313,7 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
     - If the focus is on differences between groups or treatments, we select a test from the **t-test or ANOVA** family.
     - If we are interested in relationships between variables, we use **correlation tests**.
     - If the goal is to predict outcomes, we use the **regression family**.
-
+    
 ---
 # Statistical shorthand **z-test** example
 
@@ -420,19 +414,16 @@ knitr::include_graphics("fig/which_test_flowchart.png")
 ```{r figure_1, echo = FALSE, fig.align='center'}
 DiagrammeR::mermaid("
     graph TD;
-
         A[What type of data?]--> B[Continuous];
         B--Research Question--> C[Differences];
         B--Research Question--> D[Relationships];
-        
         C --Num. samples to compare--> E[1 group]
-        
         E --> F[Normally distribute?];
         F --Yes--> G[One sample z-test];
-        
         F --No--> H[Wilcoxon signed rank z-test]
 
-    ", height = '80%', width = '100%')
+    ", height = '500px', width = '900px'
+    )
 
 ```
 
@@ -491,7 +482,7 @@ $$z = \frac{150 - 164}{\frac{33}{\sqrt{20}}} = -1.897$$
 ]
 
 ---
-# Critical Value Approach
+# Critical value approach
 
 - In the critical value approach, we compare the calculated **test statistic** to the **critical value** from the standard normal distribution. 
 
@@ -499,10 +490,9 @@ $$z = \frac{150 - 164}{\frac{33}{\sqrt{20}}} = -1.897$$
 
 --
 
-- Decision Rule
-
-- If \( | \text{calculated test statistic} | > \text{critical value} \) = **Significant**
-- If \( | \text{calculated test statistic} | \leq \text{critical value} \) = **Not Significant**
+- Decision Rule:
+    - If |calculated test statistic| > critical value → **Statistically Significant.**
+    - If |calculated test statistic| ≤ critical value → **Not Statistically Significant.**
 
 ---
 # Critical Value Approach
@@ -612,7 +602,7 @@ p_value # Print the p-value
 ---
 # Example: Car rental
 
-\textcolor{teal}{We tested a rental car company's claim that reservations could be made online in 60 seconds on average.} \textcolor{orange}{ Using a random sample of 36 online rentals in a one-tailed, one-sample z-test} \textcolor{blue}{ we found that mean reservation time is actually significantly higher than the company claims (\( z_{(36)}=3, \, p=0.001 \)).} \textcolor{darkgray}{  This result indicates that it is highly unlikely customers can rent a car in 60 seconds as claimed.  We suggest that the rental company adjust its claim to match the 75 second mean encountered for our test sample to avoid misleading potential customers.}
+.teal[We tested a rental car company's claim that reservations could be made online in 60 seconds on average.] .orange[Using a random sample of 36 online rentals in a one-tailed, one-sample z-test] <span style="color:#005EB8;">we found that mean reservation time is actually significantly higher than the company claims ( $z_{(36)}=3, p=0.001$ ).</span> .darkgray[This result indicates that it is highly unlikely customers can rent a car in 60 seconds as claimed.  We suggest that the rental company adjust its claim to match the 75 second mean encountered for our test sample to avoid misleading potential customers.]
 
 
 ---
@@ -634,8 +624,9 @@ $$H_1: \mu > 15$$
 
 ---
 # Example: Another example
-
 ```{r eval=FALSE}
+# install.packages("BSDA") #first install the library, if you have not this library installed.
+# simply remove the # sign and run this line
 library(BSDA)  # Load the BSDA package
 
 z.test(x, 
@@ -654,6 +645,24 @@ z.test(x,
       - "two.sided": Tests for any significant difference from mu.
     - mu: The hypothesized population mean.
     - sigma.x: The known population standard deviation.
+
+---
+# Example: Non-parametric Wilcoxon signed-rank test
+
+- To perform a one-sample Wilcoxon test, R provides a function wilcox.test() that can be used as follow:
+```{r eval=FALSE}
+wilcox.test(x, 
+            alternative = "greater",  # Specify alternative hypothesis: "greater", "less", or "two.sided"
+            mu = 0)  # the theoretical mean/median value. Default is 0 but you can change it.
+```
+
+- where:
+    - x: Sample data values.
+    - alternative: Specifies the alternative hypothesis. Options:
+      - "greater": Tests if the sample median is significantly greater than mu.
+      - "less": Tests if the sample median is significantly smaller than mu.
+      - "two.sided": Tests for any significant difference from mu.
+    - mu: The hypothesized population median.
 
 ---
 # Example: Another example
