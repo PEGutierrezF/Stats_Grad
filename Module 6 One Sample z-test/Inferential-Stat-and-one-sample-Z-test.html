@@ -22,7 +22,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"fb5aa8bc643d42688484da0c4900a143","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xb55343cd73b4452b98f16c6dd1e4b03","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -53,7 +53,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2025-Feb-13 (updated: 2025-Feb-16)
+### 2025-Feb-13 (updated: 2025-Feb-17)
 ]
 
 ---
@@ -176,24 +176,21 @@ $$
 
 .pull-left[
 - **Not Significant**:  
-  - Fail to reject the null hypothesis. 
-  
+  - Fail to reject the null hypothesis.
+      - We fail to reject because in statistics, we cannot prove anything with 100% certainty; we just don’t have enough evidence to reject it.
   - There is **no** sufficient evidence to suggest a difference between the sample and population mean.
   - Obtained test statistic **&lt;** critical value threshold.
-
   - p-value **&gt;** alpha threshold (usually 0.05).  
 ]
 
 .pull-right[
-- **Significant**:  
+- **Significant**:
   - Reject the null hypothesis.
-
-  - There **is** sufficient evidence to suggest a difference between the sample and population mean.  
-
-  - Obtained test statistic **&gt;** critical value threshold.  
-
+  - There **is** sufficient evidence to suggest a difference between the sample and population mean.
+  - Obtained test statistic **&gt;** critical value threshold.
   - p-value **&lt;** alpha threshold (usually 0.05).  
 ]
+
 ---
 # Basic steps for an **Inferential Test**
 .pull-left[
@@ -276,23 +273,46 @@ $$
 ---
 # How to summarize your analysis: Key Components of a Statistical Summary
 
-.green[Before installing a new air quality monitoring instrument, we tested to see if a sample of measurements taken at the testing lab differed significantly different from the long-term mean for the larger network population.]
+.teal[Before installing a new air quality monitoring instrument, we tested to see if a sample of measurements taken at the testing lab differed significantly different from the long-term mean for the larger network population.]
 
-.red[Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).]
+.orange[Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).]
 
 &lt;span style="color:#005EB8;"&gt; While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference `\(z_{(100)}\)` = 1.4, `\(p\)` = 0.16.&lt;/span&gt;
 
 .black[Based on these results we approve the installation of this instrument at the new site. However, we would suggest statistical comparisons of the current and new unit side-by-side, prior to decommissioning the current instrument.]
 
+
+---
+# How to summarize your analysis: Key Components of a Statistical Summary
+
+.teal[**Introduction/Background:** Before installing a new air quality monitoring instrument, we tested to see if a sample of measurements taken at the testing lab differed significantly different from the long-term mean for the larger network population.]
+
+.orange[**Methods:**Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).]
+
+&lt;span style="color:#005EB8;"&gt; **Results:** While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference `\(z_{(100)}\)` = 1.4, `\(p\)` = 0.16.&lt;/span&gt;
+
+.black[**Implications:** Based on these results we approve the installation of this instrument at the new site. However, we would suggest statistical comparisons of the current and new unit side-by-side, prior to decommissioning the current instrument.]
+
+
+---
+# One sample z-test
+
 ---
 # When would you run a one-sample z-test?
 - Use the One Sample z-test when:
-  - You want to test for a **difference** between one **sample mean** and a larger **population mean**.
-  - There is only **one group (sample)** being tested against the larger **population**.
-  - You know (or can estimate) the mean and standard deviation of the population.
-  - Data is normally distributed.
+  1. You want to test for a **difference** between one **sample mean** and a larger **population mean**.
+  2. There is only **one group (sample)** being tested against the larger **population**.
+  3. You know (or can estimate) the mean and standard deviation of the population.
+      - Expert Information.
+      - Scientific Literature.
+      - Data archives.
+      - Meaningful (hypothesized value).
+  4. Data is normally distributed.
 
---
+
+---
+# One sample z-test formula
+- The formula for the one-sample z-test is:
 
 `$$z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}$$`
 
@@ -301,19 +321,6 @@ $$
     - `\(\mu\)`: Population mean.  
     - `\(\sigma\)`: Population standard deviation.
     - `\(n\)`: Sample size.
-
----
-# When would you run a one-sample z-test?
-
-- Use the One Sample z-test when:
-  - You want to test for a **difference** between one **sample mean** and a larger **population mean**.
-  - There is only **one group (sample)** being tested against the larger **population**.
-  - You know (or can estimate) the mean and standard deviation of the population.
-    - \textcolor{orange}{Expert Information.}
-    - \textcolor{orange}{Scientific Literature.}
-    - \textcolor{orange}{Data archives.}
-    - \textcolor{orange}{Meaningful (hypothesized value).}
-  - Data is normally distributed.
 
 ---
 
@@ -332,8 +339,8 @@ $$
 ---
 # Flowcharts
 
-<div id="htmlwidget-d2c0a9639285c3f44056" style="width:100%;height:80%;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d2c0a9639285c3f44056">{"x":{"diagram":"\n    graph TD;\n\n        A[What type of data?]--> B[Continuous];\n        B--Research Question--> C[Differences];\n        B--Research Question--> D[Relationships];\n        \n        C --Num. samples to compare--> E[1 group]\n        \n        E --> F[Normally distribute?];\n        F --Yes--> G[One sample z-test];\n        \n        F --No--> H[Wilcoxon signed rank z-test]\n\n    "},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-9515085edb6e06ff8f57" style="width:100%;height:80%;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9515085edb6e06ff8f57">{"x":{"diagram":"\n    graph TD;\n\n        A[What type of data?]--> B[Continuous];\n        B--Research Question--> C[Differences];\n        B--Research Question--> D[Relationships];\n        \n        C --Num. samples to compare--> E[1 group]\n        \n        E --> F[Normally distribute?];\n        F --Yes--> G[One sample z-test];\n        \n        F --No--> H[Wilcoxon signed rank z-test]\n\n    "},"evals":[],"jsHooks":[]}</script>
 
 ---
 # One sample z-test
@@ -357,10 +364,9 @@ $$
 # One sample z-test
 
 - Assume you have a sample of **20 observations**. The mean of this **sample is 150**, and you want to determine whether there is a **difference between the sample mean and the larger population mean**. Since you are not specifying a direction for this difference, you will conduct a two-tailed test.
-
 - The **population mean is 164**, and the **population standard deviation is 33**.
-
 - Next, calculate the obtained value for this **one-sample z-test.**
+
 .pull-left[
 ![](Inferential-Stat-and-one-sample-Z-test_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
 ]

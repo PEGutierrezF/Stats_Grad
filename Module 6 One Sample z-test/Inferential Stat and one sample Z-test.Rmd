@@ -250,24 +250,21 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 
 .pull-left[
 - **Not Significant**:  
-  - Fail to reject the null hypothesis. 
-  
+  - Fail to reject the null hypothesis.
+      - We fail to reject because in statistics, we cannot prove anything with 100% certainty; we just don’t have enough evidence to reject it.
   - There is **no** sufficient evidence to suggest a difference between the sample and population mean.
   - Obtained test statistic **<** critical value threshold.
-
   - p-value **>** alpha threshold (usually 0.05).  
 ]
 
 .pull-right[
-- **Significant**:  
+- **Significant**:
   - Reject the null hypothesis.
-
-  - There **is** sufficient evidence to suggest a difference between the sample and population mean.  
-
-  - Obtained test statistic **>** critical value threshold.  
-
+  - There **is** sufficient evidence to suggest a difference between the sample and population mean.
+  - Obtained test statistic **>** critical value threshold.
   - p-value **<** alpha threshold (usually 0.05).  
 ]
+
 ---
 # Basic steps for an **Inferential Test**
 .pull-left[
@@ -350,23 +347,46 @@ $$\underbrace{z_{\underbrace{(100)}_{\text{Sample size}}}}_{\text{Test statistic
 ---
 # How to summarize your analysis: Key Components of a Statistical Summary
 
-.green[Before installing a new air quality monitoring instrument, we tested to see if a sample of measurements taken at the testing lab differed significantly different from the long-term mean for the larger network population.]
+.teal[Before installing a new air quality monitoring instrument, we tested to see if a sample of measurements taken at the testing lab differed significantly different from the long-term mean for the larger network population.]
 
-.red[Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).]
+.orange[Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).]
 
 <span style="color:#005EB8;"> While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference $z_{(100)}$ = 1.4, $p$ = 0.16.</span>
 
 .black[Based on these results we approve the installation of this instrument at the new site. However, we would suggest statistical comparisons of the current and new unit side-by-side, prior to decommissioning the current instrument.]
 
+
+---
+# How to summarize your analysis: Key Components of a Statistical Summary
+
+.teal[**Introduction/Background:** Before installing a new air quality monitoring instrument, we tested to see if a sample of measurements taken at the testing lab differed significantly different from the long-term mean for the larger network population.]
+
+.orange[**Methods:**Using a 2-tailed, one-sample z-test for on our normally distributed samples (W = 0.78).]
+
+<span style="color:#005EB8;"> **Results:** While the mean of the new instrument sample was slightly higher (sample mean = 117 vs. population mean = 108), we found no significant difference $z_{(100)}$ = 1.4, $p$ = 0.16.</span>
+
+.black[**Implications:** Based on these results we approve the installation of this instrument at the new site. However, we would suggest statistical comparisons of the current and new unit side-by-side, prior to decommissioning the current instrument.]
+
+
+---
+# One sample z-test
+
 ---
 # When would you run a one-sample z-test?
 - Use the One Sample z-test when:
-  - You want to test for a **difference** between one **sample mean** and a larger **population mean**.
-  - There is only **one group (sample)** being tested against the larger **population**.
-  - You know (or can estimate) the mean and standard deviation of the population.
-  - Data is normally distributed.
+  1. You want to test for a **difference** between one **sample mean** and a larger **population mean**.
+  2. There is only **one group (sample)** being tested against the larger **population**.
+  3. You know (or can estimate) the mean and standard deviation of the population.
+      - Expert Information.
+      - Scientific Literature.
+      - Data archives.
+      - Meaningful (hypothesized value).
+  4. Data is normally distributed.
 
---
+
+---
+# One sample z-test formula
+- The formula for the one-sample z-test is:
 
 $$z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}$$
 
@@ -375,19 +395,6 @@ $$z = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}$$
     - $\mu$: Population mean.  
     - $\sigma$: Population standard deviation.
     - $n$: Sample size.
-
----
-# When would you run a one-sample z-test?
-
-- Use the One Sample z-test when:
-  - You want to test for a **difference** between one **sample mean** and a larger **population mean**.
-  - There is only **one group (sample)** being tested against the larger **population**.
-  - You know (or can estimate) the mean and standard deviation of the population.
-    - \textcolor{orange}{Expert Information.}
-    - \textcolor{orange}{Scientific Literature.}
-    - \textcolor{orange}{Data archives.}
-    - \textcolor{orange}{Meaningful (hypothesized value).}
-  - Data is normally distributed.
 
 ---
 
@@ -451,10 +458,9 @@ $$z = \frac{150 - 164}{\frac{33}{\sqrt{20}}} = -1.897$$
 # One sample z-test
 
 - Assume you have a sample of **20 observations**. The mean of this **sample is 150**, and you want to determine whether there is a **difference between the sample mean and the larger population mean**. Since you are not specifying a direction for this difference, you will conduct a two-tailed test.
-
 - The **population mean is 164**, and the **population standard deviation is 33**.
-
 - Next, calculate the obtained value for this **one-sample z-test.**
+
 .pull-left[
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2.2, fig.height=1.7}
 p <- 0.025
