@@ -227,9 +227,12 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
   geom_polygon(data = df_th, aes(x,y), fill = "#99CCFF") +
   geom_vline(xintercept = qnorm(p), lty = "dashed", lwd = 0.3) +
   geom_vline(xintercept = qnorm(1-p), lty = "dashed", lwd = 0.3) +
+  
+  annotate("text", x = -2.80, y = 0.3, label = "Critical value", color = "red", angle = 90, size=2) +
   annotate(geom = "text", -2.9, 0.15, label = "-1.96", size=2.5) +
   annotate(geom = "text", 2.7, 0.15, label = "1.96", size=2.5) +
   
+  annotate("text", x = 2.50, y = 0.3, label = "Critical value", color = "red", angle = 90, size=2) +
   annotate(geom = "text", -3.3, 0.05, label = "0.025", size=2.5) +
   annotate(geom = "text",  3.2, 0.05, label = "0.025", size=2.5) +
   
