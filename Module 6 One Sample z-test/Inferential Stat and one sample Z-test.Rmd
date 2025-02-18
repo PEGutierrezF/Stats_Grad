@@ -246,12 +246,42 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 ]
 
 ---
+# Critical Value: Definition and Origin
+
+- A **critical value** is the threshold beyond which **we reject the null hypothesis** ( $H_0$ ) in a statistical test. It is determined by the significance level ( $\alpha$ ), which represents the probability of making a Type I error (rejecting a true null hypothesis).
+
+- Simply put, the critical value represents how many standard deviations ( $\sigma$ ) an obtained value is away from the true mean ( $mu$ ) under the null hypothesis. 
+
+---
+# Critical Values for Common Significance Levels:
+- One-tailed test ( $\alpha$= 0.05): Critical value z= $\pm$ 1.645.
+- Two-tailed test ( $\alpha$= 0.05): $\alpha$ is split into 2.5% in each tail, leading to the widely used z= $\pm$ 1.96.
+
+---
+# Critical Values in R
+
+.pull-left[
+```{r}
+one_tail_right <- qnorm(1 - 0.05)  # One-tailed test critical value (right tail)
+one_tail_left <- qnorm(0.05)       # One-tailed test critical value (left tail)
+two_tail <- c(qnorm(0.025), qnorm(0.975))
+```
+]
+.pull-right[
+```{r}
+one_tail_right
+one_tail_left
+two_tail
+```
+]
+
+---
 # Significant or Not?
 
 .pull-left[
 - **Not Significant**:  
   - Fail to reject the null hypothesis.
-      - We fail to reject because in statistics, we cannot prove anything with 100% certainty; we just don’t have enough evidence to reject it.
+      - We fail to reject because in statistics, we cannot prove anything with 100% certainty; we just don't have enough evidence to reject it.
   - There is **no** sufficient evidence to suggest a difference between the sample and population mean.
   - Obtained test statistic **<** critical value threshold.
   - p-value **>** alpha threshold (usually 0.05).  

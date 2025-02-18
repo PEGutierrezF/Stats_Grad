@@ -4,7 +4,7 @@
     <title>Inferential Statistics</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
     <script src="libs/panelset-0.3.0/panelset.js"></script>
@@ -22,12 +22,12 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xef464640624419e869b83122ecf69c3","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xd7905e0945f450da4ce4f078eb16048","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
     <script src="libs/editable-0.2.6/editable.js"></script>
-    <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
     <script src="libs/d3-3.3.8/d3.min.js"></script>
     <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
     <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
@@ -53,7 +53,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2025-Feb-13 (updated: 2025-Feb-17)
+### 2025-Feb-13 (updated: 2025-Feb-18)
 ]
 
 ---
@@ -172,12 +172,62 @@ $$
 ]
 
 ---
+# Critical Value: Definition and Origin
+
+- A **critical value** is the threshold beyond which **we reject the null hypothesis** ( `\(H_0\)` ) in a statistical test. It is determined by the significance level ( `\(\alpha\)` ), which represents the probability of making a Type I error (rejecting a true null hypothesis).
+
+- Simply put, the critical value represents how many standard deviations ( `\(\sigma\)` ) an obtained value is away from the true mean ( `\(mu\)` ) under the null hypothesis. 
+
+---
+# Critical Values for Common Significance Levels:
+- One-tailed test ( `\(\alpha\)`= 0.05): Critical value z= `\(\pm\)` 1.645.
+- Two-tailed test ( `\(\alpha\)`= 0.05): `\(\alpha\)` is split into 2.5% in each tail, leading to the widely used z= `\(\pm\)` 1.96.
+
+---
+# Critical Values in R
+
+.pull-left[
+
+``` r
+one_tail_right &lt;- qnorm(1 - 0.05)  # One-tailed test critical value (right tail)
+one_tail_left &lt;- qnorm(0.05)       # One-tailed test critical value (left tail)
+two_tail &lt;- c(qnorm(0.025), qnorm(0.975))
+```
+]
+.pull-right[
+
+``` r
+one_tail_right
+```
+
+```
+## [1] 1.644854
+```
+
+``` r
+one_tail_left
+```
+
+```
+## [1] -1.644854
+```
+
+``` r
+two_tail
+```
+
+```
+## [1] -1.959964  1.959964
+```
+]
+
+---
 # Significant or Not?
 
 .pull-left[
 - **Not Significant**:  
   - Fail to reject the null hypothesis.
-      - We fail to reject because in statistics, we cannot prove anything with 100% certainty; we just don’t have enough evidence to reject it.
+      - We fail to reject because in statistics, we cannot prove anything with 100% certainty; we just don't have enough evidence to reject it.
   - There is **no** sufficient evidence to suggest a difference between the sample and population mean.
   - Obtained test statistic **&lt;** critical value threshold.
   - p-value **&gt;** alpha threshold (usually 0.05).  
@@ -333,8 +383,8 @@ $$
 ---
 # Flowcharts
 
-<div id="htmlwidget-036239c135c5fb485732" style="width:900px;height:500px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-036239c135c5fb485732">{"x":{"diagram":"\n    graph TD;\n        A[What type of data?]--> B[Continuous];\n        B--Research Question--> C[Differences];\n        B--Research Question--> D[Relationships];\n        C --Num. samples to compare--> E[1 group]\n        E --> F[Normally distribute?];\n        F --Yes--> G[One sample z-test];\n        F --No--> H[Wilcoxon signed rank z-test]\n\n    "},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a04103a74746a86400d4" style="width:900px;height:500px;" class="DiagrammeR html-widget "></div>
+<script type="application/json" data-for="htmlwidget-a04103a74746a86400d4">{"x":{"diagram":"\n    graph TD;\n        A[What type of data?]--> B[Continuous];\n        B--Research Question--> C[Differences];\n        B--Research Question--> D[Relationships];\n        C --Num. samples to compare--> E[1 group]\n        E --> F[Normally distribute?];\n        F --Yes--> G[One sample z-test];\n        F --No--> H[Wilcoxon signed rank z-test]\n\n    "},"evals":[],"jsHooks":[]}</script>
 
 ---
 # One sample z-test
@@ -362,7 +412,7 @@ $$
 - Next, calculate the obtained value for this **one-sample z-test.**
 
 .pull-left[
-![](Inferential-Stat-and-one-sample-Z-test_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
+![](Inferential-Stat-and-one-sample-Z-test_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
