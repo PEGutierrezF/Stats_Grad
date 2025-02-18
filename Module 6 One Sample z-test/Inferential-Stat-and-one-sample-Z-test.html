@@ -22,7 +22,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xd7905e0945f450da4ce4f078eb16048","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xdb3089773ca40d8bdf8b96cb95c21d3","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -176,12 +176,14 @@ $$
 
 - A **critical value** is the threshold beyond which **we reject the null hypothesis** ( `\(H_0\)` ) in a statistical test. It is determined by the significance level ( `\(\alpha\)` ), which represents the probability of making a Type I error (rejecting a true null hypothesis).
 
-- Simply put, the critical value represents how many standard deviations ( `\(\sigma\)` ) an obtained value is away from the true mean ( `\(mu\)` ) under the null hypothesis. 
+- It separates the **rejection region** (where you reject the null hypothesis) from the **non-rejection region** on the distribution curve of the test statistic. 
+
+- The critical value indicates how many standard deviations away from the mean we must go to enter the rejection region. For example, a critical value of `\(\pm\)` 1.645 means we are 1.645 standard deviations away from the mean in a one-tailed test.
 
 ---
 # Critical Values for Common Significance Levels:
-- One-tailed test ( `\(\alpha\)`= 0.05): Critical value z= `\(\pm\)` 1.645.
-- Two-tailed test ( `\(\alpha\)`= 0.05): `\(\alpha\)` is split into 2.5% in each tail, leading to the widely used z= `\(\pm\)` 1.96.
+- One-tailed test ( `\(\alpha\)`= 0.05): Critical value = `\(\pm\)` 1.645.
+- Two-tailed test ( `\(\alpha\)`= 0.05): `\(\alpha\)` is split into 2.5% in each tail, leading to the widely used = `\(\pm\)` 1.96.
 
 ---
 # Critical Values in R
@@ -220,6 +222,19 @@ two_tail
 ## [1] -1.959964  1.959964
 ```
 ]
+
+---
+# Understanding Critical Values and Probabilities in Z-tests
+
+| Question Type | Given | Function | Example | Interpretation |
+| --- | --- | --- | --- | --- |
+| Find probability (area below z-score) (left, smaller, less than) | z-score | `pnorm(z)` | `pnorm(0.76)` → 0.776 | Proportion of area to the left of z = 0.76 |
+| Find probability (area above z-score) (right, beyond, larger than) | z-score | `1 - pnorm(z)` | `1 - pnorm(0.76)` → 0.224 | Proportion of area to the right of z = 0.76 |
+| Find z-score for left cumulative area (e.g., bottom 5%) | Probability | `qnorm(p)` | `qnorm(0.025)` → -1.96 | Z-score corresponding to the lower 2.5% of the distribution |
+| Find z-score for right cumulative area (e.g., top 5%) | Probability | `qnorm(1 - p)` | `qnorm(0.975)` → 1.96 | Z-score corresponding to the upper 2.5% of the distribution |
+
+
+
 
 ---
 # Significant or Not?
@@ -383,8 +398,8 @@ two_tail
 ---
 # Flowcharts
 
-<div id="htmlwidget-a04103a74746a86400d4" style="width:900px;height:500px;" class="DiagrammeR html-widget "></div>
-<script type="application/json" data-for="htmlwidget-a04103a74746a86400d4">{"x":{"diagram":"\n    graph TD;\n        A[What type of data?]--> B[Continuous];\n        B--Research Question--> C[Differences];\n        B--Research Question--> D[Relationships];\n        C --Num. samples to compare--> E[1 group]\n        E --> F[Normally distribute?];\n        F --Yes--> G[One sample z-test];\n        F --No--> H[Wilcoxon signed rank z-test]\n\n    "},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-689c214298cc5a83829d" style="width:900px;height:500px;" class="DiagrammeR html-widget "></div>
+<script type="application/json" data-for="htmlwidget-689c214298cc5a83829d">{"x":{"diagram":"\n    graph TD;\n        A[What type of data?]--> B[Continuous];\n        B--Research Question--> C[Differences];\n        B--Research Question--> D[Relationships];\n        C --Num. samples to compare--> E[1 group]\n        E --> F[Normally distribute?];\n        F --Yes--> G[One sample z-test];\n        F --No--> H[Wilcoxon signed rank z-test]\n\n    "},"evals":[],"jsHooks":[]}</script>
 
 ---
 # One sample z-test

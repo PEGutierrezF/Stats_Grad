@@ -250,12 +250,14 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 
 - A **critical value** is the threshold beyond which **we reject the null hypothesis** ( $H_0$ ) in a statistical test. It is determined by the significance level ( $\alpha$ ), which represents the probability of making a Type I error (rejecting a true null hypothesis).
 
-- Simply put, the critical value represents how many standard deviations ( $\sigma$ ) an obtained value is away from the true mean ( $mu$ ) under the null hypothesis. 
+- It separates the **rejection region** (where you reject the null hypothesis) from the **non-rejection region** on the distribution curve of the test statistic. 
+
+- The critical value indicates how many standard deviations away from the mean we must go to enter the rejection region. For example, a critical value of $\pm$ 1.645 means we are 1.645 standard deviations away from the mean in a one-tailed test.
 
 ---
 # Critical Values for Common Significance Levels:
-- One-tailed test ( $\alpha$= 0.05): Critical value z= $\pm$ 1.645.
-- Two-tailed test ( $\alpha$= 0.05): $\alpha$ is split into 2.5% in each tail, leading to the widely used z= $\pm$ 1.96.
+- One-tailed test ( $\alpha$= 0.05): Critical value = $\pm$ 1.645.
+- Two-tailed test ( $\alpha$= 0.05): $\alpha$ is split into 2.5% in each tail, leading to the widely used = $\pm$ 1.96.
 
 ---
 # Critical Values in R
@@ -274,6 +276,19 @@ one_tail_left
 two_tail
 ```
 ]
+
+---
+# Understanding Critical Values and Probabilities in Z-tests
+
+| Question Type | Given | Function | Example | Interpretation |
+| --- | --- | --- | --- | --- |
+| Find probability (area below z-score) (left, smaller, less than) | z-score | `pnorm(z)` | `pnorm(0.76)` → 0.776 | Proportion of area to the left of z = 0.76 |
+| Find probability (area above z-score) (right, beyond, larger than) | z-score | `1 - pnorm(z)` | `1 - pnorm(0.76)` → 0.224 | Proportion of area to the right of z = 0.76 |
+| Find z-score for left cumulative area (e.g., bottom 5%) | Probability | `qnorm(p)` | `qnorm(0.025)` → -1.96 | Z-score corresponding to the lower 2.5% of the distribution |
+| Find z-score for right cumulative area (e.g., top 5%) | Probability | `qnorm(1 - p)` | `qnorm(0.975)` → 1.96 | Z-score corresponding to the upper 2.5% of the distribution |
+
+
+
 
 ---
 # Significant or Not?
