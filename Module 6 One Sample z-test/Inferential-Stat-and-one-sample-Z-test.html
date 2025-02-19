@@ -4,7 +4,7 @@
     <title>Inferential Statistics</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
     <script src="libs/panelset-0.3.0/panelset.js"></script>
@@ -22,12 +22,12 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xdb3089773ca40d8bdf8b96cb95c21d3","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x2986ccf9f70453fab5dbd2b60caaa33","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
     <script src="libs/editable-0.2.6/editable.js"></script>
-    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+    <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
     <script src="libs/d3-3.3.8/d3.min.js"></script>
     <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
     <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
@@ -53,7 +53,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2025-Feb-13 (updated: 2025-Feb-18)
+### 2025-Feb-13 (updated: 2025-Feb-19)
 ]
 
 ---
@@ -182,8 +182,8 @@ $$
 
 ---
 # Critical Values for Common Significance Levels:
-- One-tailed test ( `\(\alpha\)`= 0.05): Critical value = `\(\pm\)` 1.645.
-- Two-tailed test ( `\(\alpha\)`= 0.05): `\(\alpha\)` is split into 2.5% in each tail, leading to the widely used = `\(\pm\)` 1.96.
+- For a **one-tailed test**, the critical value is based on **α = 0.05** (either 5% in one tail, left or right).
+- For a **two-tailed test**, the **α = 0.05** is split into **0.025 in each tail**, leading to critical values of **±1.96**.
 
 ---
 # Critical Values in R
@@ -226,15 +226,33 @@ two_tail
 ---
 # Understanding Critical Values and Probabilities in Z-tests
 
-| Question Type | Given | Function | Example | Interpretation |
-| --- | --- | --- | --- | --- |
-| Find probability (area below z-score) (left, smaller, less than) | z-score | `pnorm(z)` | `pnorm(0.76)` → 0.776 | Proportion of area to the left of z = 0.76 |
-| Find probability (area above z-score) (right, beyond, larger than) | z-score | `1 - pnorm(z)` | `1 - pnorm(0.76)` → 0.224 | Proportion of area to the right of z = 0.76 |
-| Find z-score for left cumulative area (e.g., bottom 5%) | Probability | `qnorm(p)` | `qnorm(0.025)` → -1.96 | Z-score corresponding to the lower 2.5% of the distribution |
-| Find z-score for right cumulative area (e.g., top 5%) | Probability | `qnorm(1 - p)` | `qnorm(0.975)` → 1.96 | Z-score corresponding to the upper 2.5% of the distribution |
+| Question Type | Given | Function | Example |
+| --- | --- | --- | --- |
+| Find probability (area below z-score) (one-tailed, left, smaller, less than) | z-score | `pnorm(z)` | `pnorm(-1.645)` → 0.05 |
+| Find probability (area above z-score) (one-tailed, right, beyond, larger than) | z-score | `1 - pnorm(z)` | `1 - pnorm(1.645)` → 0.05 |
+| Find z-score for left cumulative area (two-tailed, left, smaller, less than, α = 0.05) | Probability | `qnorm(p)` | `qnorm(0.025)` → -1.96 |
+| Find z-score for right cumulative area (two-tailed, right, beyond, larger than, α = 0.05) | Probability | `qnorm(1 - p)` | `qnorm(1 - 0.025)` → 1.96 |
 
 
+- Important Note
+    - In the table, examples with 0.05 correspond to critical values for a one-tailed test.
+    - For a two-tailed test with `\(\alpha\)` = 0.05, the rejection region is split into two parts, with 0.025 in each tail, leading to critical values of ±1.96.
+    
+---
+# Critical Values in R
 
+## Critical Values in R
+
+**Reminder:**  
+- **One-tailed test (α = 0.05):** The rejection region is entirely in one tail. The **critical value** separates the rejection region from the non-rejection region, where we reject the null hypothesis if the test statistic exceeds this value.
+  - **Critical values: ±1.645**  
+  - `qnorm(0.05) = -1.645` (left tail, 5%)  
+  - `qnorm(1 - 0.05) = qnorm(0.95) = 1.645` (right tail, 95%)
+  
+- **Two-tailed test (α = 0.05):** The rejection regions are split into the lower 2.5% and upper 2.5%. The critical values define the boundaries for the two rejection regions.
+  - **Critical values: ±1.96**  
+  - `qnorm(0.025) = -1.96` (left tail, 2.5%)  
+  - `qnorm(1 - 0.025) = qnorm(0.975) = 1.96` (right tail, 97.5%)  
 
 ---
 # Significant or Not?
@@ -398,8 +416,8 @@ two_tail
 ---
 # Flowcharts
 
-<div id="htmlwidget-689c214298cc5a83829d" style="width:900px;height:500px;" class="DiagrammeR html-widget "></div>
-<script type="application/json" data-for="htmlwidget-689c214298cc5a83829d">{"x":{"diagram":"\n    graph TD;\n        A[What type of data?]--> B[Continuous];\n        B--Research Question--> C[Differences];\n        B--Research Question--> D[Relationships];\n        C --Num. samples to compare--> E[1 group]\n        E --> F[Normally distribute?];\n        F --Yes--> G[One sample z-test];\n        F --No--> H[Wilcoxon signed rank z-test]\n\n    "},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-913aaec252797d45e2e0" style="width:900px;height:500px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-913aaec252797d45e2e0">{"x":{"diagram":"\n    graph TD;\n        A[What type of data?]--> B[Continuous];\n        B--Research Question--> C[Differences];\n        B--Research Question--> D[Relationships];\n        C --Num. samples to compare--> E[1 group]\n        E --> F[Normally distribute?];\n        F --Yes--> G[One sample z-test];\n        F --No--> H[Wilcoxon signed rank z-test]\n\n    "},"evals":[],"jsHooks":[]}</script>
 
 ---
 # One sample z-test

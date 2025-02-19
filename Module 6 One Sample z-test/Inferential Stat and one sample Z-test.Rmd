@@ -256,8 +256,8 @@ ggplot(data.frame(x = c(-4, 4)), aes(x)) +
 
 ---
 # Critical Values for Common Significance Levels:
-- One-tailed test ( $\alpha$= 0.05): Critical value = $\pm$ 1.645.
-- Two-tailed test ( $\alpha$= 0.05): $\alpha$ is split into 2.5% in each tail, leading to the widely used = $\pm$ 1.96.
+- For a **one-tailed test**, the critical value is based on **α = 0.05** (either 5% in one tail, left or right).
+- For a **two-tailed test**, the **α = 0.05** is split into **0.025 in each tail**, leading to critical values of **±1.96**.
 
 ---
 # Critical Values in R
@@ -280,15 +280,33 @@ two_tail
 ---
 # Understanding Critical Values and Probabilities in Z-tests
 
-| Question Type | Given | Function | Example | Interpretation |
-| --- | --- | --- | --- | --- |
-| Find probability (area below z-score) (left, smaller, less than) | z-score | `pnorm(z)` | `pnorm(0.76)` → 0.776 | Proportion of area to the left of z = 0.76 |
-| Find probability (area above z-score) (right, beyond, larger than) | z-score | `1 - pnorm(z)` | `1 - pnorm(0.76)` → 0.224 | Proportion of area to the right of z = 0.76 |
-| Find z-score for left cumulative area (e.g., bottom 5%) | Probability | `qnorm(p)` | `qnorm(0.025)` → -1.96 | Z-score corresponding to the lower 2.5% of the distribution |
-| Find z-score for right cumulative area (e.g., top 5%) | Probability | `qnorm(1 - p)` | `qnorm(0.975)` → 1.96 | Z-score corresponding to the upper 2.5% of the distribution |
+| Question Type | Given | Function | Example |
+| --- | --- | --- | --- |
+| Find probability (area below z-score) (one-tailed, left, smaller, less than) | z-score | `pnorm(z)` | `pnorm(-1.645)` → 0.05 |
+| Find probability (area above z-score) (one-tailed, right, beyond, larger than) | z-score | `1 - pnorm(z)` | `1 - pnorm(1.645)` → 0.05 |
+| Find z-score for left cumulative area (two-tailed, left, smaller, less than, α = 0.05) | Probability | `qnorm(p)` | `qnorm(0.025)` → -1.96 |
+| Find z-score for right cumulative area (two-tailed, right, beyond, larger than, α = 0.05) | Probability | `qnorm(1 - p)` | `qnorm(1 - 0.025)` → 1.96 |
 
 
+- Important Note
+    - In the table, examples with 0.05 correspond to critical values for a one-tailed test.
+    - For a two-tailed test with $\alpha$ = 0.05, the rejection region is split into two parts, with 0.025 in each tail, leading to critical values of ±1.96.
+    
+---
+# Critical Values in R
 
+## Critical Values in R
+
+**Reminder:**  
+- **One-tailed test (α = 0.05):** The rejection region is entirely in one tail. The **critical value** separates the rejection region from the non-rejection region, where we reject the null hypothesis if the test statistic exceeds this value.
+  - **Critical values: ±1.645**  
+  - `qnorm(0.05) = -1.645` (left tail, 5%)  
+  - `qnorm(1 - 0.05) = qnorm(0.95) = 1.645` (right tail, 95%)
+  
+- **Two-tailed test (α = 0.05):** The rejection regions are split into the lower 2.5% and upper 2.5%. The critical values define the boundaries for the two rejection regions.
+  - **Critical values: ±1.96**  
+  - `qnorm(0.025) = -1.96` (left tail, 2.5%)  
+  - `qnorm(1 - 0.025) = qnorm(0.975) = 1.96` (right tail, 97.5%)  
 
 ---
 # Significant or Not?
