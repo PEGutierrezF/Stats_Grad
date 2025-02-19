@@ -278,7 +278,7 @@ two_tail
 ]
 
 ---
-# Understanding Critical Values and Probabilities in Z-tests
+## Understanding Critical Values and Probabilities in Z-tests
 
 | Question Type | Given | Function | Example |
 | --- | --- | --- | --- |
@@ -294,8 +294,6 @@ two_tail
     
 ---
 # Critical Values in R
-
-## Critical Values in R
 
 **Reminder:**  
 - **One-tailed test (α = 0.05):** The rejection region is entirely in one tail. The **critical value** separates the rejection region from the non-rejection region, where we reject the null hypothesis if the test statistic exceeds this value.
