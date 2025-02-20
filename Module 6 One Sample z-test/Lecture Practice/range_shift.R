@@ -32,7 +32,7 @@ sd_pop <- sd(df$elevationalRangeShift)
 
 # Run z.test
 z.test(df$elevationalRangeShift,
-       alternative='two.side',
+       alternative='greater',
        mu=mean_pop,
        sigma.x=sd_pop)
 
