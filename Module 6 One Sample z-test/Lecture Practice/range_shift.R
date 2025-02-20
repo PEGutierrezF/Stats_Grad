@@ -7,9 +7,10 @@ library(ggplot2)
 
 
 Chen et al. (2011) wanted to test the idea that organisms move to higher 
-elevation as the climate warms. To test this, they collected data from 31 species, plotted below
+elevation as the climate warms. To test this, they collected data from 31 species, 
+plotted below.
 
-df <- read.csv('chap11q01RangeShiftsWithClimateChange.csv')
+df <- read.csv('range_shift_data.csv')
 head(df)
 
 # Plot
@@ -31,7 +32,7 @@ sd_pop <- sd(df$elevationalRangeShift)
 
 # Run z.test
 z.test(df$elevationalRangeShift,
-       alternative='greater',
+       alternative='two.side',
        mu=mean_pop,
        sigma.x=sd_pop)
 
