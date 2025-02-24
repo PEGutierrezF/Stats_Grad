@@ -3,7 +3,7 @@ title: "t-tests"
 subtitle: "Tests between the means of different groups"
 author: "Pablo E. Guti\u00E9rrez-Fonseca"
 institute: ""
-date: "`r Sys.Date()`"
+date: "2025-Feb-13 (updated: `r format(Sys.Date(), '%Y-%b-%d')`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -16,15 +16,36 @@ output:
       countIncrementalSlides: true
       ratio: "16:9"
     includes:
-      after_body: [css/insert-logo.html]
+      after_body: [css/insert-logo.html] #this is for logos in all slides
 xaringanExtra:
     use_panelset: true
 ---
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readxl)
+library(readr)
+library(lessR)
+library(ggplot2)
 library(ggpubr)
 library(cowplot)
+library(patchwork)
+library(palmerpenguins)
+library(car)
+library(ggforce) # for geom_circle
+library(RVAideMemoire) #shapiro.test
 library(DiagrammeR)
+knitr::opts_chunk$set(dpi= 300)
+xaringanExtra::use_panelset()
+xaringanExtra::use_scribble()
+xaringanExtra::use_search(show_icon = FALSE, position= "bottom-left") # Search
+xaringanExtra::use_progress_bar(color = "#0051BA", location = "bottom", 
+                                height = "4px")
+xaringanExtra::use_clipboard() # Copy Code 
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+xaringanExtra::use_editable(expires = 1) # Add textboxes to edit during presentation
 ```
 
 # t-test
@@ -34,7 +55,7 @@ library(DiagrammeR)
 - **Student t-test** is named after its inventor, William Gosset (English statistician, chemist and brewer), who published under the pseudonym of student.
 
 <center>
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4.5, fig.height=5}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2.5, fig.height=2.5}
 set.seed(1234)
 wdata = data.frame(
   data = factor(rep(c("Sample 1", "Sample 2"), each=200)),

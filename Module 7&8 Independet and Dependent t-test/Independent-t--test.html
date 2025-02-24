@@ -4,9 +4,29 @@
     <title>t-tests</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <meta name="date" content="2024-10-16" />
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset-0.3.0/panelset.js"></script>
+    <script src="libs/fabric-4.3.1/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <script src="libs/mark.js-8.11.1/mark.min.js"></script>
+    <link href="libs/xaringanExtra-search-0.0.1/search.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-search-0.0.1/search.js"></script>
+    <script>window.addEventListener('load', function() { window.xeSearch = new RemarkSearch({"position":"bottom-left","caseSensitive":false,"showIcon":false,"autoSearch":true}) })</script>
+    <script src="libs/xaringanExtra-progressBar-0.0.1/progress-bar.js"></script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xb16dce8d6d748cd8bb370815d08a827","expires":1}</script>
+    <script src="libs/himalaya-1.1.0/himalaya.js"></script>
+    <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
+    <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
+    <script src="libs/editable-0.2.6/editable.js"></script>
     <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
     <script src="libs/d3-3.3.8/d3.min.js"></script>
     <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
@@ -34,13 +54,32 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2024-10-16
+### 2025-Feb-13 (updated: 2025-Feb-24)
 ]
 
 ---
 
 
-
+<style>.xe__progress-bar__container {
+  bottom:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 4px;
+  background-color: #0051BA;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
 
 # t-test
 
@@ -228,7 +267,7 @@ wilcox.testt(x= , y = ,
 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9c14a56f8b7b63255a02" style="width:504px;height:504px;"></div>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9c14a56f8b7b63255a02" style="width:2100px;height:2100px;"></div>
 <script type="application/json" data-for="htmlwidget-9c14a56f8b7b63255a02">{"x":{"diagram":"\n\n  graph TD\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n\n"},"evals":[],"jsHooks":[]}</script>
 
 &lt;/center&gt;
@@ -256,7 +295,7 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-60a04fea4a2210156531" style="width:504px;height:504px;"></div>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-60a04fea4a2210156531" style="width:2100px;height:2100px;"></div>
 <script type="application/json" data-for="htmlwidget-60a04fea4a2210156531">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
 &lt;/center&gt;
 
@@ -284,7 +323,7 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f0a013cfdce91f9f849e" style="width:504px;height:504px;"></div>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f0a013cfdce91f9f849e" style="width:2100px;height:2100px;"></div>
 <script type="application/json" data-for="htmlwidget-f0a013cfdce91f9f849e">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
 ]
 
@@ -354,7 +393,7 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9d0b8b30c615dcc75a12" style="width:504px;height:504px;"></div>
+<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9d0b8b30c615dcc75a12" style="width:2100px;height:2100px;"></div>
 <script type="application/json" data-for="htmlwidget-9d0b8b30c615dcc75a12">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
 &lt;/center&gt;
 ]
@@ -592,7 +631,7 @@ t.test(filter(stream_data, waterbody == "stream1")$depth_cm,
 ## 	Two Sample t-test
 ## 
 ## data:  filter(stream_data, waterbody == "stream1")$depth_cm and filter(stream_data, waterbody == "stream2")$depth_cm
-*## t = -12.924, df = 69, p-value &lt; 2.2e-16
+*## t = -12.924, df = 69, p-value &lt; 0.00000000000000022
 ## alternative hypothesis: true difference in means is not equal to 0
 ## 95 percent confidence interval:
 ##  -13.298846  -9.742143
@@ -712,7 +751,7 @@ wilcox.test(fish_in_stomach~population, data=squids,
 ## 	Wilcoxon rank sum test with continuity correction
 ## 
 ## data:  fish_in_stomach by population
-*## W = 480.5, p-value = 1.048e-05
+*## W = 480.5, p-value = 0.00001048
 ## alternative hypothesis: true location shift is not equal to 0
 ```
 
