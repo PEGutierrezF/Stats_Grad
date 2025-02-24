@@ -49,30 +49,39 @@ xaringanExtra::use_editable(expires = 1) # Add textboxes to edit during presenta
 ```
 
 # t-test
-
+.pull-left[
 - A **t-test** is an inferential statistic used to determine if there is a statistically significant difference between the means of two variables.
 
 - **Student t-test** is named after its inventor, William Gosset (English statistician, chemist and brewer), who published under the pseudonym of student.
 
-<center>
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2.5, fig.height=2.5}
+```{r echo=FALSE}
 set.seed(1234)
-wdata = data.frame(
-  data = factor(rep(c("Sample 1", "Sample 2"), each=200)),
-  weight = c(rnorm(200, 55), rnorm(200, 58)))
-
-gghistogram(
-  wdata, x = "weight", y = "..density..",
-  add = "mean", rug = TRUE,
-  fill = "data", palette = c("#00AFBB", "#E7B800"),
-  add_density = TRUE
-  )
-
+wdata = data.frame(data = factor(rep(c("Sample 1", "Sample 2"), each=200)), weight = c(rnorm(200, 55), rnorm(200, 58)))
 ```
+]
 
+.pull-right[.center[
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2, fig.height=2.5}
+ggplot(wdata, aes(x = weight, fill = data)) +
+  geom_histogram(aes(y = ..density..), bins = 30, alpha = 0.6, position = "identity") +
+  geom_density(alpha = 0.4) +  # Add density curve
+  geom_vline(aes(xintercept = mean(weight)), linetype = "dashed", color = "black") + # Add mean line
+  scale_fill_manual(values = c("#00AFBB", "#E7B800")) +  
+  theme_minimal() +  theme(
+    axis.text.x = element_text(size = 4, color = "gray20"),  
+    axis.text.y = element_text(size = 4, color = "gray20"),  
+    axis.title.x = element_text(size = 6, face = "bold"),  
+    axis.title.y = element_text(size = 6, face = "bold"),  
+    legend.title = element_text(size = 6, face = "bold"),  
+    legend.text = element_text(size = 6),
+    legend.key.size = unit(0.2, "cm"),
+    plot.margin = unit(c(0, 0, 0, 0), "cm"),
+    legend.position = "top" ) +
+  labs(title = "", x = "Weight", y = "Density", fill = "Sample")
+```
+]]
 
 ---
-
 # When would you run a t-test?
 
 - You have a continuous response variable.
@@ -146,10 +155,11 @@ DiagrammeR::mermaid("
 ---
 
 # Independent vs. Dependent groups
+- How do I know if my samples are independent or dependent?  
 
-How do I know if my samples are independent or dependent?  
+- Can you tell exactly which observation should be paired with which other observation?  If you can't tell, your groups are independent
 
-Can you tell exactly which observation should be paired with which other observation?  If you can't tell, your groups are independent
+--
 
 .pull-left[
 **Examples of Independent Samples**

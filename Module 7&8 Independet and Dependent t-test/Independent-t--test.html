@@ -22,7 +22,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xb16dce8d6d748cd8bb370815d08a827","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"e913841c901e4908bede280ac8bc77ba","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -82,17 +82,19 @@ class: center, middle, inverse, title-slide
 }</style>
 
 # t-test
-
+.pull-left[
 - A **t-test** is an inferential statistic used to determine if there is a statistically significant difference between the means of two variables.
 
 - **Student t-test** is named after its inventor, William Gosset (English statistician, chemist and brewer), who published under the pseudonym of student.
 
-&lt;center&gt;
-![](Independent-t--test_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
 
+]
+
+.pull-right[.center[
+![](Independent-t--test_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+]]
 
 ---
-
 # When would you run a t-test?
 
 - You have a continuous response variable.
@@ -115,10 +117,11 @@ class: center, middle, inverse, title-slide
 ---
 
 # Independent vs. Dependent groups
+- How do I know if my samples are independent or dependent?  
 
-How do I know if my samples are independent or dependent?  
+- Can you tell exactly which observation should be paired with which other observation?  If you can't tell, your groups are independent
 
-Can you tell exactly which observation should be paired with which other observation?  If you can't tell, your groups are independent
+--
 
 .pull-left[
 **Examples of Independent Samples**
@@ -169,7 +172,7 @@ For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)*
 For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)**, you would look up the critical value in the t-distribution table for df = 29. The critical value might be around **±2.045**, which indicates the cut-off points for determining significance.
 
 &lt;center&gt;
-![](Independent-t--test_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
 
 ]
 
@@ -198,7 +201,7 @@ For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)*
 
 .pull-right[
 &lt;center&gt;
-![](Independent-t--test_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
 ]
 
 
@@ -666,7 +669,7 @@ cohensD(depth_cm ~ waterbody, data=stream_data)
 &lt;span style="color:#00796B;"&gt;We tested to see if there was a significant difference in pool depth between Stream 1 and Stream 2, which are being considered for habitat restoration for native trout species.&lt;/span&gt; &lt;span style="color:#E65100;"&gt;Using a two-tailed independent t-test to compare depth measurements from 71 total samples,&lt;/span&gt; &lt;span style="color:#1E88E5;"&gt;we found a significant and meaningful difference between the streams ( `\(t_{(69)} = -12.92, \, p &lt; 2.2 \times 10^{-16}, ES=3.08)\)`.&lt;/span&gt;  &lt;span style="color:#424242;"&gt;This indicates that Stream 2, with deeper pools, may provide more suitable habitat for trout, offering better cover during winter and reducing the risk of scouring during severe rain events.&lt;/span&gt; 
 
 &lt;center&gt;
-![](Independent-t--test_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -769,7 +772,7 @@ wilcox.test(fish_in_stomach~population, data=squids,
 &lt;span style="color:#00796B;"&gt;We investigated whether there are significant differences in predatory preferences between two groups of squid by comparing the number of fish found in their stomachs. &lt;/span&gt; &lt;span style="color:#E65100;"&gt;Using a Wilcoxon rank-sum test on stomach content data from both populations, we analyzed a total of 71 samples. &lt;/span&gt; &lt;span style="color:#1E88E5;"&gt;The results indicated a significant difference between the two squid populations ( `\(W_{(69)} = 480.5, \, p = 1.048 \times 10^{-5})\)`, suggesting that the predatory preferences of these groups are not equal. &lt;/span&gt;  &lt;span style="color:#424242;"&gt; This finding may provide insights into the ecological roles and feeding strategies of these squid populations in their respective habitats.&lt;/span&gt; 
 
 &lt;center&gt;
-![](Independent-t--test_files/figure-html/unnamed-chunk-26-1.png)&lt;!-- --&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-27-1.png)&lt;!-- --&gt;
 
 ---
 
