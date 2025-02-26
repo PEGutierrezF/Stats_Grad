@@ -3,7 +3,7 @@ title: "t-tests"
 subtitle: "Tests between the means of different groups"
 author: "Pablo E. Guti\u00E9rrez-Fonseca"
 institute: ""
-date: "2025-Feb-13 (updated: `r format(Sys.Date(), '%Y-%b-%d')`)"
+date: "2025-Jan-01 (updated: `r format(Sys.Date(), '%Y-%b-%d')`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -188,7 +188,7 @@ DiagrammeR::mermaid("
 # Degrees of Freedom (DF)
 
 .pull-left[ 
-For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)**, you would look up the critical value in the t-distribution table for df = 29. The critical value might be around **±2.045**, which indicates the cut-off points for determining significance.
+For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)**, you would look up the critical value in the t-distribution table for df = 29. The critical value might be around $\mathbf{\pm 2.045}$, which indicates the cut-off points for determining significance.
 ]
 
 .pull-right[ 
@@ -200,7 +200,7 @@ For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)*
 # Degrees of Freedom (DF)
 
 .pull-left[ 
-For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)**, you would look up the critical value in the t-distribution table for df = 29. The critical value might be around **±2.045**, which indicates the cut-off points for determining significance.
+For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)**, you would look up the critical value in the t-distribution table for df = 29. The critical value might be around $\mathbf{\pm 2.045}$, which indicates the cut-off points for determining significance.
 
 <center>
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4, fig.height=4, dpi=75}
@@ -230,6 +230,62 @@ ggplot(t_data, aes(x = t_values, y = t_density)) +
        y = "Density") +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))
+```
+
+]
+
+.pull-right[ 
+<img src="fig/t-table_1.png" alt="Degrees of Freedom T-Table" width="600"/>
+]
+
+
+---
+# Degrees of Freedom (DF)
+
+.pull-left[ 
+- DF (degrees of freedom) defines the shape of the t-distribution.
+- A higher DF results in a distribution that is closer to a normal distribution, and using the wrong DF will lead to incorrect p-values.
+
+<center>
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4, fig.height=4, dpi=75}
+# Define alpha and calculate the critical t-values for a two-tailed test
+alpha <- 0.05
+critical_value <- function(df) qt(1 - alpha / 2, df)  # Positive critical value
+negative_critical_value <- function(df) -qt(1 - alpha / 2, df)  # Negative critical value
+
+# Create a sequence of x values (t-scores)
+x_vals <- seq(-4, 4, length.out = 300)
+
+# Set df to 3, 5, 10, and 30 for this specific case
+df_values <- c(3, 5, 10, 30)  # Degrees of freedom
+
+# Generate t-distribution densities for the specified df values
+t_data <- data.frame(
+  x = rep(x_vals, times = length(df_values)),
+  density = unlist(lapply(df_values, function(df) dt(x_vals, df))),
+  DF = factor(rep(df_values, each = length(x_vals)))
+)
+
+# Plot the distribution for different df values and add the critical value lines for both tails
+ggplot(t_data, aes(x = x, y = density, color = DF)) +
+  geom_line(size = 1.2) +
+  # Add dashed lines for positive critical value for each df
+  geom_vline(data = data.frame(DF = df_values, critical_value = sapply(df_values, critical_value)),
+             aes(xintercept = critical_value, color = as.factor(DF)),
+             linetype = "dashed", size = 1) +
+  # Add dashed lines for negative critical value for each df
+  geom_vline(data = data.frame(DF = df_values, negative_critical_value = sapply(df_values, negative_critical_value)),
+             aes(xintercept = negative_critical_value, color = as.factor(DF)),
+             linetype = "dashed", size = 1) +
+  labs(
+    title = "Effect of Degrees of Freedom on t-Distribution",
+    subtitle = "Critical values for a two-tailed test at α = 0.05",
+    x = "t-value",
+    y = "Density",
+    color = "Degrees of Freedom (DF)"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "top")
 ```
 
 ]
@@ -290,7 +346,7 @@ ggplot(df_data, aes(x = sample_size, y = degrees_of_freedom)) +
 # Independent vs. Dependent groups
 
 .pull-left[
-**Independent t-test** quantifies the difference between sample means (numerator) vs. the amount of variability in the samples (denominator). 
+**- Independent t-test** quantifies the difference between sample means (numerator) vs. the amount of variability in the samples (denominator). 
 
 
 $$
@@ -302,7 +358,7 @@ DF (for the critical value)= (n1 + n2)-2
 
 
 .pull-right[
-**Dependent t-test** quantifies the magnitude of the difference between paired observations (numerator) vs. the amount of variability in the samples (denominator).
+**- Dependent t-test** quantifies the magnitude of the difference between paired observations (numerator) vs. the amount of variability in the samples (denominator).
 
 $$
 t = \frac{\sum D}{\sqrt{\frac{n \sum D^2 - (\sum D)^2}{n-1}}}
@@ -658,7 +714,7 @@ head(stream_data)
 ```{r message=FALSE, warning=FALSE}
 library(RVAideMemoire) # for shapiro.text()
 library(dplyr) # for filter() and more
-library(lsr) # Cohen’s d for two-sample t-test
+library(lsr) # Cohenâs d for two-sample t-test
 ```
 
 
