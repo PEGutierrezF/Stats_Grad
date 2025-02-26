@@ -23,6 +23,7 @@ xaringanExtra:
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(readxl)
+library(dplyr)
 library(readr)
 library(lessR)
 library(ggplot2)
@@ -34,7 +35,7 @@ library(car)
 library(ggforce) # for geom_circle
 library(RVAideMemoire) #shapiro.test
 library(DiagrammeR)
-knitr::opts_chunk$set(dpi= 300)
+#knitr::opts_chunk$set(dpi= 100)
 xaringanExtra::use_panelset()
 xaringanExtra::use_scribble()
 xaringanExtra::use_search(show_icon = FALSE, position= "bottom-left") # Search
@@ -53,31 +54,23 @@ xaringanExtra::use_editable(expires = 1) # Add textboxes to edit during presenta
 - A **t-test** is an inferential statistic used to determine if there is a statistically significant difference between the means of two variables.
 
 - **Student t-test** is named after its inventor, William Gosset (English statistician, chemist and brewer), who published under the pseudonym of student.
-
-```{r echo=FALSE}
-set.seed(1234)
-wdata = data.frame(data = factor(rep(c("Sample 1", "Sample 2"), each=200)), weight = c(rnorm(200, 55), rnorm(200, 58)))
-```
 ]
 
 .pull-right[.center[
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=2, fig.height=2.5}
-ggplot(wdata, aes(x = weight, fill = data)) +
-  geom_histogram(aes(y = ..density..), bins = 30, alpha = 0.6, position = "identity") +
-  geom_density(alpha = 0.4) +  # Add density curve
-  geom_vline(aes(xintercept = mean(weight)), linetype = "dashed", color = "black") + # Add mean line
-  scale_fill_manual(values = c("#00AFBB", "#E7B800")) +  
-  theme_minimal() +  theme(
-    axis.text.x = element_text(size = 4, color = "gray20"),  
-    axis.text.y = element_text(size = 4, color = "gray20"),  
-    axis.title.x = element_text(size = 6, face = "bold"),  
-    axis.title.y = element_text(size = 6, face = "bold"),  
-    legend.title = element_text(size = 6, face = "bold"),  
-    legend.text = element_text(size = 6),
-    legend.key.size = unit(0.2, "cm"),
-    plot.margin = unit(c(0, 0, 0, 0), "cm"),
-    legend.position = "top" ) +
-  labs(title = "", x = "Weight", y = "Density", fill = "Sample")
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4.2, fig.height=4.6, dpi=250}
+set.seed(1234)
+wdata = data.frame(
+  data = factor(rep(c("Sample 1", "Sample 2"), each=200)),
+  weight = c(rnorm(200, 55), rnorm(200, 58)))
+
+gghistogram(
+  wdata, x = "weight", y = "..density..",
+  add = "mean", rug = TRUE,
+  fill = "data", palette = c("#00AFBB", "#E7B800"),
+  add_density = TRUE
+  )+
+theme(plot.margin = margin(-10, 0, 0, 0, "pt"))  # Adjusts top margin
+
 ```
 ]]
 
@@ -210,12 +203,7 @@ For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)*
 For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)**, you would look up the critical value in the t-distribution table for df = 29. The critical value might be around **±2.045**, which indicates the cut-off points for determining significance.
 
 <center>
-```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4, fig.height=4}
-# Load necessary libraries
-library(ggplot2)
-library(dplyr)
-
-# Set parameters for the t-test
+```{r, echo=FALSE, message=FALSE, warning=FALSE, fig.width=4, fig.height=4, dpi=75}
 df <- 29
 alpha <- 0.05
 critical_value <- qt(1 - alpha / 2, df)  # for two-tailed test
@@ -251,12 +239,11 @@ ggplot(t_data, aes(x = t_values, y = t_density)) +
 ]
 
 
-
 ---
 # Degrees of Freedom (DF)
 
 - Example:
-  - Imagine a classroom with 30 seats. The first 29 people who enter can choose any seat. However, the 30th person has no choice—they can only sit in the one empty seat left.
+  - Imagine a classroom with 30 seats. The first 29 people who enter can choose any seat. However, the 30th person has no choice, they can only sit in the one empty seat left.
 
   - In a similar way, when you calculate the average (mean) of a group of 30 numbers, the first 29 numbers can vary freely. The 30th number is fixed because it has to be whatever value is needed to reach the average you calculated.
 
@@ -271,7 +258,7 @@ ggplot(t_data, aes(x = t_values, y = t_density)) +
 
 .pull-right[
 <center>
-```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=5, fig.height=5.5}
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=5, fig.height=5.5, dpi=250}
 # Create a sample size vector
 sample_size <- 1:30
 
@@ -413,7 +400,6 @@ graph TD;
 
 
 ---
-
 # Basic Steps for an Inferential t-Test
 
 
@@ -807,7 +793,7 @@ var.test(fish_in_stomach~population, data=squids)
 wilcox.test(fish_in_stomach~population, data=squids,
        alternative = c("two.sided"),
        mu = 0, 
-       paired = FALSE, 
+     #  paired = FALSE, 
        var.equal = FALSE,
        conf.level = 0.95)
 ```

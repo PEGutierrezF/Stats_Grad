@@ -4,7 +4,7 @@
     <title>t-tests</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
     <script src="libs/panelset-0.3.0/panelset.js"></script>
@@ -22,12 +22,12 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"e913841c901e4908bede280ac8bc77ba","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"e978edb7b06d45768089baf747d0e2ee","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
     <script src="libs/editable-0.2.6/editable.js"></script>
-    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+    <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
     <script src="libs/d3-3.3.8/d3.min.js"></script>
     <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
     <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
@@ -54,7 +54,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2025-Feb-13 (updated: 2025-Feb-24)
+### 2025-Feb-13 (updated: 2025-Feb-25)
 ]
 
 ---
@@ -86,12 +86,10 @@ class: center, middle, inverse, title-slide
 - A **t-test** is an inferential statistic used to determine if there is a statistically significant difference between the means of two variables.
 
 - **Student t-test** is named after its inventor, William Gosset (English statistician, chemist and brewer), who published under the pseudonym of student.
-
-
 ]
 
 .pull-right[.center[
-![](Independent-t--test_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-2-1.png)&lt;!-- --&gt;
 ]]
 
 ---
@@ -110,7 +108,7 @@ class: center, middle, inverse, title-slide
 ---
 # Flowcharts
 
-<div id="htmlwidget-2516b12334d4297a6d9b" style="width:850px;height:550px;" class="DiagrammeR html-widget "></div>
+<div id="htmlwidget-2516b12334d4297a6d9b" style="width:850px;height:550px;" class="DiagrammeR html-widget"></div>
 <script type="application/json" data-for="htmlwidget-2516b12334d4297a6d9b">{"x":{"diagram":"\n    graph TD;\n\n        A[What type of data?] --> B[Continuous] \n        A --> Z[Categorical]\n        \n        B --Research Question--> C[Comparing Differences] \n        B --Research Question--> D[Examining Relationships]\n        \n        C --How many groups?--> E[1 group] \n        C --How many groups?--> I[2 groups]\n        C --How many groups?--> Q[> 2 groups]\n        \n        E --> F[Normally distributed?] \n        F --Yes--> G[One sample z-test] \n        F --No--> H[Wilcoxon signed rank test]\n        \n        I --> J[Are Samples Independent?] \n        J --Yes--> K[Normally distributed?] \n        J --No--> L[Normally distributed?]\n        \n        K --Yes--> M[Independent t-test] \n        K --No--> N[Wilcoxon rank sum test] \n        \n        L --Yes--> O[Paired t-test] \n        L --No--> P[Wilcoxon matched pair test]\n        \n        Q --> R[Use ANOVA] \n        Q --> S[Non-parametric ANOVA]\n\n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n  style D fill:lightblue,stroke:#333,stroke-width:1px\n  style E fill:lightblue,stroke:#333,stroke-width:1px\n  style F fill:lightblue,stroke:#333,stroke-width:1px\n  style G fill:lightblue,stroke:#333,stroke-width:1px\n  style H fill:lightblue,stroke:#333,stroke-width:1px\n  style I fill:lightblue,stroke:#333,stroke-width:1px\n  style J fill:lightblue,stroke:#333,stroke-width:1px\n  style K fill:lightblue,stroke:#333,stroke-width:1px\n  style L fill:lightblue,stroke:#333,stroke-width:1px\n  style M fill:lightblue,stroke:#333,stroke-width:1px\n  style N fill:lightblue,stroke:#333,stroke-width:1px\n  style O fill:lightblue,stroke:#333,stroke-width:1px\n  style P fill:lightblue,stroke:#333,stroke-width:1px\n  style Q fill:lightblue,stroke:#333,stroke-width:1px\n  style Z fill:lightblue,stroke:#333,stroke-width:1px\n\n  "},"evals":[],"jsHooks":[]}</script>
 
 
@@ -172,7 +170,7 @@ For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)*
 For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)**, you would look up the critical value in the t-distribution table for df = 29. The critical value might be around **±2.045**, which indicates the cut-off points for determining significance.
 
 &lt;center&gt;
-![](Independent-t--test_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
 
 ]
 
@@ -181,12 +179,11 @@ For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)*
 ]
 
 
-
 ---
 # Degrees of Freedom (DF)
 
 - Example:
-  - Imagine a classroom with 30 seats. The first 29 people who enter can choose any seat. However, the 30th person has no choice—they can only sit in the one empty seat left.
+  - Imagine a classroom with 30 seats. The first 29 people who enter can choose any seat. However, the 30th person has no choice, they can only sit in the one empty seat left.
 
   - In a similar way, when you calculate the average (mean) of a group of 30 numbers, the first 29 numbers can vary freely. The 30th number is fixed because it has to be whatever value is needed to reach the average you calculated.
 
@@ -201,7 +198,7 @@ For a t-test with **29 degrees of freedom** and an alpha of **0.05 (two-tailed)*
 
 .pull-right[
 &lt;center&gt;
-![](Independent-t--test_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
 ]
 
 
@@ -270,7 +267,7 @@ wilcox.testt(x= , y = ,
 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9c14a56f8b7b63255a02" style="width:2100px;height:2100px;"></div>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-9c14a56f8b7b63255a02" style="width:504px;height:504px;"></div>
 <script type="application/json" data-for="htmlwidget-9c14a56f8b7b63255a02">{"x":{"diagram":"\n\n  graph TD\n    A[Normally distribute data?]--Yes--> B[t.test]\n    A[Normally distribute data?]--No--> C[wilcox.test]\n    \n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n\n"},"evals":[],"jsHooks":[]}</script>
 
 &lt;/center&gt;
@@ -298,7 +295,7 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-60a04fea4a2210156531" style="width:2100px;height:2100px;"></div>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-60a04fea4a2210156531" style="width:504px;height:504px;"></div>
 <script type="application/json" data-for="htmlwidget-60a04fea4a2210156531">{"x":{"diagram":"\ngraph TD;\n    A[Paired?]--Yes--> B[Dependend t-test, use paired=TRUE]\n    A[Paired?]--No--> C[Independend t-test, use paired=FALSE]\n    \n"},"evals":[],"jsHooks":[]}</script>
 &lt;/center&gt;
 
@@ -306,7 +303,6 @@ t.test(x= , y = ,
 
 
 ---
-
 # Basic Steps for an Inferential t-Test
 
 
@@ -326,7 +322,7 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f0a013cfdce91f9f849e" style="width:2100px;height:2100px;"></div>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-f0a013cfdce91f9f849e" style="width:504px;height:504px;"></div>
 <script type="application/json" data-for="htmlwidget-f0a013cfdce91f9f849e">{"x":{"diagram":"\ngraph TD;\n    A[Equal variance?] -->|Yes| B[Set var.equal to TRUE];\n    A -->|No| C[Set var.equal to FALSE];\n"},"evals":[],"jsHooks":[]}</script>
 ]
 
@@ -371,7 +367,7 @@ t.test(x= , y = ,
 ---
 # Flowcharts for t-test
 
-<div id="htmlwidget-aab856462fe0e136a77e" style="width:850px;height:550px;" class="DiagrammeR html-widget "></div>
+<div id="htmlwidget-aab856462fe0e136a77e" style="width:850px;height:550px;" class="DiagrammeR html-widget"></div>
 <script type="application/json" data-for="htmlwidget-aab856462fe0e136a77e">{"x":{"diagram":"\n    graph TD;\n\n        A[Are the data within either both samples or pairs normally distributed<br><center>and free from outliers?<\/center>] --Yes--> B\n        A --No--> C[Are this samples Indenpendent or dependent?]\n\n        B[Are the sample independent?]--Yes-->F\n        B[Are the sample independent?]--No-->G[Paired t-test]\n        \n        F[Is the variance of each sample equal?]--Yes--> H[Student's t-test]\n        F[Is the variance of each sample equal?]--No--> I[Welch's t-test]\n        \n                \n        C--Independent--> D[Mann-Whitney U test]\n        C--Dependent--> E[Wilcoxon signed-rank test]\n        \n        \n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n  style D fill:lightblue,stroke:#333,stroke-width:1px\n  style E fill:lightblue,stroke:#333,stroke-width:1px\n  style F fill:lightblue,stroke:#333,stroke-width:1px\n  style G fill:lightblue,stroke:#333,stroke-width:1px\n  style H fill:lightblue,stroke:#333,stroke-width:1px\n  style I fill:lightblue,stroke:#333,stroke-width:1px\n  \n  "},"evals":[],"jsHooks":[]}</script>
 
 
@@ -396,7 +392,7 @@ t.test(x= , y = ,
 .pull-right[ 
 &lt;center&gt;
 
-<div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-9d0b8b30c615dcc75a12" style="width:2100px;height:2100px;"></div>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-9d0b8b30c615dcc75a12" style="width:504px;height:504px;"></div>
 <script type="application/json" data-for="htmlwidget-9d0b8b30c615dcc75a12">{"x":{"diagram":"\ngraph TD;\n    A[Two-sided?] -->|Yes| B[Use alternative = 'less'];\n    A -->|Yes| C[Use alternative = 'greater'];\n    A -->|No| D[Use alternative = 'two.sided'];\n"},"evals":[],"jsHooks":[]}</script>
 &lt;/center&gt;
 ]
@@ -669,7 +665,7 @@ cohensD(depth_cm ~ waterbody, data=stream_data)
 &lt;span style="color:#00796B;"&gt;We tested to see if there was a significant difference in pool depth between Stream 1 and Stream 2, which are being considered for habitat restoration for native trout species.&lt;/span&gt; &lt;span style="color:#E65100;"&gt;Using a two-tailed independent t-test to compare depth measurements from 71 total samples,&lt;/span&gt; &lt;span style="color:#1E88E5;"&gt;we found a significant and meaningful difference between the streams ( `\(t_{(69)} = -12.92, \, p &lt; 2.2 \times 10^{-16}, ES=3.08)\)`.&lt;/span&gt;  &lt;span style="color:#424242;"&gt;This indicates that Stream 2, with deeper pools, may provide more suitable habitat for trout, offering better cover during winter and reducing the risk of scouring during severe rain events.&lt;/span&gt; 
 
 &lt;center&gt;
-![](Independent-t--test_files/figure-html/unnamed-chunk-22-1.png)&lt;!-- --&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-21-1.png)&lt;!-- --&gt;
 
 
 ---
@@ -744,7 +740,7 @@ var.test(fish_in_stomach~population, data=squids)
 wilcox.test(fish_in_stomach~population, data=squids,
        alternative = c("two.sided"),
        mu = 0, 
-       paired = FALSE, 
+     #  paired = FALSE, 
        var.equal = FALSE,
        conf.level = 0.95)
 ```
@@ -772,7 +768,7 @@ wilcox.test(fish_in_stomach~population, data=squids,
 &lt;span style="color:#00796B;"&gt;We investigated whether there are significant differences in predatory preferences between two groups of squid by comparing the number of fish found in their stomachs. &lt;/span&gt; &lt;span style="color:#E65100;"&gt;Using a Wilcoxon rank-sum test on stomach content data from both populations, we analyzed a total of 71 samples. &lt;/span&gt; &lt;span style="color:#1E88E5;"&gt;The results indicated a significant difference between the two squid populations ( `\(W_{(69)} = 480.5, \, p = 1.048 \times 10^{-5})\)`, suggesting that the predatory preferences of these groups are not equal. &lt;/span&gt;  &lt;span style="color:#424242;"&gt; This finding may provide insights into the ecological roles and feeding strategies of these squid populations in their respective habitats.&lt;/span&gt; 
 
 &lt;center&gt;
-![](Independent-t--test_files/figure-html/unnamed-chunk-27-1.png)&lt;!-- --&gt;
+![](Independent-t--test_files/figure-html/unnamed-chunk-26-1.png)&lt;!-- --&gt;
 
 ---
 
