@@ -4,11 +4,29 @@
     <title>Dependent t-tests</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <meta name="date" content="2024-10-15" />
     <script src="libs/header-attrs-2.28/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
     <script src="libs/panelset-0.3.0/panelset.js"></script>
+    <script src="libs/fabric-4.3.1/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <script src="libs/mark.js-8.11.1/mark.min.js"></script>
+    <link href="libs/xaringanExtra-search-0.0.1/search.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-search-0.0.1/search.js"></script>
+    <script>window.addEventListener('load', function() { window.xeSearch = new RemarkSearch({"position":"bottom-left","caseSensitive":false,"showIcon":false,"autoSearch":true}) })</script>
+    <script src="libs/xaringanExtra-progressBar-0.0.1/progress-bar.js"></script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"d29a6f3a7d9e416fb060baad4ad38446","expires":1}</script>
+    <script src="libs/himalaya-1.1.0/himalaya.js"></script>
+    <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
+    <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
+    <script src="libs/editable-0.2.6/editable.js"></script>
     <link rel="stylesheet" href="css/nhsr.css" type="text/css" />
     <link rel="stylesheet" href="css/nhsr-fonts.css" type="text/css" />
     <link rel="stylesheet" href="css/custom.css" type="text/css" />
@@ -20,17 +38,39 @@ class: center, middle, inverse, title-slide
 .title[
 # Dependent t-tests
 ]
+.subtitle[
+## Tests between the means of different groups
+]
 .author[
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2024-10-15
+### 2025-Jan-01 (updated: 2025-Mar-03)
 ]
 
 ---
 
 
-
+<style>.xe__progress-bar__container {
+  bottom:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 4px;
+  background-color: #0051BA;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
 
 # Dependent t-test
 - The paired sample t-test, sometimes called the dependent sample t-test, is a statistical procedure used to determine whether the mean difference between two sets of observations is zero.
@@ -41,22 +81,17 @@ class: center, middle, inverse, title-slide
 # Dependent t-test
 
 - Used when we have dependent samples - matched, paired or tied somehow:
-  - Repeated measures
-  - Brother &amp; sister, husband &amp; wife
-  - Left hand, right hand, etc.
-
-- Useful to **control individual differences**.  Can result in more powerful test than independent samples t-test.
+    1. **Seasonal comparisons of plant growth:** Measuring the height of the same set of plants in two different seasons (e.g., summer and winter).
+    2. **Invasive species control:** Comparing the number of native species before and after controlling an invasive species in a forest ecosystem. The samples are matched because they come from the same location before and after intervention.
+    3. **Pollution impact on water quality:** Comparing water quality measurements (e.g., levels of pollutants) before and after the implementation of pollution control measures in the same water bodies.
+    4. **Before-and-after studies on an ecosystem restoration project:** Measuring biodiversity in a wetland area before and after a restoration effort. The same sites are sampled both times (pre- and post-restoration), so the samples are dependent.
 
 ---
 # Assumptions
-
-1. The dependent variable must be continuous.  
-
-2. The two groups are paired.  
-
-3. No significant outliers in the difference between the two related groups.
-
-4. The **difference** between the two related treatment groups should be **normally distributed**.
+1. **Dependent variable must be continuous:** Data like height, species count, or temperature.
+2. **Two groups are paired:** Same sample measured under different conditions (e.g., before and after an intervention).
+3. **No significant outliers:** Ensure differences between pairs don't have extreme values.
+4. **Differences should be normally distributed:** The differences between pairs should follow a normal distribution.
 
 
 ---

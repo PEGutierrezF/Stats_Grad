@@ -1,9 +1,9 @@
 ---
 title: "Dependent t-tests"
-subtitle: ""
+subtitle: "Tests between the means of different groups"
 author: "Pablo E. Guti\u00E9rrez-Fonseca"
 institute: ""
-date: "`r Sys.Date()`"
+date: "2025-Jan-01 (updated: `r format(Sys.Date(), '%Y-%b-%d')`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -16,20 +16,38 @@ output:
       countIncrementalSlides: true
       ratio: "16:9"
     includes:
-      after_body: [css/insert-logo.html]
+      after_body: [css/insert-logo.html] #this is for logos in all slides
 xaringanExtra:
     use_panelset: true
 ---
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readxl)
+library(dplyr)
+library(tidyr)
 library(readr)
 library(lessR)
 library(ggplot2)
 library(ggpubr)
-library(tidyr)
-library(tidyverse)
-library(effectsize) # Cohen's d for two-sample t-test
+library(cowplot)
+library(patchwork)
+library(palmerpenguins)
+library(car)
+library(ggforce) # for geom_circle
+library(RVAideMemoire) #shapiro.test
+library(DiagrammeR)
+#knitr::opts_chunk$set(dpi= 100)
 xaringanExtra::use_panelset()
+xaringanExtra::use_scribble()
+xaringanExtra::use_search(show_icon = FALSE, position= "bottom-left") # Search
+xaringanExtra::use_progress_bar(color = "#0051BA", location = "bottom", 
+                                height = "4px")
+xaringanExtra::use_clipboard() # Copy Code 
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+xaringanExtra::use_editable(expires = 1) # Add textboxes to edit during presentation
 ```
 
 # Dependent t-test
@@ -41,22 +59,17 @@ xaringanExtra::use_panelset()
 # Dependent t-test
 
 - Used when we have dependent samples - matched, paired or tied somehow:
-  - Repeated measures
-  - Brother & sister, husband & wife
-  - Left hand, right hand, etc.
-
-- Useful to **control individual differences**.  Can result in more powerful test than independent samples t-test.
+    1. **Seasonal comparisons of plant growth:** Measuring the height of the same set of plants in two different seasons (e.g., summer and winter).
+    2. **Invasive species control:** Comparing the number of native species before and after controlling an invasive species in a forest ecosystem. The samples are matched because they come from the same location before and after intervention.
+    3. **Pollution impact on water quality:** Comparing water quality measurements (e.g., levels of pollutants) before and after the implementation of pollution control measures in the same water bodies.
+    4. **Before-and-after studies on an ecosystem restoration project:** Measuring biodiversity in a wetland area before and after a restoration effort. The same sites are sampled both times (pre- and post-restoration), so the samples are dependent.
 
 ---
 # Assumptions
-
-1. The dependent variable must be continuous.  
-
-2. The two groups are paired.  
-
-3. No significant outliers in the difference between the two related groups.
-
-4. The **difference** between the two related treatment groups should be **normally distributed**.
+1. **Dependent variable must be continuous:** Data like height, species count, or temperature.
+2. **Two groups are paired:** Same sample measured under different conditions (e.g., before and after an intervention).
+3. **No significant outliers:** Ensure differences between pairs don't have extreme values.
+4. **Differences should be normally distributed:** The differences between pairs should follow a normal distribution.
 
 
 ---
