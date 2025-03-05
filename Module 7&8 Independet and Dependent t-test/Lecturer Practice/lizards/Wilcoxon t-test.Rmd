@@ -1,0 +1,53 @@
+---
+title: "Example t-test"
+output: pdf_document
+date: "2025-03-04"
+---
+
+
+```{r, message=FALSE, warning=FALSE}
+#1. Import libraries and load packages
+library(tidyverse)
+library(lessR)
+library(readxl)
+library(BSDA)
+library(RVAideMemoire) # shapiro 
+library(coin) # effect size
+library(rstatix) # effect size
+```
+
+
+```{r}
+#2. Import your data
+lizards <- read.csv("chap12e3HornedLizards.csv")  
+```
+
+```{r}
+byf.shapiro(squamosalHornLength ~ Survival, data=lizards)
+```
+
+
+```{r}
+#var.test
+var.test(squamosalHornLength ~ Survival, data=lizards)
+```
+
+
+```{r}
+wilcox.test(squamosalHornLength ~ Survival, 
+       data = lizards, 
+       paired = FALSE,
+       var.equal = TRUE,
+       alternative='two.sided')
+```
+
+
+```{r}
+lizards  %>%
+  wilcox_effsize(squamosalHornLength ~ Survival, paired = F)
+
+```
+
+
+# References
+https://bookdown.org/ybrandvain/Applied-Biostats/tsample.html#a-two-sample-t-test-in-r
