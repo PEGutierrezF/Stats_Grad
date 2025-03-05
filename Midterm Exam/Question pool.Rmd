@@ -1,0 +1,88 @@
+---
+title: "Midterm Exam"
+output:
+  pdf_document: default
+  html_document: default
+date: "2025-03-05"
+---
+
+1-You wonder if you have a world record on your hands (pun intended), so you call Pablo and find out that the mean weight of a dobsonfly is 11 grams, with a standard deviation of 2.3 grams. Your fly weighs 12.4 grams.
+
+What percentage of dobsonflies are at least this heavy?
+
+Do you conclude that a dobsonfly of this size is rare, if we use a threshold of rareness as the top 5% of heavy dobsonflies?
+
+Include a graph of your output.
+
+```{r}
+# Given values
+mean_weight <- 11
+sd_weight <- 2.3
+observed_weight <- 12.4
+
+# Calculate the probability of a dobsonfly weighing at least 12.4 grams
+p_value <- pnorm(observed_weight, 
+                 mean = mean_weight, 
+                 sd = sd_weight, 
+                 lower.tail = FALSE)
+percentage <- p_value * 100
+percentage
+```
+
+
+```{r}
+# another way
+mean_weight <- 11
+sd_weight <- 2.3
+observed_weight <- 12.4
+
+# Calculate Z-score
+z_score <- (observed_weight - mean_weight) / sd_weight
+
+# Find the probability of being at least this heavy
+p_value <- pnorm(z_score, 
+                 lower.tail = FALSE)
+p_value
+```
+
+2- Using our same information about the dobsonflies (mean = 11g, sd = 2.3g), how heavy would a dobsonfly need to be to be in the top 5% of heaviest dobsonflies?
+```{r}
+mean_weight <- 11
+sd_weight <- 2.3
+
+# Find the 95th percentile
+top_5_weight <- qnorm(0.95, mean = mean_weight, sd = sd_weight)
+top_5_weight
+```
+
+
+```{r}
+mean_weight <- 11
+sd_weight <- 2.3
+
+# Use qnorm for the bottom 5% and flip the sign
+z_95 <- qnorm(1-0.05)
+
+# Compute the weight for the top 5%
+top_5_weight <- mean_weight + (z_95 * sd_weight)
+top_5_weight
+```
+
+
+3- We want to know if the trend in permafrost thaw depth deviates significantly from zero. A test of a hypothesized mean = 0 against this one sample data will tell us if any trend is significant.
+
+Conduct a one-sample z-test on the data to see if our sample mean&nbsp;differs significantly from a hypothesized mean of 0. Note that the true standard deviation for this hypothesized population is 0.27.  
+
+```{r, }
+library(readxl)
+library(BSDA)  # Load the BSDA package
+
+df <- read_excel('AnnualEOSThawDepthForR.xlsx')
+
+z.test(df$TrendSlope1996to2017,
+       mu=0,
+       sigma.x=0.27,
+       alternative='two.side'
+      )
+```
+

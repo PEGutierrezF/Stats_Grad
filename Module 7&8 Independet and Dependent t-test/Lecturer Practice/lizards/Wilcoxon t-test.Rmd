@@ -44,7 +44,8 @@ wilcox.test(squamosalHornLength ~ Survival,
 
 ```{r}
 lizards  %>%
-  wilcox_effsize(squamosalHornLength ~ Survival, paired = F)
+  wilcox_effsize(squamosalHornLength ~ Survival, 
+                 paired = F)
 
 ```
 

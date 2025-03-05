@@ -59,4 +59,4 @@ z.test(df$elevationalRangeShift,
 
 # Reference
 Chen, I-Ching, Jane K. Hill, Ralf OhlemÃ¼ller, David B. Roy, and Chris D. Thomas. 
-2011. Rapid Range Shifts of Species Associated with High Levels of Climate Warming. Science 333 (6045): 1024 26. https://doi.org/10.1126/science.1206432.
+2011. Rapid Range Shifts of Species Associated with High Levels of Climate Warming. Science 333 (6045): 1024-26. https://doi.org/10.1126/science.1206432.
