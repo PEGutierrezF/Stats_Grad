@@ -22,7 +22,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"de00251ec4dd40609e36153a8b25c79d","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"aad624141a32475d83ebccad6c9dd3c6","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -53,7 +53,7 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2025-Jan-01 (updated: 2025-Mar-18)
+### 2025-Jan-01 (updated: 2025-Mar-19)
 ]
 
 ---
@@ -184,11 +184,10 @@ Where:
 &lt;/center&gt;
 - The three key assumptions of ANOVA (normality, homogeneity of variance, and independence) are specifically related to the **residuals** `\(\epsilon_{ij}\)`, not the response variable `\(y_{ij}\)`.
 
-  * The assumption of **normality** dictates that the residuals ( `\(\epsilon_{ij}\)` ) should follow a normal distribution.
-
-  * The **independence assumption** means that each residual is generated without influence from others, ensuring that knowing one residual provides no information about another.
-
-  * The **homogeneity of variance assumption** e (sometimes called homoscedasticity) states that the variance (i.e., `\(\sigma^2\)` ) among the groups should be approximately equal, meaning the spread of data points is similar across all groups.
+--
+    1. The assumption of **normality** dictates that the residuals ( `\(\epsilon_{ij}\)` ) should follow a normal distribution.
+    2. The **independence assumption** means that each residual is generated without influence from others, ensuring that knowing one residual provides no information about another.
+    3. The **homogeneity of variance assumption** e (sometimes called homoscedasticity) states that the variance (i.e., `\(\sigma^2\)` ) among the groups should be approximately equal, meaning the spread of data points is similar across all groups.
 
 ---
 # How ANOVA works 
@@ -197,10 +196,9 @@ Where:
 # How ANOVA works 
 - The ANOVA obtained value (the **F-statistic**) is a ratio of the Between Group Variation divided by the Within Group Variation:      
 
-&lt;center&gt;
-F = `\(\frac{\text{Between-group variance}}{\text{Within-group variance}}\)`
-&lt;/center&gt;
+`$$F = \frac{\text{Between-group variance}}{\text{Within-group variance}}$$` 
 
+--
 - A large **F** is evidence against `\(H_0\)`, since it indicates that there is more difference between groups than within groups.
 
 
@@ -748,12 +746,12 @@ plot(post_test)
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightLanguage": "r",
-"highlightStyle": "github",
-"highlightLines": true,
-"highlightSpans": true,
-"countIncrementalSlides": true,
-"ratio": "16:9"
+  "highlightLanguage": "r",
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "highlightSpans": true,
+  "countIncrementalSlides": true,
+  "ratio": "16:9"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

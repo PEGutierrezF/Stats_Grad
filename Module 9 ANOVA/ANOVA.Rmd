@@ -246,11 +246,10 @@ $\epsilon_{ij} \sim \text{Normal}(0, \sigma^2)$
 </center>
 - The three key assumptions of ANOVA (normality, homogeneity of variance, and independence) are specifically related to the **residuals** $\epsilon_{ij}$, not the response variable $y_{ij}$.
 
-  * The assumption of **normality** dictates that the residuals ( $\epsilon_{ij}$ ) should follow a normal distribution.
-
-  * The **independence assumption** means that each residual is generated without influence from others, ensuring that knowing one residual provides no information about another.
-
-  * The **homogeneity of variance assumption** e (sometimes called homoscedasticity) states that the variance (i.e., $\sigma^2$ ) among the groups should be approximately equal, meaning the spread of data points is similar across all groups.
+--
+    1. The assumption of **normality** dictates that the residuals ( $\epsilon_{ij}$ ) should follow a normal distribution.
+    2. The **independence assumption** means that each residual is generated without influence from others, ensuring that knowing one residual provides no information about another.
+    3. The **homogeneity of variance assumption** e (sometimes called homoscedasticity) states that the variance (i.e., $\sigma^2$ ) among the groups should be approximately equal, meaning the spread of data points is similar across all groups.
 
 ---
 # How ANOVA works 
@@ -259,10 +258,9 @@ $\epsilon_{ij} \sim \text{Normal}(0, \sigma^2)$
 # How ANOVA works 
 - The ANOVA obtained value (the **F-statistic**) is a ratio of the Between Group Variation divided by the Within Group Variation:      
 
-<center>
-F = $\frac{\text{Between-group variance}}{\text{Within-group variance}}$
-</center>
+$$F = \frac{\text{Between-group variance}}{\text{Within-group variance}}$$ 
 
+--
 - A large **F** is evidence against $H_0$, since it indicates that there is more difference between groups than within groups.
 
 
