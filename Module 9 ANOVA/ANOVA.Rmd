@@ -624,7 +624,7 @@ summary(one.way)
 ```
 
 ---
-# Calculating $r^2$ in One-Way ANOVA
+# Calculating $R^2$ in One-Way ANOVA
 
 ```{r highlight.output = 1}
 # Get the ANOVA summary
