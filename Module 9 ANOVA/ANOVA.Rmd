@@ -3,7 +3,7 @@ title: "Analysis of Variance"
 subtitle: "(ANOVA)"
 author: "Pablo E. Guti\u00E9rrez-Fonseca"
 institute: ""
-date: "`r Sys.Date()`"
+date: "2025-Jan-01 (updated: `r format(Sys.Date(), '%Y-%b-%d')`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -16,20 +16,39 @@ output:
       countIncrementalSlides: true
       ratio: "16:9"
     includes:
-      after_body: [css/insert-logo.html]
+      after_body: [css/insert-logo.html] #this is for logos in all slides
 xaringanExtra:
     use_panelset: true
 ---
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readxl)
+library(dplyr)
 library(readr)
 library(lessR)
 library(ggplot2)
+library(ggpubr)
+library(cowplot)
+library(patchwork)
 library(palmerpenguins)
 library(car)
-library(dplyr)
+library(ggforce) # for geom_circle
 library(RVAideMemoire) #shapiro.test
+library(DiagrammeR)
+#knitr::opts_chunk$set(dpi= 100)
 xaringanExtra::use_panelset()
+xaringanExtra::use_scribble()
+xaringanExtra::use_search(show_icon = FALSE, position= "bottom-left") # Search
+xaringanExtra::use_progress_bar(color = "#0051BA", location = "bottom", 
+                                height = "4px")
+xaringanExtra::use_clipboard() # Copy Code 
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+xaringanExtra::use_editable(expires = 1) # Add textboxes to edit during presentation
 ```
+
 
 # What is ANOVA
 - Analysis of Variance (ANOVA) is a statistical technique, commonly used to studying **differences between two or more group means**. 
@@ -520,20 +539,25 @@ Where:
 
 ---
 # Effect Size Measures
+
+---
+# Effect Size Measures
 - Significant **F ratios** indicate that there is a difference between the treatment groups that cannot be explained by chance alone.
   
-- Effect size measures help determine how big or meaningful the effect of the treatment is.
+- Effect size measures help determine **how big or meaningful** the effect of the treatment is.
 
 
 ---
 # Effect Size Measures
 - One simple effect size measure:
-<center>
-$r^2 = \frac{\text{SSB}}{\text{SST}}$
 
-Where:
-  - **SSB** is the sum of squares between groups (variability due to group differences),
-  - **SST** is the total sum of squares (total variability in the dataset).
+$$r^2 = \frac{\text{SSB}}{\text{SST}}$$
+
+- where:
+      - **SSB** is the sum of squares between groups (variability due to group differences),
+      - **SST** is the total sum of squares (total variability in the dataset).
+
+--
 
 - This measure shows how much of the total variability in the data can be explained by the different groupings.   
 - **What is meaningful?**  
