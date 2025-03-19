@@ -22,7 +22,7 @@
     <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
     <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
     <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"aad624141a32475d83ebccad6c9dd3c6","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xa34e64b8ae74e63b5a938ff127777c6","expires":1}</script>
     <script src="libs/himalaya-1.1.0/himalaya.js"></script>
     <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
     <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
@@ -517,6 +517,28 @@ summary(one.way)
 ```
 
 ---
+# Calculating `\(r^2\)` in One-Way ANOVA
+
+
+``` r
+# Get the ANOVA summary
+anova_summary &lt;- summary(one.way)
+
+# Extract Sum of Squares from the summary output
+ss_between &lt;- anova_summary[[1]][["Sum Sq"]][1]  # Between-groups SS (Fertilizer)
+ss_total &lt;- sum(anova_summary[[1]][["Sum Sq"]])  # Total SS (Between + Residual)
+
+# Compute R-squared
+r_squared &lt;- ss_between / ss_total
+print(r_squared)
+```
+
+```
+*## [1] 0.1446349
+```
+
+
+---
 # Checking Assumptions
 
 ---
@@ -544,7 +566,7 @@ summary(one.way)
 plot(one.way, 2) 
 ```
 
-![](ANOVA_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+![](ANOVA_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
@@ -561,7 +583,7 @@ plot(one.way, 2)
 plot(one.way, 2) 
 ```
 
-![](ANOVA_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+![](ANOVA_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
@@ -599,7 +621,7 @@ shapiro.test(residuals(one.way))
 plot(one.way, 1) 
 ```
 
-![](ANOVA_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+![](ANOVA_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
@@ -732,7 +754,7 @@ post_test
 plot(post_test)
 ```
 
-![](ANOVA_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+![](ANOVA_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
 
 ---
 # How to summarize results

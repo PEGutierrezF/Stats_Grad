@@ -624,6 +624,24 @@ summary(one.way)
 ```
 
 ---
+# Calculating $r^2$ in One-Way ANOVA
+
+```{r highlight.output = 1}
+# Get the ANOVA summary
+anova_summary <- summary(one.way)
+
+# Extract Sum of Squares from the summary output
+ss_between <- anova_summary[[1]][["Sum Sq"]][1]  # Between-groups SS (Fertilizer)
+ss_total <- sum(anova_summary[[1]][["Sum Sq"]])  # Total SS (Between + Residual)
+
+# Compute R-squared
+r_squared <- ss_between / ss_total
+print(r_squared)
+
+```
+
+
+---
 # Checking Assumptions
 
 ---
