@@ -3,7 +3,7 @@ title: "Factorial ANOVA"
 subtitle: ""
 author: "Pablo E. Guti\u00E9rrez-Fonseca"
 institute: ""
-date: "`r Sys.Date()`"
+date: "2025-Jan-01 (updated: `r format(Sys.Date(), '%Y-%b-%d')`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -16,18 +16,37 @@ output:
       countIncrementalSlides: true
       ratio: "16:9"
     includes:
-      after_body: [css/insert-logo.html]
+      after_body: [css/insert-logo.html] #this is for logos in all slides
 xaringanExtra:
     use_panelset: true
 ---
+
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(readxl)
+library(dplyr)
 library(readr)
 library(lessR)
 library(ggplot2)
+library(ggpubr)
+library(cowplot)
+library(patchwork)
 library(palmerpenguins)
 library(car)
+library(ggforce) # for geom_circle
 library(RVAideMemoire) #shapiro.test
+library(DiagrammeR)
+#knitr::opts_chunk$set(dpi= 100)
 xaringanExtra::use_panelset()
+xaringanExtra::use_scribble()
+xaringanExtra::use_search(show_icon = FALSE, position= "bottom-left") # Search
+xaringanExtra::use_progress_bar(color = "#0051BA", location = "bottom", 
+                                height = "4px")
+xaringanExtra::use_clipboard() # Copy Code 
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+xaringanExtra::use_editable(expires = 1) # Add textboxes to edit during presentation
 ```
 
 # What is a Full Factorial Experiment?
@@ -156,53 +175,36 @@ DiagrammeR::mermaid("
 ---
 # ANOVA Terminology
 
-- **One-Way ANOVA**: Used when you have one treatment variable. The non-parametric alternative is the **Kruskal-Wallis test**.
+1. **One-Way ANOVA**: Used when you have **one treatment variable**. The non-parametric alternative is the **Kruskal-Wallis test**.
 
-- **Factorial ANOVA**: Applied when there are two or more treatment variables. The name reflects the number of groups and variables, e.g., a 2x3 Factorial ANOVA. The non-parametric alternative is Friedman’s k-way test.
+--
 
-- **Full Factorial ANOVA**: Used when you are also considering interaction terms between variables. This analysis examines the **main effects** and **interactions** among factors.
+2. **Factorial ANOVA**: Applied when there are **two or more treatment variables**. The name reflects the number of groups and variables, e.g., a 2x3 Factorial ANOVA. The non-parametric alternative is Friedman’s k-way test.
 
----
-# Factorial ANOVA ANOVA test hypotheses
+--
 
-- Two-way ANOVA Test Hypotheses:
-
-  - $H_{0A}: \mu_{A1} = \mu_{A2} = \dots = \mu_{Ak}$ 
-(There is no difference in the means of factor A).
-
-  - $H_{0B}: \mu_{B1} = \mu_{B2} = \dots = \mu_{Bk}$ 
-(There is no difference in the means of factor B).
-
-  - $H_{0AB}$: There is no interaction between factors A and B.
-
+3. **Full Factorial ANOVA**: Used when you are also considering **interaction terms between variables**. This analysis examines the **main effects** and **interactions** among factors.
 
 ---
 # Factorial ANOVA ANOVA test hypotheses
 
-- Two-way ANOVA Test Hypotheses:
+- Two-way ANOVA test hypotheses:
+    - $H_{0A}: \mu_{A1} = \mu_{A2} = \dots = \mu_{Ak}$ (There is no difference in the means of factor A).
+    - $H_{0B}: \mu_{B1} = \mu_{B2} = \dots = \mu_{Bk}$ (There is no difference in the means of factor B).
+    - $H_{0AB}$: There is no interaction between factors A and B.
 
-  - $H_{0A}: \mu_{A1} = \mu_{A2} = \dots = \mu_{Ak}$ 
-(There is no difference in the means of factor A).
-
-  - $H_{0B}: \mu_{B1} = \mu_{B2} = \dots = \mu_{Bk}$ 
-(There is no difference in the means of factor B).
-
-  - $H_{0AB}$: There is no interaction between factors A and B.
+--
 
 - Alternative Hypotheses:
-
-  - $H_{1A}$: The means for factor A are not equal.
-
-  - $H_{1B}$: The means for factor B are not equal.
-
-  - $H_{1AB}$: There is an interaction between factors A and B.
+    - $H_{1A}$: The means for factor A are not equal.
+    - $H_{1B}$: The means for factor B are not equal.
+    - $H_{1AB}$: There is an interaction between factors A and B.
 
 ---
 # Assumptions of two-way ANOVA test
 - Two-way ANOVA, like all ANOVA tests, makes the following assumptions:
-
-- The observations within each cell are normally distributed.
-- The variances across groups are equal (homogeneity of variances).
+    1. The observations within each cell are normally distributed.
+    2. The variances across groups are equal (homogeneity of variances).
 
 
 ---

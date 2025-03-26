@@ -4,12 +4,30 @@
     <title>Factorial ANOVA</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <meta name="date" content="2024-10-29" />
-    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
     <script src="libs/panelset-0.3.0/panelset.js"></script>
-    <script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script>
+    <script src="libs/fabric-4.3.1/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <script src="libs/mark.js-8.11.1/mark.min.js"></script>
+    <link href="libs/xaringanExtra-search-0.0.1/search.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-search-0.0.1/search.js"></script>
+    <script>window.addEventListener('load', function() { window.xeSearch = new RemarkSearch({"position":"bottom-left","caseSensitive":false,"showIcon":false,"autoSearch":true}) })</script>
+    <script src="libs/xaringanExtra-progressBar-0.0.1/progress-bar.js"></script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x9b256798ff54b35a53c8566b10ca558","expires":1}</script>
+    <script src="libs/himalaya-1.1.0/himalaya.js"></script>
+    <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
+    <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
+    <script src="libs/editable-0.2.6/editable.js"></script>
+    <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
     <script src="libs/d3-3.3.8/d3.min.js"></script>
     <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
     <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
@@ -32,12 +50,32 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2024-10-29
+### 2025-Jan-01 (updated: 2025-Mar-25)
 ]
 
 ---
 
 
+<style>.xe__progress-bar__container {
+  bottom:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 4px;
+  background-color: #0051BA;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
 
 # What is a Full Factorial Experiment?
 - A factorial experiment allows researchers to study the joint **effect of two or more factors** on a **dependent variable**.
@@ -56,8 +94,8 @@ class: center, middle, inverse, title-slide
 ---
 # Decision Flowchart: Testing Process
 
-<div id="htmlwidget-bfde9f5f3d71b86cdbe5" style="width:900px;height:600px;" class="DiagrammeR html-widget "></div>
-<script type="application/json" data-for="htmlwidget-bfde9f5f3d71b86cdbe5">{"x":{"diagram":"\n    graph TD;\n\n        A[What type of data?] --> B[Continuous] \n        A --> Z[Categorical]\n        \n        B --Research Question--> C[Comparing Differences] \n        B --Research Question--> D[Examining Relationships]\n        \n        C --> E[How many groups?] \n      \n        E --1 group--> F[Normally distributed?] \n        F --Yes--> G[One-sample z-test] \n        F --No--> H[Wilcoxon signed rank test]\n        \n        E --2 groups--> I[Are Samples Independent?] \n        I --Yes--> J[Normally distributed?]\n        I --No--> K[Normally distributed?]\n        \n        J --Yes--> L[Independent t-test] \n        J --No--> M[Wilcoxon rank sum test] \n        \n        K --Yes--> N[Paired t-test] \n        K --No--> O[Wilcoxon matched pair test]\n        \n        E --More than 2 groups--> P[Number of Treatments?]\n        \n        P --One--> Q[Normally Distributed?]\n        Q --Yes--> R[One-Way ANOVA]\n        Q --No--> S[Non-Parametric ANOVA]\n        \n        P --More than One--> T[Normally Distributed?]\n        \n        T --Yes--> U[Factorial ANOVA]\n        T --No--> V[Friedman's Rank Test]\n\n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n  style D fill:lightblue,stroke:#333,stroke-width:1px\n  style E fill:lightblue,stroke:#333,stroke-width:1px\n  style F fill:lightblue,stroke:#333,stroke-width:1px\n  style G fill:lightblue,stroke:#333,stroke-width:1px\n  style H fill:lightblue,stroke:#333,stroke-width:1px\n  style I fill:lightblue,stroke:#333,stroke-width:1px\n  style J fill:lightblue,stroke:#333,stroke-width:1px\n  style K fill:lightblue,stroke:#333,stroke-width:1px\n  style L fill:lightblue,stroke:#333,stroke-width:1px\n  style M fill:lightblue,stroke:#333,stroke-width:1px\n  style N fill:lightblue,stroke:#333,stroke-width:1px\n  style O fill:lightblue,stroke:#333,stroke-width:1px\n  style P fill:lightblue,stroke:#333,stroke-width:1px\n  style Q fill:lightblue,stroke:#333,stroke-width:1px\n  style R fill:lightblue,stroke:#333,stroke-width:1px\n  style S fill:lightblue,stroke:#333,stroke-width:1px\n  style T fill:lightblue,stroke:#333,stroke-width:1px\n  style U fill:lightblue,stroke:#333,stroke-width:1px\n  style V fill:lightblue,stroke:#333,stroke-width:1px\n  style Z fill:lightblue,stroke:#333,stroke-width:1px\n\n  "},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a0146a31416ff80f3511" style="width:900px;height:600px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a0146a31416ff80f3511">{"x":{"diagram":"\n    graph TD;\n\n        A[What type of data?] --> B[Continuous] \n        A --> Z[Categorical]\n        \n        B --Research Question--> C[Comparing Differences] \n        B --Research Question--> D[Examining Relationships]\n        \n        C --> E[How many groups?] \n      \n        E --1 group--> F[Normally distributed?] \n        F --Yes--> G[One-sample z-test] \n        F --No--> H[Wilcoxon signed rank test]\n        \n        E --2 groups--> I[Are Samples Independent?] \n        I --Yes--> J[Normally distributed?]\n        I --No--> K[Normally distributed?]\n        \n        J --Yes--> L[Independent t-test] \n        J --No--> M[Wilcoxon rank sum test] \n        \n        K --Yes--> N[Paired t-test] \n        K --No--> O[Wilcoxon matched pair test]\n        \n        E --More than 2 groups--> P[Number of Treatments?]\n        \n        P --One--> Q[Normally Distributed?]\n        Q --Yes--> R[One-Way ANOVA]\n        Q --No--> S[Non-Parametric ANOVA]\n        \n        P --More than One--> T[Normally Distributed?]\n        \n        T --Yes--> U[Factorial ANOVA]\n        T --No--> V[Friedman's Rank Test]\n\n  style A fill:lightblue,stroke:#333,stroke-width:1px\n  style B fill:lightblue,stroke:#333,stroke-width:1px\n  style C fill:lightblue,stroke:#333,stroke-width:1px\n  style D fill:lightblue,stroke:#333,stroke-width:1px\n  style E fill:lightblue,stroke:#333,stroke-width:1px\n  style F fill:lightblue,stroke:#333,stroke-width:1px\n  style G fill:lightblue,stroke:#333,stroke-width:1px\n  style H fill:lightblue,stroke:#333,stroke-width:1px\n  style I fill:lightblue,stroke:#333,stroke-width:1px\n  style J fill:lightblue,stroke:#333,stroke-width:1px\n  style K fill:lightblue,stroke:#333,stroke-width:1px\n  style L fill:lightblue,stroke:#333,stroke-width:1px\n  style M fill:lightblue,stroke:#333,stroke-width:1px\n  style N fill:lightblue,stroke:#333,stroke-width:1px\n  style O fill:lightblue,stroke:#333,stroke-width:1px\n  style P fill:lightblue,stroke:#333,stroke-width:1px\n  style Q fill:lightblue,stroke:#333,stroke-width:1px\n  style R fill:lightblue,stroke:#333,stroke-width:1px\n  style S fill:lightblue,stroke:#333,stroke-width:1px\n  style T fill:lightblue,stroke:#333,stroke-width:1px\n  style U fill:lightblue,stroke:#333,stroke-width:1px\n  style V fill:lightblue,stroke:#333,stroke-width:1px\n  style Z fill:lightblue,stroke:#333,stroke-width:1px\n\n  "},"evals":[],"jsHooks":[]}</script>
 
 ---
 # One-way ANOVA Summary Table
@@ -101,53 +139,36 @@ class: center, middle, inverse, title-slide
 ---
 # ANOVA Terminology
 
-- **One-Way ANOVA**: Used when you have one treatment variable. The non-parametric alternative is the **Kruskal-Wallis test**.
+1. **One-Way ANOVA**: Used when you have **one treatment variable**. The non-parametric alternative is the **Kruskal-Wallis test**.
 
-- **Factorial ANOVA**: Applied when there are two or more treatment variables. The name reflects the number of groups and variables, e.g., a 2x3 Factorial ANOVA. The non-parametric alternative is Friedman’s k-way test.
+--
 
-- **Full Factorial ANOVA**: Used when you are also considering interaction terms between variables. This analysis examines the **main effects** and **interactions** among factors.
+2. **Factorial ANOVA**: Applied when there are **two or more treatment variables**. The name reflects the number of groups and variables, e.g., a 2x3 Factorial ANOVA. The non-parametric alternative is Friedman’s k-way test.
 
----
-# Factorial ANOVA ANOVA test hypotheses
+--
 
-- Two-way ANOVA Test Hypotheses:
-
-  - `\(H_{0A}: \mu_{A1} = \mu_{A2} = \dots = \mu_{Ak}\)` 
-(There is no difference in the means of factor A).
-
-  - `\(H_{0B}: \mu_{B1} = \mu_{B2} = \dots = \mu_{Bk}\)` 
-(There is no difference in the means of factor B).
-
-  - `\(H_{0AB}\)`: There is no interaction between factors A and B.
-
+3. **Full Factorial ANOVA**: Used when you are also considering **interaction terms between variables**. This analysis examines the **main effects** and **interactions** among factors.
 
 ---
 # Factorial ANOVA ANOVA test hypotheses
 
-- Two-way ANOVA Test Hypotheses:
+- Two-way ANOVA test hypotheses:
+    - `\(H_{0A}: \mu_{A1} = \mu_{A2} = \dots = \mu_{Ak}\)` (There is no difference in the means of factor A).
+    - `\(H_{0B}: \mu_{B1} = \mu_{B2} = \dots = \mu_{Bk}\)` (There is no difference in the means of factor B).
+    - `\(H_{0AB}\)`: There is no interaction between factors A and B.
 
-  - `\(H_{0A}: \mu_{A1} = \mu_{A2} = \dots = \mu_{Ak}\)` 
-(There is no difference in the means of factor A).
-
-  - `\(H_{0B}: \mu_{B1} = \mu_{B2} = \dots = \mu_{Bk}\)` 
-(There is no difference in the means of factor B).
-
-  - `\(H_{0AB}\)`: There is no interaction between factors A and B.
+--
 
 - Alternative Hypotheses:
-
-  - `\(H_{1A}\)`: The means for factor A are not equal.
-
-  - `\(H_{1B}\)`: The means for factor B are not equal.
-
-  - `\(H_{1AB}\)`: There is an interaction between factors A and B.
+    - `\(H_{1A}\)`: The means for factor A are not equal.
+    - `\(H_{1B}\)`: The means for factor B are not equal.
+    - `\(H_{1AB}\)`: There is an interaction between factors A and B.
 
 ---
 # Assumptions of two-way ANOVA test
 - Two-way ANOVA, like all ANOVA tests, makes the following assumptions:
-
-- The observations within each cell are normally distributed.
-- The variances across groups are equal (homogeneity of variances).
+    1. The observations within each cell are normally distributed.
+    2. The variances across groups are equal (homogeneity of variances).
 
 
 ---
