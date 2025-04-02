@@ -52,7 +52,6 @@ xaringanExtra::use_editable(expires = 1) # Add textboxes to edit during presenta
 # Decision Flowchart
 
 ```{r figure_1, echo = FALSE, fig.align='center'}
-
 DiagrammeR::mermaid("
     graph TD;
 
@@ -126,7 +125,7 @@ DiagrammeR::mermaid("
   style AA fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
   style AB fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px
 
-  ", height = '500px', width = '1000px'
+  ", height = '450px', width = '1000px'
 )
 
 
