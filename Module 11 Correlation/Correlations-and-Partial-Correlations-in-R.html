@@ -4,11 +4,29 @@
     <title>Correlations and Partial Correlations in R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <meta name="date" content="2024-11-07" />
-    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
     <script src="libs/panelset-0.3.0/panelset.js"></script>
+    <script src="libs/fabric-4.3.1/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <script src="libs/mark.js-8.11.1/mark.min.js"></script>
+    <link href="libs/xaringanExtra-search-0.0.1/search.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-search-0.0.1/search.js"></script>
+    <script>window.addEventListener('load', function() { window.xeSearch = new RemarkSearch({"position":"bottom-left","caseSensitive":false,"showIcon":false,"autoSearch":true}) })</script>
+    <script src="libs/xaringanExtra-progressBar-0.0.1/progress-bar.js"></script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"x51307c47999468ebeff6457d40dea02","expires":1}</script>
+    <script src="libs/himalaya-1.1.0/himalaya.js"></script>
+    <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
+    <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
+    <script src="libs/editable-0.2.6/editable.js"></script>
     <script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
     <script src="libs/d3-3.3.8/d3.min.js"></script>
     <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
@@ -32,28 +50,47 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2024-11-07
+### 2025-Jan-01 (updated: 2025-Apr-01)
 ]
 
 ---
 
 
-
+<style>.xe__progress-bar__container {
+  bottom:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 4px;
+  background-color: #0051BA;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
 
 # Decision Flowchart
 
-<div id="htmlwidget-451a98b7b252fdc6ee03" style="width:1000px;height:500px;" class="DiagrammeR html-widget"></div>
-<script type="application/json" data-for="htmlwidget-451a98b7b252fdc6ee03">{"x":{"diagram":"\n    graph TD;\n\n        A[What type of data?] --> B[Continuous] \n        A --> C[Categorical]\n        \n        B --Research Question--> D[Comparing Differences] \n        B --Research Question--> E[Examining Relationships]\n        \n        D --> F[How many groups?] \n      \n        F --1 group--> G[Normally distributed?] \n        G --Yes--> H[One-sample z-test] \n        G --No--> I[Wilcoxon signed rank test]\n        \n        F --2 groups--> J[Are Samples Independent?] \n        J --Yes--> K[Normally distributed?]\n        J --No--> L[Normally distributed?]\n        \n        K --Yes--> M[Independent t-test] \n        K --No--> N[Wilcoxon rank sum test] \n        \n        L --Yes--> O[Paired t-test] \n        L --No--> P[Wilcoxon matched pair test]\n        \n        F --More than 2 groups--> Q[Number of Treatments?]\n        \n        Q --One--> R[Normally Distributed?]\n        R --Yes--> S[One-Way ANOVA]\n        R --No--> T[Non-Parametric ANOVA]\n        \n        Q --More than One--> U[Normally Distributed?]\n        \n        U --Yes--> V[Factorial ANOVA]\n        U --No--> W[Friedman's Rank Test]\n        \n        E --> X[Number of Treatment Variables?]\n        \n        X --Two--> Y[Normally Distributed?]\n        Y --Yes--> Z[Pearson's Correlation]\n        Y --No--> AA[Spearman's Rho]\n        \n        X --More than Two--> AB[Partial Correlation]\n\n  style A fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style B fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style C fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style D fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style E fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style F fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style G fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style H fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style I fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style J fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style K fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style L fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style M fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style N fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style O fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style P fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style Q fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style R fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style S fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style T fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style U fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style V fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style W fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style X fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style Y fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style Z fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style AA fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style AB fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n\n  "},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-01132497e7935d28dd76" style="width:1000px;height:500px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-01132497e7935d28dd76">{"x":{"diagram":"\n    graph TD;\n\n        A[What type of data?] --> B[Continuous] \n        A --> C[Categorical]\n        \n        B --Research Question--> D[Comparing Differences] \n        B --Research Question--> E[Examining Relationships]\n        \n        D --> F[How many groups?] \n      \n        F --1 group--> G[Normally distributed?] \n        G --Yes--> H[One-sample z-test] \n        G --No--> I[Wilcoxon signed rank test]\n        \n        F --2 groups--> J[Are Samples Independent?] \n        J --Yes--> K[Normally distributed?]\n        J --No--> L[Normally distributed?]\n        \n        K --Yes--> M[Independent t-test] \n        K --No--> N[Wilcoxon rank sum test] \n        \n        L --Yes--> O[Paired t-test] \n        L --No--> P[Wilcoxon matched pair test]\n        \n        F --More than 2 groups--> Q[Number of Treatments?]\n        \n        Q --One--> R[Normally Distributed?]\n        R --Yes--> S[One-Way ANOVA]\n        R --No--> T[Non-Parametric ANOVA]\n        \n        Q --More than One--> U[Normally Distributed?]\n        \n        U --Yes--> V[Factorial ANOVA]\n        U --No--> W[Friedman's Rank Test]\n        \n        E --> X[Number of Treatment Variables?]\n        \n        X --Two--> Y[Normally Distributed?]\n        Y --Yes--> Z[Pearson's Correlation]\n        Y --No--> AA[Spearman's Rho]\n        \n        X --More than Two--> AB[Partial Correlation]\n\n  style A fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style B fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style C fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style D fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style E fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style F fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style G fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style H fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style I fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style J fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style K fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style L fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style M fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style N fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style O fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style P fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style Q fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style R fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style S fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style T fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style U fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style V fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style W fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style X fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style Y fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style Z fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style AA fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n  style AB fill:lightblue,stroke:#333,stroke-width:1px, fontSize: 18px\n\n  "},"evals":[],"jsHooks":[]}</script>
 
 ---
 
-# What is Correlation?
+# What is correlation?
 - A correlation test quantifies how two variables change together.
   - Are the variables closely related?
   - To what extent does one variable predict the other?
 
 ---
-# When to Use Correlation?
+# When to use correlation?
 - Correlation test is used to **evaluate** the **association between two or more variables**.
 
 - You have two continuous variables measured from the same observational unit.
@@ -61,38 +98,44 @@ class: center, middle, inverse, title-slide
 - You want to determine if the variables are related (vary in unison).
 
 ---
-# Key Assumptions:
+# Key assumptions:
 - Independent, random samples.
 
 - Normality:
-  - Pearson correlation (parametric): Assumes both variables follow a normal distribution.
-  - Spearman correlation (nonparametric): Does not assume normality.
+    - Pearson correlation (parametric): Assumes both variables follow a normal distribution.
+    - Spearman correlation (nonparametric): Does not assume normality.
 
 - Linear relationship: Correlation looks for a linear association between the variables.
 
 ---
-# Describing Correlations
+# Describing correlations
 - **Strength**: Indicates how closely the variables are related.
     - Categories: Weak, Moderate, Strong
-    
+
+--
+
 - **Nature**: Shows the direction of the relationship.
     - Direct (Positive): As one variable increases, so does the other.
     - Indirect (Negative): As one variable increases, the other decreases.
+
+--
 
 - **Significance**: Assesses if the correlation is meaningful.
     - Based on the p-value, which tells us if the observed relationship is likely due to chance.
 
 ---
 # Hypothesis testing with Correlations
-- Null Hypothesis ( `\(H_0\)` )
-- ** `\(H_0\)` **: There is no correlation in the population.
-  - For a two-tailed test, this means there is **no linear relationship** between x and y.
+- **Null Hypothesis ( `\(H_0\)` )**
+    - ** `\(H_0\)` **: There is no correlation in the population.
+        - For a two-tailed test, this means there is **no linear relationship** between x and y.
    $$ H_0: r = 0 $$
    $$ p &gt; 0.05 $$
 
-- Alternative Hypothesis ( `\(H_1\)` )
-- ** `\(H_1\)` **: There is a real, non-zero correlation in the population.
-  - The alternative hypothesis suggests a **significant linear relationship** between x and y.
+--
+
+- **Alternative Hypothesis ( `\(H_1\)` )**
+    - ** `\(H_1\)` **: There is a real, non-zero correlation in the population.
+        - The alternative hypothesis suggests a **significant linear relationship** between x and y.
    $$ H_1: r \neq 0 $$
    $$ p &lt; 0.05 $$
 
@@ -308,7 +351,7 @@ In the case 2) the corresponding p-value is determined using t distribution tabl
   - Interpret `\(r^2\)` to understand the proportion of variance explained by the correlation and its practical implications.
 
 ---
-# Writing Up Your Results
+# Writing up your results
 .pull-left[
 Example:
   - Correlation Results: `\(r_{(19)}=0.606, p=0.024, r^2=0.37\)`
@@ -320,8 +363,8 @@ Example:
 Example:
   - Correlation Results: `\(r_{(19)}=0.606, p=0.024, r^2=0.37\)`
 
-Interpretation:
-- r: 
+**Interpretation:**
+r: 
   - Test Statistic: 0.606 (obtained value)
   - Indicates a moderate positive correlation between the variables.
 
@@ -343,10 +386,10 @@ p-value:
 ---
 # Complications and limitations of correlation
 .pull-left[
-- Sensitivity to Outliers:
+- Sensitivity to outliers:
   - Correlations can be significantly affected by outliers, which may skew the results.
 
-- Influence of Outliers:
+- Influence of outliers:
   - A single outlier can have a disproportionate impact on the correlation coefficient, potentially leading to misleading conclusions.
 ]
 

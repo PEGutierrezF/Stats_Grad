@@ -177,7 +177,7 @@ DiagrammeR::mermaid("
 
 --
 
-2. **Factorial ANOVA**: Applied when there are **two or more treatment variables**. The name reflects the number of groups and variables, e.g., a 2x3 Factorial ANOVA. The non-parametric alternative is Friedman’s k-way test.
+2. **Factorial ANOVA**: Applied when there are **two or more treatment variables**. The name reflects the number of groups and variables, e.g., a 2x3 Factorial ANOVA. The non-parametric alternative is Friedman’s k-way test (use **rank(df$response_variable)**).
 
 --
 

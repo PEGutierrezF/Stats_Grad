@@ -40,6 +40,12 @@ Sessile.aov <- aov(Richness ~ Copper * Orientation, data = Sessile)
 summary(Sessile.aov)
 ```
 
+# Assumptions
+```{r}
+residuals <- residuals(Sessile.aov)
+shapiro.test(residuals)
+```
+
 
 ```{r}
 interaction.plot(Sessile$Copper, Sessile$Orientation, Sessile$Richness)

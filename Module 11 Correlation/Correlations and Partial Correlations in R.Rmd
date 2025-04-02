@@ -3,7 +3,7 @@ title: "Correlations and Partial Correlations in R"
 subtitle: ""
 author: "Pablo E. Guti\u00E9rrez-Fonseca"
 institute: ""
-date: "`r Sys.Date()`"
+date: "2025-Jan-01 (updated: `r format(Sys.Date(), '%Y-%b-%d')`)"
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -16,22 +16,37 @@ output:
       countIncrementalSlides: true
       ratio: "16:9"
     includes:
-      after_body: [css/insert-logo.html]
+      after_body: [css/insert-logo.html] #this is for logos in all slides
 xaringanExtra:
     use_panelset: true
 ---
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(readxl)
+library(dplyr)
 library(readr)
 library(lessR)
 library(ggplot2)
+library(ggpubr)
+library(cowplot)
 library(patchwork)
 library(palmerpenguins)
 library(car)
 library(ggforce) # for geom_circle
 library(RVAideMemoire) #shapiro.test
+library(DiagrammeR)
+#knitr::opts_chunk$set(dpi= 100)
 xaringanExtra::use_panelset()
+xaringanExtra::use_scribble()
+xaringanExtra::use_search(show_icon = FALSE, position= "bottom-left") # Search
+xaringanExtra::use_progress_bar(color = "#0051BA", location = "bottom", 
+                                height = "4px")
+xaringanExtra::use_clipboard() # Copy Code 
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+xaringanExtra::use_editable(expires = 1) # Add textboxes to edit during presentation
 ```
 
 # Decision Flowchart
@@ -119,13 +134,13 @@ DiagrammeR::mermaid("
 
 ---
 
-# What is Correlation?
+# What is correlation?
 - A correlation test quantifies how two variables change together.
   - Are the variables closely related?
   - To what extent does one variable predict the other?
 
 ---
-# When to Use Correlation?
+# When to use correlation?
 - Correlation test is used to **evaluate** the **association between two or more variables**.
 
 - You have two continuous variables measured from the same observational unit.
@@ -133,38 +148,44 @@ DiagrammeR::mermaid("
 - You want to determine if the variables are related (vary in unison).
 
 ---
-# Key Assumptions:
+# Key assumptions:
 - Independent, random samples.
 
 - Normality:
-  - Pearson correlation (parametric): Assumes both variables follow a normal distribution.
-  - Spearman correlation (nonparametric): Does not assume normality.
+    - Pearson correlation (parametric): Assumes both variables follow a normal distribution.
+    - Spearman correlation (nonparametric): Does not assume normality.
 
 - Linear relationship: Correlation looks for a linear association between the variables.
 
 ---
-# Describing Correlations
+# Describing correlations
 - **Strength**: Indicates how closely the variables are related.
     - Categories: Weak, Moderate, Strong
-    
+
+--
+
 - **Nature**: Shows the direction of the relationship.
     - Direct (Positive): As one variable increases, so does the other.
     - Indirect (Negative): As one variable increases, the other decreases.
+
+--
 
 - **Significance**: Assesses if the correlation is meaningful.
     - Based on the p-value, which tells us if the observed relationship is likely due to chance.
 
 ---
 # Hypothesis testing with Correlations
-- Null Hypothesis ( $H_0$ )
-- ** $H_0$ **: There is no correlation in the population.
-  - For a two-tailed test, this means there is **no linear relationship** between x and y.
+- **Null Hypothesis ( $H_0$ )**
+    - ** $H_0$ **: There is no correlation in the population.
+        - For a two-tailed test, this means there is **no linear relationship** between x and y.
    $$ H_0: r = 0 $$
    $$ p > 0.05 $$
 
-- Alternative Hypothesis ( $H_1$ )
-- ** $H_1$ **: There is a real, non-zero correlation in the population.
-  - The alternative hypothesis suggests a **significant linear relationship** between x and y.
+--
+
+- **Alternative Hypothesis ( $H_1$ )**
+    - ** $H_1$ **: There is a real, non-zero correlation in the population.
+        - The alternative hypothesis suggests a **significant linear relationship** between x and y.
    $$ H_1: r \neq 0 $$
    $$ p < 0.05 $$
 
@@ -497,20 +518,20 @@ In the case 2) the corresponding p-value is determined using t distribution tabl
   - Interpret $r^2$ to understand the proportion of variance explained by the correlation and its practical implications.
 
 ---
-# Writing Up Your Results
+# Writing up your results
 .pull-left[
 Example:
   - Correlation Results: $r_{(19)}=0.606, p=0.024, r^2=0.37$
 ]
 
 ---
-# Writing Up Your Results
+# Writing up your results
 .pull-left[
 Example:
   - Correlation Results: $r_{(19)}=0.606, p=0.024, r^2=0.37$
 
-Interpretation:
-- r: 
+**Interpretation:**
+r: 
   - Test Statistic: 0.606 (obtained value)
   - Indicates a moderate positive correlation between the variables.
 
@@ -532,10 +553,10 @@ $r^2$:
 ---
 # Complications and limitations of correlation
 .pull-left[
-- Sensitivity to Outliers:
+- Sensitivity to outliers:
   - Correlations can be significantly affected by outliers, which may skew the results.
 
-- Influence of Outliers:
+- Influence of outliers:
   - A single outlier can have a disproportionate impact on the correlation coefficient, potentially leading to misleading conclusions.
 ]
 
