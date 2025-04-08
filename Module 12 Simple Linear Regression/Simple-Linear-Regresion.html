@@ -4,11 +4,29 @@
     <title>Simple Linear Regresion</title>
     <meta charset="utf-8" />
     <meta name="author" content="Pablo E. Gutiérrez-Fonseca" />
-    <meta name="date" content="2024-12-11" />
-    <script src="libs/header-attrs-2.28/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.3.0/panelset.css" rel="stylesheet" />
     <script src="libs/panelset-0.3.0/panelset.js"></script>
+    <script src="libs/fabric-4.3.1/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <script src="libs/mark.js-8.11.1/mark.min.js"></script>
+    <link href="libs/xaringanExtra-search-0.0.1/search.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-search-0.0.1/search.js"></script>
+    <script>window.addEventListener('load', function() { window.xeSearch = new RemarkSearch({"position":"bottom-left","caseSensitive":false,"showIcon":false,"autoSearch":true}) })</script>
+    <script src="libs/xaringanExtra-progressBar-0.0.1/progress-bar.js"></script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+    <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"e7bd26c1399643e1b6f08ba062b14775","expires":1}</script>
+    <script src="libs/himalaya-1.1.0/himalaya.js"></script>
+    <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
+    <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
+    <script src="libs/editable-0.2.6/editable.js"></script>
     <link rel="stylesheet" href="css/nhsr.css" type="text/css" />
     <link rel="stylesheet" href="css/nhsr-fonts.css" type="text/css" />
     <link rel="stylesheet" href="css/custom.css" type="text/css" />
@@ -24,13 +42,32 @@ class: center, middle, inverse, title-slide
 ### Pablo E. Gutiérrez-Fonseca
 ]
 .date[
-### 2024-12-11
+### 2025-Jan-01 (updated: 2025-Apr-08)
 ]
 
 ---
 
 
-
+<style>.xe__progress-bar__container {
+  bottom:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 4px;
+  background-color: #0051BA;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
 
 # What is regression?
 - Regression analysis is a generic term for a group of different statistical techniques. 
@@ -41,7 +78,7 @@ class: center, middle, inverse, title-slide
 2. The most common type of linear regression is Type I regression, in which we attempt to determine the relationship between dependent and explanatory or independent variables.
 
 ---
-# What can we accomplish with linear regression?
+## What can we accomplish with linear regression?
 
 .pull-left[
 1. Describing the nature of the relationship between two variables.
@@ -56,7 +93,7 @@ class: center, middle, inverse, title-slide
 
 
 ---
-# What can we accomplish with linear regression?
+## What can we accomplish with linear regression?
 
 .pull-left[
 1. Describing the nature of the relationship between two variables.
@@ -72,17 +109,14 @@ class: center, middle, inverse, title-slide
 
 
 ---
-# What can we accomplish with linear regression?
+## What can we accomplish with linear regression?
 .pull-left[
 1. Describing the nature of the relationship between two variables.
 
 2. Predicting the dependent variable within the range of observed values. Aim to forecast y-values within the range of observed x-values. Offers relatively more certainty due to reliance on known data.
-
-3. Predicting the dependent variable beyond the range of observed values. 
-.small[   - Represents an exploration beyond the limits of observed data.
-- Naturally, this type of objective carries the greatest load of restrictions, assumptions, caveats, and risk of error.
-]
-
+3. Predicting the dependent variable beyond the range of observed values.
+    - Represents an exploration beyond the limits of observed data.
+    - Naturally, this type of objective carries the greatest load of restrictions, assumptions, caveats, and risk of error.
 ]
 
 
@@ -91,7 +125,7 @@ class: center, middle, inverse, title-slide
 ]
 
 ---
-# Difference Between Correlation and Linear Simple Regression
+## Difference Between Correlation and Linear Simple Regression
 .left-column[
 .blue[**1- Degree &amp; Nature of Relationship:**]
 
@@ -105,7 +139,7 @@ class: center, middle, inverse, title-slide
 
 
 ---
-# Difference Between Correlation and Linear Simple Regression
+## Difference Between Correlation and Linear Simple Regression
 .left-column[
 1- Degree &amp; Nature of Relationship
 
@@ -120,9 +154,8 @@ class: center, middle, inverse, title-slide
   - The dependent variable ( `\(y\)` ) is the effect.
 ]
 
-
 ---
-# Difference Between Correlation and Linear Simple Regression
+## Difference Between Correlation and Linear Simple Regression
 .left-column[
 1- Degree &amp; Nature of Relationship
 
@@ -161,14 +194,12 @@ class: center, middle, inverse, title-slide
 ---
 # Building blocks of a linear regression model
 .pull-left[
-- **Create a Predictive Equation**: 
-    - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
+- **Create a Predictive Equation**:
+  - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
 
-- **Evaluate the Model**: 
-    - Quantify how well the line fits the data (e.g., using metrics like `\(R^2\)` or residual analysis).
-    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data.
-]
-
+- **Evaluate the Model**:
+  - Quantify how well the line fits the data (e.g., using metrics like `\(R^2\)` or residual analysis).
+    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data.]
 
 ---
 # Building blocks of a linear regression model
@@ -195,8 +226,6 @@ class: center, middle, inverse, title-slide
 &lt;img src="Simple-Linear-Regresion_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
-
-
 ---
 # Building blocks of a linear regression model
 
@@ -209,7 +238,6 @@ class: center, middle, inverse, title-slide
 &lt;img src="Simple-Linear-Regresion_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
 ]
 
-
 ---
 # Building blocks of a linear regression model
 
@@ -221,7 +249,6 @@ class: center, middle, inverse, title-slide
 .pull-right[
 &lt;img src="Simple-Linear-Regresion_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
 ]
-
 
 ---
 # Building blocks of a linear regression model
@@ -247,8 +274,6 @@ class: center, middle, inverse, title-slide
 .pull-right[
 &lt;img src="Simple-Linear-Regresion_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
 ]
-
-
 
 ---
 # Building blocks of a linear regression model
@@ -284,12 +309,8 @@ class: center, middle, inverse, title-slide
 .pull-left[
 - The sum of squared error in regression is:
 
-- `\(\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2\)`
-
+`$$\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$$`
 ]
-
-
-
 
 ---
 # Building blocks of a linear regression model
@@ -297,7 +318,7 @@ class: center, middle, inverse, title-slide
 .pull-left[
 - The sum of squared error in regression is:
 
-- `\(\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2\)`
+`$$\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$$`
 ]
 
 .pull-right[
@@ -310,7 +331,7 @@ class: center, middle, inverse, title-slide
 .pull-left[
 - The sum of squared error in regression is:
 
-- `\(\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2\)`
+`$$\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$$`
 ]
 
 .pull-right[
@@ -324,7 +345,7 @@ class: center, middle, inverse, title-slide
 .pull-left[
 - The sum of squared error in regression is:
 
-- `\(\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2\)`
+`$$\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$$`
 ]
 
 .pull-right[
@@ -338,7 +359,7 @@ class: center, middle, inverse, title-slide
 .pull-left[
 - The sum of squared error in regression is:
 
-- `\(\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2\)`
+`$$\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$$`
 ]
 
 .pull-right[
@@ -352,8 +373,7 @@ class: center, middle, inverse, title-slide
 .pull-left[
 - The sum of squared error in regression is:
 
-- `\(\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2\)`
-
+`$$\text{SSE} = \sum_{i=1}^{n} e_i^2 = \sum_{i=1}^{n} (y - \hat{y})^2$$`
 ]
 
 
@@ -384,12 +404,11 @@ class: center, middle, inverse, title-slide
 - **Slopes**
 ]
 
-
 ---
 # Building blocks of a linear regression model
 
 .pull-left[
-- **Slopes** ( `\(\beta_1\)`, `\(\beta_2\)`, ., `\(\beta_n\)` ): These coefficients represent the change in the dependent variable for a one-unit change in the corresponding independent variable, holding other variables constant.
+- **Slopes** ( `\(\beta_1\)`, `\(\beta_2\)`, ., `\(\beta_n\)` ): These coefficients represent the **change in the dependent variable for a one-unit change in the corresponding independent variable**, holding other variables constant.
 ]
 
 .pull-right[
@@ -402,7 +421,7 @@ class: center, middle, inverse, title-slide
 # Building blocks of a linear regression model
 
 .pull-left[
-- **Slopes** ( `\(\beta_1\)`, `\(\beta_2\)`, ., `\(\beta_n\)` ): These coefficients represent the change in the dependent variable for a one-unit change in the corresponding independent variable, holding other variables constant.
+- **Slopes** ( `\(\beta_1\)`, `\(\beta_2\)`, ., `\(\beta_n\)` ): These coefficients represent the **change in the dependent variable for a one-unit change in the corresponding independent variable**, holding other variables constant.
 
 
 &lt;img src="Simple-Linear-Regresion_files/figure-html/unnamed-chunk-20-1.png"  /&gt;
@@ -417,7 +436,7 @@ class: center, middle, inverse, title-slide
 # Building blocks of a linear regression model
 
 .pull-left[
-- **Slopes** ( `\(\beta_1\)`, `\(\beta_2\)`, ., `\(\beta_n\)` ): These coefficients represent the change in the dependent variable for a one-unit change in the corresponding independent variable, holding other variables constant.
+- **Slopes** ( `\(\beta_1\)`, `\(\beta_2\)`, ., `\(\beta_n\)` ): These coefficients represent the **change in the dependent variable for a one-unit change in the corresponding independent variable**, holding other variables constant.
 
 - The slope ( `\(\beta_1\)` ) of your line:
   - It tells you how much will Y increase with each unit increase in X.
@@ -454,6 +473,10 @@ class: center, middle, inverse, title-slide
 --
 
 - ** `\(\epsilon_i\)` ** (Error Term): Accounts for variability in `\(y\)` not explained by `\(x\)`, reflecting factors not captured in the model.
+
+---
+# Explanation of Terms: Example
+
 
 ---
 # Explanation of Terms: Example
@@ -620,12 +643,12 @@ class: center, middle, inverse, title-slide
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"highlightLanguage": "r",
-"highlightStyle": "github",
-"highlightLines": true,
-"highlightSpans": true,
-"countIncrementalSlides": true,
-"ratio": "16:9"
+  "highlightLanguage": "r",
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "highlightSpans": true,
+  "countIncrementalSlides": true,
+  "ratio": "16:9"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
