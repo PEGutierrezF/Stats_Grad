@@ -254,13 +254,15 @@ p +
 
 ---
 # Building blocks of a linear regression model
+
 .pull-left[
 - **Create a Predictive Equation**:
-  - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
+    - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
 
 - **Evaluate the Model**:
-  - Quantify how well the line fits the data (e.g., using metrics like $R^2$ or residual analysis).
-    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data.]
+    - Quantify how well the line fits the data (e.g., using metrics like $R^2$ or residual analysis).
+    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data.
+]
 
 ---
 # Building blocks of a linear regression model
@@ -1410,3 +1412,91 @@ col = "red", lty = 2
 
 ---
 # Testing  your Assumptions
+
+.pull-left[
+Assumptions:
+  - Independent random samples
+  - Linear relationship
+  - Normally distributed residuals.
+]
+.pull-right[ ]
+
+---
+# Testing  your Assumptions
+
+.pull-left[
+Assumptions:
+  - Independent random samples
+  - Linear relationship
+  - Normally distributed residuals.
+      - Are the residuals relatively constant (homoscedastic)?
+]
+.pull-right[ 
+A. Constant distribution (spread) of residuals.
+
+```{r, echo=FALSE, fig.cap="", out.width = '50%'}
+knitr::include_graphics("figs/homocedasticity.png")
+```
+]
+
+---
+# Testing  your Assumptions
+
+.pull-left[
+Assumptions:
+  - Independent random samples
+  - Linear relationship
+  - Normally distributed residuals.
+      - Are the residuals relatively constant (homoscedastic)?
+]
+.pull-right[ 
+B. Heteroscedasticity apparent: the spread of residuals increases as the fitted values increase.
+
+```{r, echo=FALSE, fig.cap="", out.width = '50%'}
+knitr::include_graphics("figs/heterocedasticity.png")
+```
+]
+
+---
+# Testing  your Assumptions
+
+.pull-left[
+Assumptions:
+  - Independent random samples
+  - Linear relationship
+  - Normally distributed residuals.
+      - Are the residuals relatively constant (homoscedastic)?
+      - Are your residuals normally distributed?
+]
+.pull-right[ 
+A. Constant distribution (spread) of residuals.
+
+```{r, echo=FALSE, fig.cap="", out.width = '50%'}
+knitr::include_graphics("figs/qqnorm.png")
+```
+]
+
+---
+# Testing  your Assumptions
+
+.pull-left[
+Assumptions:
+  - Independent random samples
+  - Linear relationship
+  - Normally distributed residuals.
+      - Are the residuals relatively constant (homoscedastic)?
+      - Are your residuals normally distributed?
+]
+.pull-right[ 
+B. Diagnostic plot of residuals vs fitted values. If the data fit a linear model, the residuals should be grouped near the zero horizontal line. The curved line is a calculated LOESS curve which shows the directions of the distortions from linearity.
+Note that the horizontal axis in such a plot consists of the predicted (or 'fitted') values (Y).
+.
+
+```{r, echo=FALSE, fig.cap="", out.width = '50%'}
+knitr::include_graphics("figs/residual_fittedvalues.png")
+```
+]
+
+---
+# Building blocks of a linear regression model
+
