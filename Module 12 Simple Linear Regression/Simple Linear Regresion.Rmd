@@ -256,19 +256,20 @@ p +
 # Building blocks of a linear regression model
 
 .pull-left[
-- **Create a Predictive Equation**:
+1. **Create a Predictive Equation**:
     - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
-
-- **Evaluate the Model**:
-    - Quantify how well the line fits the data (e.g., using metrics like $R^2$ or residual analysis).
-    - Assess the model's predictive power and understand its limitations in making predictions beyond the observed data.
+2. Evaluate the Model:  
+   - Quantify how well the model fits the data using:  
+     - Coefficient of determination ($R^2$).  
+     - Residual plots and diagnostic checks.  
+   - Consider the model's assumptions and limitations for extrapolation.
 ]
 
 ---
 # Building blocks of a linear regression model
 
 .pull-left[
-- **Create a Predictive Equation**:  
+1. **Create a Predictive Equation**:  
     - Develop an equation for a line that most accurately predicts the response variable based on the explanatory variable.
 ]
 
