@@ -1,12 +1,14 @@
 
 
 data <- read.csv('heart.data.csv')
-head(data)
+tail(data, 3)
 
+# Build the model
 mod <- lm(heart.disease ~ biking + smoking, data = data)
 summary(mod)
 
-
+library(MASS)
+model_equation(mod, digits = 3, trim = TRUE)
 
 # Equation
 heart disease = 14.98 + (-0.2*biking) + (0.178*smoking) ± e
@@ -18,6 +20,7 @@ extract_eq(mod,
            wrap = TRUE, # multiple lines
            terms_per_line = 2
 )
+
 
 # Data visualization
 par(mfrow = c(1, 2))  
