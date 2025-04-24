@@ -2,7 +2,11 @@
 #### NR2400 ####
 #### Oxygen and Fitness ####
 install.packages("relaimpo")
+install.packages('regclass')
+install.packages('tidyverse')
 library(relaimpo)
+library(regclass)
+library(tidyverse)
 
 #Step 1: Import Data. You'll want to look at it to see the variables you have.
 oxygen <- read_csv("Fitness_and_Oxygen.csv")
@@ -18,7 +22,7 @@ final_model$anova # display results
 
 #Step 4: Make sure your Variances aren't inflated (should be below 10)
 #This only gives a result if there are multiple variables
-vif(final_model)
+VIF(final_model)
 
 #Step 5: Now, lets look at what our model says!
 #Here is where most of the work is, pulling out the terms of interest
